@@ -219,30 +219,6 @@
             font-size: 1.1em;
             margin: 10px auto;
         }
-        .testimonials {
-            padding: 60px 20px;
-            background-color: var(--light-gray);
-            text-align: center;
-        }
-        .testimonial-item {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-            text-align: left;
-            border-left: 5px solid var(--secondary-color);
-        }
-        .testimonial-item p {
-            font-style: italic;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-        .testimonial-item .author {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1em;
-        }
         .cta-container { text-align: center; }
         .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         
@@ -299,7 +275,73 @@
             width: 26px;
             height: 26px;
         }
-        
+
+        /* --- NOVÉ STYLY PRO SLIDER --- */
+        .testimonial-slider-container {
+            position: relative;
+            max-width: 700px;
+            margin: 40px auto 0;
+            padding: 0 50px; /* Prostor pro šipky */
+            box-sizing: border-box;
+        }
+        .testimonial-slider-wrapper {
+            overflow: hidden;
+            width: 100%;
+            border-radius: 8px;
+        }
+        .testimonials {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            
+        }
+        .testimonial-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            border-left: 5px solid var(--secondary-color);
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .testimonial-item p {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .testimonial-item .author {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1em;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .slider-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        .slider-btn.prev-btn { left: 0; }
+        .slider-btn.next-btn { right: 0; }
+        .slider-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        /* --- KONEC NOVÝCH STYLŮ --- */
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5em; }
             .hero p { font-size: 1.2em; }
@@ -307,6 +349,11 @@
             .section-title { font-size: 2em; }
             .features-grid, .program-grid { grid-template-columns: 1fr; }
             .instructor-section h3 { font-size: 1.7em; }
+            .testimonial-slider-container { padding: 0; } /* Skryjeme padding na mobilu */
+            .slider-btn { top: auto; bottom: -60px; transform: translateY(0); } /* Posuneme šipky pod slider */
+            .slider-btn.prev-btn { left: calc(50% - 45px); }
+            .slider-btn.next-btn { right: calc(50% - 45px); }
+            #testimonials-section .container { padding-bottom: 80px; } /* Přidáme místo pro šipky */
         }
     </style>
     
@@ -410,44 +457,51 @@
             </div>
         </section>
         <section id="testimonials-section">
-    <div class="container">
-        <h2 class="section-title">Co říkají účastníci</h2>
-        <div class="testimonials">
-            <div class="testimonial-item">
-                <p>"Díky školení od Gabriela šetřím přinejmenším hodinu denně. Doporučuji!"</p>
-                <p class="author">- Jiří J.</p>
+            <div class="container">
+                <h2 class="section-title">Co říkají účastníci</h2>
+                
+                <div class="testimonial-slider-container">
+                    <div class="testimonial-slider-wrapper">
+                        <div class="testimonials">
+                            <div class="testimonial-item">
+                                <p>"Díky školení od Gabriela šetřím přinejmenším hodinu denně. Doporučuji!"</p>
+                                <p class="author">- Jiří J.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psaním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
+                                <p class="author">- Jiří U.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Gabriel mi ukázal, kolik toho ještě neumím a jaké možnosti mi AI otevírá. Bylo to opravdu inspirativní."</p>
+                                <p class="author">- Radovan H.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Postavit si nové weby za pár kliknutí? Díky Gabrielovi realita. Ušetřil jsem spoustu peněz, času i nervů."</p>
+                                <p class="author">- Jiří G.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Všechno bylo vysvětleno srozumitelně a lidsky. Díky Gabovi teď lépe rozumím nejen AI, ale i mým studentům a dnešní zrychlené době."</p>
+                                <p class="author">- Martina M.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Specializovaní asistenti a pokročilé techniky promptování jsou absolutní game-changer. Tohle posunulo mé podnikání na další úroveň."</p>
+                                <p class="author">- Tereza J.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Svět AI vysvětlený tak, že ho pochopí i úplný začátečník. Tento workshop je obrovským přínosem pro každého podnikatele."</p>
+                                <p class="author">- Roman D.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-btn prev-btn">‹</button>
+                    <button class="slider-btn next-btn">›</button>
+                </div>
+                <p class="section-subtitle" style="margin-top: 40px;">Zajímá vás, jak probíhaly minulé workshopy? Přečtěte si o nich na <a href="https://www.gabrielkozik.com/blog.html" target="_blank">mém blogu</a>.</p>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Nenechte si ujít další termín!</a>
+                </div>
             </div>
-            <div class="testimonial-item">
-                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psaním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
-                <p class="author">- Jiří U.</p>
-            </div>
-            <div class="testimonial-item">
-                <p>"Gabriel mi ukázal, kolik toho ještě neumím a jaké možnosti mi AI otevírá. Bylo to opravdu inspirativní."</p>
-                <p class="author">- Radovan H.</p>
-            </div>
-            <div class="testimonial-item">
-                <p>"Postavit si nové weby za pár kliknutí? Díky Gabrielovi realita. Ušetřil jsem spoustu peněz, času i nervů."</p>
-                <p class="author">- Jiří G.</p>
-            </div>
-            <div class="testimonial-item">
-                <p>"Všechno bylo vysvětleno srozumitelně a lidsky. Díky Gabovi teď lépe rozumím nejen AI, ale i mým studentům a dnešní přetechnizované době."</p>
-                <p class="author">- Martina M.</p>
-            </div>
-            <div class="testimonial-item">
-                <p>"Specializovaní asistenti a pokročilé techniky promptování jsou absolutní game-changer. Tohle posunulo mé podnikání na další úroveň."</p>
-                <p class="author">- Tereza J.</p>
-            </div>
-            <div class="testimonial-item">
-                <p>"Svět AI vysvětlený tak, že ho pochopí i úplný začátečník. Tento workshop je obrovským přínosem pro každého podnikatele."</p>
-                <p class="author">- Roman D.</p>
-            </div>
-        </div>
-        <p class="section-subtitle" style="margin-top: 40px;">Zajímá vás, jak probíhaly minulé workshopy? Přečtěte si o nich na <a href="https://www.gabrielkozik.com/blog.html" target="_blank">mém blogu</a>.</p>
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Nenechte si ujít další termín!</a>
-        </div>
-    </div>
-</section>
+        </section>
         <section id="propojit">
             <div class="container">
                 <h2 class="section-title">Kontaktujte mě</h2>
@@ -479,5 +533,42 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script src="/_vercel/insights/script.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.testimonials');
+            const slides = document.querySelectorAll('.testimonial-item');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            function updateSliderPosition() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Ovládání tlačítek
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalSlides - 1;
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                    updateSliderPosition();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSliderPosition();
+                }
+            });
+
+            // Iniciační nastavení
+            updateSliderPosition();
+        });
+    </script>
 </body>
 </html>
