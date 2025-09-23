@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workshop: Google Nástroje pro Business & Compliance | Mgr. Gabriel Kožík</title>
+    <meta name="description" content="Praktický workshop pro podnikatele a manažery: Naučte se efektivně využívat Gemini, NotebookLM a další Google AI nástroje v souladu s AI Act. Zvyšte produktivitu a minimalizujte rizika.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0a2342;
+            --secondary-color: #2ca58d;
+            --text-color: #333;
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        /* Minimalistická navigace */
+        .landing-nav {
+            background-color: var(--white);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .landing-nav-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .landing-nav-title img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .landing-nav-contact {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+        .landing-nav-contact:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero sekce */
+        .hero {
+            background-image: linear-gradient(rgba(10,35,66,0.7), rgba(10,35,66,0.7)), url(https://images.unsplash.com/photo-1516116216624-53e6973bea12?q=80&w=2070&auto=format&fit=crop);
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.2em;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+        .hero p {
+            font-size: 1.4em;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background-color: #238c76;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .cta-button:focus {
+            outline: 3px solid var(--secondary-color);
+            outline-offset: 3px;
+        }
+
+        /* Sekce obsahu */
+        section { padding: 60px 20px; }
+        section:nth-child(even) { background-color: var(--light-gray); }
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: -20px auto 40px;
+            color: var(--text-color);
+        }
+
+        /* Výhody, program, lektor */
+        .features-grid, .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature-item, .program-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid var(--secondary-color);
+        }
+        .feature-item h3, .program-item h3 {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .feature-item p, .program-item p {
+            font-size: 1.05em;
+            color: var(--text-color);
+        }
+
+        .instructor-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .instructor-section img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--secondary-color);
+        }
+        .instructor-section h3 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .instructor-section p {
+            max-width: 700px;
+            font-size: 1.1em;
+            margin: 0 auto;
+        }
+
+        /* Reference */
+        .testimonials {
+            padding: 60px 20px;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        .testimonial-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            text-align: left;
+            border-left: 5px solid var(--secondary-color);
+        }
+        .testimonial-item p {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .testimonial-item .author {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1em;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+        .footer-links a {
+            margin: 0 10px;
+        }
+
+        /* Kalendář button (z hlavního webu) */
+        svg { width: 0; height: 0; position: absolute; } /* Skryje SVG symboly, ale umožní jejich použití */
+        .event-actions { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+        .calendar-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            box-sizing: border-box;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .calendar-button:hover { background-color: #238c76; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+        .calendar-button svg { width: 26px; height: 26px; position: static; } /* Zpřístupní SVG pro zobrazení */
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.2em; }
+            .cta-button { padding: 15px 30px; font-size: 1.1em; }
+            .section-title { font-size: 2em; }
+            .features-grid, .program-grid { grid-template-columns: 1fr; }
+            .instructor-section h3 { font-size: 1.7em; }
+        }
+    </style>
+    <svg width="0" height="0" style="position:absolute">
+      <symbol id="icon-calendar" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/>
+      </symbol>
+    </svg>
+</head>
+<body>
+
+    <nav class="landing-nav">
+        <a href="#" class="landing-nav-title">
+            <img src="https://placehold.co/150x150/0a2342/ffffff?text=GK" alt="Profilová fotka Gabriel Kožík" class="nav-photo">
+            <span>Mgr. Gabriel Kožík - AI Workshop</span>
+        </a>
+        <a href="mailto:kozik@iustoria.cz" class="landing-nav-contact">Kontakt</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>AI Workshop: Google Nástroje pro Business & Compliance</h1>
+            <p>Zvyšte efektivitu s Gemini a NotebookLM. Naučte se AI používat bezpečně a v souladu s AI Act.</p>
+            <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Registrovat se hned!</a>
+            <div class="event-actions">
+                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%20na%20AI%20n%C3%A1stroje%20od%20Google&dates=20251010T070000Z/20251010T130000Z&details=V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ%3D%3D&location=IUSTORIA%2C%20Slov%C3%A1kova%20279%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop na AI nástroje od Google">
+                    <svg><use xlink:href="#icon-calendar"></use></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="workshop-info">
+            <div class="container">
+                <h2 class="section-title">Co získáte na workshopu?</h2>
+                <p class="section-subtitle">Tento interaktivní workshop je navržen tak, abyste získali praktické dovednosti a klid mysli při práci s AI.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>Praktické dovednosti</h3>
+                        <p>Naučíte se používat Gemini, NotebookLM a další AI nástroje pro okamžité zvýšení produktivity ve vaší práci.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Právní jistota</h3>
+                        <p>Pochopíte klíčové principy AI Act a GDPR a jak je aplikovat, abyste minimalizovali právní rizika.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Strategický náskok</h3>
+                        <p>Zjistíte, jak integrovat AI do vaší firemní strategie pro udržitelný růst a inovace.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Chci se registrovat!</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="program">
+            <div class="container">
+                <h2 class="section-title">Program workshopu</h2>
+                <p class="section-subtitle">Detailní přehled témat, která pokryjeme, abyste si odnesli maximum praktických znalostí.</p>
+                
+                <div class="program-grid">
+                    <div class="program-item">
+                        <h3>Modul 1: Úvod do AI v byznysu (9:00 - 10:00)</h3>
+                        <p>Pochopení základů AI, jejího potenciálu a výzev pro moderní firmy. Přehled Google AI ekosystému.</p>
+                    </div>
+                    <div class="program-item">
+                        <h3>Modul 2: Praktické použití Gemini (10:00 - 11:30)</h3>
+                        <p>Jak efektivně využívat Google Gemini pro tvorbu textů, brainstorming, analýzu dat a marketingové kampaně.</p>
+                    </div>
+                    <div class="program-item">
+                        <h3>Modul 3: NotebookLM pro výzkum a analýzu (11:30 - 12:30)</h3>
+                        <p>Využití NotebookLM pro organizaci informací, rychlý výzkum dokumentů a syntézu složitých dat.</p>
+                    </div>
+                     <div class="program-item">
+                        <h3>Oběd (12:30 - 13:30)</h3>
+                        <p>Čas na networking a občerstvení.</p>
+                    </div>
+                    <div class="program-item">
+                        <h3>Modul 4: AI Act a GDPR: Compliance v praxi (13:30 - 15:00)</h3>
+                        <p>Klíčové aspekty evropské regulace AI. Jak nastavit interní směrnice a procesy pro bezpečné nasazení AI nástrojů.</p>
+                    </div>
+                     <div class="program-item">
+                        <h3>Modul 5: AI Studio a budoucí trendy (15:00 - 16:00)</h3>
+                        <p>Krátký úvod do AI Studio pro vlastní experimentování s modely. Diskuse o budoucích trendech a strategiích pro AI inovace.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="instructor">
+            <div class="container">
+                <h2 class="section-title">O lektorovi</h2>
+                <div class="instructor-section">
+                    <img src="https://placehold.co/150x150/0a2342/ffffff?text=GK" alt="Portrét Mgr. Gabriela Kožíka" loading="lazy">
+                    <h3>Mgr. Gabriel Kožík</h3>
+                    <p>Jsem advokát a AI stratég s hlubokým porozuměním pro právní i technologické aspekty inovací. Pomáhám firmám transformovat výzvy AI compliance na strategickou výhodu a efektivně integrovat AI nástroje pro jejich růst.</p>
+                    <p>Moje praxe se zaměřuje na poskytování právní jistoty v dynamickém prostředí technologií, se zvláštním důrazem na duševní vlastnictví, e-commerce a nově také na regulaci umělé inteligence.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">Co říkají naši účastníci</h2>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"Workshop překonal moje očekávání! Získal jsem nejen praktické tipy pro Gemini, ale i jasné pochopení AI Act, což je pro naši firmu klíčové."</p>
+                        <p class="author">- Ing. Petr Novák, Marketing Manager</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Skvěle připravený obsah a inspirativní lektor. Konečně vím, jak AI používat efektivně a bez strachu z právních komplikací."</p>
+                        <p class="author">- Mgr. Eva Dvořáková, CEO StartUp XYZ</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Nenechte si ujít další termín!</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena. | <a href="mailto:kozik@iustoria.cz">Kontakt</a></p>
+            <div class="footer-links">
+                <a href="#">Hlavní stránka</a> | 
+                <a href="#">Blog</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+      // Placeholder for analytics or other scripts
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script src="/_vercel/insights/script.js" defer></script>
+</body>
+</html>
