@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google AI nástroje pro Váš růst | Mgr. Gabriel Kožík</title>
+    <title>AI Workshop: Google nástroje pro Váš růst | Mgr. Gabriel Kožík</title>
     <meta name="description" content="Praktický workshop pro podnikatele a freelancery: Zvyšte svou produktivitu a kreativitu s Gemini, NotebookLM a dalšími AI nástroji od Google. Naučte se pokročilé techniky promptování a zefektivněte své procesy.">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -145,24 +145,44 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             text-align: center;
             border-top: 4px solid var(--secondary-color);
+            display: flex;
+            flex-direction: column;
         }
-        .feature-item h3, .program-item h3 {
+        .program-item .module-identifier {
+            font-size: 1em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin: 0 0 5px 0;
+        }
+        .program-item h3 {
             font-size: 1.5em;
             color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 10px;
+            margin: 0 0 5px 0;
+            line-height: 1.2;
+             min-height: 2.4em; /* Vytvoří prostor pro dva řádky */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .feature-item p, .program-item p {
+        .program-item .module-time {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
+        }
+        .program-item p {
             font-size: 1.05em;
             color: var(--text-color);
+            margin-top: auto;
         }
         .program-lunch-break {
             text-align: center;
             margin: 40px auto 0 auto;
             padding: 20px;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            max-width: 80%;
+            background-color: rgba(44, 165, 141, 0.05);
+            border-radius: 8px;
+            max-width: 70%;
+            border: 1px solid rgba(44, 165, 141, 0.2);
         }
         .program-lunch-break h3 {
             font-size: 1.4em;
@@ -173,6 +193,7 @@
         }
         .program-lunch-break p {
             margin-bottom: 0;
+            font-size: 1.1em;
         }
         .instructor-section {
             display: flex;
@@ -299,7 +320,7 @@
     <nav class="landing-nav">
         <a href="#" class="landing-nav-title">
             <img src="profilova-fotka.jpg" alt="Profilová fotka Gabriel Kožík" class="nav-photo">
-            <span>AI Workshop pro podnikatele a živnostníky</span>
+            <span>Série AI Workshopů od Gabriela Kožíka</span>
         </a>
         <a href="#propojit" class="landing-nav-contact">Kontakt</a>
     </nav>
@@ -347,22 +368,28 @@
                 
                 <div class="program-grid">
                     <div class="program-item">
-                        <h3>Modul 1: Gemini pro business (9:00 - 12:00)</h3>
+                        <p class="module-identifier">Modul 1</p>
+                        <h3>Gemini pro business</h3>
+                        <p class="module-time">9:00 - 12:00</p>
                         <p>Intenzivní blok zaměřený na praktické využití Gemini pro tvorbu obsahu, rešerše, analýzy a zefektivnění komunikace.</p>
                     </div>
                     <div class="program-item">
-                        <h3>Modul 2: NotebookLM a Google AI studio (13:00 - 14:30)</h3>
+                        <p class="module-identifier">Modul 2</p>
+                        <h3>Pokročilé nástroje</h3>
+                        <p class="module-time">13:00 - 14:30</p>
                         <p>Prozkoumáme NotebookLM pro práci s dokumenty a nahlédneme do možností Google AI Studia pro vlastní experimenty.</p>
                     </div>
                      <div class="program-item">
-                        <h3>Modul 3: AI kreavitní tvorba a shrnutí (14:30 - 15:00)</h3>
+                        <p class="module-identifier">Modul 3</p>
+                        <h3>AI grafika a shrnutí</h3>
+                        <p class="module-time">14:30 - 15:00</p>
                         <p>Krátký blok o možnostech generování obrázků a vizuálů. Závěrečné tipy, triky a prostor pro vaše dotazy.</p>
                     </div>
                 </div>
 
                 <div class="program-lunch-break">
-                    <h3>Oběd & Networking (12:00 - 13:00)</h3>
-                    <p>Čas na občerstvení a diskuzi s ostatními účastníky.</p>
+                    <h3>Oběd & Networking</h3>
+                    <p>12:00 - 13:00</p>
                 </div>
             </div>
         </section>
