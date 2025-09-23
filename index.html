@@ -212,50 +212,23 @@
         footer {
             background-color: var(--primary-color);
             color: rgba(255, 255, 255, 0.8);
-            padding: 50px 20px;
+            padding: 40px 20px;
+            text-align: center;
         }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: left;
+        .footer-content p {
+            margin: 5px 0;
+            font-size: 1em;
         }
-        .footer-column h4 {
-            color: var(--white);
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-        .footer-column p, .footer-column a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.95em;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .footer-column a:hover {
+        .footer-content a {
             color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-content a:hover {
             text-decoration: underline;
         }
-        .social-icons a {
-            display: inline-block;
-            margin-right: 15px;
-        }
-        .social-icons svg {
-            width: 24px;
-            height: 24px;
-            fill: rgba(255, 255, 255, 0.8);
-            transition: fill 0.3s ease;
-        }
-        .social-icons a:hover svg {
-            fill: var(--secondary-color);
-        }
         .copyright {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
             font-size: 0.9em;
             color: rgba(255, 255, 255, 0.6);
         }
@@ -296,9 +269,6 @@
             .section-title { font-size: 2em; }
             .features-grid, .program-grid { grid-template-columns: 1fr; }
             .instructor-section h3 { font-size: 1.7em; }
-            .footer-grid { text-align: center; }
-            .social-icons { text-align: center; }
-            .social-icons a { margin: 0 8px; }
         }
     </style>
     
@@ -306,9 +276,6 @@
 <body>
     <svg width="0" height="0" style="position:absolute;">
         <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
-        <symbol id="icon-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-7 15.5v-5.3a2.25 2.25 0 0 0-2.25-2.25a2.25 2.25 0 0 0 0 4.5h.25V17h-2.5v-7h2.5v1.2a4.5 4.5 0 0 1 4-2.2c2.5 0 4.5 2 4.5 4.5V17h-2.5v-5.5a2 2 0 0 0-2-2a2 2 0 0 0-2 2V17h-2.5M6.5 8.5a2 2 0 1 1-2-2a2 2 0 0 1 2 2M5 17h3V10H5v7Z"/></symbol>
-        <symbol id="icon-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.04c-5.5 0-10 4.49-10 10.02c0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.84c0-2.5 1.49-3.9 3.78-3.9c1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z"/></symbol>
-        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 5.83c-.25 2.02-1.15 3.02-2.88 3.12c-1.81.1-6.1.18-8.68.18c-2.59 0-6.87-.08-8.68-.18c-1.73-.1-2.63-1.1-2.88-3.12C.16 15.8 0 14.19 0 12c0-2.19.16-3.8.44-5.83C.69 4.15 1.59 3.15 3.32 3.05C5.13 2.95 9.41 2.87 12 2.87c2.59 0 6.87.08 8.68.18c1.73.1 2.63 1.1 2.88 3.12Z"/></symbol>
     </svg>
 
     <nav class="landing-nav">
@@ -339,15 +306,15 @@
                 <div class="features-grid">
                     <div class="feature-item">
                         <h3>Maximální efektivita</h3>
-                        <p>Naučíte se používat Gemini a NotebookLM pro okamžité zrychlení rutinních úkolů, analýz a přípravy podkladů.</p>
+                        <p>Naučíte se používat Gemini pro okamžité zrychlení rutinních úkolů, analýz a přípravy podkladů.</p>
                     </div>
                     <div class="feature-item">
                         <h3>Kreativní doping</h3>
-                        <p>Objevíte pokročilé techniky promptování pro tvorbu textů, grafiky, webových stránek a inovativních nápadů.</p>
+                        <p>Objevíte pokročilé techniky promptování pro tvorbu textů, grafiky a inovativních nápadů.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Strategický náskok</h3>
-                        <p>Zjistíte, jak integrovat AI do vaší firemní strategie pro udržitelný růst a automatizaci procesů.</p>
+                        <h3>Interaktivita a podpora</h3>
+                        <p>Během workshopu získáte zpětnou vazbu, budete sdílet v chatu a po skončení obdržíte veškeré materiály.</p>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 50px;">
@@ -362,24 +329,20 @@
                 
                 <div class="program-grid">
                     <div class="program-item">
-                        <h3>Modul 1: Efektivita s Gemini (9:00 - 11:00)</h3>
-                        <p>Od základů k pokročilým technikám. Tvorba textů, rešerše, brainstorming a plánování marketingových kampaní.</p>
-                    </div>
-                    <div class="program-item">
-                        <h3>Modul 2: NotebookLM jako vaše druhá paměť (11:00 - 12:30)</h3>
-                        <p>Využití NotebookLM pro organizaci informací, rychlou analýzu dokumentů a vytváření souhrnů ze schůzek.</p>
+                        <h3>Modul 1: Gemini pro business (9:00 - 12:00)</h3>
+                        <p>Intenzivní blok zaměřený na praktické využití Gemini pro tvorbu obsahu, rešerše, analýzy a zefektivnění komunikace.</p>
                     </div>
                      <div class="program-item">
-                        <h3>Oběd & Networking (12:30 - 13:30)</h3>
+                        <h3>Oběd & Networking (12:00 - 13:00)</h3>
                         <p>Čas na občerstvení a diskuzi s ostatními účastníky.</p>
                     </div>
                     <div class="program-item">
-                        <h3>Modul 3: Kreativní tvorba a vizuály (13:30 - 15:00)</h3>
-                        <p>Jak pomocí AI generovat poutavou grafiku, navrhovat wireframy webů a tvořit obsah pro sociální sítě.</p>
+                        <h3>Modul 2: Pokročilé nástroje (13:00 - 14:30)</h3>
+                        <p>Prozkoumáme NotebookLM pro práci s dokumenty a nahlédneme do možností Google AI Studia pro vlastní experimenty.</p>
                     </div>
                      <div class="program-item">
-                        <h3>Modul 4: AI pro pokročilé a automatizace (15:00 - 16:00)</h3>
-                        <p>Úvod do AI Studia, propojení AI s dalšími nástroji a budoucí trendy, které vám nesmí uniknout.</p>
+                        <h3>Modul 3: AI grafika a shrnutí (14:30 - 15:00)</h3>
+                        <p>Krátký blok o možnostech generování obrázků a vizuálů. Závěrečné tipy, triky a prostor pro vaše dotazy.</p>
                     </div>
                 </div>
             </div>
@@ -427,34 +390,12 @@
         </section>
     </main>
      <footer>
-        <div class="footer-grid">
-            <div class="footer-column">
-                <h4>Mgr. Gabriel Kožík</h4>
-                <p>Advokát & AI Stratég</p>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" aria-label="LinkedIn"><svg><use xlink:href="#icon-linkedin"></use></svg></a>
-                    <a href="https://www.facebook.com/somslovak" target="_blank" aria-label="Facebook"><svg><use xlink:href="#icon-facebook"></use></svg></a>
-                    <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" aria-label="YouTube"><svg><use xlink:href="#icon-youtube"></use></svg></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h4>Kontakt</h4>
-                <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a>
-                <a href="tel:+420720265713">+420 720 265 713</a>
-                <p>Datová schránka: eygwp2c</p>
-            </div>
-            <div class="footer-column">
-                <h4>Kancelář</h4>
-                <p>IUSTORIA, advokátní kancelář, s.r.o.</p>
-                <p>Slovákova 279/11, 602 00 Brno</p>
-                <a href="https://www.iustoria.cz" target="_blank">www.iustoria.cz</a>
-            </div>
-            <div class="footer-column">
-                <h4>Zápis v ČAK</h4>
-                <p>ev. č.: 19320</p>
-                <p>IČO (fyzická osoba): 05187559</p>
-                <p>společník s.r.o.</p>
-            </div>
+        <div class="footer-content">
+            <p><strong>Mgr. Gabriel Kožík</strong></p>
+            <p>AI Stratég</p>
+            <p>E-mail: <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a></p>
+            <p>Telefon: <a href="tel:+420720265713">+420 720 265 713</a></p>
+            <p>IČO: 05187559</p>
         </div>
         <div class="copyright">
             <p>&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
