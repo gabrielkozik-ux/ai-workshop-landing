@@ -276,7 +276,7 @@
             height: 26px;
         }
 
-        /* --- NOVÉ STYLY PRO SLIDER --- */
+        /* --- STYLY PRO SLIDER --- */
         .testimonial-slider-container {
             position: relative;
             max-width: 700px;
@@ -291,8 +291,6 @@
         }
         .testimonials {
             display: flex;
-            transition: transform 0.5s ease-in-out;
-            
         }
         .testimonial-item {
             background: var(--white);
@@ -336,12 +334,33 @@
         }
         .slider-btn.prev-btn { left: 0; }
         .slider-btn.next-btn { right: 0; }
-        .slider-btn:disabled {
-            cursor: not-allowed;
-            opacity: 0.5;
+        
+        /* --- STYLY PRO SEKCI TVORBY --- */
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
         }
-        /* --- KONEC NOVÝCH STYLŮ --- */
-
+        .portfolio-item {
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .portfolio-item:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            color: var(--primary-color);
+        }
+        
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5em; }
             .hero p { font-size: 1.2em; }
@@ -468,7 +487,7 @@
                                 <p class="author">- Jiří J.</p>
                             </div>
                             <div class="testimonial-item">
-                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psaním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
+                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psáním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
                                 <p class="author">- Jiří U.</p>
                             </div>
                             <div class="testimonial-item">
@@ -496,12 +515,31 @@
                     <button class="slider-btn prev-btn">‹</button>
                     <button class="slider-btn next-btn">›</button>
                 </div>
+
                 <p class="section-subtitle" style="margin-top: 40px;">Zajímá vás, jak probíhaly minulé workshopy? Přečtěte si o nich na <a href="https://www.gabrielkozik.com/blog.html" target="_blank">mém blogu</a>.</p>
                 <div style="text-align: center; margin-top: 30px;">
                     <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Nenechte si ujít další termín!</a>
                 </div>
             </div>
         </section>
+        
+        <!-- NOVÁ SEKCE S TVORBOU -->
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <h2 class="section-title">Ukázky další tvorby</h2>
+                <div class="portfolio-grid">
+                    <a href="https://games-gamma-six.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Herní Experimenty</a>
+                    <a href="https://palavakodex.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Pálava Kodex</a>
+                    <a href="https://sunset-khaki.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Sunset App</a>
+                    <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" rel="noopener noreferrer" class="portfolio-item">YouTube Kanál</a>
+                    <a href="https://workshop22-8.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Workshop App</a>
+                    <a href="https://client-gold-five-16.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Client App</a>
+                    <a href="https://kapela-test.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Test kapely</a>
+                    <a href="https://just4fun-stepprs.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Stepper App</a>
+                </div>
+            </div>
+        </section>
+
         <section id="propojit">
             <div class="container">
                 <h2 class="section-title">Kontaktujte mě</h2>
@@ -534,40 +572,69 @@
     </script>
     <script src="/_vercel/insights/script.js" defer></script>
 
+    <!-- UPRAVENÝ JAVASCRIPT PRO NEKONEČNÝ SLIDER -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const slider = document.querySelector('.testimonials');
-            const slides = document.querySelectorAll('.testimonial-item');
+            const slides = Array.from(document.querySelectorAll('.testimonial-item'));
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
             
-            let currentIndex = 0;
-            const totalSlides = slides.length;
+            if (slides.length > 0) {
+                const slideCount = slides.length;
+                let currentIndex = 1;
+                let isTransitioning = false;
 
-            function updateSliderPosition() {
-                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                // Naklonujeme první a poslední slide pro plynulý přechod
+                const firstClone = slides[0].cloneNode(true);
+                const lastClone = slides[slideCount - 1].cloneNode(true);
+
+                slider.appendChild(firstClone);
+                slider.insertBefore(lastClone, slides[0]);
+
+                const updateSliderPosition = (instant = false) => {
+                    if (instant) {
+                        slider.style.transition = 'none';
+                    } else {
+                        slider.style.transition = 'transform 0.5s ease-in-out';
+                    }
+                    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                };
                 
-                // Ovládání tlačítek
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex === totalSlides - 1;
-            }
+                // Nastavíme počáteční pozici bez animace
+                updateSliderPosition(true);
 
-            nextBtn.addEventListener('click', () => {
-                if (currentIndex < totalSlides - 1) {
+                const moveToNextSlide = () => {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
                     currentIndex++;
                     updateSliderPosition();
-                }
-            });
+                };
 
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
+                const moveToPrevSlide = () => {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
                     currentIndex--;
                     updateSliderPosition();
-                }
-            });
+                };
 
-            // Iniciační nastavení
-            updateSliderPosition();
+                slider.addEventListener('transitionend', () => {
+                    isTransitioning = false;
+                    // Pokud jsme na klonu prvního slidu (na konci), přeskočíme na skutečný první slide
+                    if (currentIndex >= slideCount + 1) {
+                        currentIndex = 1;
+                        updateSliderPosition(true);
+                    }
+                    // Pokud jsme na klonu posledního slidu (na začátku), přeskočíme na skutečný poslední slide
+                    if (currentIndex <= 0) {
+                        currentIndex = slideCount;
+                        updateSliderPosition(true);
+                    }
+                });
+
+                nextBtn.addEventListener('click', moveToNextSlide);
+                prevBtn.addEventListener('click', moveToPrevSlide);
+            }
         });
     </script>
 </body>
