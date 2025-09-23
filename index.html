@@ -3,624 +3,638 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Workshop pro podnikatele a živnostníky | Gabriel Kožík</title>
-    <meta name="description" content="Naučte se využívat umělou inteligenci pro růst vašeho podnikání. Praktický workshop zaměřený na efektivitu, automatizaci a kreativitu s pomocí AI nástrojů.">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Google AI nástroje pro Váš růst | Mgr. Gabriel Kožík</title>
+    <meta name="description" content="Praktický workshop pro podnikatele a freelancery: Zvyšte svou produktivitu a kreativitu s Gemini, NotebookLM a dalšími AI nástroji od Google. Naučte se pokročilé techniky promptování a zefektivněte své procesy.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
     <style>
         :root {
-            --primary-blue: #0A2342;
-            --accent-blue: #2CA58D;
-            --light-gray: #f8f9fa;
-            --dark-gray: #343a40;
+            --primary-color: #0a2342;
+            --secondary-color: #2ca58d;
+            --text-color: #333;
+            --light-gray: #f4f4f4;
             --white: #ffffff;
-            --border-radius: 8px;
         }
-
-        /* Reset a základní styly */
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
+            padding: 0;
             line-height: 1.6;
+            color: var(--text-color);
             background-color: var(--white);
-            color: var(--dark-gray);
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        h1, h2, h3 {
-            margin-top: 0;
-            color: var(--primary-blue);
-        }
-        
-        h1 { font-size: 3.5rem; font-weight: 900; }
-        h2 { font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 60px; }
-        h3 { font-size: 1.5rem; font-weight: 700; }
-        p { font-size: 1.1rem; }
-
-        /* Navigace */
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
         .landing-nav {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-        }
-        
-        .nav-container {
+            background-color: var(--white);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--light-gray);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-
-        .nav-logo {
+        .landing-nav-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.3em;
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        .landing-nav-title img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .landing-nav-contact {
+            color: var(--primary-color);
             text-decoration: none;
-            color: var(--primary-blue);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .nav-logo img {
-            width: 40px;
-            height: 40px;
-        }
-        
-        .nav-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 25px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--primary-blue);
-            font-weight: 700;
+            font-weight: bold;
+            font-size: 1.3em;
             transition: color 0.3s ease;
         }
-        
-        .nav-links a:hover {
-            color: var(--accent-blue);
+        .landing-nav-contact:hover {
+            color: var(--secondary-color);
         }
-
-        /* Hero sekce */
         .hero {
-            position: relative;
+            background-image: linear-gradient(rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.6)), url(uvodni-obrazek.jpg);
+            background-size: cover;
+            background-position: 50%;
+            background-repeat: no-repeat;
             color: var(--white);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 100px 20px;
             text-align: center;
-            background: url('uvodni-obrazek.jpg') no-repeat center center/cover;
-            padding: 0 20px;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* ZMĚNA: Zvýšena opacita pro lepší kontrast */
-            background: rgba(10, 35, 66, 0.75);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-
         .hero h1 {
-            color: var(--white);
-            margin-bottom: 20px;
+            font-size: 3.2em;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
-
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
+            font-size: 1.4em;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
         }
-
-        /* Tlačítka */
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin: 5px;
-            border: 2px solid transparent;
-        }
-
-        .cta-button.primary {
-            background-color: var(--accent-blue);
+            background-color: var(--secondary-color);
             color: var(--white);
-            border-color: var(--accent-blue);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
         }
-
-        .cta-button.primary:hover {
-            background-color: #248c78;
-            border-color: #248c78;
-            transform: translateY(-2px);
+        .cta-button:hover {
+            background-color: #238c76;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
-
+        .cta-button:focus {
+            outline: 3px solid var(--secondary-color);
+            outline-offset: 3px;
+        }
         .cta-button.secondary {
-            /* ZMĚNA: Sjednocený styl tlačítka */
-            background-color: var(--light-gray);
-            color: var(--primary-blue);
-            border: 2px solid var(--light-gray);
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
         }
-        
         .cta-button.secondary:hover {
-            background-color: #e2e6ea;
-            border-color: #e2e6ea;
-            transform: translateY(-2px);
+             background-color: var(--secondary-color);
+             color: var(--white);
         }
-
-        /* Sekce "Co získáte" */
-        #features {
-            background-color: var(--light-gray);
+        section { padding: 60px 20px; }
+        section:nth-child(even) { background-color: var(--light-gray); }
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-weight: 700;
         }
-        .features-grid {
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: -20px auto 40px;
+            color: var(--text-color);
+        }
+        .features-grid, .program-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
-
-        .feature-item {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: var(--border-radius);
+        .feature-item, .program-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             text-align: center;
+            border-top: 4px solid var(--secondary-color);
         }
-
-        /* ZMĚNA: Přidány styly pro ikony */
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 20px;
-            color: var(--accent-blue);
+        .program-item h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            line-height: 1.3;
         }
-        
-        /* Program */
-        .program-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .program-card {
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            border-left: 5px solid var(--accent-blue);
-        }
-
-        /* O lektorovi */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-grid img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 50%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            justify-self: center;
-        }
-
-        /* Reference */
-        #testimonials {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-        #testimonials h2 {
-            color: var(--white);
-        }
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
-        }
-        .testimonial-track {
-            display: flex;
-            /* ZMĚNA: Odstraněna automatická animace */
-            transition: transform 0.5s ease-in-out;
-        }
-        .testimonial {
-            flex: 0 0 100%;
-            padding: 40px;
+        .program-item h3 span {
+            display: block;
             text-align: center;
+        }
+        .module-number {
+            font-size: 0.9em;
+            font-weight: 400;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+        .module-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .module-time {
+            font-size: 1em;
+            font-weight: 400;
+            color: var(--text-color);
+        }
+        .feature-item p, .program-item p {
+            font-size: 1.05em;
+            color: var(--text-color);
+        }
+        .program-lunch-break {
+            text-align: center;
+            margin: 40px auto 0 auto;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            max-width: 80%;
+        }
+        .program-lunch-break h3 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        .program-lunch-break p {
+            margin-bottom: 0;
+        }
+        .instructor-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .instructor-section img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--secondary-color);
+        }
+        .instructor-section h3 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .instructor-section p {
+            max-width: 700px;
+            font-size: 1.1em;
+            margin: 10px auto;
+        }
+        .cta-container { text-align: center; }
+        .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .footer-content p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+        .footer-content a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .event-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .calendar-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.15);
+            color: var(--white);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .calendar-button:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .calendar-button svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        /* --- STYLY PRO SLIDER --- */
+        .testimonial-slider-container {
+            position: relative;
+            max-width: 700px;
+            margin: 40px auto 0;
+            padding: 0 50px; /* Prostor pro šipky */
             box-sizing: border-box;
         }
-        .testimonial p {
+        .testimonial-slider-wrapper {
+            overflow: hidden;
+            width: 100%;
+            border-radius: 8px;
+        }
+        .testimonials {
+            display: flex;
+        }
+        .testimonial-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            border-left: 5px solid var(--secondary-color);
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .testimonial-item p {
             font-style: italic;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.1em;
+            margin-bottom: 15px;
         }
-        .testimonial cite {
-            font-weight: 700;
-            font-style: normal;
+        .testimonial-item .author {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1em;
         }
-        .slider-nav {
+        .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-        }
-        .slider-btn {
-            background-color: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: var(--white);
-            padding: 10px 15px;
+            background-color: var(--white);
+            border: 1px solid #ddd;
             border-radius: 50%;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 24px;
+            color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 10;
         }
         .slider-btn:hover {
-            background-color: rgba(255, 255, 255, 0.4);
+            background-color: var(--primary-color);
+            color: var(--white);
         }
-
-        /* Ukázky tvorby */
-        #portfolio {
-            background-color: var(--light-gray);
-        }
+        .slider-btn.prev-btn { left: 0; }
+        .slider-btn.next-btn { right: 0; }
+        
+        /* --- STYLY PRO SEKCI TVORBY --- */
         .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
         }
         .portfolio-item {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            padding: 12px 24px;
             text-decoration: none;
-            color: var(--dark-gray);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            color: var(--primary-color);
         }
-        .portfolio-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        .portfolio-content {
-            padding: 20px;
-        }
-
-        /* Kontakt */
-        .contact-form {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--light-gray);
-            padding: 40px;
-            border-radius: var(--border-radius);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border-radius: var(--border-radius);
-            border: 1px solid #ccc;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Footer */
-        .landing-footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        /* Responzivita */
+        
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; margin-bottom: 40px;}
-            section { padding: 60px 0; }
-            .nav-container { flex-direction: column; gap: 10px; }
-            .nav-links { padding-top: 10px; }
-            .about-grid { grid-template-columns: 1fr; text-align: center; }
-            .about-grid img { margin-bottom: 30px; }
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.2em; }
+            .cta-button { padding: 15px 30px; font-size: 1.1em; }
+            .section-title { font-size: 2em; }
+            .features-grid, .program-grid { grid-template-columns: 1fr; }
+            .instructor-section h3 { font-size: 1.7em; }
+            .testimonial-slider-container { padding: 0; } /* Skryjeme padding na mobilu */
+            .slider-btn { top: auto; bottom: -60px; transform: translateY(0); } /* Posuneme šipky pod slider */
+            .slider-btn.prev-btn { left: calc(50% - 45px); }
+            .slider-btn.next-btn { right: calc(50% - 45px); }
+            #testimonials-section .container { padding-bottom: 80px; } /* Přidáme místo pro šipky */
         }
-
     </style>
+    
 </head>
 <body>
+    <svg width="0" height="0" style="position:absolute;">
+        <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
+    </svg>
 
-    <!-- Navigace -->
     <nav class="landing-nav">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <!-- ZMĚNA: Přidán popisný alt text -->
-                <img src="ai-ico.png" alt="Logo AI workshopu">
-                <span>AI Workshop</span>
-            </a>
-            <!-- ZMĚNA: Rozšířená navigace -->
-            <ul class="nav-links">
-                <li><a href="#program">Program</a></li>
-                <li><a href="#lektor">O lektorovi</a></li>
-                <li><a href="#testimonials">Reference</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-        </div>
+        <a href="#" class="landing-nav-title">
+            <img src="ai-ico.png" alt="smart-head" class="nav-photo">
+            <span>AI Workshop pro podnikatele a živnostníky</span>
+        </a>
+        <a href="#propojit" class="landing-nav-contact">Kontakt</a>
     </nav>
-
-    <!-- Hero sekce -->
-    <header class="hero" id="home">
-        <div class="hero-content">
-            <h1>AI Workshop pro podnikatele a živnostníky</h1>
-            <p>Objevte, jak umělá inteligence může transformovat vaše podnikání. Získejte praktické dovednosti, které okamžitě využijete.</p>
-            <a href="#contact" class="cta-button primary">Chci se přihlásit</a>
-            <a href="tel:+420123456789" class="cta-button secondary">Zavolejte mi</a>
+    <header class="hero">
+        <div class="container">
+            <h1>Google AI nástroje pro Váš růst</h1>
+            <p>Naučte se s Gemini, NotebookLM a Google AI studio ušetřit až desítky hodin měsíčně a podpořit kreativitu ve Vašem podnikání.</p>
+            <div class="event-actions">
+                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Registrovat se hned!</a>
+                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%20na%20AI%20n%C3%A1stroje%20od%20Google&dates=20251010T070000Z/20251010T130000Z&details=V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ%3D%3D&location=IUSTORIA%2C%20Slov%C3%A1kova%20279%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop na AI nástroje od Google">
+                    <svg><use xlink:href="#icon-calendar"></use></svg>
+                </a>
+            </div>
         </div>
     </header>
-
     <main>
-        <!-- Sekce "Co získáte" -->
-        <section id="features">
+        <section id="workshop-info">
             <div class="container">
-                <h2>Co získáte na workshopu?</h2>
+                <h2 class="section-title">Co získáte na workshopu?</h2>
+                <p class="section-subtitle">Tento interaktivní workshop je navržen tak, abyste si odnesli praktické dovednosti pro okamžité nasazení ve vaší praxi.</p>
+                
                 <div class="features-grid">
                     <div class="feature-item">
-                        <!-- ZMĚNA: Přidána ikona -->
-                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 2.18a14.98 14.98 0 00-2.58 6.16m5.84 2.58v4.8m0 0v-4.8m0 4.8l-6.16-2.58m6.16 2.58l-2.58-6.16m0 0l-6.16-2.58m6.16 2.58l2.58 6.16" />
-                        </svg>
                         <h3>Maximální efektivita</h3>
-                        <p>Naučte se automatizovat rutinní úkoly a ušetřete desítky hodin měsíčně. Věnujte se tomu, co je pro vaše podnikání skutečně důležité.</p>
+                        <p>Naučíte se používat Gemini a NotebookLM pro okamžité zrychlení rutinních úkolů, analýz a přípravy podkladů. Propojíte Gemini s dalšími službami od Google, vytvoříte si asistenty, pochopíte význam hloubkových analýz a mnoho dalšího.</p>
                     </div>
                     <div class="feature-item">
-                         <!-- ZMĚNA: Přidána ikona -->
-                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.186m-1.5.186a6.01 6.01 0 01-1.5-.186m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a14.994 14.994 0 01-4.5 0M9.75 10.5a8.954 8.954 0 012.25 0" />
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 10.5a8.954 8.954 0 012.25 0" />
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a8.966 8.966 0 01-5.982-2.275M12 21a8.966 8.966 0 005.982-2.275M12 3a8.966 8.966 0 015.982 2.275M12 3a8.966 8.966 0 00-5.982 2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <h3>Kreativní super-schopnosti</h3>
-                        <p>Vytvářejte profesionální texty, obrázky a marketingové materiály během několika minut. Získejte nekonečný zdroj inspirace pro váš obsah.</p>
+                        <h3>Kreativní doping</h3>
+                        <p>Objevíte pokročilé techniky promptování pro tvorbu textů, grafiky a inovativních nápadů. Díky promyšlenému promptování získáte kvalitní a konzistentní výstupy.</p>
                     </div>
                     <div class="feature-item">
-                         <!-- ZMĚNA: Přidána ikona -->
-                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.228a4.5 4.5 0 00-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 001.13-1.897M16.5 7.5V18a6 6 0 00-3.75-1.065M16.5 7.5V3.75A2.25 2.25 0 0014.25 1.5H12a2.25 2.25 0 00-2.25 2.25v1.5m-3.75 3V18a6 6 0 01-3.75-1.065M12 15a4.5 4.5 0 00-4.5 4.5v1.5m4.5-6a4.5 4.5 0 014.5 4.5v1.5m-8.25-3a4.5 4.5 0 00-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 001.13-1.897" />
-                        </svg>
-                        <h3>Interaktivní a praktický</h3>
-                        <p>Žádná nudná teorie. Vše si vyzkoušíte na praktických příkladech z reálného světa. Odnesete si konkrétní postupy a návody.</p>
+                        <h3>Interaktivita a podpora</h3>
+                        <p>Během workshopu získáte zpětnou vazbu, vše budeme sdílet ve společném chatu a po skončení obdržíte veškeré nezbytné materiály pro další rozvoj.</p>
                     </div>
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Chci se registrovat!</a>
                 </div>
             </div>
         </section>
-
-        <!-- Program workshopu -->
         <section id="program">
             <div class="container">
-                <h2>Program workshopu</h2>
+                <h2 class="section-title">Program workshopu</h2>
+                <p class="section-subtitle">Přehled témat, která z vás udělají pokročilého uživatele AI nástrojů od Google.</p>
+                
                 <div class="program-grid">
-                    <div class="program-card">
-                        <h3>Modul 1: Úvod do světa AI</h3>
-                        <p>Pochopení základních principů, klíčových pojmů a přehled nejdůležitějších nástrojů pro podnikatele.</p>
+                    <div class="program-item">
+                        <h3>
+                            <span class="module-number">Modul 1</span>
+                            <span class="module-title">Gemini pro business</span>
+                            <span class="module-time">9:00 - 12:00</span>
+                        </h3>
+                        <p>Intenzivní blok zaměřený na praktické využití Gemini pro tvorbu obsahu, rešerše, analýzy a zefektivnění komunikace.</p>
                     </div>
-                    <div class="program-card">
-                        <h3>Modul 2: AI copywriter</h3>
-                        <p>Jak psát prodejní texty, e-maily, příspěvky na sociální sítě a články na blog, které zaujmou a prodávají.</p>
+                    <div class="program-item">
+                         <h3>
+                            <span class="module-number">Modul 2</span>
+                            <span class="module-title">NotebookLM a Google AI Studio</span>
+                            <span class="module-time">13:00 - 14:30</span>
+                        </h3>
+                        <p>Prozkoumáme NotebookLM pro práci s dokumenty a nahlédneme do možností Google AI Studia pro vlastní experimenty.</p>
                     </div>
-                    <div class="program-card">
-                        <h3>Modul 3: AI grafik a designér</h3>
-                        <p>Tvorba vizuálů pro web a sociální sítě, generování produktových fotografií a kreativních konceptů.</p>
+                     <div class="program-item">
+                        <h3>
+                            <span class="module-number">Modul 3</span>
+                            <span class="module-title">AI grafika, shrnutí a diskuze</span>
+                            <span class="module-time">14:30 - 15:00</span>
+                        </h3>
+                        <p>Krátký blok o možnostech generování obrázků a vizuálů. Závěrečné tipy, triky a prostor pro vaše dotazy.</p>
                     </div>
-                    <div class="program-card">
-                        <h3>Modul 4: Automatizace procesů</h3>
-                        <p>Jak propojit AI nástroje s vašimi stávajícími systémy a zautomatizovat administrativní a marketingové úkoly.</p>
-                    </div>
+                </div>
+
+                <div class="program-lunch-break">
+                    <h3>Oběd & Networking</h3>
+                    <p>12:00 - 13:00</p>
                 </div>
             </div>
         </section>
-        
-        <!-- O lektorovi -->
-        <section id="lektor">
+        <section id="instructor">
             <div class="container">
-                <div class="about-grid">
-                    <!-- ZMĚNA: Přidán lazy loading -->
+                <h2 class="section-title">O lektorovi</h2>
+                <div class="instructor-section">
                     <img src="profilova-fotka.jpg" alt="Portrét Mgr. Gabriela Kožíka" loading="lazy">
-                    <div>
-                        <h2>Kdo vás workshopem provede?</h2>
-                        <h3>Mgr. Gabriel Kožík</h3>
-                        <p>Jsem webový designér a UX stratég s více než 15 lety zkušeností. Pomáhám firmám a živnostníkům vytvářet digitální produkty, které nejen skvěle vypadají, ale především plní obchodní cíle a přinášejí radost jejich uživatelům.</p>
-                        <p>V posledních letech se intenzivně věnuji implementaci AI do kreativních a obchodních procesů. Věřím, že umělá inteligence je revoluční nástroj, který může dramaticky zvýšit produktivitu a konkurenceschopnost každého podnikatele. Na workshopu vám předám své know-how v jednoduché a srozumitelné formě.</p>
-                    </div>
+                    <h3>Mgr. Gabriel Kožík</h3>
+                    <p>Jsem AI stratég a networker. Pomáhám firmám a freelancerům efektivně integrovat AI nástroje pro jejich růst a úsporu času. Mým cílem je proměnit potenciál umělé inteligence ve vaši reálnou konkurenční výhodu.</p>
+                    <p>Zaměřuji se na praktické využití technologií v podnikání, propojování správných lidí a hledání inovativních cest, jak dělat věci chytřeji a rychleji. Více o mně a mé práci najdete na osobní stránce <a href="https://www.gabrielkozik.com" target="_blank">gabrielkozik.com</a>.</p>
                 </div>
             </div>
         </section>
-
-        <!-- Reference -->
-        <section id="testimonials">
+        <section id="testimonials-section">
             <div class="container">
-                <h2>Co říkají účastníci mých školení?</h2>
-                <div class="testimonial-slider">
-                    <div class="testimonial-track">
-                        <div class="testimonial">
-                            <p>"Workshop mi otevřel oči. Netušil jsem, kolik času a peněz můžu ušetřit díky správnému využití AI nástrojů. Gabriel vše vysvětlil naprosto srozumitelně."</p>
-                            <cite>– Petr Novák, majitel e-shopu</cite>
-                        </div>
-                        <div class="testimonial">
-                            <p>"Praktické ukázky a reálné příklady byly k nezaplacení. Okamžitě jsem začala používat AI pro tvorbu obsahu na sociální sítě a výsledky jsou skvělé."</p>
-                            <cite>– Jana Dvořáková, marketingová specialistka</cite>
-                        </div>
-                        <div class="testimonial">
-                            <p>"Konečně školení, kde se neprobírá jen teorie. Odcházel jsem s konkrétními postupy, které jsem hned druhý den zavedl do praxe. Doporučuji!"</p>
-                            <cite>– Tomáš Svoboda, realitní makléř</cite>
+                <h2 class="section-title">Co říkají účastníci</h2>
+                
+                <div class="testimonial-slider-container">
+                    <div class="testimonial-slider-wrapper">
+                        <div class="testimonials">
+                            <div class="testimonial-item">
+                                <p>"Díky školení od Gabriela šetřím přinejmenším hodinu denně. Doporučuji!"</p>
+                                <p class="author">- Jiří J.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psáním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
+                                <p class="author">- Jiří U.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Gabriel mi ukázal, kolik toho ještě neumím a jaké možnosti mi AI otevírá. Bylo to opravdu inspirativní."</p>
+                                <p class="author">- Radovan H.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Postavit si nové weby za pár kliknutí? Díky Gabrielovi realita. Ušetřil jsem spoustu peněz, času i nervů."</p>
+                                <p class="author">- Jiří G.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Všechno bylo vysvětleno srozumitelně a lidsky. Díky Gabovi teď lépe rozumím nejen AI, ale i mým studentům a dnešní zrychlené době."</p>
+                                <p class="author">- Martina M.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Specializovaní asistenti a pokročilé techniky promptování jsou absolutní game-changer. Tohle posunulo mé podnikání na další úroveň."</p>
+                                <p class="author">- Tereza J.</p>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Svět AI vysvětlený tak, že ho pochopí i úplný začátečník. Tento workshop je obrovským přínosem pro každého podnikatele."</p>
+                                <p class="author">- Roman D.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="slider-nav">
-                        <button class="slider-btn" id="prevBtn">&lt;</button>
-                        <button class="slider-btn" id="nextBtn">&gt;</button>
-                    </div>
+                    <button class="slider-btn prev-btn">‹</button>
+                    <button class="slider-btn next-btn">›</button>
                 </div>
-            </div>
-        </section>
 
-        <!-- Ukázky tvorby -->
-        <section id="portfolio">
-            <div class="container">
-                <h2>Ukázky další tvorby</h2>
-                <div class="portfolio-grid">
-                    <!-- ZMĚNA: Přidán target="_blank" a popisný alt text -->
-                    <a href="https://www.gabrielkozik.cz" target="_blank" rel="noopener noreferrer" class="portfolio-item">
-                        <img src="workshop-ai-google.jpg" alt="Ukázka webové stránky pro Google workshop" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>Web pro Google</h3>
-                            <p>Tvorba microsite pro interní workshop společnosti Google zaměřený na AI.</p>
-                        </div>
-                    </a>
-                    <a href="https://www.gabrielkozik.cz" target="_blank" rel="noopener noreferrer" class="portfolio-item">
-                        <img src="uvodni-obrazek.jpg" alt="Ukázka přistávací stránky pro marketingovou kampaň" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>Landing Page pro Kampaň</h3>
-                            <p>Vytvoření konverzní stránky pro marketingovou kampaň technologického startupu.</p>
-                        </div>
-                    </a>
-                    <a href="https://www.gabrielkozik.cz" target="_blank" rel="noopener noreferrer" class="portfolio-item">
-                        <img src="profilova-fotka.jpg" alt="Ukázka osobního portfolia fotografa" loading="lazy">
-                        <div class="portfolio-content">
-                            <h3>Portfolio pro Fotografa</h3>
-                            <p>Design a vývoj osobního portfolia pro profesionálního fotografa.</p>
-                        </div>
-                    </a>
+                <p class="section-subtitle" style="margin-top: 40px;">Zajímá vás, jak probíhaly minulé workshopy? Přečtěte si o nich na <a href="https://www.gabrielkozik.com/blog.html" target="_blank">mém blogu</a>.</p>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Nenechte si ujít další termín!</a>
                 </div>
             </div>
         </section>
         
-        <!-- Kontakt a přihláška -->
-        <section id="contact">
+        <!-- NOVÁ SEKCE S TVORBOU -->
+        <section id="portfolio" class="portfolio-section">
             <div class="container">
-                <h2>Zarezervujte si své místo</h2>
-                <div class="contact-form">
-                    <form action="#">
-                        <div class="form-group">
-                            <label for="name">Jméno a příjmení</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Zpráva (volitelné)</label>
-                            <textarea id="message" name="message" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="cta-button primary" style="width: 100%;">Odeslat přihlášku</button>
-                    </form>
+                <h2 class="section-title">Ukázky další tvorby</h2>
+                <div class="portfolio-grid">
+                    <a href="https://games-gamma-six.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Herní Experimenty</a>
+                    <a href="https://palavakodex.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Pálava Kodex</a>
+                    <a href="https://sunset-khaki.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Sunset App</a>
+                    <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" rel="noopener noreferrer" class="portfolio-item">YouTube Kanál</a>
+                    <a href="https://workshop22-8.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Workshop App</a>
+                    <a href="https://client-gold-five-16.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Client App</a>
+                    <a href="https://kapela-test.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Test kapely</a>
+                    <a href="https://just4fun-stepprs.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Stepper App</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="propojit">
+            <div class="container">
+                <h2 class="section-title">Kontaktujte mě</h2>
+                <p class="section-subtitle">V případě jakýchkoliv dotazů jsem tu pro vás.</p>
+                <div class="cta-container">
+                    <div class="cta-buttons">
+                        <a href="mailto:kozik@iustoria.cz" class="cta-button">Napište mi</a>
+                        <a href="tel:+420720265713" class="cta-button secondary">Zavolejte mi</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <footer class="landing-footer">
-        <div class="container">
-            <p>&copy; 2025 Gabriel Kožík. Všechna práva vyhrazena.</p>
+     <footer>
+        <div class="footer-content">
+            <p><strong>Mgr. Gabriel Kožík</strong></p>
+            <p>AI Stratég</p>
+            <p>E-mail: <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a></p>
+            <p>Telefon: <a href="tel:+420720265713">+420 720 265 713</a></p>
+            <p>IČO: 05187559</p>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
         </div>
     </footer>
     
     <script>
-        // JavaScript pro ovládání slideru s referencemi
-        const track = document.querySelector('.testimonial-track');
-        const slides = Array.from(track.children);
-        const nextButton = document.getElementById('nextBtn');
-        const prevButton = document.getElementById('prevBtn');
-        
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        
-        // Uspořádání slidů vedle sebe
-        const setSlidePosition = (slide, index) => {
-            slide.style.left = slideWidth * index + 'px';
-        };
-        slides.forEach(setSlidePosition);
+      // Placeholder for analytics or other scripts
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script src="/_vercel/insights/script.js" defer></script>
 
-        let currentIndex = 0;
+    <!-- UPRAVENÝ JAVASCRIPT PRO NEKONEČNÝ SLIDER -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.testimonials');
+            const slides = Array.from(document.querySelectorAll('.testimonial-item'));
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            if (slides.length > 0) {
+                const slideCount = slides.length;
+                let currentIndex = 1;
+                let isTransitioning = false;
 
-        const moveToSlide = (currentSlideIndex, targetSlideIndex) => {
-            const amountToMove = (targetSlideIndex - currentSlideIndex) * slideWidth;
-            track.style.transform = `translateX(-${targetSlideIndex * slideWidth}px)`;
-            currentIndex = targetSlideIndex;
-        }
+                // Naklonujeme první a poslední slide pro plynulý přechod
+                const firstClone = slides[0].cloneNode(true);
+                const lastClone = slides[slideCount - 1].cloneNode(true);
 
-        // Kliknutí na šipku vpravo
-        nextButton.addEventListener('click', e => {
-            const nextIndex = (currentIndex + 1) % slides.length;
-            moveToSlide(currentIndex, nextIndex);
-        });
+                slider.appendChild(firstClone);
+                slider.insertBefore(lastClone, slides[0]);
 
-        // Kliknutí na šipku vlevo
-        prevButton.addEventListener('click', e => {
-            const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-            moveToSlide(currentIndex, prevIndex);
-        });
-        
-        // Přizpůsobení při změně velikosti okna
-        window.addEventListener('resize', () => {
-            const newSlideWidth = slides[0].getBoundingClientRect().width;
-            slides.forEach((slide, index) => {
-                slide.style.left = newSlideWidth * index + 'px';
-            });
-            track.style.transition = 'none'; // dočasně vypnout animaci
-            track.style.transform = `translateX(-${currentIndex * newSlideWidth}px)`;
-            setTimeout(() => {
-                track.style.transition = 'transform 0.5s ease-in-out'; // znovu zapnout animaci
-            }, 50);
+                const updateSliderPosition = (instant = false) => {
+                    if (instant) {
+                        slider.style.transition = 'none';
+                    } else {
+                        slider.style.transition = 'transform 0.5s ease-in-out';
+                    }
+                    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                };
+                
+                // Nastavíme počáteční pozici bez animace
+                updateSliderPosition(true);
+
+                const moveToNextSlide = () => {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+                    currentIndex++;
+                    updateSliderPosition();
+                };
+
+                const moveToPrevSlide = () => {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+                    currentIndex--;
+                    updateSliderPosition();
+                };
+
+                slider.addEventListener('transitionend', () => {
+                    isTransitioning = false;
+                    // Pokud jsme na klonu prvního slidu (na konci), přeskočíme na skutečný první slide
+                    if (currentIndex >= slideCount + 1) {
+                        currentIndex = 1;
+                        updateSliderPosition(true);
+                    }
+                    // Pokud jsme na klonu posledního slidu (na začátku), přeskočíme na skutečný poslední slide
+                    if (currentIndex <= 0) {
+                        currentIndex = slideCount;
+                        updateSliderPosition(true);
+                    }
+                });
+
+                nextBtn.addEventListener('click', moveToNextSlide);
+                prevBtn.addEventListener('click', moveToPrevSlide);
+            }
         });
     </script>
 </body>
