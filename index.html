@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Workshop: Google Nástroje pro Business & Compliance | Mgr. Gabriel Kožík</title>
-    <meta name="description" content="Praktický workshop pro podnikatele a manažery: Naučte se efektivně využívat Gemini, NotebookLM a další Google AI nástroje v souladu s AI Act. Zvyšte produktivitu a minimalizujte rizika.">
+    <title>AI Workshop: Google Nástroje pro Váš Růst | Mgr. Gabriel Kožík</title>
+    <meta name="description" content="Praktický workshop pro podnikatele a freelancery: Zvyšte svou produktivitu a kreativitu s Gemini, NotebookLM a dalšími AI nástroji od Google. Naučte se pokročilé techniky promptování a zefektivněte své procesy.">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
         :root {
@@ -61,14 +62,14 @@
             color: var(--secondary-color);
         }
         .hero {
-    background-image: linear-gradient(rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.6)), url(uvodni-obrazek.jpg);
-    background-size: cover;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    color: var(--white);
-    padding: 100px 20px;
-    text-align: center;
-}
+            background-image: linear-gradient(rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.6)), url(uvodni-obrazek.jpg);
+            background-size: cover;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+        }
         .hero h1 {
             font-size: 3.2em;
             margin: 0 0 15px 0;
@@ -104,6 +105,15 @@
         .cta-button:focus {
             outline: 3px solid var(--secondary-color);
             outline-offset: 3px;
+        }
+        .cta-button.secondary {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        .cta-button.secondary:hover {
+             background-color: var(--secondary-color);
+             color: var(--white);
         }
         section { padding: 60px 20px; }
         section:nth-child(even) { background-color: var(--light-gray); }
@@ -195,42 +205,90 @@
             color: var(--primary-color);
             font-size: 1em;
         }
+        .cta-container { text-align: center; }
+        .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        
+        /* Footer Styles */
         footer {
             background-color: var(--primary-color);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 50px 20px;
         }
-        footer a {
-            color: var(--secondary-color);
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .footer-column h4 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            display: block;
         }
-        footer a:hover {
-            color: var(--white);
+        .footer-column a:hover {
+            color: var(--secondary-color);
             text-decoration: underline;
         }
-        .footer-links a {
-            margin: 0 10px;
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
         }
-        svg { width: 0; height: 0; position: absolute; } 
-        .event-actions { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.8);
+            transition: fill 0.3s ease;
+        }
+        .social-icons a:hover svg {
+            fill: var(--secondary-color);
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .event-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
         .calendar-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: var(--secondary-color);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.15);
             color: var(--white);
             border-radius: 8px;
             transition: all 0.3s ease;
-            border: none;
-            box-sizing: border-box;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
         }
-        .calendar-button:hover { background-color: #238c76; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
-        .calendar-button svg { width: 26px; height: 26px; position: static; }
+        .calendar-button:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .calendar-button svg {
+            width: 26px;
+            height: 26px;
+        }
+        
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5em; }
             .hero p { font-size: 1.2em; }
@@ -238,28 +296,34 @@
             .section-title { font-size: 2em; }
             .features-grid, .program-grid { grid-template-columns: 1fr; }
             .instructor-section h3 { font-size: 1.7em; }
+            .footer-grid { text-align: center; }
+            .social-icons { text-align: center; }
+            .social-icons a { margin: 0 8px; }
         }
     </style>
-    <svg width="0" height="0" style="position:absolute">
-      <symbol id="icon-calendar" viewBox="0 0 24 24">
-        <path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/>
-      </symbol>
-    </svg>
+    
 </head>
 <body>
+    <svg width="0" height="0" style="position:absolute;">
+        <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-7 15.5v-5.3a2.25 2.25 0 0 0-2.25-2.25a2.25 2.25 0 0 0 0 4.5h.25V17h-2.5v-7h2.5v1.2a4.5 4.5 0 0 1 4-2.2c2.5 0 4.5 2 4.5 4.5V17h-2.5v-5.5a2 2 0 0 0-2-2a2 2 0 0 0-2 2V17h-2.5M6.5 8.5a2 2 0 1 1-2-2a2 2 0 0 1 2 2M5 17h3V10H5v7Z"/></symbol>
+        <symbol id="icon-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.04c-5.5 0-10 4.49-10 10.02c0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.84c0-2.5 1.49-3.9 3.78-3.9c1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 5.83c-.25 2.02-1.15 3.02-2.88 3.12c-1.81.1-6.1.18-8.68.18c-2.59 0-6.87-.08-8.68-.18c-1.73-.1-2.63-1.1-2.88-3.12C.16 15.8 0 14.19 0 12c0-2.19.16-3.8.44-5.83C.69 4.15 1.59 3.15 3.32 3.05C5.13 2.95 9.41 2.87 12 2.87c2.59 0 6.87.08 8.68.18c1.73.1 2.63 1.1 2.88 3.12Z"/></symbol>
+    </svg>
+
     <nav class="landing-nav">
         <a href="#" class="landing-nav-title">
             <img src="profilova-fotka.jpg" alt="Profilová fotka Gabriel Kožík" class="nav-photo">
             <span>Mgr. Gabriel Kožík - AI Workshop</span>
         </a>
-        <a href="mailto:kozik@iustoria.cz" class="landing-nav-contact">Kontakt</a>
+        <a href="#propojit" class="landing-nav-contact">Kontakt</a>
     </nav>
     <header class="hero">
         <div class="container">
-            <h1>AI Workshop: Google Nástroje pro Business & Compliance</h1>
-            <p>Zvyšte efektivitu s Gemini a NotebookLM. Naučte se AI používat bezpečně a v souladu s AI Act.</p>
-            <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Registrovat se hned!</a>
+            <h1>AI Workshop: Google Nástroje pro Váš Růst</h1>
+            <p>Objevte, jak s Gemini a NotebookLM ušetřit desítky hodin měsíčně a nastartovat kreativitu ve vašem podnikání.</p>
             <div class="event-actions">
+                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Registrovat se hned!</a>
                 <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%20na%20AI%20n%C3%A1stroje%20od%20Google&dates=20251010T070000Z/20251010T130000Z&details=V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ%3D%3D&location=IUSTORIA%2C%20Slov%C3%A1kova%20279%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop na AI nástroje od Google">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
                 </a>
@@ -270,20 +334,20 @@
         <section id="workshop-info">
             <div class="container">
                 <h2 class="section-title">Co získáte na workshopu?</h2>
-                <p class="section-subtitle">Tento interaktivní workshop je navržen tak, abyste získali praktické dovednosti a klid mysli při práci s AI.</p>
+                <p class="section-subtitle">Tento interaktivní workshop je navržen tak, abyste si odnesli praktické dovednosti pro okamžité nasazení ve vaší praxi.</p>
                 
                 <div class="features-grid">
                     <div class="feature-item">
-                        <h3>Praktické dovednosti</h3>
-                        <p>Naučíte se používat Gemini, NotebookLM a další AI nástroje pro okamžité zvýšení produktivity ve vaší práci.</p>
+                        <h3>Maximální efektivita</h3>
+                        <p>Naučíte se používat Gemini a NotebookLM pro okamžité zrychlení rutinních úkolů, analýz a přípravy podkladů.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Právní jistota</h3>
-                        <p>Pochopíte klíčové principy AI Act a GDPR a jak je aplikovat, abyste minimalizovali právní rizika.</p>
+                        <h3>Kreativní doping</h3>
+                        <p>Objevíte pokročilé techniky promptování pro tvorbu textů, grafiky, webových stránek a inovativních nápadů.</p>
                     </div>
                     <div class="feature-item">
                         <h3>Strategický náskok</h3>
-                        <p>Zjistíte, jak integrovat AI do vaší firemní strategie pro udržitelný růst a inovace.</p>
+                        <p>Zjistíte, jak integrovat AI do vaší firemní strategie pro udržitelný růst a automatizaci procesů.</p>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 50px;">
@@ -294,32 +358,28 @@
         <section id="program">
             <div class="container">
                 <h2 class="section-title">Program workshopu</h2>
-                <p class="section-subtitle">Detailní přehled témat, která pokryjeme, abyste si odnesli maximum praktických znalostí.</p>
+                <p class="section-subtitle">Přehled témat, která z vás udělají pokročilého uživatele AI nástrojů od Google.</p>
                 
                 <div class="program-grid">
                     <div class="program-item">
-                        <h3>Modul 1: Úvod do AI v byznysu (9:00 - 10:00)</h3>
-                        <p>Pochopení základů AI, jejího potenciálu a výzev pro moderní firmy. Přehled Google AI ekosystému.</p>
+                        <h3>Modul 1: Efektivita s Gemini (9:00 - 11:00)</h3>
+                        <p>Od základů k pokročilým technikám. Tvorba textů, rešerše, brainstorming a plánování marketingových kampaní.</p>
                     </div>
                     <div class="program-item">
-                        <h3>Modul 2: Praktické použití Gemini (10:00 - 11:30)</h3>
-                        <p>Jak efektivně využívat Google Gemini pro tvorbu textů, brainstorming, analýzu dat a marketingové kampaně.</p>
-                    </div>
-                    <div class="program-item">
-                        <h3>Modul 3: NotebookLM pro výzkum a analýzu (11:30 - 12:30)</h3>
-                        <p>Využití NotebookLM pro organizaci informací, rychlý výzkum dokumentů a syntézu složitých dat.</p>
+                        <h3>Modul 2: NotebookLM jako vaše druhá paměť (11:00 - 12:30)</h3>
+                        <p>Využití NotebookLM pro organizaci informací, rychlou analýzu dokumentů a vytváření souhrnů ze schůzek.</p>
                     </div>
                      <div class="program-item">
-                        <h3>Oběd (12:30 - 13:30)</h3>
-                        <p>Čas na networking a občerstvení.</p>
+                        <h3>Oběd & Networking (12:30 - 13:30)</h3>
+                        <p>Čas na občerstvení a diskuzi s ostatními účastníky.</p>
                     </div>
                     <div class="program-item">
-                        <h3>Modul 4: AI Act a GDPR: Compliance v praxi (13:30 - 15:00)</h3>
-                        <p>Klíčové aspekty evropské regulace AI. Jak nastavit interní směrnice a procesy pro bezpečné nasazení AI nástrojů.</p>
+                        <h3>Modul 3: Kreativní tvorba a vizuály (13:30 - 15:00)</h3>
+                        <p>Jak pomocí AI generovat poutavou grafiku, navrhovat wireframy webů a tvořit obsah pro sociální sítě.</p>
                     </div>
                      <div class="program-item">
-                        <h3>Modul 5: AI Studio a budoucí trendy (15:00 - 16:00)</h3>
-                        <p>Krátký úvod do AI Studio pro vlastní experimentování s modely. Diskuse o budoucích trendech a strategiích pro AI inovace.</p>
+                        <h3>Modul 4: AI pro pokročilé a automatizace (15:00 - 16:00)</h3>
+                        <p>Úvod do AI Studia, propojení AI s dalšími nástroji a budoucí trendy, které vám nesmí uniknout.</p>
                     </div>
                 </div>
             </div>
@@ -330,21 +390,21 @@
                 <div class="instructor-section">
                     <img src="profilova-fotka.jpg" alt="Portrét Mgr. Gabriela Kožíka" loading="lazy">
                     <h3>Mgr. Gabriel Kožík</h3>
-                    <p>Jsem advokát a AI stratég s hlubokým porozuměním pro právní i technologické aspekty inovací. Pomáhám firmám transformovat výzvy AI compliance na strategickou výhodu a efektivně integrovat AI nástroje pro jejich růst.</p>
-                    <p>Moje praxe se zaměřuje na poskytování právní jistoty v dynamickém prostředí technologií, se zvláštním důrazem na duševní vlastnictví, e-commerce a nově také na regulaci umělé inteligence.</p>
+                    <p>Jsem AI stratég a networker. Pomáhám firmám a freelancerům efektivně integrovat AI nástroje pro jejich růst a úsporu času. Mým cílem je proměnit potenciál umělé inteligence ve vaši reálnou konkurenční výhodu.</p>
+                    <p>Zaměřuji se na praktické využití technologií v podnikání, propojování správných lidí a hledání inovativních cest, jak dělat věci chytřeji a rychleji.</p>
                 </div>
             </div>
         </section>
         <section id="testimonials-section">
             <div class="container">
-                <h2 class="section-title">Co říkají naši účastníci</h2>
+                <h2 class="section-title">Co říkají účastníci</h2>
                 <div class="testimonials">
                     <div class="testimonial-item">
-                        <p>"Workshop překonal moje očekávání! Získal jsem nejen praktické tipy pro Gemini, ale i jasné pochopení AI Act, což je pro naši firmu klíčové."</p>
+                        <p>"Workshop překonal moje očekávání! Získal jsem praktické tipy pro Gemini, které mi okamžitě začaly šetřit čas při tvorbě obsahu."</p>
                         <p class="author">- Ing. Petr Novák, Marketing Manager</p>
                     </div>
                     <div class="testimonial-item">
-                        <p>"Skvěle připravený obsah a inspirativní lektor. Konečně vím, jak AI používat efektivně a bez strachu z právních komplikací."</p>
+                        <p>"Skvěle připravený obsah a inspirativní lektor. Konečně vím, jak AI používat efektivně pro analýzu dat i kreativní brainstorming."</p>
                         <p class="author">- Mgr. Eva Dvořáková, CEO StartUp XYZ</p>
                     </div>
                 </div>
@@ -353,22 +413,52 @@
                 </div>
             </div>
         </section>
+        <section id="propojit">
+            <div class="container">
+                <h2 class="section-title">Kontaktujte mě</h2>
+                <p class="section-subtitle">V případě jakýchkoliv dotazů jsem tu pro vás.</p>
+                <div class="cta-container">
+                    <div class="cta-buttons">
+                        <a href="mailto:kozik@iustoria.cz" class="cta-button">Napište mi</a>
+                        <a href="tel:+420720265713" class="cta-button secondary">Zavolejte mi</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
      <footer>
         <div class="footer-grid">
-            <div>
+            <div class="footer-column">
                 <h4>Mgr. Gabriel Kožík</h4>
-                <p>AI Stratég</p>
-                <div class="social-icons-container">
-                    <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon" aria-label="LinkedIn profil"><svg><use xlink:href="#icon-linkedin"></use></svg></a>
-                    <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon" aria-label="Facebook profil"><svg><use xlink:href="#icon-facebook"></use></svg></a>
-                    <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon" aria-label="YouTube kanál"><svg><use xlink:href="#icon-youtube"></use></svg></a>
+                <p>Advokát & AI Stratég</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" aria-label="LinkedIn"><svg><use xlink:href="#icon-linkedin"></use></svg></a>
+                    <a href="https://www.facebook.com/somslovak" target="_blank" aria-label="Facebook"><svg><use xlink:href="#icon-facebook"></use></svg></a>
+                    <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" aria-label="YouTube"><svg><use xlink:href="#icon-youtube"></use></svg></a>
                 </div>
             </div>
-            <div><h4>Kontakt</h4><p>E-mail: <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a></p><p>Telefon: <a href="tel:+420720265713">+420 720 265 713</a></p></div>
-            <div><p>IČO: 05187559</p></div>
+            <div class="footer-column">
+                <h4>Kontakt</h4>
+                <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a>
+                <a href="tel:+420720265713">+420 720 265 713</a>
+                <p>Datová schránka: eygwp2c</p>
+            </div>
+            <div class="footer-column">
+                <h4>Kancelář</h4>
+                <p>IUSTORIA, advokátní kancelář, s.r.o.</p>
+                <p>Slovákova 279/11, 602 00 Brno</p>
+                <a href="https://www.iustoria.cz" target="_blank">www.iustoria.cz</a>
+            </div>
+            <div class="footer-column">
+                <h4>Zápis v ČAK</h4>
+                <p>ev. č.: 19320</p>
+                <p>IČO (fyzická osoba): 05187559</p>
+                <p>společník s.r.o.</p>
+            </div>
         </div>
-        <div class="copyright"><p>&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p></div>
+        <div class="copyright">
+            <p>&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
+        </div>
     </footer>
     
     <script>
