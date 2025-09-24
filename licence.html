@@ -212,7 +212,33 @@
             margin-top: 0;
             color: var(--primary-color);
         }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background-color: #238c76;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
 
+        .back-link-section {
+            padding: 40px 20px;
+            background-color: var(--white);
+            text-align: center;
+        }
+        
         footer {
             background-color: var(--primary-color);
             color: rgba(255, 255, 255, 0.8);
@@ -420,10 +446,15 @@
             </div>
         </section>
     </main>
+    
+    <section class="back-link-section">
+        <div class="container">
+             <a href="index.html" class="cta-button">Zpět na hlavní stránku workshopu</a>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-content">
-            <p><a href="index.html">Zpět na hlavní stránku workshopu</a></p>
             <p><strong>Mgr. Gabriel Kožík</strong> | <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a> | <a href="tel:+420720265713">+420 720 265 713</a></p>
         </div>
         <div class="copyright">
