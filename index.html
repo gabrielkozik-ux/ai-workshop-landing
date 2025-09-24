@@ -599,9 +599,10 @@
     </script>
     <script src="/_vercel/insights/script.js" defer></script>
 
-    <!-- UPRAVENÝ JAVASCRIPT PRO NEKONEČNÝ SLIDER -->
+    <!-- UPRAVENÝ JAVASCRIPT PRO AUTOMATICKÝ SLIDER -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const sliderContainer = document.querySelector('.testimonial-slider-container');
             const slider = document.querySelector('.testimonials');
             const slides = Array.from(document.querySelectorAll('.testimonial-item'));
             const prevBtn = document.querySelector('.prev-btn');
@@ -611,8 +612,9 @@
                 const slideCount = slides.length;
                 let currentIndex = 1;
                 let isTransitioning = false;
+                let autoSlideInterval;
 
-                // Naklonujeme první a poslední slide pro plynulý přechod
+                // Naklonujeme první a poslední slide pro plynulý "nekonečný" přechod
                 const firstClone = slides[0].cloneNode(true);
                 const lastClone = slides[slideCount - 1].cloneNode(true);
 
@@ -620,11 +622,7 @@
                 slider.insertBefore(lastClone, slides[0]);
 
                 const updateSliderPosition = (instant = false) => {
-                    if (instant) {
-                        slider.style.transition = 'none';
-                    } else {
-                        slider.style.transition = 'transform 0.5s ease-in-out';
-                    }
+                    slider.style.transition = instant ? 'none' : 'transform 0.5s ease-in-out';
                     slider.style.transform = `translateX(-${currentIndex * 100}%)`;
                 };
                 
@@ -645,22 +643,51 @@
                     updateSliderPosition();
                 };
 
+                // Funkce pro automatické posouvání
+                const startAutoSlide = () => {
+                    stopAutoSlide(); // Pojistka, aby neběželo více intervalů najednou
+                    autoSlideInterval = setInterval(moveToNextSlide, 5000); // Mění slide každých 5 sekund
+                };
+
+                const stopAutoSlide = () => {
+                    clearInterval(autoSlideInterval);
+                };
+
+                const resetAutoSlide = () => {
+                    stopAutoSlide();
+                    startAutoSlide();
+                };
+
                 slider.addEventListener('transitionend', () => {
                     isTransitioning = false;
-                    // Pokud jsme na klonu prvního slidu (na konci), přeskočíme na skutečný první slide
+                    // Reset pozice po dosažení klonovaného slidu
                     if (currentIndex >= slideCount + 1) {
                         currentIndex = 1;
                         updateSliderPosition(true);
                     }
-                    // Pokud jsme na klonu posledního slidu (na začátku), přeskočíme na skutečný poslední slide
                     if (currentIndex <= 0) {
                         currentIndex = slideCount;
                         updateSliderPosition(true);
                     }
                 });
 
-                nextBtn.addEventListener('click', moveToNextSlide);
-                prevBtn.addEventListener('click', moveToPrevSlide);
+                // Ruční ovládání
+                nextBtn.addEventListener('click', () => {
+                    moveToNextSlide();
+                    resetAutoSlide(); // Restartuje časovač po kliknutí
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    moveToPrevSlide();
+                    resetAutoSlide(); // Restartuje časovač po kliknutí
+                });
+
+                // Zastavení automatického posouvání při najetí myší
+                sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+                sliderContainer.addEventListener('mouseleave', startAutoSlide);
+
+                // Spuštění automatického posouvání při načtení stránky
+                startAutoSlide();
             }
         });
     </script>
