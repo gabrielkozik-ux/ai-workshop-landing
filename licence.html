@@ -134,7 +134,7 @@
         }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
             margin-top: 20px;
         }
@@ -148,6 +148,14 @@
         .feature-item h3 {
             color: var(--primary-color);
             margin-top: 0;
+        }
+         .feature-item a {
+            color: var(--secondary-color);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .feature-item a:hover {
+            text-decoration: underline;
         }
         
         .accordion-item {
@@ -337,6 +345,12 @@
                                 <td class="icon-check">✓ Ano, plná integrace</td>
                                 <td class="icon-cross">✗ Není dostupné z důvodu ochrany dat</td>
                             </tr>
+                            <!-- New row for Workspace Flow -->
+                            <tr>
+                                <td><strong>Pokročilá automatizace (Flows)</strong></td>
+                                <td class="icon-cross">✗ Není plánováno</td>
+                                <td class="icon-check">✓ Chystaná funkce pro automatizaci procesů</td>
+                            </tr>
                             <tr>
                                 <td><strong>Doporučeno pro</strong></td>
                                 <td>Osobní a studijní projekty</td>
@@ -355,11 +369,16 @@
                 <div class="features-grid">
                     <div class="feature-item">
                         <h3>Klíčová výhoda: Bezpečnost</h3>
-                        <p>Vaše konverzace s AI a data, která do nástrojů vkládáte (např. v Google Docs), se nikdy nepoužívají k trénování obecných modelů Google. Zůstávají striktně v rámci vaší organizace. To je zásadní rozdíl oproti spotřebitelské verzi.</p>
+                        <p>Vaše konverzace s AI a data, která do nástrojů vkládáte (např. v Google Docs), se nikdy nepoužívají k trénování obecných modelů Google. Zůstávají striktně v rámci vaší organizace.</p>
                     </div>
                     <div class="feature-item">
                         <h3>Klíčová výhoda: Kontrola</h3>
-                        <p>Jako administrátor máte plnou kontrolu nad tím, kteří uživatelé mají k AI funkcím přístup. Můžete spravovat licence, sledovat využití a nastavovat pravidla pro celou organizaci z jednoho centrálního místa.</p>
+                        <p>Jako administrátor máte plnou kontrolu nad tím, kteří uživatelé mají k AI funkcím přístup. Můžete spravovat licence, sledovat využití a nastavovat pravidla pro celou organizaci.</p>
+                    </div>
+                    <!-- New feature item for Workspace Flow -->
+                    <div class="feature-item">
+                        <h3>Budoucnost: Automatizace</h3>
+                        <p>Google chystá nástroj <strong>Workspace Flows</strong> pro automatizaci úkolů napříč aplikacemi. S firemní licencí budete připraveni tuto funkci využít a posunout efektivitu na novou úroveň. <a href="https://sites.google.com/view/workspace-flows/about" target="_blank">Více info zde.</a></p>
                     </div>
                 </div>
             </div>
@@ -489,4 +508,3 @@
     </script>
 </body>
 </html>
-
