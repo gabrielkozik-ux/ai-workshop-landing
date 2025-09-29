@@ -3,37 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google AI nástroje pro Váš růst | Mgr. Gabriel Kožík</title>
-    <meta name="description" content="Praktický workshop pro podnikatele a freelancery: Zvyšte svou produktivitu a kreativitu s Gemini, NotebookLM a dalšími AI nástroji od Google. Naučte se pokročilé techniky promptování a zefektivněte své procesy.">
+    <title>AI Workshop pro podnikatele | Proměňte AI v reálnou výhodu</title>
+    <meta name="description" content="Praktický workshop v Brně, kde se naučíte používat Google AI nástroje k automatizaci práce, tvorbě kvalitního obsahu a úspoře desítek hodin měsíčně.">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+    <!-- Updated schema for the new event -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Workshop: Google AI nástroje pro Váš růst",
-  "startDate": "2025-10-10T09:00:00+02:00",
-  "endDate": "2025-10-10T15:00:00+02:00",
-  "location": {
-    "@type": "Place",
-    "name": "IUSTORIA",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Slovákova 279",
-      "addressLocality": "Brno",
-      "postalCode": "60200",
-      "addressCountry": "CZ"
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Workshop: Proměňte AI v reálnou výhodu pro vaše podnikání",
+      "startDate": "2025-10-10T09:00:00+02:00",
+      "endDate": "2025-10-10T15:00:00+02:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "IUSTORIA, advokátní kancelář",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Slovákova 279/11",
+          "addressLocality": "Brno",
+          "postalCode": "60200",
+          "addressCountry": "CZ"
+        }
+      },
+      "description": "Naučte se s Gemini, NotebookLM a dalšími Google AI nástroji ušetřit desítky hodin měsíčně a podpořit kreativitu ve vašem podnikání.",
+      "performer": {
+        "@type": "Person",
+        "name": "Mgr. Gabriel Kožík"
+      }
     }
-  },
-  "description": "Naučte se s Gemini, NotebookLM a Google AI studio ušetřit desítky hodin měsíčně a podpořit kreativitu ve vašem podnikání.",
-  "performer": {
-    "@type": "Person",
-    "name": "Mgr. Gabriel Kožík"
-  }
-}
-</script>
+    </script>
     
     <style>
         :root {
@@ -88,12 +91,12 @@
             color: var(--secondary-color);
         }
         .hero {
-            background-image: linear-gradient(rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.6)), url(uvodni-obrazek.jpg);
+            background-image: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url(uvodni-obrazek.jpg);
             background-size: cover;
             background-position: 50%;
             background-repeat: no-repeat;
             color: var(--white);
-            padding: 100px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
         .hero h1 {
@@ -108,6 +111,43 @@
             max-width: 700px;
             margin: 0 auto 30px auto;
             text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+        }
+        .workshop-details-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 750px;
+            margin: 30px auto 40px auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.15em;
+            font-weight: 400;
+        }
+        .detail-item svg {
+            width: 28px;
+            height: 28px;
+            opacity: 0.9;
+        }
+        .detail-item a {
+            color: var(--white);
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-decoration-thickness: 1px;
+            transition: color 0.3s;
+        }
+        .detail-item a:hover {
+            color: var(--secondary-color);
         }
         .cta-button {
             display: inline-block;
@@ -158,13 +198,65 @@
             margin: -20px auto 40px;
             color: var(--text-color);
         }
-        .features-grid, .program-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-        .feature-item, .program-item {
+        .feature-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid var(--secondary-color);
+        }
+        /* New styles for the setup guide box */
+        .setup-guide-box {
+            background-color: #e8f5f3;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 25px 30px;
+            margin: 40px auto 0 auto;
+            max-width: 100%;
+        }
+        .setup-guide-box h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .setup-guide-box p {
+            font-size: 1.05em;
+            color: var(--text-color);
+            max-width: 700px;
+        }
+        .cta-button-small {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 700;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 10px;
+        }
+        .cta-button-small:hover {
+            background-color: #238c76;
+            transform: translateY(-2px);
+        }
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .program-item {
             background: var(--white);
             padding: 25px;
             border-radius: 8px;
@@ -248,164 +340,60 @@
         .cta-container { text-align: center; }
         .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         
-        /* Footer Styles */
         footer {
             background-color: var(--primary-color);
             color: rgba(255, 255, 255, 0.8);
             padding: 40px 20px;
             text-align: center;
         }
-        .footer-content p {
-            margin: 5px 0;
-            font-size: 1em;
-        }
-        .footer-content a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-content a:hover {
-            text-decoration: underline;
-        }
-        .copyright {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .event-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .calendar-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255,255,255,0.15);
-            color: var(--white);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-        .calendar-button:hover {
-            background-color: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-        .calendar-button svg {
-            width: 26px;
-            height: 26px;
-        }
-
-        /* --- STYLY PRO SLIDER --- */
-        .testimonial-slider-container {
-            position: relative;
-            max-width: 700px;
-            margin: 40px auto 0;
-            padding: 0 50px; /* Prostor pro šipky */
-            box-sizing: border-box;
-        }
-        .testimonial-slider-wrapper {
-            overflow: hidden;
-            width: 100%;
-            border-radius: 8px;
-        }
-        .testimonials {
-            display: flex;
-        }
-        .testimonial-item {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: left;
-            border-left: 5px solid var(--secondary-color);
-            min-width: 100%;
-            box-sizing: border-box;
-        }
-        .testimonial-item p {
-            font-style: italic;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-        .testimonial-item .author {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1em;
-        }
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--white);
-            border: 1px solid #ddd;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 24px;
-            color: var(--primary-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        .slider-btn:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
+        .footer-content p { margin: 5px 0; font-size: 1em; }
+        .footer-content a { color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease; }
+        .footer-content a:hover { text-decoration: underline; }
+        .copyright { margin-top: 20px; font-size: 0.9em; color: rgba(255, 255, 255, 0.6); }
+        .event-actions { display: flex; gap: 15px; margin-top: 30px; justify-content: center; align-items: center; flex-wrap: wrap; }
+        .calendar-button { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: rgba(255,255,255,0.15); color: var(--white); border-radius: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.3); }
+        .calendar-button:hover { background-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .calendar-button svg { width: 26px; height: 26px; }
+        .testimonial-slider-container { position: relative; max-width: 700px; margin: 40px auto 0; padding: 0 50px; box-sizing: border-box; }
+        .testimonial-slider-wrapper { overflow: hidden; width: 100%; border-radius: 8px; }
+        .testimonials { display: flex; }
+        .testimonial-item { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; border-left: 5px solid var(--secondary-color); min-width: 100%; box-sizing: border-box; }
+        .testimonial-item p { font-style: italic; font-size: 1.1em; margin-bottom: 15px; }
+        .testimonial-item .author { font-weight: bold; color: var(--primary-color); font-size: 1em; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: var(--white); border: 1px solid #ddd; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 24px; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s ease; z-index: 10; }
+        .slider-btn:hover { background-color: var(--primary-color); color: var(--white); }
         .slider-btn.prev-btn { left: 0; }
         .slider-btn.next-btn { right: 0; }
-        
-        /* --- STYLY PRO SEKCI TVORBY --- */
-        .portfolio-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
-        }
-        .portfolio-item {
-            background-color: var(--light-gray);
-            color: var(--text-color);
-            padding: 12px 24px;
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .portfolio-item:hover {
-            background-color: #e0e0e0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            color: var(--primary-color);
-        }
+        .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 40px; }
+        .portfolio-item { background-color: var(--light-gray); color: var(--text-color); padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 8px; transition: all 0.3s ease; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .portfolio-item:hover { background-color: #e0e0e0; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: var(--primary-color); }
         
         @media (max-width: 768px) {
+            .hero { padding: 60px 20px; }
             .hero h1 { font-size: 2.5em; }
             .hero p { font-size: 1.2em; }
+            .workshop-details-box { flex-direction: column; align-items: flex-start; text-align: left; padding: 20px; }
+            .detail-item { font-size: 1.1em; }
             .cta-button { padding: 15px 30px; font-size: 1.1em; }
             .section-title { font-size: 2em; }
             .features-grid, .program-grid { grid-template-columns: 1fr; }
             .instructor-section h3 { font-size: 1.7em; }
-            .testimonial-slider-container { padding: 0; } /* Skryjeme padding na mobilu */
-            .slider-btn { top: auto; bottom: -60px; transform: translateY(0); } /* Posuneme šipky pod slider */
+            .testimonial-slider-container { padding: 0; }
+            .slider-btn { top: auto; bottom: -60px; transform: translateY(0); }
             .slider-btn.prev-btn { left: calc(50% - 45px); }
             .slider-btn.next-btn { right: calc(50% - 45px); }
-            #testimonials-section .container { padding-bottom: 80px; } /* Přidáme místo pro šipky */
+            #testimonials-section .container { padding-bottom: 80px; }
         }
     </style>
     
 </head>
 <body>
+    <!-- Inline SVG icons for cleaner implementation -->
     <svg width="0" height="0" style="position:absolute;">
         <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m-1-13h2v6h-2zm4.25 6.5l-1.42 1.41L12.5 16.2V11h1.5v4.5l2.12 2.12l1.41-1.42z"/></symbol>
+        <symbol id="icon-location" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7m0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5"/></symbol>
+        <symbol id="icon-shield-account" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,6.16C13.5,6.16 14.58,7.18 14.58,8.62C14.58,10.06 13.5,11.08 12,11.08C10.5,11.08 9.42,10.06 9.42,8.62C9.42,7.18 10.5,6.16 12,6.16M16.5,16.03C15.5,14.73 13.83,14 12,14C10.17,14 8.5,14.73 7.5,16.03C6.73,15.11 6.16,14.04 5.82,12.91C6.9,12.12 8.3,11.69 9.87,11.83C10.6,12.5 11.23,13 12,13C12.77,13 13.4,12.5 14.13,11.83C15.7,11.69 17.1,12.12 18.18,12.91C17.84,14.04 17.27,15.11 16.5,16.03Z" /></symbol>
     </svg>
 
     <nav class="landing-nav">
@@ -415,13 +403,30 @@
         </a>
         <a href="#propojit" class="landing-nav-contact">Kontakt</a>
     </nav>
+
     <header class="hero">
         <div class="container">
-            <h1>Google AI nástroje pro Váš růst</h1>
-            <p>Naučte se s Gemini, NotebookLM a Google AI studio ušetřit až desítky hodin měsíčně a podpořit kreativitu ve Vašem podnikání.</p>
+            <h1>Proměňte AI v reálnou výhodu pro vaše podnikání</h1>
+            <p>Praktický workshop, kde se naučíte používat Google AI nástroje k automatizaci práce, tvorbě kvalitního obsahu a úspoře desítek hodin měsíčně.</p>
+            
+            <div class="workshop-details-box">
+                <div class="detail-item">
+                    <svg><use xlink:href="#icon-calendar"></use></svg>
+                    <span><strong>10. října 2025</strong></span>
+                </div>
+                <div class="detail-item">
+                    <svg><use xlink:href="#icon-clock"></use></svg>
+                    <span>9:00 - 15:00</span>
+                </div>
+                <div class="detail-item">
+                    <svg><use xlink:href="#icon-location"></use></svg>
+                    <span>IUSTORIA, advokátní kancelář, Slovákova 279/11, Brno</span>
+                </div>
+            </div>
+
             <div class="event-actions">
                 <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Registrovat se hned!</a>
-                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%20na%20AI%20n%C3%A1stroje%20od%20Google&dates=20251010T070000Z/20251010T130000Z&details=V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ%3D%3D&location=IUSTORIA%2C%20Slov%C3%A1kova%20279%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop na AI nástroje od Google">
+                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%3A%20Prom%C4%9B%C5%88te%20AI%20v%20re%C3%A1lnou%20v%C3%BDhodu&dates=20251010T070000Z/20251010T130000Z&details=Intenzivn%C3%AD%20workshop%20pro%20podnikatele%20a%20freelancery.%20V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ%3D%3D&location=IUSTORIA%2C%20advok%C3%A1tn%C3%AD%20kancel%C3%A1%C5%99%2C%20Slov%C3%A1kova%20279/11%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop AI pro podnikatele">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
                 </a>
             </div>
@@ -430,23 +435,31 @@
     <main>
         <section id="workshop-info">
             <div class="container">
-                <h2 class="section-title">Co získáte na workshopu?</h2>
-                <p class="section-subtitle">Tento interaktivní workshop probíhající v Brně je navržen tak, abyste si odnesli praktické dovednosti pro okamžité nasazení ve vaší praxi.</p>
+                <h2 class="section-title">Co si z workshopu odnesete?</h2>
+                <p class="section-subtitle">Tento interaktivní workshop je navržen tak, abyste si odnesli praktické dovednosti pro okamžité nasazení ve vaší praxi.</p>
                 
                 <div class="features-grid">
                     <div class="feature-item">
-                        <h3>Maximální efektivita</h3>
-                        <p>Naučíte se používat Gemini a NotebookLM pro okamžité zrychlení rutinních úkolů, analýz a přípravy podkladů. Propojíte Gemini s dalšími službami od Google, vytvoříte si asistenty, pochopíte význam hloubkových analýz a mnoho dalšího.</p>
+                        <h3>Automatizace a úspora času</h3>
+                        <p>Naučíte se delegovat rutinní úkoly na AI. Od rešerší a analýz až po přípravu e-mailů a reportů. Vytvoříte si vlastní asistenty, kteří vám ušetří hodiny práce každý týden.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Kreativní doping</h3>
-                        <p>Objevíte pokročilé techniky promptování pro tvorbu textů, grafiky a inovativních nápadů. Díky promyšlenému promptování získáte kvalitní a konzistentní výstupy.</p>
+                        <h3>Tvorba obsahu na autopilota</h3>
+                        <p>Ovládnete pokročilé techniky promptování pro generování marketingových textů, příspěvků na sítě i grafiky. Získejte nekonečný zdroj inspirace a konzistentní výstupy.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Interaktivita a podpora</h3>
-                        <p>Během workshopu získáte zpětnou vazbu, vše budeme sdílet ve společném chatu a po skončení obdržíte veškeré nezbytné materiály pro další rozvoj.</p>
+                        <h3>Zkušenosti, které jinde nezískáte</h3>
+                        <p>Workshop je postaven na praktických ukázkách a individuálním přístupu. Získáte know-how postavené na reálných příkladech z praxe advokáta a podnikatele.</p>
                     </div>
                 </div>
+
+                <!-- New guide box added here -->
+                <div class="setup-guide-box">
+                    <h3><svg width="28" height="28" viewBox="0 0 24 24"><use xlink:href="#icon-shield-account"></use></svg>Bonus: Průvodce bezpečným nastavením</h3>
+                    <p>Pro plné a bezpečné využití AI ve vašem podnikání je klíčový <strong>Google Workspace účet</strong>. Připravil jsem pro vás podrobný návod, jak si vše správně nastavit a proč je to pro vaše data důležité.</p>
+                    <a href="licence.html" class="cta-button-small">Zobrazit návod</a>
+                </div>
+
                 <div style="text-align: center; margin-top: 50px;">
                     <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Chci se registrovat!</a>
                 </div>
@@ -513,7 +526,7 @@
                                 <p class="author">- Jiří J.</p>
                             </div>
                             <div class="testimonial-item">
-                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psáním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
+                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psaním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
                                 <p class="author">- Jiří U.</p>
                             </div>
                             <div class="testimonial-item">
@@ -549,7 +562,6 @@
             </div>
         </section>
         
-        <!-- NOVÁ SEKCE S TVORBOU -->
         <section id="portfolio" class="portfolio-section">
             <div class="container">
                 <h2 class="section-title">Ukázky další tvorby</h2>
@@ -600,22 +612,22 @@
     </script>
     <script src="/_vercel/insights/script.js" defer></script>
 
-    <!-- UPRAVENÝ JAVASCRIPT PRO AUTOMATICKÝ SLIDER -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sliderContainer = document.querySelector('.testimonial-slider-container');
+            if (!sliderContainer) return;
+
             const slider = document.querySelector('.testimonials');
             const slides = Array.from(document.querySelectorAll('.testimonial-item'));
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
             
-            if (slides.length > 0) {
+            if (slides.length > 1) { // Only initialize slider if there's more than one slide
                 const slideCount = slides.length;
                 let currentIndex = 1;
                 let isTransitioning = false;
                 let autoSlideInterval;
 
-                // Naklonujeme první a poslední slide pro plynulý "nekonečný" přechod
                 const firstClone = slides[0].cloneNode(true);
                 const lastClone = slides[slideCount - 1].cloneNode(true);
 
@@ -627,7 +639,6 @@
                     slider.style.transform = `translateX(-${currentIndex * 100}%)`;
                 };
                 
-                // Nastavíme počáteční pozici bez animace
                 updateSliderPosition(true);
 
                 const moveToNextSlide = () => {
@@ -644,10 +655,9 @@
                     updateSliderPosition();
                 };
 
-                // Funkce pro automatické posouvání
                 const startAutoSlide = () => {
-                    stopAutoSlide(); // Pojistka, aby neběželo více intervalů najednou
-                    autoSlideInterval = setInterval(moveToNextSlide, 5000); // Mění slide každých 5 sekund
+                    stopAutoSlide();
+                    autoSlideInterval = setInterval(moveToNextSlide, 5000);
                 };
 
                 const stopAutoSlide = () => {
@@ -661,7 +671,6 @@
 
                 slider.addEventListener('transitionend', () => {
                     isTransitioning = false;
-                    // Reset pozice po dosažení klonovaného slidu
                     if (currentIndex >= slideCount + 1) {
                         currentIndex = 1;
                         updateSliderPosition(true);
@@ -672,25 +681,23 @@
                     }
                 });
 
-                // Ruční ovládání
                 nextBtn.addEventListener('click', () => {
                     moveToNextSlide();
-                    resetAutoSlide(); // Restartuje časovač po kliknutí
+                    resetAutoSlide();
                 });
 
                 prevBtn.addEventListener('click', () => {
                     moveToPrevSlide();
-                    resetAutoSlide(); // Restartuje časovač po kliknutí
+                    resetAutoSlide();
                 });
 
-                // Zastavení automatického posouvání při najetí myší
                 sliderContainer.addEventListener('mouseenter', stopAutoSlide);
                 sliderContainer.addEventListener('mouseleave', startAutoSlide);
 
-                // Spuštění automatického posouvání při načtení stránky
                 startAutoSlide();
             }
         });
     </script>
 </body>
 </html>
+
