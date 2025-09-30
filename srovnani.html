@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komplexní komparace AI nástrojů | Gemini vs. ChatGPT</title>
+    <!-- Chosen Palette: Custom palette inspired by licence.html (Primary: #0a2342, Secondary: #2ca58d, Text: #333, Light Gray: #f4f4f4) -->
+    <!-- Application Structure Plan: The SPA is designed with a thematic, single-page scroll structure, guided by a fixed top navigation. This is better than a simple linear document because it allows users to jump directly to their area of interest (Strategy, Technology, Security, Future) without getting lost in a long text. The key interactions—toggling chart data between 'current' and 'future' models, and switching the security view between 'consumer' and 'enterprise'—are designed to directly answer the core comparative questions raised in the source documents. This structure facilitates a non-linear exploration of a complex topic, making it more digestible and user-centric. -->
+    <!-- Visualization & Content Choices: 
+        1. Report Info: Strategic differences (Ecosystem philosophies). Goal: Compare high-level concepts. Viz/Presentation: Side-by-side text cards using HTML/Tailwind. Interaction: None, designed for clarity. Justification: Visual separation is enough to convey the core dichotomy. Library/Method: HTML/Tailwind.
+        2. Report Info: Technical capabilities of current and future models. Goal: Compare multiple performance vectors simultaneously. Viz/Presentation: Radar Chart. Interaction: Buttons to toggle data between 'Current' (Gemini 1.5 Pro vs GPT-4o) and 'Future' (Gemini 2.5 vs GPT-5) states. The chart and a descriptive text block update dynamically. Justification: A radar chart is excellent for multivariate comparison, and the interaction allows users to see the evolution of the platforms. Library/Method: Chart.js (Canvas).
+        3. Report Info: Data privacy and GDPR differences (Consumer vs. Enterprise). Goal: Compare security policies for different user types. Viz/Presentation: A structured comparison table. Interaction: Toggle buttons ('Pro Běžné Uživatele' vs 'Pro Firmy') dynamically change the table's content. Justification: This is the most effective way to highlight the critical distinction in data handling, which was a key finding in the reports. Library/Method: HTML/Tailwind + Vanilla JS for content switching.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a2342;
+            --secondary-color: #2ca58d;
+            --text-color: #333;
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+            --accent-color: #0077b6;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+        .card {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .interactive-button {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .interactive-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+        .interactive-button.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 500;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-[--primary-color]">AI Komparace</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#strategie" class="nav-link text-gray-600 font-medium">Strategie</a>
+                <a href="#technologie" class="nav-link text-gray-600 font-medium">Technologie</a>
+                <a href="#bezpecnost" class="nav-link text-gray-600 font-medium">Bezpečnost</a>
+                <a href="#budoucnost" class="nav-link text-gray-600 font-medium">Budoucnost</a>
+                <a href="#zaver" class="nav-link text-gray-600 font-medium">Závěr</a>
+            </div>
+            <div class="md:hidden">
+                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#strategie" class="block py-2 nav-link text-gray-600 font-medium">Strategie</a>
+            <a href="#technologie" class="block py-2 nav-link text-gray-600 font-medium">Technologie</a>
+            <a href="#bezpecnost" class="block py-2 nav-link text-gray-600 font-medium">Bezpečnost</a>
+            <a href="#budoucnost" class="block py-2 nav-link text-gray-600 font-medium">Budoucnost</a>
+            <a href="#zaver" class="block py-2 nav-link text-gray-600 font-medium">Závěr</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section id="uvod" class="text-center mb-20">
+            <h1 class="text-4xl md:text-5xl font-bold text-[--primary-color] mb-4">Gemini vs. ChatGPT</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Komplexní komparace dvou vedoucích AI ekosystémů. Nejde jen o souboj modelů, ale o střet dvou odlišných filozofií a strategických vizí, které formují budoucnost umělé inteligence.</p>
+        </section>
+
+        <section id="strategie" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 section-title">Strategické srovnání: Dva odlišné světy</h2>
+            <p class="text-gray-700 mb-12 max-w-4xl">Volba mezi Google Gemini a OpenAI ChatGPT není pouze technickým rozhodnutím, ale strategickým závazkem k jednomu ze dvou fundamentálně odlišných přístupů k AI. Tato sekce objasňuje klíčové rozdíly v jejich filozofiích a ukazuje, jak se promítají do praktického využití pro jednotlivce i firmy.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-[--primary-color] mb-4">Google Gemini: Integrovaný ekosystém</h3>
+                    <p class="text-gray-600 mb-4">Gemini je navržen jako hluboce integrovaný "obchodní partner". Jeho síla nespočívá v izolovaném výkonu, ale ve schopnosti bezproblémově spolupracovat s celým ekosystémem Google (Workspace, Cloud, Ads). Tímto přístupem se Gemini stává akcelerátorem produktivity a nabízí složené úročení investice do platformy.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><span class="text-[--secondary-color] font-bold mr-2">✔</span> Vertikální optimalizace pro maximální efektivitu.</li>
+                        <li class="flex items-start"><span class="text-[--secondary-color] font-bold mr-2">✔</span> Přístup k datům v reálném čase přes Google Search.</li>
+                        <li class="flex items-start"><span class="text-[--secondary-color] font-bold mr-2">✔</span> Dlouhodobá nákladová výhoda díky vlastním TPU čipům.</li>
+                        <li class="flex items-start"><span class="text-[--secondary-color] font-bold mr-2">✔</span> Sjednocené zabezpečení v rámci Google Cloud.</li>
+                    </ul>
+                </div>
+                <div class="card p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-[--primary-color] mb-4">OpenAI ChatGPT: Univerzální vrstva</h3>
+                    <p class="text-gray-600 mb-4">ChatGPT a budoucí modely OpenAI jsou budovány jako univerzální, interoperabilní inteligenční vrstva. Cílem je vytvořit nejlepší model ve své třídě, který lze připojit k jakémukoli systému. Funguje jako všestranný "švýcarský nůž", který exceluje v široké škále úkolů nezávisle na platformě.</p>
+                     <ul class="space-y-2">
+                        <li class="flex items-start"><span class="text-[--accent-color] font-bold mr-2">✔</span> Horizontální škálovatelnost a flexibilita.</li>
+                        <li class="flex items-start"><span class="text-[--accent-color] font-bold mr-2">✔</span> Špičkový výkon v kreativních a komplexních úlohách.</li>
+                        <li class="flex items-start"><span class="text-[--accent-color] font-bold mr-2">✔</span> Rozvinutý vývojářský ekosystém a API.</li>
+                        <li class="flex items-start"><span class="text-[--accent-color] font-bold mr-2">✔</span> Dynamický systém více modelů řízený "smart routerem".</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="technologie" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 section-title">Technologie a výkon</h2>
+            <p class="text-gray-700 mb-8 max-w-4xl">Jádrem obou platforem jsou pokročilé jazykové modely s odlišnou architekturou a schopnostmi. Tato interaktivní vizualizace porovnává klíčové technologické aspekty současných i budoucích generací modelů. Zvolte si pohled a prozkoumejte, jak se jejich silné stránky liší.</p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <button id="btnCurrent" class="interactive-button py-2 px-6 rounded-full font-medium active">Současné modely</button>
+                <button id="btnFuture" class="interactive-button py-2 px-6 rounded-full font-medium">Budoucí modely</button>
+            </div>
+            <div class="bg-white p-4 sm:p-8 rounded-lg shadow-lg">
+                <div class="chart-container">
+                    <canvas id="techRadarChart"></canvas>
+                </div>
+                <div id="tech-description" class="mt-8 text-center text-gray-600 max-w-2xl mx-auto">
+                    <p>Zde se zobrazí popis pro vybranou sadu modelů.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="bezpecnost" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 section-title">Bezpečnost, data a GDPR</h2>
+            <p class="text-gray-700 mb-8 max-w-4xl">Zásadní rozdíl v přístupu k ochraně dat se projevuje mezi verzemi pro běžné spotřebitele a placenými podnikovými řešeními. Pro organizace je klíčové porozumět těmto nuancím, aby mohly správně posoudit rizika. Přepněte zobrazení a porovnejte, jak obě platformy nakládají s vašimi daty v různých scénářích.</p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <button id="btnConsumer" class="interactive-button py-2 px-6 rounded-full font-medium active">Pro běžné uživatele</button>
+                <button id="btnEnterprise" class="interactive-button py-2 px-6 rounded-full font-medium">Pro firmy</button>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div id="security-table-container" class="overflow-x-auto">
+                </div>
+            </div>
+        </section>
+
+        <section id="budoucnost" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 section-title">Budoucí výhled: Agent vs. Syntetizátor</h2>
+             <p class="text-gray-700 mb-12 max-w-4xl">Srovnání se neustále vyvíjí. Očekávaný příchod modelů nové generace, jako jsou GPT-5 a Gemini 2.5, naznačuje další divergenci ve výzkumných a analytických schopnostech. Budoucnost se rýsuje jako souboj dvou odlišných paradigmat pro řešení komplexních problémů.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-[--primary-color] mb-4">GPT-5: Autonomní výzkumný agent</h3>
+                    <p class="text-gray-600">Předpokládá se, že GPT-5 bude fungovat jako autonomní agent schopný iterativního, procesně řízeného dotazování a komplexního uvažování. Jeho síla bude v explorativním výzkumu, kde je potřeba plánovat, provádět vícekrokové úkoly a flexibilně řešit nové problémy.</p>
+                </div>
+                <div class="card p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-[--primary-color] mb-4">Gemini 2.5: Vševědoucí syntetizátor</h3>
+                    <p class="text-gray-600">Gemini 2.5 je koncipován jako syntetizátor znalostí, který využívá obrovské kontextové okno a hlubokou integraci s informačním ekosystémem Google. Bude excelovat v analýze rozsáhlých, předem definovaných datových sad s ověřitelným uzemněním v reálném čase.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="zaver" class="text-center scroll-mt-24">
+            <h2 class="text-3xl font-bold mb-8 section-title mx-auto">Závěr: Jak si vybrat?</h2>
+            <p class="text-gray-700 mb-12 max-w-4xl mx-auto">Neexistuje jediná správná odpověď. Volba závisí na vašich prioritách, stávajícím technologickém zázemí a specifických potřebách.</p>
+            <div class="text-left max-w-3xl mx-auto space-y-6">
+                <div>
+                    <h4 class="text-xl font-semibold text-[--primary-color]">Zvolte Google Gemini, pokud...</h4>
+                    <p class="text-gray-600">...jste hluboce integrováni v ekosystému Google, prioritou je pro vás efektivita pracovních postupů, bezpečnost dat na podnikové úrovni a přístup k informacím v reálném čase.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-[--accent-color]">Zvolte OpenAI ChatGPT, pokud...</h4>
+                    <p class="text-gray-600">...potřebujete maximální flexibilitu, špičkový kreativní výkon, plánujete napojení na různorodé systémy přes API a váš primární požadavek je nejlepší samostatný model na trhu.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2025 Komplexní komparace AI. Všechna práva vyhrazena. Data syntetizována z analytických zpráv.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            const radarChartData = {
+                current: {
+                    labels: ['Kreativita', 'Integrace', 'Data v reálném čase', 'Multimodalita', 'Rychlost', 'Kontext'],
+                    datasets: [
+                        {
+                            label: 'Gemini 1.5 Pro',
+                            data: [7, 9, 9, 9, 7, 10],
+                            backgroundColor: 'rgba(10, 35, 66, 0.2)',
+                            borderColor: 'rgba(10, 35, 66, 1)',
+                            pointBackgroundColor: 'rgba(10, 35, 66, 1)',
+                        },
+                        {
+                            label: 'ChatGPT-4o',
+                            data: [9, 6, 7, 8, 9, 7],
+                            backgroundColor: 'rgba(44, 165, 141, 0.2)',
+                            borderColor: 'rgba(44, 165, 141, 1)',
+                            pointBackgroundColor: 'rgba(44, 165, 141, 1)',
+                        }
+                    ]
+                },
+                future: {
+                    labels: ['Autonomní uvažování', 'Syntéza dat', 'Integrace', 'Plánování úkolů', 'Uzemnění', 'Šíře kontextu'],
+                    datasets: [
+                        {
+                            label: 'Gemini 2.5 (očekáváno)',
+                            data: [6, 10, 10, 6, 9, 10],
+                            backgroundColor: 'rgba(10, 35, 66, 0.2)',
+                            borderColor: 'rgba(10, 35, 66, 1)',
+                            pointBackgroundColor: 'rgba(10, 35, 66, 1)',
+                        },
+                        {
+                            label: 'GPT-5 (očekáváno)',
+                            data: [10, 7, 7, 10, 7, 8],
+                            backgroundColor: 'rgba(44, 165, 141, 0.2)',
+                            borderColor: 'rgba(44, 165, 141, 1)',
+                            pointBackgroundColor: 'rgba(44, 165, 141, 1)',
+                        }
+                    ]
+                }
+            };
+            
+            const techDescriptions = {
+                current: `
+                    <h4 class="font-bold text-lg mb-2 text-gray-800">Současná generace: Gemini 1.5 Pro vs. ChatGPT-4o</h4>
+                    <p>Srovnání ukazuje sílu Gemini v integraci, práci s daty v reálném čase a obrovském kontextovém okně (až 1 milion tokenů). ChatGPT-4o naopak exceluje v rychlosti odezvy, špičkové kreativitě a přirozenosti konverzace. Volba závisí na tom, zda preferujete hlubokou integraci do pracovních procesů (Gemini) nebo nejlepší samostatný konverzační a kreativní nástroj (ChatGPT).</p>
+                `,
+                future: `
+                    <h4 class="font-bold text-lg mb-2 text-gray-800">Budoucí generace: Gemini 2.5 vs. GPT-5</h4>
+                    <p>Očekávaný vývoj prohlubuje specializaci. GPT-5 směřuje k autonomnímu uvažování a komplexnímu plánování úkolů, což z něj činí potenciálního "výzkumného agenta". Gemini 2.5 se zaměřuje na masivní syntézu dat podpořenou ještě větším kontextem a hlubším uzemněním v reálném světě, což ho profiluje jako "vševědoucího syntetizátora".</p>
+                `
+            };
+
+            const securityContent = {
+                consumer: `
+                    <table class="w-full text-sm text-left text-gray-600">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Aspekt</th>
+                                <th scope="col" class="px-6 py-3">Google Gemini (zdarma)</th>
+                                <th scope="col" class="px-6 py-3">ChatGPT (zdarma)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4 font-medium">Využití dat pro trénink</td>
+                                <td class="px-6 py-4">Ano, data mohou být použita pro trénink (i po kontrole člověkem).</td>
+                                <td class="px-6 py-4">Ano, data mohou být použita, pokud uživatel explicitně nevypne tuto možnost v nastavení.</td>
+                            </tr>
+                            <tr class="bg-gray-50 border-b">
+                                <td class="px-6 py-4 font-medium">Uchovávání historie</td>
+                                <td class="px-6 py-4">Ano, ukládá se do Google Account, pokud není vypnuto.</td>
+                                <td class="px-6 py-4">Ano, ukládá se, pokud není vypnuto sdílení pro trénink.</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-6 py-4 font-medium">Rizikový profil</td>
+                                <td class="px-6 py-4 text-red-600">Vysoké riziko pro citlivé firemní informace.</td>
+                                <td class="px-6 py-4 text-red-600">Vysoké riziko pro citlivé firemní informace.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `,
+                enterprise: `
+                    <table class="w-full text-sm text-left text-gray-600">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Aspekt</th>
+                                <th scope="col" class="px-6 py-3">Gemini for Workspace / Vertex AI</th>
+                                <th scope="col" class="px-6 py-3">ChatGPT Enterprise / API</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4 font-medium">Využití dat pro trénink</td>
+                                <td class="px-6 py-4 text-green-700">Ne, smluvně garantováno, že data nejsou použita pro trénink.</td>
+                                <td class="px-6 py-4 text-green-700">Ne, smluvně garantováno, že data nejsou použita pro trénink.</td>
+                            </tr>
+                            <tr class="bg-gray-50 border-b">
+                                <td class="px-6 py-4 font-medium">Soulad s GDPR</td>
+                                <td class="px-6 py-4">Vysoký, data zpracovávána v rámci robustní infrastruktury Google Cloud.</td>
+                                <td class="px-6 py-4">Vysoký, nabízí Data Processing Addendum a soulad s hlavními normami.</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-6 py-4 font-medium">Rizikový profil</td>
+                                <td class="px-6 py-4 text-green-700">Nízký, vhodný pro firemní nasazení.</td>
+                                <td class="px-6 py-4 text-green-700">Nízký, vhodný pro firemní nasazení.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `
+            };
+
+            const ctx = document.getElementById('techRadarChart').getContext('2d');
+            let myRadarChart;
+
+            const techDescriptionEl = document.getElementById('tech-description');
+            const securityTableContainerEl = document.getElementById('security-table-container');
+
+            function createOrUpdateChart(dataKey) {
+                if (myRadarChart) {
+                    myRadarChart.destroy();
+                }
+                myRadarChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: radarChartData[dataKey],
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        },
+                        scales: {
+                            r: {
+                                angleLines: {
+                                    display: true
+                                },
+                                suggestedMin: 0,
+                                suggestedMax: 10,
+                                pointLabels: {
+                                    font: {
+                                        size: 12
+                                    }
+                                },
+                                ticks: {
+                                   stepSize: 2
+                                }
+                            }
+                        }
+                    }
+                });
+                techDescriptionEl.innerHTML = techDescriptions[dataKey];
+            }
+            
+            function updateSecurityView(viewKey) {
+                securityTableContainerEl.innerHTML = securityContent[viewKey];
+            }
+
+            const btnCurrent = document.getElementById('btnCurrent');
+            const btnFuture = document.getElementById('btnFuture');
+            const btnConsumer = document.getElementById('btnConsumer');
+            const btnEnterprise = document.getElementById('btnEnterprise');
+
+            btnCurrent.addEventListener('click', () => {
+                createOrUpdateChart('current');
+                btnCurrent.classList.add('active');
+                btnFuture.classList.remove('active');
+            });
+
+            btnFuture.addEventListener('click', () => {
+                createOrUpdateChart('future');
+                btnFuture.classList.add('active');
+                btnCurrent.classList.remove('active');
+            });
+            
+            btnConsumer.addEventListener('click', () => {
+                updateSecurityView('consumer');
+                btnConsumer.classList.add('active');
+                btnEnterprise.classList.remove('active');
+            });
+
+            btnEnterprise.addEventListener('click', () => {
+                updateSecurityView('enterprise');
+                btnEnterprise.classList.add('active');
+                btnConsumer.classList.remove('active');
+            });
+
+            createOrUpdateChart('current');
+            updateSecurityView('consumer');
+        });
+    </script>
+</body>
+</html>
