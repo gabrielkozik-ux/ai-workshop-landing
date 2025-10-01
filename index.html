@@ -42,6 +42,7 @@
         :root {
             --primary-color: #0a2342;
             --secondary-color: #2ca58d;
+            --accent-color: #0077b6; /* New accent color for the comparison link */
             --text-color: #333;
             --light-gray: #f4f4f4;
             --white: #ffffff;
@@ -181,7 +182,6 @@
              background-color: var(--secondary-color);
              color: var(--white);
         }
-        /* New style for the upcoming workshop info box */
         .next-workshop-info {
             background-color: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.4);
@@ -232,7 +232,7 @@
             text-align: center;
             border-top: 4px solid var(--secondary-color);
         }
-        .setup-guide-box {
+        .info-box {
             background-color: #e8f5f3;
             border-left: 5px solid var(--secondary-color);
             border-radius: 0 8px 8px 0;
@@ -240,7 +240,7 @@
             margin: 40px auto 0 auto;
             max-width: 100%;
         }
-        .setup-guide-box h3 {
+        .info-box h3 {
             color: var(--primary-color);
             margin-top: 0;
             font-size: 1.4em;
@@ -248,7 +248,7 @@
             align-items: center;
             gap: 10px;
         }
-        .setup-guide-box p {
+        .info-box p {
             font-size: 1.05em;
             color: var(--text-color);
             max-width: 700px;
@@ -347,6 +347,7 @@
         <symbol id="icon-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m-1-13h2v6h-2zm4.25 6.5l-1.42 1.41L12.5 16.2V11h1.5v4.5l2.12 2.12l1.41-1.42z"/></symbol>
         <symbol id="icon-location" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7m0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5"/></symbol>
         <symbol id="icon-shield-account" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,6.16C13.5,6.16 14.58,7.18 14.58,8.62C14.58,10.06 13.5,11.08 12,11.08C10.5,11.08 9.42,10.06 9.42,8.62C9.42,7.18 10.5,6.16 12,6.16M16.5,16.03C15.5,14.73 13.83,14 12,14C10.17,14 8.5,14.73 7.5,16.03C6.73,15.11 6.16,14.04 5.82,12.91C6.9,12.12 8.3,11.69 9.87,11.83C10.6,12.5 11.23,13 12,13C12.77,13 13.4,12.5 14.13,11.83C15.7,11.69 17.1,12.12 18.18,12.91C17.84,14.04 17.27,15.11 16.5,16.03Z" /></symbol>
+        <symbol id="icon-balance" viewBox="0 0 24 24"><path fill="currentColor" d="M6,16.5L3,19.44V17.5A2.5,2.5 0 0,1 5.5,15A2.5,2.5 0 0,1 8,17.5V19.44L5,16.5H6M18,16.5L15,19.44V17.5A2.5,2.5 0 0,1 17.5,15A2.5,2.5 0 0,1 20,17.5V19.44L17,16.5H18M11.5,16.5A2.5,2.5 0 0,1 14,19A2.5,2.5 0 0,1 11.5,21.5A2.5,2.5 0 0,1 9,19A2.5,2.5 0 0,1 11.5,16.5M12,2L14.5,4.5L12,7L9.5,4.5L12,2M4.07,5.5C3.86,6.22 3.73,7 3.73,7.75L8.5,12.5L12,9L4.07,5.5M19.93,5.5L12,9L15.5,12.5L20.27,7.75C20.27,7 20.14,6.22 19.93,5.5Z"></path></symbol>
     </svg>
 
     <nav class="landing-nav">
@@ -384,7 +385,6 @@
                 </a>
             </div>
             
-            <!-- Info about the next workshop date -->
             <div class="next-workshop-info">
                 <p>Nevyhovuje vám termín? Chystám další workshop <strong>14. listopadu 2025</strong>. 
                 <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank">Registrujte se zde</a></p>
@@ -412,10 +412,16 @@
                     </div>
                 </div>
 
-                <div class="setup-guide-box">
+                <div class="info-box">
                     <h3><svg width="28" height="28" viewBox="0 0 24 24"><use xlink:href="#icon-shield-account"></use></svg>Průvodce nastavením Google Workspace účtu</h3>
                     <p>Pro plné a bezpečné využití AI ve vašem podnikání je klíčový <strong>Google Workspace účet</strong>. Připravil jsem pro vás podrobný návod, jak si vše správně nastavit a proč je to pro vaše data důležité.</p>
                     <a href="licence.html" class="cta-button-small">Zobrazit návod</a>
+                </div>
+
+                <div class="info-box" style="border-left-color: var(--accent-color); background-color: #e7f1fa; margin-top: 30px;">
+                    <h3><svg width="28" height="28" viewBox="0 0 24 24"><use xlink:href="#icon-balance"></use></svg>Bonus: Srovnání Gemini vs. ChatGPT</h3>
+                    <p>Zajímá vás, jak si ekosystém Google stojí v porovnání s OpenAI? Připravil jsem detailní analýzu strategických, technologických a bezpečnostních rozdílů.</p>
+                    <a href="srovnani.html" class="cta-button-small" style="background-color: var(--accent-color);">Přejít na srovnání</a>
                 </div>
 
                 <div style="text-align: center; margin-top: 50px;">
@@ -484,7 +490,7 @@
                                 <p class="author">- Jiří J.</p>
                             </div>
                             <div class="testimonial-item">
-                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psaním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
+                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psáním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
                                 <p class="author">- Jiří U.</p>
                             </div>
                             <div class="testimonial-item">
@@ -557,7 +563,7 @@
             <p>Telefon: <a href="tel:+420720265713">+420 720 265 713</a></p>
             <p>IČO: 05187559</p>
             <p>Slovákova 279/11, Brno</p>
-            <p><a href="licence.html">Průvodce nastavením Google AI</a></p>
+            <p><a href="licence.html">Průvodce nastavením Google AI</a> | <a href="srovnani.html">Srovnání Gemini vs. ChatGPT</a></p>
         </div>
         <div class="copyright">
             <p>&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
@@ -580,7 +586,7 @@
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
             
-            if (slides.length > 1) { // Only initialize slider if there's more than one slide
+            if (slides.length > 1) { 
                 const slideCount = slides.length;
                 let currentIndex = 1;
                 let isTransitioning = false;
@@ -658,4 +664,3 @@
     </script>
 </body>
 </html>
-

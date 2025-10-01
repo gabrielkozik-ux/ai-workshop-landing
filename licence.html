@@ -61,6 +61,18 @@
         .nav-links a:hover {
             color: var(--secondary-color);
         }
+        /* --- Přidaný styl pro tlačítko --- */
+        .nav-links a.cta-nav-button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+        .nav-links a.cta-nav-button:hover {
+            background-color: #238c76;
+            color: var(--white);
+        }
+        /* --- Konec přidaného stylu --- */
         .hero-small {
             background-image: linear-gradient(rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.6)), url(uvodni-obrazek.jpg);
             background-size: cover;
@@ -289,7 +301,7 @@
             <a href="#comparison">Srovnání</a>
             <a href="#guide">Návod</a>
             <a href="#faq">FAQ</a>
-            <a href="index.html#propojit">Kontakt</a>
+            <a href="index.html" class="cta-nav-button">Zpět na workshop</a>
         </div>
     </nav>
 
@@ -345,7 +357,6 @@
                                 <td class="icon-check">✓ Ano, plná integrace</td>
                                 <td class="icon-cross">✗ Není dostupné z důvodu ochrany dat</td>
                             </tr>
-                            <!-- New row for Workspace Flow -->
                             <tr>
                                 <td><strong>Pokročilá automatizace (Flows)</strong></td>
                                 <td class="icon-cross">✗ Není plánováno</td>
@@ -375,7 +386,6 @@
                         <h3>Klíčová výhoda: Kontrola</h3>
                         <p>Jako administrátor máte plnou kontrolu nad tím, kteří uživatelé mají k AI funkcím přístup. Můžete spravovat licence, sledovat využití a nastavovat pravidla pro celou organizaci.</p>
                     </div>
-                    <!-- New feature item for Workspace Flow -->
                     <div class="feature-item">
                         <h3>Budoucnost: Automatizace</h3>
                         <p>Google chystá nástroj <strong>Workspace Flows</strong> pro automatizaci úkolů napříč aplikacemi. S firemní licencí budete připraveni tuto funkci využít a posunout efektivitu na novou úroveň. <a href="https://sites.google.com/view/workspace-flows/about" target="_blank">Více info zde.</a></p>
