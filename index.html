@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Workshop pro podnikatele | Proměňte AI v reálnou výhodu</title>
-    <meta name="description" content="Praktický workshop v Brně, kde se naučíte používat Google AI nástroje k automatizaci práce, tvorbě kvalitního obsahu a úspoře desítek hodin měsíčně.">
+    <meta name="description" content="Naučte se na praktickém workshopu v Brně používat Google AI nástroje k automatizaci práce, tvorbě kvalitního obsahu a úspoře desítek hodin měsíčně.">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- Schema for the primary event -->
+    <!-- Schema for events -->
     <script type="application/ld+json">
-    {
+    [{
       "@context": "https://schema.org",
       "@type": "Event",
       "name": "Workshop: Proměňte AI v reálnou výhodu pro vaše podnikání",
@@ -30,12 +30,37 @@
           "addressCountry": "CZ"
         }
       },
-      "description": "Naučte se s Gemini, NotebookLM a dalšími Google AI nástroji ušetřit desítek hodin měsíčně a podpořit kreativitu ve vašem podnikání.",
+      "description": "Naučte se s Gemini, NotebookLM a dalšími Google AI nástroji ušetřit desítky hodin měsíčně a podpořit kreativitu ve vašem podnikání.",
       "performer": {
         "@type": "Person",
         "name": "Mgr. Gabriel Kožík"
       }
-    }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Workshop: Proměňte AI v reálnou výhodu pro vaše podnikání",
+      "startDate": "2025-11-14T09:00:00+01:00",
+      "endDate": "2025-11-14T15:00:00+01:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "IUSTORIA, advokátní kancelář",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Slovákova 279/11",
+          "addressLocality": "Brno",
+          "postalCode": "60200",
+          "addressCountry": "CZ"
+        }
+      },
+      "description": "Naučte se s Gemini, NotebookLM a dalšími Google AI nástroji ušetřit desítky hodin měsíčně a podpořit kreativitu ve vašem podnikání.",
+      "performer": {
+        "@type": "Person",
+        "name": "Mgr. Gabriel Kožík"
+      }
+    }]
     </script>
     
     <style>
@@ -43,6 +68,7 @@
             --primary-color: #0a2342;
             --secondary-color: #2ca58d;
             --accent-color: #0077b6; /* New accent color for the comparison link */
+            --warning-color: #f59e0b;
             --text-color: #333;
             --light-gray: #f4f4f4;
             --white: #ffffff;
@@ -296,6 +322,9 @@
         .instructor-section img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid var(--secondary-color); }
         .instructor-section h3 { font-size: 2em; color: var(--primary-color); margin-bottom: 10px; }
         .instructor-section p { max-width: 700px; font-size: 1.1em; margin: 10px auto; }
+        .instructor-section .icon-link { display: inline-flex; align-items: center; gap: 5px; color: var(--secondary-color); font-weight: bold; text-decoration: none; }
+        .instructor-section .icon-link:hover { text-decoration: underline; }
+        .instructor-section .icon-link svg { width: 18px; height: 18px; }
         .cta-container { text-align: center; }
         .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         footer { background-color: var(--primary-color); color: rgba(255, 255, 255, 0.8); padding: 40px 20px; text-align: center; }
@@ -342,18 +371,20 @@
 </head>
 <body>
     <!-- Inline SVG icons for cleaner implementation -->
-    <svg width="0" height="0" style="position:absolute;">
+    <svg width="0" height="0" style="position:absolute; display:none;">
         <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
         <symbol id="icon-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m-1-13h2v6h-2zm4.25 6.5l-1.42 1.41L12.5 16.2V11h1.5v4.5l2.12 2.12l1.41-1.42z"/></symbol>
         <symbol id="icon-location" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7m0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5"/></symbol>
         <symbol id="icon-shield-account" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,6.16C13.5,6.16 14.58,7.18 14.58,8.62C14.58,10.06 13.5,11.08 12,11.08C10.5,11.08 9.42,10.06 9.42,8.62C9.42,7.18 10.5,6.16 12,6.16M16.5,16.03C15.5,14.73 13.83,14 12,14C10.17,14 8.5,14.73 7.5,16.03C6.73,15.11 6.16,14.04 5.82,12.91C6.9,12.12 8.3,11.69 9.87,11.83C10.6,12.5 11.23,13 12,13C12.77,13 13.4,12.5 14.13,11.83C15.7,11.69 17.1,12.12 18.18,12.91C17.84,14.04 17.27,15.11 16.5,16.03Z" /></symbol>
         <symbol id="icon-balance" viewBox="0 0 24 24"><path fill="currentColor" d="M6,16.5L3,19.44V17.5A2.5,2.5 0 0,1 5.5,15A2.5,2.5 0 0,1 8,17.5V19.44L5,16.5H6M18,16.5L15,19.44V17.5A2.5,2.5 0 0,1 17.5,15A2.5,2.5 0 0,1 20,17.5V19.44L17,16.5H18M11.5,16.5A2.5,2.5 0 0,1 14,19A2.5,2.5 0 0,1 11.5,21.5A2.5,2.5 0 0,1 9,19A2.5,2.5 0 0,1 11.5,16.5M12,2L14.5,4.5L12,7L9.5,4.5L12,2M4.07,5.5C3.86,6.22 3.73,7 3.73,7.75L8.5,12.5L12,9L4.07,5.5M19.93,5.5L12,9L15.5,12.5L20.27,7.75C20.27,7 20.14,6.22 19.93,5.5Z"></path></symbol>
+        <symbol id="icon-compass" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-11.5L14 8l-2.5 4.5L9.5 8l4.5 2.5z"/></symbol>
+        <symbol id="icon-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></symbol>
     </svg>
 
     <nav class="landing-nav">
         <a href="#" class="landing-nav-title">
-            <img src="ai-ico.png" alt="smart-head" class="nav-photo">
-            <span>AI workshop v Brně pro podnikatele a živnostníky</span>
+            <img src="ai-ico.png" alt="Logo AI workshopu" class="nav-photo">
+            <span>AI workshop v Brně pro podnikatele</span>
         </a>
         <a href="#propojit" class="landing-nav-contact">Kontakt</a>
     </nav>
@@ -413,7 +444,7 @@
                 </div>
 
                 <div class="info-box">
-                    <h3><svg width="28" height="28" viewBox="0 0 24 24"><use xlink:href="#icon-shield-account"></use></svg>Průvodce nastavením Google Workspace účtu</h3>
+                    <h3><svg width="28" height="28" viewBox="0 0 24 24"><use xlink:href="#icon-shield-account"></use></svg>Průvodce nastavením Google Workspace</h3>
                     <p>Pro plné a bezpečné využití AI ve vašem podnikání je klíčový <strong>Google Workspace účet</strong>. Připravil jsem pro vás podrobný návod, jak si vše správně nastavit a proč je to pro vaše data důležité.</p>
                     <a href="licence.html" class="cta-button-small">Zobrazit návod</a>
                 </div>
@@ -424,12 +455,18 @@
                     <a href="srovnani.html" class="cta-button-small" style="background-color: var(--accent-color);">Přejít na srovnání</a>
                 </div>
 
+                <div class="info-box" style="border-left-color: var(--warning-color); background-color: #fffbeb; margin-top: 30px;">
+                    <h3><svg width="28" height="28" viewBox="0 0 24 24"><use xlink:href="#icon-compass"></use></svg>AI Kompas: Najděte si svůj nástroj</h3>
+                    <p>Nejste si jistí, který AI nástroj je pro vás ten pravý? Udělejte si rychlý test a zjistěte, jestli je pro vás lepší ChatGPT, Gemini, nebo jiný specialista.</p>
+                    <a href="ai-kompas.html" class="cta-button-small" style="background-color: var(--warning-color);">Spustit AI Kompas</a>
+                </div>
+
                 <div style="text-align: center; margin-top: 50px;">
                     <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button">Chci se registrovat!</a>
                 </div>
             </div>
         </section>
-        <section id="program">
+        <section id="program" style="background-color: var(--light-gray);">
             <div class="container">
                 <h2 class="section-title">Program workshopu</h2>
                 <p class="section-subtitle">Přehled témat, která z vás udělají pokročilého uživatele AI nástrojů od Google.</p>
@@ -474,11 +511,11 @@
                     <img src="profilova-fotka.jpg" alt="Portrét Mgr. Gabriela Kožíka" loading="lazy">
                     <h3>Mgr. Gabriel Kožík</h3>
                     <p>Jsem AI stratég a networker. Pomáhám firmám a freelancerům efektivně integrovat AI nástroje pro jejich růst a úsporu času. Mým cílem je proměnit potenciál umělé inteligence ve vaši reálnou konkurenční výhodu.</p>
-                    <p>Zaměřuji se na praktické využití technologií v podnikání, propojování správných lidí a hledání inovativních cest, jak dělat věci chytřeji a rychleji. Více o mně a mé práci najdete na osobní stránce <a href="https://www.gabrielkozik.com" target="_blank">gabrielkozik.com</a>.</p>
+                    <p>Zaměřuji se na praktické využití technologií v podnikání, propojování správných lidí a hledání inovativních cest, jak dělat věci chytřeji a rychleji. Více o mně a mé práci najdete na osobní stránce <a href="https://www.gabrielkozik.com" target="_blank" class="icon-link">gabrielkozik.com <svg><use xlink:href="#icon-external-link"></use></svg></a>.</p>
                 </div>
             </div>
         </section>
-        <section id="testimonials-section">
+        <section id="testimonials-section" style="background-color: var(--light-gray);">
             <div class="container">
                 <h2 class="section-title">Co říkají účastníci</h2>
                 
@@ -515,8 +552,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="slider-btn prev-btn">‹</button>
-                    <button class="slider-btn next-btn">›</button>
+                    <button class="slider-btn prev-btn" aria-label="Předchozí reference">‹</button>
+                    <button class="slider-btn next-btn" aria-label="Další reference">›</button>
                 </div>
 
                 <p class="section-subtitle" style="margin-top: 40px;">Zajímá vás, jak probíhaly minulé workshopy? Přečtěte si o nich na <a href="https://www.gabrielkozik.com/blog.html" target="_blank">mém blogu</a>.</p>
@@ -542,7 +579,7 @@
             </div>
         </section>
 
-        <section id="propojit">
+        <section id="propojit" style="background-color: var(--light-gray);">
             <div class="container">
                 <h2 class="section-title">Kontaktujte mě</h2>
                 <p class="section-subtitle">V případě jakýchkoliv dotazů jsem tu pro vás.</p>
@@ -563,7 +600,7 @@
             <p>Telefon: <a href="tel:+420720265713">+420 720 265 713</a></p>
             <p>IČO: 05187559</p>
             <p>Slovákova 279/11, Brno</p>
-            <p><a href="licence.html">Průvodce nastavením Google AI</a> | <a href="srovnani.html">Srovnání Gemini vs. ChatGPT</a></p>
+            <p><a href="licence.html">Průvodce nastavením Google AI</a> | <a href="srovnani.html">Srovnání Gemini vs. ChatGPT</a> | <a href="ai-kompas.html">AI Kompas</a></p>
         </div>
         <div class="copyright">
             <p>&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
@@ -586,81 +623,83 @@
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
             
-            if (slides.length > 1) { 
-                const slideCount = slides.length;
-                let currentIndex = 1;
-                let isTransitioning = false;
-                let autoSlideInterval;
-
-                const firstClone = slides[0].cloneNode(true);
-                const lastClone = slides[slideCount - 1].cloneNode(true);
-
-                slider.appendChild(firstClone);
-                slider.insertBefore(lastClone, slides[0]);
-
-                const updateSliderPosition = (instant = false) => {
-                    slider.style.transition = instant ? 'none' : 'transform 0.5s ease-in-out';
-                    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-                };
-                
-                updateSliderPosition(true);
-
-                const moveToNextSlide = () => {
-                    if (isTransitioning) return;
-                    isTransitioning = true;
-                    currentIndex++;
-                    updateSliderPosition();
-                };
-
-                const moveToPrevSlide = () => {
-                    if (isTransitioning) return;
-                    isTransitioning = true;
-                    currentIndex--;
-                    updateSliderPosition();
-                };
-
-                const startAutoSlide = () => {
-                    stopAutoSlide();
-                    autoSlideInterval = setInterval(moveToNextSlide, 5000);
-                };
-
-                const stopAutoSlide = () => {
-                    clearInterval(autoSlideInterval);
-                };
-
-                const resetAutoSlide = () => {
-                    stopAutoSlide();
-                    startAutoSlide();
-                };
-
-                slider.addEventListener('transitionend', () => {
-                    isTransitioning = false;
-                    if (currentIndex >= slideCount + 1) {
-                        currentIndex = 1;
-                        updateSliderPosition(true);
-                    }
-                    if (currentIndex <= 0) {
-                        currentIndex = slideCount;
-                        updateSliderPosition(true);
-                    }
-                });
-
-                nextBtn.addEventListener('click', () => {
-                    moveToNextSlide();
-                    resetAutoSlide();
-                });
-
-                prevBtn.addEventListener('click', () => {
-                    moveToPrevSlide();
-                    resetAutoSlide();
-                });
-
-                sliderContainer.addEventListener('mouseenter', stopAutoSlide);
-                sliderContainer.addEventListener('mouseleave', startAutoSlide);
-
-                startAutoSlide();
+            if (slides.length <= 1) {
+                if(prevBtn) prevBtn.style.display = 'none';
+                if(nextBtn) nextBtn.style.display = 'none';
+                return;
             }
+
+            const slideCount = slides.length;
+            let currentIndex = 1;
+            let isTransitioning = false;
+            let autoSlideInterval;
+
+            const firstClone = slides[0].cloneNode(true);
+            const lastClone = slides[slideCount - 1].cloneNode(true);
+
+            slider.appendChild(firstClone);
+            slider.insertBefore(lastClone, slides[0]);
+
+            const updateSliderPosition = (instant = false) => {
+                slider.style.transition = instant ? 'none' : 'transform 0.5s ease-in-out';
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            };
+            
+            updateSliderPosition(true);
+
+            const moveToNextSlide = () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex++;
+                updateSliderPosition();
+            };
+
+            const moveToPrevSlide = () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex--;
+                updateSliderPosition();
+            };
+
+            const startAutoSlide = () => {
+                stopAutoSlide();
+                autoSlideInterval = setInterval(moveToNextSlide, 5000);
+            };
+
+            const stopAutoSlide = () => {
+                clearInterval(autoSlideInterval);
+            };
+
+            slider.addEventListener('transitionend', () => {
+                isTransitioning = false;
+                if (currentIndex >= slideCount + 1) {
+                    currentIndex = 1;
+                    updateSliderPosition(true);
+                }
+                if (currentIndex <= 0) {
+                    currentIndex = slideCount;
+                    updateSliderPosition(true);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                moveToNextSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                moveToPrevSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+
+            sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+            sliderContainer.addEventListener('mouseleave', startAutoSlide);
+
+            startAutoSlide();
         });
     </script>
 </body>
 </html>
+
