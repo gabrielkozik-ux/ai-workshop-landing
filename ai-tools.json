@@ -1,0 +1,154 @@
+{
+  "tools": [
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT (GPT-5)",
+      "fit_weight": 5,
+      "archetype": "Kreativní Univerzál",
+      "summary": "Univerzální a kreativní model, skvělý pro tvorbu obsahu, brainstorming a rychlé generování nápadů.",
+      "idealFor": "Uživatelé, kteří chtějí rychle generovat texty, nápady, obrázky a potřebují flexibilní nástroj pro různorodé úkoly.",
+      "watchOutFor": "Při požadavku na absolutní faktickou přesnost je nutná kontrola, protože může občas fabulovat.",
+      "availability": "Základní verze je zdarma, pokročilejší funkce a vyšší rychlost jsou v placené verzi (Plus/Team).",
+      "strengths": { "marketing": 5, "analysis": 4, "automation": 4 },
+      "details": {
+        "key_abilities": [
+          "Plná multimodalita: Umí pracovat s textem, obrázky i videem zároveň.",
+          "Agentní schopnosti pro vykonávání komplexních, vícekrokových úkolů.",
+          "Obrovské kontextové okno pro práci s rozsáhlými dokumenty.",
+          "Jednotná architektura s automatickým přepínáním mezi rychlým a 'přemýšlivým' režimem."
+        ],
+        "use_cases": [
+          "Během minuty napíše reklamní příspěvek na Facebook nebo Instagram.",
+          "Vytvoří kompletní obsah pro blog včetně obrázků a návrhů videí.",
+          "Pomůže s analýzou zpětné vazby od zákazníků a navrhne odpovědi.",
+          "Vytvoří osnovu pro firemní prezentaci nebo onboarding plán pro nové kolegy."
+        ],
+        "risks": [
+          "I přes vylepšení je stále nutná lidská kontrola u fakticky citlivých úkolů.",
+          "Pro plné využití agentních schopností je nutná integrace přes API a další technické znalosti."
+        ],
+        "comparison": "Je vnímán jako nejvyváženější a nejuniverzálnější model na trhu. Vyniká v hloubkovém výzkumu a má nejvyspělejší ekosystém nástrojů. Konkurence může být lepší v dílčích specializacích."
+      }
+    },
+    {
+      "id": "gemini",
+      "name": "Google Gemini",
+      "fit_weight": 4,
+      "archetype": "Pragmatický Analytik",
+      "summary": "Multimodální model silně propojený s ekosystémem Google, excelentní v práci s daty a vlastními zdroji.",
+      "idealFor": "Firmy a jednotlivci v Google Workspace, kteří potřebují analyzovat data, dokumenty a hledat strukturované odpovědi.",
+      "watchOutFor": "Kreativní výstupy mohou být někdy konzervativnější a méně 'odvážné'.",
+      "availability": "Základní verze je dostupná s Google účtem. Pokročilejší funkce jsou součástí placených plánů Google One AI nebo Google Workspace.",
+      "strengths": { "marketing": 4, "analysis": 5, "automation": 4 },
+      "details": {
+        "key_abilities": [
+          "Nativní multimodalita: Zpracovává text, obraz, audio a video v jednom kroku.",
+          "Masivní kontextové okno (přes 1 milion tokenů), největší na trhu.",
+          "Pokročilé uvažování ('Thinking') pro vyšší přesnost a spolehlivost.",
+          "Bezpečná znalostní báze NotebookLM, která omezuje vymýšlení si (halucinace)."
+        ],
+        "use_cases": [
+          "Analyzuje extrémně dlouhé dokumenty (roční zprávy, právní spisy, smlouvy).",
+          "Zpracuje data z tabulky v Google Sheets a vytvoří z nich grafy.",
+          "Vytvoří interní znalostní bázi nebo školicí materiály z vašich dokumentů.",
+          "Shrne klíčové body ze záznamu online schůzky (video i audio)."
+        ],
+        "risks": [
+          "Největší síla se projeví až v plném propojení s Google ekosystémem (Workspace).",
+          "Některé pokročilé funkce vyžadují technické nastavení přes API."
+        ],
+        "comparison": "Jeho hlavní výhodou je obrovský kontext a hluboká integrace s Google nástroji. Ideální pro firmy, které již v tomto ekosystému pracují. Oproti ChatGPT může být méně kreativní v čistě textových úlohách."
+      }
+    },
+    {
+      "id": "claude",
+      "name": "Claude 3 Opus",
+      "fit_weight": 4,
+      "archetype": "Pečlivý Systematik",
+      "summary": "Spolehlivý a bezpečný model, vynikající v práci s dlouhými texty, dokumenty, kódem a automatizací.",
+      "idealFor": "Vývojáři, právníci a analytici, kteří potřebují zpracovat velké objemy dat a vyžadují konzistentní a bezpečné výstupy.",
+      "watchOutFor": "Jeho bezpečnostní mechanismy mohou být někdy až příliš opatrné a odmítat některé dotazy.",
+      "availability": "Dostupný přes webové rozhraní a API. Má bezplatnou verzi s limity, plný výkon je v placené verzi.",
+      "strengths": { "marketing": 4, "analysis": 4, "automation": 5 },
+      "details": {
+        "key_abilities": [
+          "Špičkové schopnosti v oblasti programování a 'používání počítače'.",
+          "Pokročilá sada nástrojů pro vývojáře (Agent SDK) pro tvorbu vlastních agentů.",
+          "Funkce pro správu dlouhodobých úkolů (Context Editing, Memory Tool).",
+          "Silný důraz na bezpečnost a sladění s legislativou."
+        ],
+        "use_cases": [
+          "Automatizuje složité, vícekrokové pracovní postupy (např. zpracování objednávek).",
+          "Pomáhá s rychlým prototypováním a psaním funkčního kódu.",
+          "Automaticky zpracovává dokumenty jako faktury a smlouvy.",
+          "Tvoří pokročilé agenty pro zákaznickou podporu, kteří řeší problémy samostatně."
+        ],
+        "risks": [
+          "Chybí nativní podpora pro audio a video vstupy.",
+          "Vyšší cena API oproti některým konkurentům."
+        ],
+        "comparison": "Jeho hlavní silou je rychlost a schopnost provádět dlouhotrvající autonomní úkoly. Je to 'rychlý juniorní vývojář'. Oproti Gemini postrádá plnou multimodalitu, oproti ChatGPT může být dražší."
+      }
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity AI",
+      "fit_weight": 3,
+      "archetype": "Důsledný Výzkumník",
+      "summary": "Konverzační vyhledávač, který poskytuje odpovědi podložené citacemi a aktuálními zdroji z internetu.",
+      "idealFor": "Novináři, studenti a kdokoli, kdo dělá rešerše a potřebuje maximálně ověřitelné informace s odkazy na zdroje.",
+      "watchOutFor": "Není určen pro kreativní tvorbu obsahu od nuly (např. marketingové texty).",
+      "availability": "Základní verze je zdarma, placená verze (Pro) nabízí pokročilejší modely a neomezené rešerše.",
+      "strengths": { "marketing": 3, "analysis": 5, "automation": 2 },
+      "details": {
+        "key_abilities": [
+          "Funguje jako 'stroj na odpovědi', nikoli jako kreativní chatbot.",
+          "Každé tvrzení je podloženo klikatelným odkazem na zdroj pro okamžitou verifikaci.",
+          "Pokročilé rešeršní módy (Deep Research, Focus Mode) pro hloubkovou analýzu.",
+          "Ekosystém nástrojů včetně prohlížeče a týmových prostorů."
+        ],
+        "use_cases": [
+          "Provede analýzu konkurence a sleduje trendy na trhu v reálném čase.",
+          "Vytvoří fakticky podložený obsah (odborné články, analýzy).",
+          "Pomůže s přípravou na obchodní jednání (analýza profilu klienta).",
+          "Udělá rychlou rešerši dlouhých smluv a finančních výkazů."
+        ],
+        "risks": [
+          "Nižší kreativita v porovnání s ChatGPT nebo Claude.",
+          "Licenční omezení zakazují komerční použití generovaných obrázků."
+        ],
+        "comparison": "Jeho unikátní pozice je v absolutním důrazu na přesnost a citace. Pro rešerše je pravděpodobně nejlepším nástrojem na trhu. Pro kreativní brainstorming jsou vhodnější jiné alternativy."
+      }
+    },
+    {
+      "id": "grok",
+      "name": "Grok",
+      "fit_weight": 2,
+      "archetype": "Odvážný Inovátor",
+      "summary": "Model s přístupem k datům v reálném čase ze sítě X, se specifickým humorem a ochotou riskovat.",
+      "idealFor": "Analytici trendů a stratégové, kteří potřebují nefiltrovaný pohled na aktuální dění a nebojí se experimentovat.",
+      "watchOutFor": "Jeho osobnost a odpovědi nemusí být vhodné pro formální firemní komunikaci.",
+      "availability": "Dostupný jako součást placeného předplatného 'X Premium+'.",
+      "strengths": { "marketing": 2, "analysis": 5, "automation": 3 },
+      "details": {
+        "key_abilities": [
+          "Specializace na pokročilé logické uvažování.",
+          "Unikátní a exkluzivní integrace s daty z platformy X (Twitter) v reálném čase.",
+          "Portfolio modelů pro různé účely (výkonný vs. efektivní).",
+          "Rozvíjející se schopnost rozumět a generovat nejen text, ale i vizuální obsah."
+        ],
+        "use_cases": [
+          "Analyzuje tržní sentiment a sleduje konkurenci na sociálních sítích.",
+          "Modernizuje a analyzuje starší (legacy) kód.",
+          "Provádí hloubkovou analýzu finančních výkazů a regulatorních dokumentů.",
+          "Pomáhá s vědeckými a technickými simulacemi v rámci výzkumu a vývoje."
+        ],
+        "risks": [
+          "Absence generování statických obrázků (klíčové pro marketing).",
+          "Reputační riziko kvůli tendenci generovat kontroverzní nebo předpojatý obsah."
+        ],
+        "comparison": "Je to specializovaný nástroj pro experty na složité problémy. Vyniká v analýze sociálních médií a v úlohách vyžadujících hluboké logické uvažování. Pro běžnou firemní a marketingovou komunikaci je rizikový a méně vhodný."
+      }
+    }
+  ]
+}
