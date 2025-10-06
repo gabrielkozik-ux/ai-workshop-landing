@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+    <!-- Schema for events -->
     <script type="application/ld+json">
     [{
       "@context": "https://schema.org",
@@ -227,7 +228,6 @@
             color: var(--secondary-color);
         }
         section { padding: 60px 20px; }
-        section:nth-child(even) { background-color: var(--light-gray); }
         .section-title {
             text-align: center;
             font-size: 2.5em;
@@ -388,6 +388,7 @@
     
 </head>
 <body>
+    <!-- Inline SVG icons for cleaner implementation -->
     <svg width="0" height="0" style="position:absolute; display:none;">
         <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
         <symbol id="icon-clock" viewBox="0 0 24 24"><image href="clock-icon.png" width="24" height="24"/></symbol>
@@ -447,7 +448,7 @@
             </div>
         </section>
 
-        <section id="workshop-info">
+        <section id="workshop-info" style="background-color: var(--light-gray);">
             <div class="container">
                 <h2 class="section-title">Co si z workshopu odnesete?</h2>
                 <p class="section-subtitle">Tento workshop není o teorii. Je navržen tak, abyste si odnesli dovednosti, které okamžitě zavedete do své praxe a uvidíte výsledky.</p>
@@ -491,7 +492,7 @@
             </div>
         </section>
         
-        <section id="program" style="background-color: var(--light-gray);">
+        <section id="program">
             <div class="container">
                 <h2 class="section-title">Program workshopu</h2>
                 <p class="section-subtitle">Přehled témat, která z vás udělají pokročilého uživatele AI nástrojů od Google.</p>
@@ -530,7 +531,7 @@
             </div>
         </section>
 
-        <section id="workshop-reports" style="background-color: var(--white); text-align: center;">
+        <section id="workshop-reports" style="background-color: var(--light-gray); text-align: center;">
             <div class="container">
                  <h2 class="section-title" style="margin-bottom: 20px;">Zkušenosti z praxe</h2>
                  <p class="section-subtitle" style="margin-top:0; margin-bottom: 30px;">Prohlédněte si reportážní shrnutí z mých minulých workshopů na mé webové stránce.</p>
