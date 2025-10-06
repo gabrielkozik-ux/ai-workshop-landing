@@ -118,7 +118,7 @@
             color: var(--secondary-color);
         }
         .hero {
-            background-image: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url(uvodni-obrazek.jpg);
+            background-image: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url(https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=2070&auto=format&fit=crop);
             background-size: cover;
             background-position: 50%;
             background-repeat: no-repeat;
@@ -140,7 +140,7 @@
             text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
         }
         .workshop-details-box {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 25px;
@@ -228,7 +228,6 @@
             color: var(--secondary-color);
         }
         section { padding: 60px 20px; }
-        section:nth-child(even) { background-color: var(--light-gray); }
         .section-title {
             text-align: center;
             font-size: 2.5em;
@@ -349,6 +348,25 @@
         .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 40px; }
         .portfolio-item { background-color: var(--light-gray); color: var(--text-color); padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 8px; transition: all 0.3s ease; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .portfolio-item:hover { background-color: #e0e0e0; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: var(--primary-color); }
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
         
         @media (max-width: 768px) {
             .hero { padding: 60px 20px; }
@@ -373,14 +391,14 @@
     <!-- Inline SVG icons for cleaner implementation -->
     <svg width="0" height="0" style="position:absolute; display:none;">
         <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
-        <symbol id="icon-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m-1-13h2v6h-2zm4.25 6.5l-1.42 1.41L12.5 16.2V11h1.5v4.5l2.12 2.12l1.41-1.42z"/></symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24"><image href="clock-icon.png" width="24" height="24"/></symbol>
         <symbol id="icon-location" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7m0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5"/></symbol>
         <symbol id="icon-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></symbol>
     </svg>
 
     <nav class="landing-nav">
         <a href="#" class="landing-nav-title">
-            <img src="ai-ico.png" alt="Logo AI workshopu" class="nav-photo">
+            <img src="favicon.ico" alt="Logo AI workshopu" class="nav-photo">
             <span>AI workshop v Brně pro podnikatele</span>
         </a>
         <a href="#propojit" class="landing-nav-contact">Kontakt</a>
@@ -389,7 +407,7 @@
     <header class="hero">
         <div class="container">
             <h1>Proměňte AI v reálnou výhodu pro vaše podnikání</h1>
-            <p>Praktický workshop, kde se naučíte používat Google AI nástroje k automatizaci práce, tvorbě kvalitního obsahu a úspoře desítek hodin měsíčně.</p>
+            <p>Ušetřete desítky hodin měsíčně a získejte náskok. Předám vám praktické know-how z téměř 3 let každodenního využívání AI v byznysu. Žádná teorie, jen praxe.</p>
             
             <div class="workshop-details-box">
                 <div class="detail-item">
@@ -420,23 +438,33 @@
         </div>
     </header>
     <main>
-        <section id="workshop-info">
+        <section id="why-google-ai">
+            <div class="container">
+                <h2 class="section-title">Proč Google a Gemini v rámci Workspace?</h2>
+                <p class="section-subtitle">Protože je stejně výkonný jako ChatGPT, má větší kontextové okno (víc si "pamatuje") a navíc je plně integrovaný do Google ekosystému, v rámci kterého se připravuje automatizace - viz následující ukázka:</p>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fBmHNeDXYu8?si=9FtLtQSmFtaXToMa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="workshop-info" style="background-color: var(--light-gray);">
             <div class="container">
                 <h2 class="section-title">Co si z workshopu odnesete?</h2>
-                <p class="section-subtitle">Tento interaktivní workshop je navržen tak, abyste si odnesli praktické dovednosti pro okamžité nasazení ve vaší praxi.</p>
+                <p class="section-subtitle">Tento workshop není o teorii. Je navržen tak, abyste si odnesli dovednosti, které okamžitě zavedete do své praxe a uvidíte výsledky.</p>
                 
                 <div class="features-grid">
                     <div class="feature-item">
-                        <h3>Automatizace a úspora času</h3>
-                        <p>Naučíte se delegovat rutinní úkoly na AI. Od rešerší a analýz až po přípravu e-mailů a reportů. Vytvoříte si vlastní asistenty, kteří vám ušetří hodiny práce každý týden.</p>
+                        <h3>Od rešerší po tvorbu obsahu</h3>
+                        <p>Naučíte se vše, co jako podnikatel potřebujete: efektivně vyhledávat informace, tvořit marketingové materiály, zefektivnit brainstorming a získávat cennou zpětnou vazbu. To vše s nástroji, které jsou bezpečné a připravené na budoucnost.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Tvorba obsahu na autopilota</h3>
-                        <p>Ovládnete pokročilé techniky promptování pro generování marketingových textů, příspěvků na sítě i grafiky. Získejte nekonečný zdroj inspirace a konzistentní výstupy.</p>
+                        <h3>Konzistentní výsledky a nezávislost</h3>
+                        <p>Pochopíte nejen základní principy, ale i pokročilé techniky, jak od AI dostat přesně to, co chcete. Mým cílem je, abyste po workshopu dokázali své dovednosti dál samostatně rozvíjet a nepotřebovali další kurzy.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Zkušenosti, které jinde nezískáte</h3>
-                        <p>Workshop je postaven na praktických ukázkách a individuálním přístupu. Získáte know-how postavené na reálných příkladech z praxe advokáta a podnikatele.</p>
+                        <h3>Okamžitá úspora času a peněz</h3>
+                        <p>Všechny techniky jsou ověřené mou tříletou denní praxí. Naučené dovednosti vám okamžitě ušetří jednotky až desítky hodin měsíčně, které můžete investovat zpět do růstu vašeho podnikání.</p>
                     </div>
                 </div>
 
@@ -463,7 +491,8 @@
                 </div>
             </div>
         </section>
-        <section id="program" style="background-color: var(--light-gray);">
+        
+        <section id="program">
             <div class="container">
                 <h2 class="section-title">Program workshopu</h2>
                 <p class="section-subtitle">Přehled témat, která z vás udělají pokročilého uživatele AI nástrojů od Google.</p>
@@ -501,14 +530,23 @@
                 </div>
             </div>
         </section>
+
+        <section id="workshop-reports" style="background-color: var(--light-gray); text-align: center;">
+            <div class="container">
+                 <h2 class="section-title" style="margin-bottom: 20px;">Zkušenosti z praxe</h2>
+                 <p class="section-subtitle" style="margin-top:0; margin-bottom: 30px;">Prohlédněte si reportážní shrnutí z mých minulých workshopů na mé webové stránce.</p>
+                 <a href="https://www.gabrielkozik.com/blog.html" target="_blank" class="cta-button secondary">Přejít na blog</a>
+            </div>
+        </section>
+        
         <section id="instructor">
             <div class="container">
                 <h2 class="section-title">O lektorovi</h2>
                 <div class="instructor-section">
                     <img src="profilova-fotka.jpg" alt="Portrét Mgr. Gabriela Kožíka" loading="lazy">
                     <h3>Mgr. Gabriel Kožík</h3>
-                    <p>Jsem AI stratég a networker. Pomáhám firmám a freelancerům efektivně integrovat AI nástroje pro jejich růst a úsporu času. Mým cílem je proměnit potenciál umělé inteligence ve vaši reálnou konkurenční výhodu.</p>
-                    <p>Zaměřuji se na praktické využití technologií v podnikání, propojování správných lidí a hledání inovativních cest, jak dělat věci chytřeji a rychleji. Více o mně a mé práci najdete na osobní stránce <a href="https://www.gabrielkozik.com" target="_blank" class="icon-link">gabrielkozik.com <svg><use xlink:href="#icon-external-link"></use></svg></a>.</p>
+                    <p>Jsem advokát, lektor generativní AI a networker. Poslední tři roky se denně věnuji praktickému využití AI nástrojů ve svém podnikání. Mým cílem není jen vám ukázat, jak nástroje ovládat, ale naučit vás přemýšlet tak, abyste se mohli dál rozvíjet sami.</p>
+                    <p>Specializuji se na bezpečné a efektivní nasazení AI (převážně Google Gemini a NotebookLM) pro živnostníky a firmy, kteří chtějí ušetřit čas a získat konkurenční výhodu. Více o mně a mé práci najdete na osobní stránce <a href="https://www.gabrielkozik.com" target="_blank" class="icon-link">gabrielkozik.com <svg><use xlink:href="#icon-external-link"></use></svg></a>.</p>
                 </div>
             </div>
         </section>
@@ -524,7 +562,7 @@
                                 <p class="author">- Jiří J.</p>
                             </div>
                             <div class="testimonial-item">
-                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psáním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
+                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psaním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
                                 <p class="author">- Jiří U.</p>
                             </div>
                             <div class="testimonial-item">
@@ -699,5 +737,3 @@
     </script>
 </body>
 </html>
-
-
