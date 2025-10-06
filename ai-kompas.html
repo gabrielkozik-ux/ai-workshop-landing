@@ -389,14 +389,13 @@
         const WEIGHTS = { Q1: { A: { chatgpt: 3, gemini: 2, claude: 1 }, B: { perplexity: 3, gemini: 2, grok: 2, claude: 1 }, C: { claude: 3, chatgpt: 2, gemini: 1 } }, Q2: { A: { perplexity: 3, grok: 3, gemini: 1 }, B: { claude: 3, gemini: 2, chatgpt: 2 }, C: { gemini: 3, chatgpt: 2, perplexity: 1 } }, Q3: { A: { chatgpt: 3, grok: 2 }, B: { gemini: 3, claude: 2, chatgpt: 1 }, C: { perplexity: 3, claude: 2, gemini: 1 } }, Q4: { A: { chatgpt: 3, grok: 1 }, B: { gemini: 3, perplexity: 2, claude: 1 }, C: { claude: 3, chatgpt: 1, gemini: 1 } }, Q5: { A: { perplexity: 3, gemini: 2 }, B: { chatgpt: 3, gemini: 2, claude: 1 }, C: { claude: 3, chatgpt: 2, grok: 1 } } };
         const state = { tools: [], answers: {}, qIndex: 0 };
         
-        // Changed: Replaced SVG strings with image paths
         const toolIcons = {
             chatgpt: 'chatgpt-icon.png',
             gemini: 'gemini-icon.png',
             claude: 'claude-icon.png',
             perplexity: 'perplexity-icon.webp',
             grok: 'grok-icon.png',
-            default: '' // Default placeholder can be added here
+            default: ''
         };
 
         const $ = (selector) => document.querySelector(selector);
@@ -506,7 +505,6 @@
             const card = document.createElement('div');
             card.className = `result-card ${isPrimary ? 'primary' : ''}`;
             
-            // Changed: Replaced SVG with an <img> tag
             const iconHtml = `<div class="logo-icon"><img src="${toolIcons[t.id] || toolIcons.default}" alt="Logo ${escapeHtml(t.name)}"></div>`;
 
             card.innerHTML = `<div class="header"><div class="header-title">${iconHtml}<div><h4>${escapeHtml(t.name || item.id)}</h4><span class="archetype-pill">${escapeHtml(t.archetype)}</span></div></div><span class="score-badge ${scoreClass}">Shoda: ${item.score} bodů</span></div><p>${escapeHtml(t.summary)}</p><strong>Ideální pro vás, pokud:</strong><p>${escapeHtml(t.idealFor)}</p><strong>Dostupnost a cena:</strong><p>${escapeHtml(t.availability)}</p><div class="kpi-scores"><span>Marketing: <strong>${t.strengths?.marketing || '-'}/5</strong></span><span>Analýza: <strong>${t.strengths?.analysis || '-'}/5</strong></span><span>Automatizace: <strong>${t.strengths?.automation || '-'}/5</strong></span></div><button class="btn secondary" data-toolid="${t.id}" style="margin-top: 15px; width: 100%;">Zobrazit podrobnou analýzu</button>`;
@@ -537,7 +535,8 @@
         
         function focusOnElement(el) { if (!el) return; el.setAttribute("tabindex", "-1"); el.focus({ preventScroll: true }); el.removeAttribute("tabindex"); }
         
-        function escapeHtml(str = "") { return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#0-9;' })[m]); }
+        // Corrected the typo in the escapeHtml function
+        function escapeHtml(str = "") { return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m]); }
         
         function getFallbackTools() { return [ { id:"chatgpt", name:"ChatGPT", fit_weight: 5, archetype: "Kreativec", strengths:{marketing:5,analysis:4,automation:4}, summary:"Univerzální nástroj pro tvorbu obsahu a nápadů.", idealFor:"Rychlé generování textů a kreativní brainstorming.", availability: "Fallback data.", details: {key_abilities: ["Fallback data"], use_cases: ["Fallback data"], risks: ["Fallback data"], comparison: "Fallback data"} } ]; }
         
@@ -546,3 +545,4 @@
     </script>
 </body>
 </html>
+
