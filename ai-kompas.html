@@ -113,6 +113,30 @@
             margin: 0 auto 40px;
             color: var(--text-color);
         }
+        .back-link-section {
+            padding: 40px 20px;
+            background-color: var(--white);
+            text-align: center;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background-color: #238c76;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
         footer {
             background-color: var(--primary-color);
             color: rgba(255, 255, 255, 0.8);
@@ -218,8 +242,6 @@
             <span>AI workshop v Brně</span>
         </a>
         <div class="nav-links">
-            <a href="licence.html">Nastavení AI</a>
-            <a href="srovnani.html">Srovnání</a>
             <a href="index.html" class="cta-nav-button">Zpět na workshop</a>
         </div>
     </nav>
@@ -297,11 +319,15 @@
         </section>
     </main>
     
+    <section class="back-link-section">
+        <div class="container">
+             <a href="index.html" class="cta-button">Zpět na hlavní stránku workshopu</a>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
-            <p><strong>Mgr. Gabriel Kožík</strong></p>
-            <p>E-mail: <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a> | Telefon: <a href="tel:+420720265713">+420 720 265 713</a></p>
-            <p><a href="licence.html">Průvodce nastavením Google AI</a> | <a href="srovnani.html">Srovnání Gemini vs. ChatGPT</a> | <a href="ai-kompas.html">AI Kompas</a></p>
+            <p><strong>Mgr. Gabriel Kožík</strong> | <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a> | <a href="tel:+420720265713">+420 720 265 713</a></p>
         </div>
         <div class="copyright">
             <p>&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
@@ -321,7 +347,7 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const JSON_PATH = "./ai-tools.json";
+        const JSON_PATH = "ai-tools.json";
         const NEWSLETTER_ENDPOINT = ""; // Placeholder for a real endpoint
         const quizQuestions = [
             { key: "Q1", title: "Co je vaším hlavním cílem?", type: "multiple", answers: { A: "Tvorba obsahu a marketing", B: "Analýza dat a rešerše", C: "Automatizace a efektivita" } },
@@ -348,7 +374,7 @@
                 const res = await fetch(JSON_PATH, { cache: "no-cache" });
                 if (!res.ok) throw new Error(`Chyba načítání dat (${res.status})`);
                 state.tools = (await res.json()).tools || [];
-                if (state.tools.length === 0) throw new Error("Soubor ai_tools.json neobsahuje žádné nástroje.");
+                if (state.tools.length === 0) throw new Error("Soubor ai-tools.json neobsahuje žádné nástroje.");
             } catch (err) {
                 console.error(err);
                 state.tools = getFallbackTools();
