@@ -118,7 +118,7 @@
             color: var(--secondary-color);
         }
         .hero {
-            background-image: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url(uvodni-obrazek.jpg);
+            background-image: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url(https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=2070&auto=format&fit=crop);
             background-size: cover;
             background-position: 50%;
             background-repeat: no-repeat;
@@ -349,6 +349,25 @@
         .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 40px; }
         .portfolio-item { background-color: var(--light-gray); color: var(--text-color); padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 8px; transition: all 0.3s ease; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .portfolio-item:hover { background-color: #e0e0e0; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); color: var(--primary-color); }
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin-top: 50px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
         
         @media (max-width: 768px) {
             .hero { padding: 60px 20px; }
@@ -380,7 +399,7 @@
 
     <nav class="landing-nav">
         <a href="#" class="landing-nav-title">
-            <img src="ai-ico.png" alt="Logo AI workshopu" class="nav-photo">
+            <img src="https://assets-global.website-files.com/62908d6275525916559561b3/6488310087455a40a85d398e_62908d6275525907ab9562a9_gemini-logo.jpeg" alt="Logo AI workshopu" class="nav-photo">
             <span>AI workshop v Brně pro podnikatele</span>
         </a>
         <a href="#propojit" class="landing-nav-contact">Kontakt</a>
@@ -389,7 +408,7 @@
     <header class="hero">
         <div class="container">
             <h1>Proměňte AI v reálnou výhodu pro vaše podnikání</h1>
-            <p>Praktický workshop, kde se naučíte používat Google AI nástroje k automatizaci práce, tvorbě kvalitního obsahu a úspoře desítek hodin měsíčně.</p>
+            <p>Ušetřete desítky hodin měsíčně a získejte náskok. Předám vám praktické know-how z téměř 3 let každodenního využívání AI v byznysu. Žádná teorie, jen praxe.</p>
             
             <div class="workshop-details-box">
                 <div class="detail-item">
@@ -423,37 +442,42 @@
         <section id="workshop-info">
             <div class="container">
                 <h2 class="section-title">Co si z workshopu odnesete?</h2>
-                <p class="section-subtitle">Tento interaktivní workshop je navržen tak, abyste si odnesli praktické dovednosti pro okamžité nasazení ve vaší praxi.</p>
+                <p class="section-subtitle">Tento workshop není o teorii. Je navržen tak, abyste si odnesli dovednosti, které okamžitě zavedete do své praxe a uvidíte výsledky.</p>
                 
                 <div class="features-grid">
                     <div class="feature-item">
-                        <h3>Automatizace a úspora času</h3>
-                        <p>Naučíte se delegovat rutinní úkoly na AI. Od rešerší a analýz až po přípravu e-mailů a reportů. Vytvoříte si vlastní asistenty, kteří vám ušetří hodiny práce každý týden.</p>
+                        <h3>Od rešerší po tvorbu obsahu</h3>
+                        <p>Naučíte se vše, co jako podnikatel potřebujete: efektivně vyhledávat informace, tvořit marketingové materiály, zefektivnit brainstorming a získávat cennou zpětnou vazbu. To vše s nástroji, které jsou bezpečné a připravené na budoucnost.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Tvorba obsahu na autopilota</h3>
-                        <p>Ovládnete pokročilé techniky promptování pro generování marketingových textů, příspěvků na sítě i grafiky. Získejte nekonečný zdroj inspirace a konzistentní výstupy.</p>
+                        <h3>Konzistentní výsledky a nezávislost</h3>
+                        <p>Pochopíte nejen základní principy, ale i pokročilé techniky, jak od AI dostat přesně to, co chcete. Mým cílem je, abyste po workshopu dokázali své dovednosti dál samostatně rozvíjet a nepotřebovali další kurzy.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Zkušenosti, které jinde nezískáte</h3>
-                        <p>Workshop je postaven na praktických ukázkách a individuálním přístupu. Získáte know-how postavené na reálných příkladech z praxe advokáta a podnikatele.</p>
+                        <h3>Okamžitá úspora času a peněz</h3>
+                        <p>Všechny techniky jsou ověřené mou tříletou denní praxí. Naučené dovednosti vám okamžitě ušetří jednotky až desítky hodin měsíčně, které můžete investovat zpět do růstu vašeho podnikání.</p>
                     </div>
                 </div>
 
+                <h3 class="section-title" style="font-size: 2em; margin-top: 60px;">Podívejte se na ukázku</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fBmHNeDXYu8?si=9FtLtQSmFtaXToMa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
                 <div class="info-box">
-                    <h3><img src="workspace-icon.png" alt="Ikona Google Workspace" width="28" height="28">Průvodce nastavením Google Workspace</h3>
+                    <h3><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Google_Workspace_logo.svg/2499px-Google_Workspace_logo.svg.png" alt="Ikona Google Workspace" width="28" height="28">Průvodce nastavením Google Workspace</h3>
                     <p>Pro plné a bezpečné využití AI ve vašem podnikání je klíčový <strong>Google Workspace účet</strong>. Připravil jsem pro vás podrobný návod, jak si vše správně nastavit a proč je to pro vaše data důležité.</p>
                     <a href="licence.html" class="cta-button-small">Zobrazit návod</a>
                 </div>
 
                 <div class="info-box" style="border-left-color: var(--accent-color); background-color: #e7f1fa; margin-top: 30px;">
-                    <h3><img src="gemini-icon.png" alt="Ikona Google Gemini" width="28" height="28">Srovnání Gemini & ChatGPT</h3>
+                    <h3><img src="https://assets-global.website-files.com/62908d6275525916559561b3/6488310087455a40a85d398e_62908d6275525907ab9562a9_gemini-logo.jpeg" alt="Ikona Google Gemini" width="28" height="28">Srovnání Gemini & ChatGPT</h3>
                     <p>Zajímá vás, jak si ekosystém Google stojí v porovnání s OpenAI? Připravil jsem detailní analýzu strategických, technologických a bezpečnostních rozdílů.</p>
                     <a href="srovnani.html" class="cta-button-small" style="background-color: var(--accent-color);">Přejít na srovnání</a>
                 </div>
 
                 <div class="info-box" style="border-left-color: var(--warning-color); background-color: #fffbeb; margin-top: 30px;">
-                    <h3><img src="compas-icon.png" alt="Ikona kompasu" width="28" height="28">AI Kompas: Najděte si svůj nástroj</h3>
+                    <h3><img src="https://cdn-icons-png.flaticon.com/512/355/355395.png" alt="Ikona kompasu" width="28" height="28">AI Kompas: Najděte si svůj nástroj</h3>
                     <p>Nejste si jistí, který AI nástroj je pro vás ten pravý? Udělejte si rychlý test a zjistěte, jestli je pro vás lepší ChatGPT, Gemini, nebo jiný specialista.</p>
                     <a href="ai-kompas.html" class="cta-button-small" style="background-color: var(--warning-color);">Spustit AI Kompas</a>
                 </div>
@@ -505,10 +529,10 @@
             <div class="container">
                 <h2 class="section-title">O lektorovi</h2>
                 <div class="instructor-section">
-                    <img src="profilova-fotka.jpg" alt="Portrét Mgr. Gabriela Kožíka" loading="lazy">
+                    <img src="https://media.licdn.com/dms/image/D4E03AQGgqI6q6_3UEA/profile-displayphoto-shrink_800_800/0/1693896582509?e=1732320000&v=beta&t=M8-9d_yP1R-e8hS1v-y17u-eS5E1fC1v1sYqXJgH1bA" alt="Portrét Mgr. Gabriela Kožíka" loading="lazy">
                     <h3>Mgr. Gabriel Kožík</h3>
-                    <p>Jsem AI stratég a networker. Pomáhám firmám a freelancerům efektivně integrovat AI nástroje pro jejich růst a úsporu času. Mým cílem je proměnit potenciál umělé inteligence ve vaši reálnou konkurenční výhodu.</p>
-                    <p>Zaměřuji se na praktické využití technologií v podnikání, propojování správných lidí a hledání inovativních cest, jak dělat věci chytřeji a rychleji. Více o mně a mé práci najdete na osobní stránce <a href="https://www.gabrielkozik.com" target="_blank" class="icon-link">gabrielkozik.com <svg><use xlink:href="#icon-external-link"></use></svg></a>.</p>
+                    <p>Jsem advokát, lektor generativní AI a networker. Poslední tři roky se denně věnuji praktickému využití AI nástrojů ve svém podnikání. Mým cílem není jen vám ukázat, jak nástroje ovládat, ale naučit vás přemýšlet tak, abyste se mohli dál rozvíjet sami.</p>
+                    <p>Specializuji se na bezpečné a efektivní nasazení AI (převážně Google Gemini a NotebookLM) pro živnostníky a firmy, kteří chtějí ušetřit čas a získat konkurenční výhodu. Více o mně a mé práci najdete na osobní stránce <a href="https://www.gabrielkozik.com" target="_blank" class="icon-link">gabrielkozik.com <svg><use xlink:href="#icon-external-link"></use></svg></a>.</p>
                 </div>
             </div>
         </section>
@@ -524,7 +548,7 @@
                                 <p class="author">- Jiří J.</p>
                             </div>
                             <div class="testimonial-item">
-                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psáním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
+                                <p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psaním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p>
                                 <p class="author">- Jiří U.</p>
                             </div>
                             <div class="testimonial-item">
@@ -699,5 +723,3 @@
     </script>
 </body>
 </html>
-
-
