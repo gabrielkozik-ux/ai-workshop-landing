@@ -204,6 +204,10 @@
         .share-btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
         .share-btn.linkedin { background-color: #0077b5; } .share-btn.facebook { background-color: #1877f2; }
         
+        /* New CTA styles */
+        .cta-container { text-align: center; margin-top: -20px; }
+        .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
         .modal-overlay.visible { opacity: 1; visibility: visible; }
         .modal-container { background: var(--white); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; transform: scale(0.95); transition: transform 0.3s ease; }
@@ -305,7 +309,7 @@
             </div>
         </section>
 
-        <!-- Newsletter Section -->
+        <!-- Newsletter Section (Temporarily Hidden) -->
         <section id="newsletter" class="hidden">
             <div class="container">
                 <h2 class="section-title">Chcete z AI vytěžit maximum?</h2>
@@ -315,6 +319,20 @@
                     <button type="submit" class="btn">Chci tipy a bonusy</button>
                 </form>
                 <p id="newsletter-status" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- New CTA Section -->
+        <section id="propojit" style="background-color: var(--light-gray);">
+            <div class="container">
+                <h2 class="section-title">Kontaktujte mě</h2>
+                <p class="section-subtitle">V případě jakýchkoliv dotazů jsem tu pro vás.</p>
+                <div class="cta-container">
+                    <div class="cta-buttons">
+                        <a href="mailto:kozik@iustoria.cz" class="btn">Napište mi</a>
+                        <a href="tel:+420720265713" class="btn secondary">+420 720 265 713</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -436,7 +454,14 @@
 
         function updateNavButtons() { const qKey = quizQuestions[state.qIndex].key; const answers = state.answers[qKey]; const hasAnswer = Array.isArray(answers) ? answers.length > 0 : answers !== null; $backBtn.disabled = state.qIndex === 0; $nextBtn.classList.toggle('hidden', state.qIndex === quizQuestions.length - 1); $nextBtn.disabled = !hasAnswer; $finishBtn.classList.toggle('hidden', state.qIndex !== quizQuestions.length - 1); $finishBtn.disabled = !hasAnswer; }
         
-        function onFinish() { const result = computeScore(state.answers, state.tools); renderResults(result); $quiz.classList.add('hidden'); $results.classList.remove('hidden'); $newsletter.classList.remove('hidden'); focusOnElement($('#results-title')); }
+        function onFinish() {
+            const result = computeScore(state.answers, state.tools);
+            renderResults(result);
+            $quiz.classList.add('hidden');
+            $results.classList.remove('hidden');
+            // $newsletter.classList.remove('hidden'); // Dočasně skryto, dokud nebude backend
+            focusOnElement($('#results-title'));
+        }
         
         function computeScore(answers, tools) { const score = {}; tools.forEach(t => score[t.id] = 0); for (const [qKey, ansValue] of Object.entries(answers)) { const ansKeys = Array.isArray(ansValue) ? ansValue : (ansValue ? [ansValue] : []); for (const ansKey of ansKeys) { const mapping = WEIGHTS[qKey]?.[ansKey] || {}; for (const [toolId, points] of Object.entries(mapping)) { if (score[toolId] !== undefined) score[toolId] += points; } } } const enriched = Object.entries(score).map(([id, sc]) => ({ id, score: sc, fit: Number((tools.find(t => t.id === id) || {}).fit_weight ?? 0), tool: tools.find(t => t.id === id) || {} })); enriched.sort((a, b) => (b.score - a.score) || (b.fit - a.fit) || a.id.localeCompare(b.id)); return enriched; }
         
