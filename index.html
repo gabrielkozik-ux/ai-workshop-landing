@@ -227,6 +227,16 @@
         .next-workshop-info a:hover {
             color: var(--secondary-color);
         }
+        /* NEW STYLE for payment explanation */
+        .payment-explanation {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        }
         section { padding: 60px 20px; }
         .section-title {
             text-align: center;
@@ -424,17 +434,29 @@
                 </div>
             </div>
 
+            <!-- MODIFIED: Registration buttons for October -->
             <div class="event-actions">
-                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw==" target="_blank" class="cta-button">Registrovat se hned!</a>
+                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw==" target="_blank" class="cta-button">Registrovat se (přes Influon)</a>
+                <a title='Předprodej akce' target='_blank' class='smsticket-ibutton' href='https://www.smsticket.cz/vstupenky/61916-gemini-a-dalsi-nastroje-od-google-prakticky-efektivne?utm_campaign=smsticket-prodejni-tlacitko' style="--smsticket-bg-color: transparent; --smsticket-text-color: var(--secondary-color); --smsticket-border-color: var(--secondary-color);">Nebo přes smsticket</a>
                 <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%3A%20Prom%C4%9B%C5%88te%20AI%20v%20re%C3%A1lnou%20v%C3%BDhodu&dates=20251017T070000Z/20251017T130000Z&details=V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw%3D%3D&location=IUSTORIA%2C%20advok%C3%A1tn%C3%AD%20kancel%C3%A1%C5%99%2C%20Slov%C3%A1kova%20279/11%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop AI pro podnikatele">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
                 </a>
             </div>
+            <p class="payment-explanation">
+                Pro vaše pohodlí nabízím dvě platební brány. Vyberte si tu, na kterou jste zvyklí.
+            </p>
+            <!-- END OF MODIFICATION -->
             
+            <!-- MODIFIED: Registration for November -->
             <div class="next-workshop-info">
-                <p>Nevyhovuje vám termín? Chystám další workshop <strong>14. listopadu 2025</strong>. 
-                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank">Registrujte se zde</a></p>
+                <p>Nevyhovuje vám termín? Chystám další workshop <strong>14. listopadu 2025</strong>.</p>
+                 <div class="event-actions" style="margin-top: 15px; gap: 10px;">
+                    <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button" style="font-size: 1.1em; padding: 12px 25px;">Registrace (Influon)</a>
+                    <a title='Předprodej akce' target='_blank' class='smsticket-ibutton' href='https://www.smsticket.cz/vstupenky/61911-gemini-a-dalsi-nastroje-od-google-prakticky-efektivne?utm_campaign=smsticket-prodejni-tlacitko' style="font-size: 1.1em; padding: 10px 23px; --smsticket-bg-color: transparent; --smsticket-text-color: #fff; --smsticket-border-color: #fff;">Nebo přes smsticket</a>
+                </div>
             </div>
+            <!-- END OF MODIFICATION -->
+
         </div>
     </header>
     <main>
@@ -735,5 +757,17 @@
             startAutoSlide();
         });
     </script>
+    
+    <!-- ADDED: smsticket script -->
+    <script>
+        (function() {
+            var po = document.createElement('script');
+            po.async = true;
+            po.src = 'https://www.smsticket.cz/static/scripts/widgets/SaleAnchorSmall.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
+        })();
+    </script>
 </body>
 </html>
+
