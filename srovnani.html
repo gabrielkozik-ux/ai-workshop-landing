@@ -15,6 +15,7 @@
             --text-color: #333;
             --light-gray: #f4f4f4;
             --white: #ffffff;
+            --warning-color: #fd7e14; /* Sjednocená barva pro varování */
         }
         html { scroll-behavior: smooth; }
         body {
@@ -144,14 +145,14 @@
         }
         .feature-card li {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
+            align-items: center; /* ZMĚNA: Zarovnání na střed pro lepší vzhled */
+            margin-bottom: 15px; /* Větší mezera pro čitelnost */
         }
         .feature-card .icon {
             font-weight: bold;
             margin-right: 10px;
             font-size: 1.2em;
-            line-height: 1.6;
+            line-height: 1;
         }
         .feature-card .icon-main { color: var(--secondary-color); }
         .feature-card .icon-alt { color: var(--accent-color); }
@@ -233,8 +234,8 @@
         .comparison-table tbody tr:nth-child(even) {
             background-color: var(--light-gray);
         }
-        .comparison-table .text-ok { color: #2ca58d; font-weight: 500; }
-        .comparison-table .text-danger { color: #d9534f; font-weight: 500; }
+        .comparison-table .text-ok { color: var(--secondary-color); font-weight: 500; }
+        .comparison-table .text-danger { color: var(--warning-color); font-weight: 500; } /* ZMĚNA: Použití sjednocené barvy */
 
         .conclusion-box {
             max-width: 700px;
@@ -279,7 +280,7 @@
             line-height: 1.5;
         }
         .verification-box .icon-ok { color: #28a745; }
-        .verification-box .icon-warn { color: #fd7e14; }
+        .verification-box .icon-warn { color: var(--warning-color); } /* ZMĚNA: Použití sjednocené barvy */
 
         .cta-button {
             display: inline-block;
@@ -363,20 +364,20 @@
                         <h3>Google Gemini: Integrovaný ekosystém</h3>
                         <p>Gemini je navržen jako hluboce integrovaný "obchodní partner". Jeho síla nespočívá v izolovaném výkonu, ale ve schopnosti bezproblémově spolupracovat s celým ekosystémem Google (Workspace, Cloud, Ads).</p>
                         <ul>
-                            <li><span class="icon icon-main">✔</span> Vertikální optimalizace pro maximální efektivitu.</li>
-                            <li><span class="icon icon-main">✔</span> Přístup k datům v reálném čase přes Google Search.</li>
-                            <li><span class="icon icon-main">✔</span> Dlouhodobá nákladová výhoda díky vlastním TPU čipům.</li>
-                            <li><span class="icon icon-main">✔</span> Sjednocené zabezpečení v rámci Google Cloud.</li>
+                            <li><span class="icon icon-main">✔</span> <div>Vertikální optimalizace pro maximální efektivitu.</div></li>
+                            <li><span class="icon icon-main">✔</span> <div>Přístup k datům v reálném čase přes Google Search.</div></li>
+                            <li><span class="icon icon-main">✔</span> <div>Dlouhodobá nákladová výhoda díky vlastním TPU čipům.</div></li>
+                            <li><span class="icon icon-main">✔</span> <div>Sjednocené zabezpečení v rámci Google Cloud.</div></li>
                         </ul>
                     </div>
                     <div class="feature-card accent-alt">
                         <h3>OpenAI ChatGPT: Univerzální vrstva</h3>
                         <p>ChatGPT a budoucí modely OpenAI jsou budovány jako univerzální, interoperabilní inteligenční vrstva. Cílem je vytvořit nejlepší model ve své třídě, který lze připojit k jakémukoli systému.</p>
                          <ul>
-                            <li><span class="icon icon-alt">✔</span> Horizontální škálovatelnost a flexibilita.</li>
-                            <li><span class="icon icon-alt">✔</span> Špičkový výkon v kreativních a komplexních úlohách.</li>
-                            <li><span class="icon icon-alt">✔</span> Rozvinutý vývojářský ekosystém a API.</li>
-                            <li><span class="icon icon-alt">✔</span> Dynamický systém více modelů řízený "smart routerem".</li>
+                            <li><span class="icon icon-alt">✔</span> <div>Horizontální škálovatelnost a flexibilita.</div></li>
+                            <li><span class="icon icon-alt">✔</span> <div>Špičkový výkon v kreativních a komplexních úlohách.</div></li>
+                            <li><span class="icon icon-alt">✔</span> <div>Rozvinutý vývojářský ekosystém a API.</div></li>
+                            <li><span class="icon icon-alt">✔</span> <div>Dynamický systém více modelů řízený "smart routerem".</div></li>
                         </ul>
                     </div>
                 </div>
@@ -406,18 +407,18 @@
                         <h3>Gemini: Integrované ověřování</h3>
                         <p>Ve webovém rozhraní Gemini je vyhledávání na internetu hluboce a automaticky integrovanou součástí. Model sám vyhodnotí, kdy potřebuje aktuální data, a proaktivně je vyhledá pomocí Google Search, aby omezil "halucinace" a zvýšil přesnost.</p>
                          <ul>
-                            <li><span class="icon icon-main">✔</span> <strong>Automatická aktivace:</strong> Nemusíte nic zapínat, model si sám řekne o data.</li>
-                            <li><span class="icon icon-main">✔</span> <strong>Syntéza zdrojů:</strong> Zpracuje a zkombinuje informace z více zdrojů do jedné odpovědi.</li>
-                            <li><span class="icon icon-main">✔</span> <strong>Nástroje pro transparentnost:</strong> Klíčová výhoda pro ověření faktů.</li>
+                            <li><span class="icon icon-main">✔</span> <div><strong>Automatická aktivace:</strong> Nemusíte nic zapínat, model si sám řekne o data.</div></li>
+                            <li><span class="icon icon-main">✔</span> <div><strong>Syntéza zdrojů:</strong> Zpracuje a zkombinuje informace z více zdrojů do jedné odpovědi.</div></li>
+                            <li><span class="icon icon-main">✔</span> <div><strong>Nástroje pro transparentnost:</strong> Klíčová výhoda pro ověření faktů.</div></li>
                         </ul>
                     </div>
                     <div class="feature-card accent-alt">
                         <h3>ChatGPT: Doplňkové vyhledávání</h3>
                         <p>ChatGPT funguje primárně jako konverzační asistent, který využívá vyhledávač Microsoft Bing, aby obohatil své odpovědi a překonal omezení svých trénovacích dat. Vyhledávání je spíše doplňkovou funkcí.</p>
                         <ul>
-                           <li><span class="icon icon-alt">✔</span> <strong>Reaktivní přístup:</strong> Vyhledává, když narazí na hranice svých znalostí.</li>
-                           <li><span class="icon icon-alt">✔</span> <strong>Obohacení kontextu:</strong> Slouží k doplnění aktuálních informací do konverzace.</li>
-                           <li><span class="icon icon-alt">✔</span> <strong>Jednodušší citace:</strong> Obvykle odkazuje na menší počet zdrojů.</li>
+                           <li><span class="icon icon-alt">✔</span> <div><strong>Reaktivní přístup:</strong> Vyhledává, když narazí na hranice svých znalostí.</div></li>
+                           <li><span class="icon icon-alt">✔</span> <div><strong>Obohacení kontextu:</strong> Slouží k doplnění aktuálních informací do konverzace.</div></li>
+                           <li><span class="icon icon-alt">✔</span> <div><strong>Jednodušší citace:</strong> Obvykle odkazuje na menší počet zdrojů.</div></li>
                        </ul>
                    </div>
                 </div>
@@ -437,6 +438,7 @@
                 </div>
             </div>
         </section>
+
         <section id="bezpecnost" class="bg-gray-50">
             <div class="container">
                 <h2 class="section-title">Bezpečnost, data a GDPR</h2>
