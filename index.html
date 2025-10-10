@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- Schema for events -->
     <script type="application/ld+json">
     [{
       "@context": "https://schema.org",
@@ -127,13 +126,13 @@
             text-align: center;
         }
         .hero h1 {
-            font-size: 3.2em;
+            font-size: clamp(2.2em, 5vw, 3.2em);
             margin: 0 0 15px 0;
             font-weight: 700;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
         .hero p {
-            font-size: 1.4em;
+            font-size: clamp(1.1em, 2.5vw, 1.4em);
             font-weight: 300;
             max-width: 700px;
             margin: 0 auto 30px auto;
@@ -158,7 +157,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.15em;
+            font-size: clamp(1em, 2.2vw, 1.15em);
             font-weight: 400;
         }
         .detail-item svg {
@@ -182,7 +181,7 @@
             color: var(--white);
             padding: 18px 40px;
             text-decoration: none;
-            font-size: 1.3em;
+            font-size: clamp(1.1em, 2.5vw, 1.3em);
             font-weight: 700;
             border-radius: 8px;
             transition: background-color 0.3s ease, transform 0.2s ease;
@@ -240,14 +239,14 @@
         section { padding: 60px 20px; }
         .section-title {
             text-align: center;
-            font-size: 2.5em;
+            font-size: clamp(2em, 5vw, 2.5em);
             margin-bottom: 30px;
             color: var(--primary-color);
             font-weight: 700;
         }
         .section-subtitle {
             text-align: center;
-            font-size: 1.2em;
+            font-size: clamp(1.1em, 2.5vw, 1.2em);
             font-weight: 300;
             max-width: 800px;
             margin: -20px auto 40px;
@@ -292,7 +291,7 @@
             display: inline-block;
             background-color: var(--secondary-color);
             color: var(--white);
-            padding: 10px 20px;
+            padding: 12px 24px;
             text-decoration: none;
             font-size: 1em;
             font-weight: 700;
@@ -351,7 +350,7 @@
         .testimonial-item { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; border-left: 5px solid var(--secondary-color); min-width: 100%; box-sizing: border-box; }
         .testimonial-item p { font-style: italic; font-size: 1.1em; margin-bottom: 15px; }
         .testimonial-item .author { font-weight: bold; color: var(--primary-color); font-size: 1em; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: var(--white); border: 1px solid #ddd; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 24px; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s ease; z-index: 10; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: var(--white); border: 1px solid #ddd; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; font-size: 24px; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s ease; z-index: 10; }
         .slider-btn:hover { background-color: var(--primary-color); color: var(--white); }
         .slider-btn.prev-btn { left: 0; }
         .slider-btn.next-btn { right: 0; }
@@ -379,13 +378,10 @@
         }
         
         @media (max-width: 768px) {
-            .hero { padding: 60px 20px; }
-            .hero h1 { font-size: 2.5em; }
-            .hero p { font-size: 1.2em; }
+            .hero { padding: 40px 20px; }
             .workshop-details-box { flex-direction: column; align-items: flex-start; text-align: left; padding: 20px; }
-            .detail-item { font-size: 1.1em; }
-            .cta-button { padding: 15px 30px; font-size: 1.1em; }
-            .section-title { font-size: 2em; }
+            .event-actions { flex-direction: column; }
+            .cta-button { width: 100%; text-align: center; }
             .features-grid, .program-grid { grid-template-columns: 1fr; }
             .instructor-section h3 { font-size: 1.7em; }
             .testimonial-slider-container { padding: 0; }
@@ -398,7 +394,6 @@
     
 </head>
 <body>
-    <!-- Inline SVG icons for cleaner implementation -->
     <svg width="0" height="0" style="position:absolute; display:none;">
         <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
         <symbol id="icon-clock" viewBox="0 0 24 24"><image href="clock-icon.png" width="24" height="24"/></symbol>
@@ -434,7 +429,6 @@
                 </div>
             </div>
 
-            <!-- MODIFIED: Registration buttons for October -->
             <div class="event-actions">
                 <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw==" target="_blank" class="cta-button">Koupit přes Influon</a>
                 <a title='Předprodej akce' target='_blank' class='smsticket-ibutton' href='https://www.smsticket.cz/vstupenky/61916-gemini-a-dalsi-nastroje-od-google-prakticky-efektivne?utm_campaign=smsticket-prodejni-tlacitko' style="--smsticket-bg-color: transparent; --smsticket-text-color: var(--secondary-color); --smsticket-border-color: var(--secondary-color);">Nebo přes smsticket</a>
@@ -445,9 +439,6 @@
             <p class="payment-explanation">
                 Pro vaše pohodlí nabízím dvě platební brány. Vyberte si tu, na kterou jste zvyklí.
             </p>
-            <!-- END OF MODIFICATION -->
-            
-            <!-- MODIFIED: Registration for November -->
             <div class="next-workshop-info">
                 <p>Nevyhovuje vám termín? Chystám další workshop <strong>14. listopadu 2025</strong>.</p>
                  <div class="event-actions" style="margin-top: 15px; gap: 10px;">
@@ -455,9 +446,7 @@
                     <a title='Předprodej akce' target='_blank' class='smsticket-ibutton' href='https://www.smsticket.cz/vstupenky/61911-gemini-a-dalsi-nastroje-od-google-prakticky-efektivne?utm_campaign=smsticket-prodejni-tlacitko' style="font-size: 1.1em; padding: 10px 23px; --smsticket-bg-color: transparent; --smsticket-text-color: #fff; --smsticket-border-color: #fff;">Nebo přes smsticket</a>
                 </div>
             </div>
-            <!-- END OF MODIFICATION -->
-
-        </div>
+            </div>
     </header>
     <main>
         <section id="why-google-ai">
@@ -758,7 +747,6 @@
         });
     </script>
     
-    <!-- ADDED: smsticket script -->
     <script>
         (function() {
             var po = document.createElement('script');
@@ -770,4 +758,3 @@
     </script>
 </body>
 </html>
-
