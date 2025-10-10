@@ -249,6 +249,38 @@
         .conclusion-box .gemini { color: var(--primary-color); }
         .conclusion-box .chatgpt { color: var(--accent-color); }
 
+        .verification-box {
+            margin-top: 40px;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+        .verification-box h4 {
+             font-size: 1.3em;
+             color: var(--primary-color);
+             margin-top: 0;
+             margin-bottom: 15px;
+        }
+        .verification-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .verification-box li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .verification-box .icon {
+            margin-right: 12px;
+            font-size: 1.4em;
+            line-height: 1.5;
+        }
+        .verification-box .icon-ok { color: #28a745; }
+        .verification-box .icon-warn { color: #fd7e14; }
+
         .cta-button {
             display: inline-block;
             background-color: var(--secondary-color);
@@ -365,7 +397,47 @@
             </div>
         </section>
 
-        <section id="bezpecnost">
+        <section id="data-sourcing">
+            <div class="container">
+                <h2 class="section-title">Práce s aktuálními daty a zdroji</h2>
+                <p class="section-subtitle">Klíčovým rozdílem je způsob, jakým modely prohledávají internet, aby vám přinesly aktuální a ověřené odpovědi. Tento proces se nazývá "uzemnění" (grounding).</p>
+                <div class="grid-2-col">
+                    <div class="feature-card">
+                        <h3>Gemini: Integrované ověřování</h3>
+                        <p>Ve webovém rozhraní Gemini je vyhledávání na internetu hluboce a automaticky integrovanou součástí. Model sám vyhodnotí, kdy potřebuje aktuální data, a proaktivně je vyhledá pomocí Google Search, aby omezil "halucinace" a zvýšil přesnost.</p>
+                         <ul>
+                            <li><span class="icon icon-main">✔</span> <strong>Automatická aktivace:</strong> Nemusíte nic zapínat, model si sám řekne o data.</li>
+                            <li><span class="icon icon-main">✔</span> <strong>Syntéza zdrojů:</strong> Zpracuje a zkombinuje informace z více zdrojů do jedné odpovědi.</li>
+                            <li><span class="icon icon-main">✔</span> <strong>Nástroje pro transparentnost:</strong> Klíčová výhoda pro ověření faktů.</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card accent-alt">
+                        <h3>ChatGPT: Doplňkové vyhledávání</h3>
+                        <p>ChatGPT funguje primárně jako konverzační asistent, který využívá vyhledávač Microsoft Bing, aby obohatil své odpovědi a překonal omezení svých trénovacích dat. Vyhledávání je spíše doplňkovou funkcí.</p>
+                        <ul>
+                           <li><span class="icon icon-alt">✔</span> <strong>Reaktivní přístup:</strong> Vyhledává, když narazí na hranice svých znalostí.</li>
+                           <li><span class="icon icon-alt">✔</span> <strong>Obohacení kontextu:</strong> Slouží k doplnění aktuálních informací do konverzace.</li>
+                           <li><span class="icon icon-alt">✔</span> <strong>Jednodušší citace:</strong> Obvykle odkazuje na menší počet zdrojů.</li>
+                       </ul>
+                   </div>
+                </div>
+                <div class="verification-box">
+                    <h4>Klíčová funkce Gemini: Dvojitá kontrola faktů</h4>
+                    <p>Gemini nabízí unikátní nástroj pro transparentnost. Kliknutím na ikonu Google "G" pod odpovědí aktivujete ověření, které barevně zvýrazní text:</p>
+                    <ul>
+                        <li>
+                            <span class="icon icon-ok">✔</span>
+                            <div><strong>Zelené zvýraznění:</strong> Tvrzení, u kterých Vyhledávání Google našlo shodné nebo podporující informace. Po kliknutí se zobrazí odkazy na zdroje.</div>
+                        </li>
+                        <li>
+                            <span class="icon icon-warn">!</span>
+                            <div><strong>Oranžové zvýraznění:</strong> Tvrzení, která se nepodařilo ověřit nebo pro ně Google našel protichůdné informace. Slouží jako varování pro uživatele.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="bezpecnost" class="bg-gray-50">
             <div class="container">
                 <h2 class="section-title">Bezpečnost, data a GDPR</h2>
                 <p class="section-subtitle">Zásadní rozdíl v přístupu k ochraně dat se projevuje mezi verzemi pro běžné spotřebitele a placenými podnikovými řešeními. Porovnejte, jak platformy nakládají s vašimi daty.</p>
@@ -380,14 +452,14 @@
             </div>
         </section>
 
-        <section id="zaver" class="bg-gray-50">
+        <section id="zaver">
             <div class="container">
                 <h2 class="section-title">Závěr: Jak si vybrat?</h2>
                 <p class="section-subtitle">Neexistuje jediná správná odpověď. Volba závisí na vašich prioritách, stávajícím technologickém zázemí a specifických potřebách.</p>
                 <div class="conclusion-box">
                     <div>
                         <h4 class="gemini">Zvolte Google Gemini, pokud...</h4>
-                        <p>...jste hluboce integrováni v ekosystému Google, prioritou je pro vás efektivita pracovních postupů, bezpečnost dat na podnikové úrovni a přístup k informacím v reálném čase.</p>
+                        <p>...jste hluboce integrováni v ekosystému Google, prioritou je pro vás efektivita pracovních postupů, bezpečnost dat na podnikové úrovni a přístup k informacím v reálném čase s možností jejich ověření.</p>
                     </div>
                     <div>
                         <h4 class="chatgpt">Zvolte OpenAI ChatGPT, pokud...</h4>
@@ -397,7 +469,7 @@
             </div>
         </section>
         
-        <section class="back-link-section">
+        <section class="back-link-section bg-gray-50">
             <div class="container">
                  <a href="index.html" class="cta-button">Zpět na hlavní stránku workshopu</a>
             </div>
