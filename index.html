@@ -72,6 +72,9 @@
             --light-gray: #f4f4f4;
             --white: #ffffff;
         }
+        * {
+            box-sizing: border-box;
+        }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Roboto', sans-serif;
@@ -80,6 +83,8 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
         .landing-nav {
@@ -188,6 +193,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             border: none;
             cursor: pointer;
+            text-align: center;
         }
         .cta-button:hover {
             background-color: #238c76;
@@ -226,7 +232,6 @@
         .next-workshop-info a:hover {
             color: var(--secondary-color);
         }
-        /* NEW STYLE for payment explanation */
         .payment-explanation {
             margin-top: 15px;
             font-size: 0.9em;
@@ -272,7 +277,6 @@
             border-radius: 0 8px 8px 0;
             padding: 25px 30px;
             margin: 40px auto 0 auto;
-            max-width: 100%;
         }
         .info-box h3 {
             color: var(--primary-color);
@@ -285,7 +289,6 @@
         .info-box p {
             font-size: 1.05em;
             color: var(--text-color);
-            max-width: 700px;
         }
         .cta-button-small {
             display: inline-block;
@@ -298,6 +301,7 @@
             border-radius: 6px;
             transition: background-color 0.3s ease, transform 0.2s ease;
             margin-top: 10px;
+            text-align: center;
         }
         .cta-button-small:hover {
             background-color: #238c76;
@@ -334,7 +338,7 @@
         .instructor-section .icon-link:hover { text-decoration: underline; }
         .instructor-section .icon-link svg { width: 18px; height: 18px; }
         .cta-container { text-align: center; }
-        .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .cta-buttons { display: flex; flex-direction: column; justify-content: center; gap: 15px; flex-wrap: wrap; }
         footer { background-color: var(--primary-color); color: rgba(255, 255, 255, 0.8); padding: 40px 20px; text-align: center; }
         .footer-content p { margin: 5px 0; font-size: 1em; }
         .footer-content a { color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease; }
@@ -344,13 +348,13 @@
         .calendar-button { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: rgba(255,255,255,0.15); color: var(--white); border-radius: 8px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.3); }
         .calendar-button:hover { background-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
         .calendar-button svg { width: 26px; height: 26px; }
-        .testimonial-slider-container { position: relative; max-width: 700px; margin: 40px auto 0; padding: 0 50px; box-sizing: border-box; }
+        .testimonial-slider-container { position: relative; max-width: 700px; margin: 40px auto 0; padding: 0 50px; }
         .testimonial-slider-wrapper { overflow: hidden; width: 100%; border-radius: 8px; }
         .testimonials { display: flex; }
-        .testimonial-item { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; border-left: 5px solid var(--secondary-color); min-width: 100%; box-sizing: border-box; }
+        .testimonial-item { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; border-left: 5px solid var(--secondary-color); min-width: 100%; }
         .testimonial-item p { font-style: italic; font-size: 1.1em; margin-bottom: 15px; }
         .testimonial-item .author { font-weight: bold; color: var(--primary-color); font-size: 1em; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: var(--white); border: 1px solid #ddd; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; font-size: 24px; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s ease; z-index: 10; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: var(--white); border: 1px solid #ddd; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; font-size: 24px; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s ease; z-index: 10; display: flex; align-items: center; justify-content: center; }
         .slider-btn:hover { background-color: var(--primary-color); color: var(--white); }
         .slider-btn.prev-btn { left: 0; }
         .slider-btn.next-btn { right: 0; }
@@ -380,15 +384,17 @@
         @media (max-width: 768px) {
             .hero { padding: 40px 20px; }
             .workshop-details-box { flex-direction: column; align-items: flex-start; text-align: left; padding: 20px; }
-            .event-actions { flex-direction: column; }
-            .cta-button { width: 100%; text-align: center; }
+            .event-actions { flex-direction: column; width: 100%; }
+            .cta-button, .cta-button-small, .cta-button.secondary, .smsticket-ibutton { width: 100%; }
             .features-grid, .program-grid { grid-template-columns: 1fr; }
             .instructor-section h3 { font-size: 1.7em; }
             .testimonial-slider-container { padding: 0; }
             .slider-btn { top: auto; bottom: -60px; transform: translateY(0); }
-            .slider-btn.prev-btn { left: calc(50% - 45px); }
-            .slider-btn.next-btn { right: calc(50% - 45px); }
+            .slider-btn.prev-btn { left: calc(50% - 50px); }
+            .slider-btn.next-btn { right: calc(50% - 50px); }
             #testimonials-section .container { padding-bottom: 80px; }
+            .cta-buttons { flex-direction: column; gap: 15px; }
+            .info-box { margin-left: 0; margin-right: 0; }
         }
     </style>
     
