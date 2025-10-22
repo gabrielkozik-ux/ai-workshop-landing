@@ -11,6 +11,25 @@
 
   gtag('config', 'AW-981380390');
 </script>
+    <!-- Event snippet for Registrace na AI workshop conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD',
+      'value': 2490.0,
+      'currency': 'CZK',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Workshop pro podnikatele v Brně | Ušetřete desítky hodin měsíčně</title>
     <meta name="description" content="AI workshop v Brně pro podnikatele. Ovládněte Google Gemini a NotebookLM, získejte náskok před konkurencí a ušetřete čas automatizací a tvorbou obsahu.">
@@ -407,8 +426,7 @@
             </div>
 
             <div class="event-actions">
-                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw==" target="_blank" class="cta-button">Chci si zajistit místo</a>
-                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%3A%20Prom%C4%9B%C5%88te%20AI%20v%20re%C3%A1lnou%20v%C3%BDhodu&dates=20251024T070000Z/20251024T130000Z&details=V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw%3D%3D&location=IUSTORIA%2C%20advok%C3%A1tn%C3%AD%20kancel%C3%A1%C5%99%2C%20Slov%C3%A1kova%20279/11%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop AI pro podnikatele">
+<a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw==" target="_blank" class="cta-button" onclick="return gtag_report_conversion('https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw==');">Chci si zajistit místo</a>                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%3A%20Prom%C4%9B%C5%88te%20AI%20v%20re%C3%A1lnou%20v%C3%BDhodu&dates=20251024T070000Z/20251024T130000Z&details=V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMWxFOVFFVVBGTVh2b0Zya1RoRE5LM0V5NzVxM01NaFRMK1NFekpseWJVVw%3D%3D&location=IUSTORIA%2C%20advok%C3%A1tn%C3%AD%20kancel%C3%A1%C5%99%2C%20Slov%C3%A1kova%20279/11%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop AI pro podnikatele">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
                 </a>
             </div>
@@ -418,9 +436,8 @@
             <div class="next-workshop-info">
                 <p>Nevyhovuje vám termín? Chystám další workshop <strong>14. listopadu 2025</strong>.</p>
                  <div class="event-actions" style="margin-top: 15px; gap: 10px;">
-                    <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button" style="font-size: 1.1em; padding: 12px 25px;">Zajistit místo v listopadu</a>
-                     <a title='Předprodej akce' target='_blank' class='smsticket-ibutton' href='https://www.smsticket.cz/vstupenky/61911-gemini-a-dalsi-nastroje-od-google-prakticky-efektivne?utm_campaign=smsticket-prodejni-tlacitko' style="font-size: 1.1em; padding: 10px 23px; --smsticket-bg-color: transparent; --smsticket-text-color: #fff; --smsticket-border-color: #fff;">Nebo přes smsticket</a>
-                </div>
+<a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button" style="font-size: 1.1em; padding: 12px 25px;" onclick="return gtag_report_conversion('https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==');">Zajistit místo v listopadu</a>                     
+<a title='Předprodej akce' target='_blank' class='smsticket-ibutton' href='https://www.smsticket.cz/vstupenky/61911-gemini-a-dalsi-nastroje-od-google-prakticky-efektivne?utm_campaign=smsticket-prodejni-tlacitko' style="font-size: 1.1em; padding: 10px 23px; --smsticket-bg-color: transparent; --smsticket-text-color: #fff; --smsticket-border-color: #fff;" onclick="return gtag_report_conversion('https://www.smsticket.cz/vstupenky/61911-gemini-a-dalsi-nastroje-od-google-prakticky-efektivne?utm_campaign=smsticket-prodejni-tlacitko');">Nebo přes smsticket</a>                </div>
             </div>
             </div>
     </header>
