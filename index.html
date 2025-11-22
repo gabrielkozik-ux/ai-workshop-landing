@@ -11,8 +11,7 @@
 
   gtag('config', 'AW-981380390');
 </script>
-    <!-- Event snippet for Registrace na AI workshop conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <!-- Event snippet for Conversion -->
 <script>
 function gtag_report_conversion(url) {
   var callback = function () {
@@ -21,8 +20,8 @@ function gtag_report_conversion(url) {
     }
   };
   gtag('event', 'conversion', {
-      'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD',
-      'value': 2490.0,
+      'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD', // Ponecháno původní, případně aktualizuj pro novou kampaň
+      'value': 0, // Hodnota konverze u partnera může být jiná
       'currency': 'CZK',
       'event_callback': callback
   });
@@ -31,36 +30,42 @@ function gtag_report_conversion(url) {
 </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Workshop pro podnikatele v Brně | Ušetřete desítky hodin měsíčně</title>
-    <meta name="description" content="AI workshop v Brně pro podnikatele. Ovládněte Google Gemini a NotebookLM, získejte náskok před konkurencí a ušetřete čas automatizací a tvorbou obsahu.">
+    <title>AI Workshop pro Business Excellence | BEA ČR & Gabriel Kožík</title>
+    <meta name="description" content="Exkluzivní AI workshop ve spolupráci s Business Excellence asociací (BEA). Ovládněte Google Gemini a NotebookLM pro strategické řízení a efektivitu firmy.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://ai-workshop.cz/" />
 
+    <!-- Aktualizovaná Schema pro BEA Workshop -->
     <script type="application/ld+json">
     [{
       "@context": "https://schema.org",
       "@type": "Event",
-      "name": "Workshop: Proměňte AI v reálnou výhodu pro vaše podnikání",
-      "startDate": "2025-11-21T09:00:00+01:00",
-      "endDate": "2025-11-21T15:00:00+01:00",
+      "name": "AI Workshop: Nástroje pro Business Excellence",
+      "startDate": "2025-12-10T09:00:00+01:00", 
+      "endDate": "2025-12-10T13:00:00+01:00",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
-        "name": "IUSTORIA, advokátní kancelář",
+        "name": "BEA centrum Olomouc",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Slovákova 279/11",
-          "addressLocality": "Brno",
-          "postalCode": "60200",
+          "streetAddress": "tř. Kosmonautů 1288/1",
+          "addressLocality": "Olomouc",
+          "postalCode": "77900",
           "addressCountry": "CZ"
         }
       },
-      "description": "Naučte se s Gemini, NotebookLM a dalšími Google AI nástroji ušetřit desítky hodin měsíčně a podpořit kreativitu ve vašem podnikání.",
+      "description": "Praktický workshop pro členy BEA ČR zaměřený na využití AI nástrojů Google pro zvýšení firemní efektivity.",
       "performer": {
         "@type": "Person",
         "name": "Mgr. Gabriel Kožík"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "BEA ČR",
+        "url": "https://beacr.cz"
       }
     }]
     </script>
@@ -74,6 +79,7 @@ function gtag_report_conversion(url) {
             --text-color: #333;
             --light-gray: #f4f4f4;
             --white: #ffffff;
+            --bea-red: #e30613; /* Přidána barva pro akcent BEA, pokud budeš chtít použít */
         }
         * {
             box-sizing: border-box;
@@ -128,7 +134,8 @@ function gtag_report_conversion(url) {
             color: var(--secondary-color);
         }
         .hero {
-            background-image: linear-gradient(rgba(10, 35, 66, 0.7), rgba(10, 35, 66, 0.7)), url(https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=2070&auto=format&fit=crop);
+            /* Upraveno pozadí pro více "tech/business" look */
+            background-image: linear-gradient(rgba(10, 35, 66, 0.85), rgba(10, 35, 66, 0.75)), url(https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop);
             background-size: cover;
             background-position: 50%;
             background-repeat: no-repeat;
@@ -145,24 +152,24 @@ function gtag_report_conversion(url) {
         .hero p {
             font-size: clamp(1.1em, 2.5vw, 1.4em);
             font-weight: 300;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 30px auto;
             text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
         }
         .workshop-details-box {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 25px;
-            max-width: 750px;
+            max-width: 800px;
             margin: 30px auto 40px auto;
             display: flex;
             justify-content: space-around;
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
         .detail-item {
             display: flex;
@@ -218,26 +225,6 @@ function gtag_report_conversion(url) {
         .cta-button.secondary:hover {
              background-color: var(--secondary-color);
              color: var(--white);
-        }
-        .next-workshop-info {
-            background-color: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin: 25px auto 0 auto;
-            max-width: 550px;
-            font-size: 1.1em;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-        .payment-explanation {
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
         }
         section { padding: 60px 20px; }
         .section-title {
@@ -370,86 +357,80 @@ function gtag_report_conversion(url) {
         <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
         <symbol id="icon-clock" viewBox="0 0 24 24"><image href="clock-icon.png" width="24" height="24"/></symbol>
         <symbol id="icon-location" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7m0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5"/></symbol>
-        <symbol id="icon-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></symbol>
     </svg>
 
     <nav class="landing-nav">
         <a href="#" class="landing-nav-title">
             <img src="favicon.ico" alt="Logo AI workshopu" class="nav-photo">
-            <span>AI workshop v Brně pro podnikatele</span>
+            <span>AI Workshop: Business Excellence</span>
         </a>
         <a href="#propojit" class="landing-nav-contact">Kontakt</a>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <h1>Získejte AI parťáka pro své podnikání a ušetřete desítky hodin měsíčně</h1>
-            <p>Na praktickém workshopu vám ukážu, jak AI proměnit v reálnou konkurenční výhodu. Žádná zbytečná teorie – jen postupy z mé 3leté praxe, které vám okamžitě začnou šetřit čas i peníze.</p>
+            <h1>AI jako akcelerátor vaší Business Excellence</h1>
+            <p>Speciální edice workshopu pro členy a partnery BEA ČR. Zjistěte, jak Google Gemini a NotebookLM mění pravidla hry v řízení firem, analýze dat a strategickém plánování.</p>
             <div class="workshop-details-box">
                 <div class="detail-item">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
-                    <span><strong>21. listopadu 2025</strong></span>
+                    <span><strong>Prosinec 2025</strong> <small>(datum v kalendáři BEA)</small></span>
                 </div>
                 <div class="detail-item">
                     <svg><use xlink:href="#icon-clock"></use></svg>
-                    <span>9:00 - 15:00</span>
+                    <span>Dle programu BEA</span>
                 </div>
                 <div class="detail-item">
                     <svg><use xlink:href="#icon-location"></use></svg>
-                    <span>IUSTORIA, advokátní kancelář, Slovákova 279/11, Brno</span>
+                    <span>BEA centrum Olomouc</span>
                 </div>
             </div>
 
             <div class="event-actions">
-                <!-- Tento odkaz by měl být aktualizován na správný odkaz pro 21.11. -->
-                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==" target="_blank" class="cta-button" onclick="return gtag_report_conversion('https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ==');">Chci se přihlásit</a>                
-                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Workshop%3A%20Prom%C4%9B%C5%88te%20AI%20v%20re%C3%A1lnou%20v%C3%BDhodu&dates=20251121T080000Z/20251121T140000Z&details=V%C3%ADce%20informac%C3%AD%20a%20registrace%20zde%3A%20https%3A//app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN0lXVnZPZndEYmtUd3EwUE5ZSjdzMHZ1NXFFaTRSRUljdkovZlBEWnh2cQ%3D%3D&location=IUSTORIA%2C%20advok%C3%A1tn%C3%AD%20kancel%C3%A1%C5%99%2C%20Slov%C3%A1kova%20279/11%2C%20Brno" target="_blank" class="calendar-button" aria-label="Přidat do kalendáře událost: Workshop AI pro podnikatele 21.11.">
-                    <svg><use xlink:href="#icon-calendar"></use></svg>
-                </a>
+                <!-- Odkaz na kalendář akcí BEA -->
+                <a href="https://beacr.cz/bea-cr/kalendar-akci/" target="_blank" class="cta-button" onclick="return gtag_report_conversion('https://beacr.cz/bea-cr/kalendar-akci/');">Registrace přes BEA ČR</a>                
             </div>
-            
-            <!-- Odebraná sekce pro další termín -->
             
             </div>
     </header>
     <main>
         <section id="pro-koho">
             <div class="container">
-                <h2 class="section-title">Pro koho je workshop ideální?</h2>
-                <p class="section-subtitle">Ať už jste na volné noze, vedete malou firmu nebo jen chcete zefektivnit svou práci, najdete si to své.</p>
+                <h2 class="section-title">Pro koho je tento workshop?</h2>
+                <p class="section-subtitle">Workshop je navržen na míru pro prostředí Business Excellence, kde je prioritou inovace, kvalita a efektivita.</p>
                 <div class="features-grid">
                     <div class="feature-item">
-                        <h3>Živnostníci a freelanceři</h3>
-                        <p><strong>(Konzultanti, copywriteři, tvůrci...)</strong><br>Přestaňte platit drahé agentury. Ukážu vám, jak s AI vytvořit profi marketingové podklady, analyzovat konkurenci nebo si ověřit nový podnikatelský nápad.</p>
-                        </div>
-                    <div class="feature-item">
-                        <h3>Majitelé malých firem a e-shopů</h3>
-                        <p><strong>(Řemeslníci, lokální služby, prodejci...)</strong><br>Zjistíte, jak si AI poradí s tvorbou textů na web, příspěvků na sítě nebo automatickou odpovědí na poptávky. Získáte tak více času na to nejdůležitější – vaše řemeslo.</p>
-                        </div>
+                        <h3>Majitelé a ředitelé firem</h3>
+                        <p>Získejte strategický nadhled. Ukážu vám, jak může AI sloužit jako váš "oponent" při rozhodování, jak s její pomocí analyzovat tržní trendy nebo připravovat podklady pro klíčová jednání.</p>
+                    </div>
                     <div class="feature-item">
                         <h3>Manažeři a vedoucí týmů</h3>
-                        <p><strong>(Provozní, vedoucí projektů...)</strong><br>Naučíte se, jak z vašich firemních dokumentů vytvořit chytrého asistenta, který za vás odpoví na opakující se dotazy zaměstnanců a pomůže s onboardingem nováčků.</p>
-                        </div>
+                        <p>Zvyšte produktivitu svého týmu. Naučíte se, jak z interních směrnic a dat vytvořit chytrého AI asistenta, který urychlí onboarding nováčků a odbaví rutinní dotazy.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Inovátoři a stratégové</h3>
+                        <p>Hledáte konkurenční výhodu? Předvedeme si, jak využít pokročilé modely pro brainstorming nových produktů, analýzu konkurence a automatizaci procesů v rámci Google Workspace.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="workshop-info" style="background-color: var(--light-gray);">
             <div class="container">
-                <h2 class="section-title">Co si z workshopu odnesete?</h2>
-                <p class="section-subtitle">Tento workshop není o teorii. Je navržen tak, abyste si odnesli dovednosti, které okamžitě zavedete do své praxe a uvidíte výsledky.</p>
+                <h2 class="section-title">Co si odnesete do praxe?</h2>
+                <p class="section-subtitle">Žádná teorie o tom "jak funguje neuronová síť". Zaměříme se čistě na aplikaci v podnikovém prostředí.</p>
                 <div class="features-grid">
                     <div class="feature-item">
-                        <h3>Praktické dovednosti, které využijete</h3>
-                        <p>Naučíte se vše, co jako podnikatel potřebujete: efektivně vyhledávat informace, tvořit marketingové materiály, zefektivnit brainstorming a získávat cennou zpětnou vazbu. To vše s nástroji, které jsou bezpečné a připravené na budoucnost.</p>
+                        <h3>Bezpečná práce s firemními daty</h3>
+                        <p>Pochopíte rozdíl mezi veřejnými a firemními AI modely. Naučíte se, jak nastavit Google Workspace tak, aby vaše know-how zůstalo chráněné a nebylo použito k trénování modelů.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Nezávislost na kurzech a agenturách</h3>
-                        <p>Pochopíte nejen základní principy, ale i pokročilé techniky, jak od AI dostat přesně to, co chcete. Mým cílem je, abyste po workshopu dokázali své dovednosti dál samostatně rozvíjet a nepotřebovali další kurzy.</p>
+                        <h3>Okamžitá analýza dokumentů</h3>
+                        <p>Ukážu vám sílu nástroje NotebookLM. Představte si, že nahrajete 100 stran smluv nebo výročních zpráv a během vteřiny dostanete přesné odpovědi s citacemi. To je realita, kterou se naučíte.</p>
                     </div>
                     <div class="feature-item">
-                        <h3>Okamžitá úspora času a peněz</h3>
-                        <p>Všechny techniky jsou ověřené mou tříletou denní praxí. Naučené dovednosti vám okamžitě ušetří jednotky až desítky hodin měsíčně, které můžete investovat zpět do růstu vašeho podnikání.</p>
+                        <h3>Efektivita v ekosystému Google</h3>
+                        <p>Jako firma pravděpodobně již používáte Docs, Sheets nebo Gmail. Ukážu vám, jak AI propojit s těmito nástroji pro automatizaci reportingu a tvorby obsahu.</p>
                     </div>
                 </div>
             </div>
@@ -457,32 +438,28 @@ function gtag_report_conversion(url) {
         
         <section id="program">
             <div class="container">
-                <h2 class="section-title">Program workshopu</h2>
-                <p class="section-subtitle">Přehled témat, která z vás udělají pokročilého uživatele AI nástrojů od Google.</p>
+                <h2 class="section-title">Rámcový program</h2>
                 <div class="program-grid">
                     <div class="program-item">
-                        <h3><span class="module-number">Modul 1</span><span class="module-title">Gemini pro business</span><span class="module-time">9:00 - 12:00</span></h3>
-                        <p>Intenzivní blok zaměřený na praktické využití Gemini pro tvorbu obsahu, rešerše, analýzy a zefektivnění komunikace.</p>
+                        <h3><span class="module-number">Modul 1</span><span class="module-title">Strategické využití Gemini</span></h3>
+                        <p>Od základního promptování k pokročilým manažerským technikám. Jak delegovat práci na AI a získat kvalitní výstup.</p>
                     </div>
                     <div class="program-item">
-                         <h3><span class="module-number">Modul 2</span><span class="module-title">NotebookLM a Google AI Studio</span><span class="module-time">13:00 - 14:30</span></h3>
-                        <p>Prozkoumáme NotebookLM pro práci s dokumenty a nahlédneme do možností Google AI Studia pro vlastní experimenty.</p>
+                         <h3><span class="module-number">Modul 2</span><span class="module-title">NotebookLM: Váš firemní analytik</span></h3>
+                        <p>Deep dive do práce s vlastními zdroji (RAG). Jak vytvořit experta na vaše firemní procesy, směrnice a data.</p>
                     </div>
                      <div class="program-item">
-                        <h3><span class="module-number">Modul 3</span><span class="module-title">AI grafika, shrnutí a diskuze</span><span class="module-time">14:30 - 15:00</span></h3>
-                        <p>Krátký blok o možnostech generování obrázků a vizuálů. Závěrečné tipy, triky a prostor pro vaše dotazy.</p>
+                        <h3><span class="module-number">Modul 3</span><span class="module-title">Implementace a bezpečnost</span></h3>
+                        <p>Diskuze o tom, jak AI bezpečně zavést do firmy, jaká jsou rizika (compliance) a jak jim předcházet.</p>
                     </div>
-                </div>
-                <div class="program-lunch-break">
-                    <h3>Oběd & Networking</h3><p>12:00 - 13:00</p>
                 </div>
             </div>
         </section>
 
         <section id="why-google-ai" style="background-color: var(--light-gray);">
             <div class="container">
-                <h2 class="section-title">Proč Google a Gemini v rámci Workspace?</h2>
-                <p class="section-subtitle">Protože je stejně výkonný jako ChatGPT, má větší kontextové okno (víc si "pamatuje") a navíc je plně integrovaný do Google ekosystému, v rámci kterého se připravuje automatizace - viz následující ukázka:</p>
+                <h2 class="section-title">Budoucnost automatizace</h2>
+                <p class="section-subtitle">Proč sázíme na Google v podnikovém prostředí? Protože integrace a automatizace (Agents) jsou klíčem k efektivitě. Podívejte se na ukázku:</p>
                 <div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/fBmHNeDXYu8?si=9FtLtQSmFtaXToMa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
@@ -491,49 +468,38 @@ function gtag_report_conversion(url) {
 
         <section id="bonus-material">
             <div class="container">
-                <h2 class="section-title">Bonusový materiál do začátku</h2>
-                <p class="section-subtitle">Abyste mohli začít naplno ještě před workshopem, připravil jsem pro vás několik užitečných zdrojů.</p>
+                <h2 class="section-title">Materiály pro účastníky</h2>
+                <p class="section-subtitle">Abyste z workshopu vytěžili maximum, doporučuji projít si tyto zdroje předem.</p>
                 <div class="features-grid">
                     <div class="bonus-item" style="border-color: var(--secondary-color); background-color: #e8f5f3;">
-                        <h3><img src="workspace-icon.png" alt="Ikona Google Workspace" width="28" height="28">Průvodce nastavením Workspace</h3>
-                        <p>Pro plné a bezpečné využití AI je klíčový <strong>Google Workspace účet</strong>. Zde je návod, jak si vše správně nastavit.</p>
+                        <h3><img src="workspace-icon.png" alt="Ikona Google Workspace" width="28" height="28">Průvodce Workspace</h3>
+                        <p>Pro plné a bezpečné využití AI je klíčový firemní účet. Zde je návod, jak si vše správně nastavit.</p>
                         <a href="licence.html" class="cta-button-small" style="background-color: var(--secondary-color);">Zobrazit návod</a>
                     </div>
                     <div class="bonus-item" style="border-color: var(--accent-color); background-color: #e7f1fa;">
                         <h3><img src="gemini-icon.png" alt="Ikona Google Gemini" width="28" height="28">Srovnání Gemini & ChatGPT</h3>
-                        <p>Zajímá vás, jak si ekosystém Google stojí v porovnání s OpenAI? Připravil jsem detailní analýzu.</p>
+                        <p>Zajímá vás, jak si ekosystém Google stojí v porovnání s OpenAI? Detailní analýza pro rozhodování.</p>
                         <a href="srovnani.html" class="cta-button-small" style="background-color: var(--accent-color);">Přejít na srovnání</a>
                     </div>
                     <div class="bonus-item" style="border-color: var(--warning-color); background-color: #fffbeb;">
-                        <h3><img src="compas-icon.png" alt="Ikona kompasu" width="28" height="28">AI Kompas: Najděte si svůj nástroj</h3>
-                        <p>Nejste si jistí, který AI nástroj je pro vás ten pravý? Udělejte si rychlý test a získejte doporučení.</p>
+                        <h3><img src="compas-icon.png" alt="Ikona kompasu" width="28" height="28">AI Kompas</h3>
+                        <p>Rychlý test, který vám pomůže určit, který AI nástroj nejlépe sedí vašemu stylu práce.</p>
                         <a href="ai-kompas.html" class="cta-button-small" style="background-color: var(--warning-color);">Spustit AI Kompas</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="workshop-reports" style="background-color: var(--light-gray); text-align: center;">
+        <section id="testimonials-section" style="background-color: var(--light-gray);">
             <div class="container">
-                 <h2 class="section-title" style="margin-bottom: 20px;">Zkušenosti z praxe</h2>
-                 <p class="section-subtitle" style="margin-top:0; margin-bottom: 30px;">Prohlédněte si reportážní shrnutí z mých minulých workshopů na mé webové stránce.</p>
-                 <a href="https://www.gabrielkozik.com/blog.html" target="_blank" class="cta-button secondary">Přejít na blog</a>
-            </div>
-        </section>
-        
-        <section id="testimonials-section">
-            <div class="container">
-                <h2 class="section-title">Co říkají účastníci</h2>
+                <h2 class="section-title">Ohlasy na workshopy</h2>
                 <div class="testimonial-slider-container">
                     <div class="testimonial-slider-wrapper">
                         <div class="testimonials">
-                            <div class="testimonial-item"><p>"Díky školení od Gabriela šetřím přinejmenším hodinu denně. Doporučuji!"</p><p class="author">- Jiří J., mentor</p></div>
-                            <div class="testimonial-item"><p>"Vytvořil jsem si vlastního asistenta, který mi teď pomáhá s psaním článků. Během půl hodiny mám hotový kvalitní text, který bych sám psal hodiny. Neuvěřitelná úspora času."</p><p class="author">- Jiří U.</p></div>
-                            <div class="testimonial-item"><p>"Gabriel mi ukázal, kolik toho ještě neumím a jaké možnosti mi AI otevírá. Bylo to opravdu inspirativní."</p><p class="author">- Radovan H.</p></div>
-                            <div class="testimonial-item"><p>"Postavit si nové weby za pár kliknutí? Díky Gabrielovi realita. Ušetřil jsem spoustu peněz, času i nervů."</p><p class="author">- Jiří G.</p></div>
-                            <div class="testimonial-item"><p>"Všechno bylo vysvětleno srozumitelně a lidsky. Díky Gabovi teď lépe rozumím nejen AI, ale i mým studentům a dnešní zrychlené době."</p><p class="author">- Martina M.</p></div>
-                            <div class="testimonial-item"><p>"Specializovaní asistenti a pokročilé techniky promptování jsou absolutní game-changer. Tohle posunulo mé podnikání na další úroveň."</p><p class="author">- Tereza J.</p></div>
+                            <div class="testimonial-item"><p>"Díky školení od Gabriela šetřím přinejmenším hodinu denně. Doporučuji pro každého, kdo chce být efektivnější."</p><p class="author">- Jiří J., mentor</p></div>
+                            <div class="testimonial-item"><p>"Vytvořil jsem si vlastního asistenta pro analýzu textů. Neuvěřitelná úspora času při zpracování podkladů."</p><p class="author">- Jiří U., manažer</p></div>
                             <div class="testimonial-item"><p>"Svět AI vysvětlený tak, že ho pochopí i úplný začátečník. Tento workshop je obrovským přínosem pro každého podnikatele."</p><p class="author">- Roman D.</p></div>
+                             <div class="testimonial-item"><p>"Specializovaní asistenti a pokročilé techniky promptování jsou absolutní game-changer. Posunulo nás to o úroveň výš."</p><p class="author">- Tereza J.</p></div>
                         </div>
                     </div>
                     <button class="slider-btn prev-btn" aria-label="Předchozí reference">‹</button>
@@ -542,63 +508,27 @@ function gtag_report_conversion(url) {
             </div>
         </section>
         
-        <section id="portfolio" class="portfolio-section" style="background-color: var(--light-gray);">
-            <div class="container">
-                <h2 class="section-title">Ukázky další tvorby</h2>
-                <div class="portfolio-grid">
-                    <a href="https://retro-arkady.cz/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Herní Experimenty</a>
-                    <a href="https://palavakodex.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Pálava Kodex</a>
-                    <a href="https://sunset-khaki.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Sunset App</a>
-                    <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" rel="noopener noreferrer" class="portfolio-item">YouTube Kanál</a>
-                    <a href="https://workshop22-8.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Workshop App</a>
-                    <a href="https://client-gold-five-16.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Client App</a>
-                    <a href="https://kapela-test.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Test kapely</a>
-                    <a href="https://just4fun-stepprs.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item">Stepper App</a>
-                </div>
-            </div>
-        </section>
-
         <section id="instructor">
             <div class="container">
                 <h2 class="section-title">O lektorovi</h2>
                 <div class="instructor-section">
                     <img src="profilova-fotka.jpg" alt="Portrét Mgr. Gabriela Kožíka" loading="lazy">
                     <h3>Mgr. Gabriel Kožík</h3>
-                    <p>Jsem advokát, lektor a hlavně podnikatel jako vy. Vím, jaké to je, když na marketing, administrativu a rozvoj zbývá málo času. Proto se poslední tři roky denně věnuji praktickému využití AI, abych si tu práci zjednodušil.</p>
-                    <p>Specializuji se na bezpečné a efektivní nasazení AI (převážně Google Gemini a NotebookLM) pro živnostníky a firmy, kteří chtějí ušetřit čas a získat konkurenční výhodu. Více o mně a mé práci najdete na osobní stránce <a href="https://www.gabrielkozik.com" target="_blank">gabrielkozik.com</a>.</p>
+                    <p>Advokát, networker a AI expert se zaměřením na segment SME (malé a střední podniky). V praxi spojuji právní preciznost (AI compliance) s kreativitou a efektivitou moderních technologií.</p>
+                    <p>Specializuji se na Google Gemini a NotebookLM. Mým cílem je naučit firmy využívat AI ne jako "hračku", ale jako spolehlivého parťáka pro růst a Business Excellence. Více o mně na <a href="https://www.gabrielkozik.com" target="_blank">gabrielkozik.com</a>.</p>
                 </div>
             </div>
         </section>
 
         <section id="propojit" style="background-color: var(--light-gray);">
             <div class="container">
-                <h2 class="section-title">Máte dotaz? Rád poradím.</h2>
-                <p class="section-subtitle">V případě jakýchkoliv dotazů jsem tu pro vás.</p>
+                <h2 class="section-title">Máte dotaz k workshopu?</h2>
+                <p class="section-subtitle">Jsem k dispozici pro vaše dotazy.</p>
                 <div class="cta-container">
                     <div class="cta-buttons">
                         <a href="mailto:kozik@iustoria.cz" class="cta-button">Napsat e-mail</a>
                          <a href="tel:+420720265713" class="cta-button secondary">+420 720 265 713</a>
                     </div>
-                </div>
-                <div class="form-container" style="max-width: 600px; margin: 40px auto 0; text-align: left;">
-                    <p class="section-subtitle" style="text-align: center; margin-bottom: 20px;"><strong>nebo mi zanechte rychlou zprávu</strong></p>
-                    <form action="https://formspree.io/f/xeornvol" method="POST">
-                        <div style="margin-bottom: 15px;">
-                            <label for="name" style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--primary-color);">Jméno</label>
-                            <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label for="email" style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--primary-color);">E-mail</label>
-                            <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;">
-                        </div>
-                        <div style="margin-bottom: 20px;">
-                            <label for="message" style="display: block; margin-bottom: 5px; font-weight: bold; color: var(--primary-color);">Vaše zpráva</label>
-                            <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;"></textarea>
-                        </div>
-                        <div style="text-align: center;">
-                            <button type="submit" class="cta-button">Odeslat zprávu</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </section>
@@ -606,7 +536,7 @@ function gtag_report_conversion(url) {
      <footer>
         <div class="footer-content">
             <p><strong>Mgr. Gabriel Kožík</strong></p>
-            <p>AI Stratég</p>
+            <p>AI Stratég & Advokát</p>
             <p>E-mail: <a href="mailto:kozik@iustoria.cz">kozik@iustoria.cz</a></p>
             <p>Telefon: <a href="tel:+420720265713">+420 720 265 713</a></p>
             <p>IČO: 05187559</p>
@@ -690,15 +620,5 @@ function gtag_report_conversion(url) {
             startAutoSlide();
         });
     </script>
-    <script>
-        (function() {
-            var po = document.createElement('script');
-            po.async = true;
-            po.src = 'https://www.smsticket.cz/static/scripts/widgets/SaleAnchorSmall.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(po, s);
-        })();
-    </script>
 </body>
 </html>
-
