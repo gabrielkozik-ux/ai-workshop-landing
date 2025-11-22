@@ -11,7 +11,7 @@
       gtag('config', 'AW-981380390');
     </script>
     
-    <!-- Event snippet for Conversion - BEA Registration -->
+    <!-- Původní snippet ponecháváme pro případné jiné použití, ale u registrace ho obejdeme -->
     <script>
     function gtag_report_conversion(url) {
       var callback = function () {
@@ -31,19 +31,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Workshop: Business Excellence pro freelancery i firmy | BEA ČR</title>
-    <meta name="description" content="Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.">
+    <meta name="description" content="Praktický AI workshop v Brně (10.12.2025). Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://ai-workshop.cz/" />
 
-    <!-- Schema.org updated for mixed audience & Brno location -->
+    <!-- Schema.org updated -->
     <script type="application/ld+json">
     [{
       "@context": "https://schema.org",
       "@type": "EducationEvent",
       "name": "AI Workshop: Nástroje pro Business Excellence",
       "startDate": "2025-12-10T09:00:00+01:00", 
-      "endDate": "2025-12-10T13:00:00+01:00",
+      "endDate": "2025-12-10T15:00:00+01:00",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
@@ -364,13 +364,13 @@
         }
         .video-container iframe { position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; border: none; }
 
-        /* Bonus Grid */
+        /* Bonus Grid & Fixes */
         .bonus-item {
             text-align: left;
             border-left: 5px solid;
             border-top: none;
             background: #fcfcfc;
-            padding: 30px; /* OPRAVA: Přidán padding pro odsazení textu od linky */
+            padding: 30px; /* Zajišťuje dostatečné odsazení od barevné linky vlevo */
         }
         .bonus-item h3 { display: flex; align-items: center; gap: 10px; }
 
@@ -423,20 +423,21 @@
             <div class="workshop-details-box">
                 <div class="detail-item">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
-                    <span><strong>Prosinec 2025</strong></span>
+                    <span><strong>10. 12. 2025</strong></span>
+                </div>
+                <div class="detail-item">
+                    <svg><use xlink:href="#icon-clock"></use></svg>
+                    <span>9:00 - 15:00 hod.</span>
                 </div>
                 <div class="detail-item">
                     <svg><use xlink:href="#icon-location"></use></svg>
                     <span>Brno <small>(místo bude upřesněno)</small></span>
                 </div>
-                <div class="detail-item">
-                    <svg><use xlink:href="#icon-shield"></use></svg>
-                    <span>Lektor: Advokát & AI Expert</span>
-                </div>
             </div>
 
             <div>
-                <a href="https://beacr.cz/bea-cr/kalendar-akci/" target="_blank" class="cta-button" onclick="return gtag_report_conversion('https://beacr.cz/bea-cr/kalendar-akci/');">Registrace přes BEA ČR</a>
+                <!-- Odkaz otevíráme v nové kartě bez blokujícího přesměrování -->
+                <a href="https://beacr.cz/bea-cr/kalendar-akci/" target="_blank" class="cta-button" onclick="gtag('event', 'conversion', {'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD', 'value': 0, 'currency': 'CZK'});">Registrace přes BEA ČR</a>
             </div>
         </div>
     </header>
