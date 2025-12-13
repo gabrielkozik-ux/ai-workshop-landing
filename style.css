@@ -193,11 +193,14 @@ section:nth-child(even) {
     padding: 30px;
     display: flex;
     justify-content: center;
+    align-items: center; /* Vertikální centrování */
     flex-wrap: wrap;
     gap: 40px;
     margin-bottom: 50px;
     width: 100%;
     max-width: 900px;
+    margin-left: auto; /* Zajištění horizontálního centrování boxu */
+    margin-right: auto;
 }
 
 .detail-item {
@@ -280,7 +283,8 @@ section:nth-child(even) {
     font-weight: 600;
     font-size: 0.9em;
     transition: all 0.2s;
-    margin-top: 15px;
+    /* Změna: margin-top: auto zajistí, že tlačítko bude vždy na dně flex kontejneru */
+    margin-top: auto; 
 }
 .cta-button-small:hover {
     background: var(--primary-color);
@@ -303,7 +307,7 @@ section:nth-child(even) {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    height: 100%;
+    height: 100%; /* Zajistí stejnou výšku */
     display: flex;
     flex-direction: column;
 }
@@ -334,6 +338,11 @@ section:nth-child(even) {
     font-size: 1.5em;
     margin-bottom: 15px;
 }
+/* Změna: Flex-grow zajistí, že text zabere volné místo a odtlačí tlačítko dolů */
+.feature-card p, .bonus-card p {
+    flex-grow: 1;
+}
+
 .module-number {
     display: inline-block;
     font-family: 'Space Grotesk', sans-serif;
