@@ -20,7 +20,6 @@
     <!-- NOVÝ CSS -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Specifické styly pro graf a interaktivitu -->
     <style>
         .chart-wrapper {
              background: var(--white);
@@ -60,6 +59,16 @@
             color: var(--white);
             border-color: var(--primary-color);
         }
+        /* Styl pro verification box */
+        .verification-box {
+            background: #f0fdf4; /* Světle zelená */
+            border: 1px solid #bbf7d0;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        .verification-box h4 { margin-top: 0; color: var(--success-color); }
+        .verification-list li { margin-bottom: 10px; display: flex; gap: 10px; }
     </style>
 </head>
 <body>
@@ -95,25 +104,27 @@
                 <div class="card-grid">
                     <div class="feature-card">
                         <h3>Google Gemini: Ekosystém</h3>
-                        <p>Gemini je navržen jako hluboce integrovaný "obchodní partner". Jeho síla je v propojení s Google Workspace (Docs, Drive, Gmail).</p>
+                        <p>Gemini je navržen jako hluboce integrovaný "obchodní partner". Jeho síla je v nativním propojení s Google Workspace (Docs, Drive, Gmail, Kalendář).</p>
                         <div style="margin-top: 20px;">
                             <span class="feature-tag">Klíčové výhody</span>
                             <ul style="list-style: none; padding: 0;">
-                                <li>✓ Vertikální optimalizace</li>
-                                <li>✓ Data v reálném čase (Google Search)</li>
-                                <li>✓ Sjednocené zabezpečení</li>
+                                <li>✓ <strong>Vertikální optimalizace:</strong> Vše pod jednou střechou (cloud, AI, office).</li>
+                                <li>✓ <strong>Data v reálném čase:</strong> Přímé napojení na Google Search.</li>
+                                <li>✓ <strong>Sjednocené zabezpečení:</strong> Stejná ochrana jako u vašeho firemního e-mailu.</li>
+                                <li>✓ <strong>Cenová efektivita:</strong> Často levnější pro stávající uživatele Workspace.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="feature-card">
                         <h3>ChatGPT: Univerzál</h3>
-                        <p>ChatGPT je univerzální inteligenční vrstva. Cílem je vytvořit nejlepší model ve své třídě pro kreativní a komplexní úlohy.</p>
+                        <p>ChatGPT a jeho modely (GPT-4o, o1) jsou budovány jako univerzální inteligenční vrstva. Cílem je vytvořit nejlepší model ve své třídě pro kreativní a komplexní úlohy.</p>
                          <div style="margin-top: 20px;">
                             <span class="feature-tag">Klíčové výhody</span>
                             <ul style="list-style: none; padding: 0;">
-                                <li>✓ Horizontální flexibilita</li>
-                                <li>✓ Špičková kreativita</li>
-                                <li>✓ Pokročilé plánování (Reasoning)</li>
+                                <li>✓ <strong>Horizontální flexibilita:</strong> Snadná integrace přes API kamkoliv.</li>
+                                <li>✓ <strong>Špičková kreativita:</strong> Často lepší stylistika v češtině.</li>
+                                <li>✓ <strong>Pokročilé plánování (Reasoning):</strong> Modely řady "o1" excelují v logice.</li>
+                                <li>✓ <strong>Nezávislost:</strong> Není vázán na ekosystém Google nebo Microsoftu.</li>
                             </ul>
                         </div>
                     </div>
@@ -132,6 +143,39 @@
                     <div class="chart-container">
                         <canvas id="techRadarChart"></canvas>
                     </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <h4>Současná generace: Gemini 2.5 Pro vs. ChatGPT 5 (hypoteticky)</h4>
+                        <p>Zatímco OpenAI s modely "o1" (Strawberry) sází na hluboké a pomalé uvažování (reasoning), Google s Gemini sází na masivní kontextové okno (až 2 miliony tokenů) a multimodální vstup (video/audio). <br><br><strong>V praxi to znamená:</strong> Pokud chcete analyzovat hodinovou poradu nebo 500stránkovou smlouvu, Gemini je bezkonkurenční. Pokud chcete vyřešit složitý logický problém nebo naprogramovat aplikaci, ChatGPT může mít navrch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATA SOURCING -->
+        <section id="data-sourcing" style="background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Práce s daty a zdroji</h2>
+                    <p class="section-subtitle">Jak modely "vidí" na internet a jak ověřují fakta.</p>
+                </div>
+                <div class="card-grid">
+                    <div class="feature-card">
+                        <h3>Gemini: Integrované ověřování</h3>
+                        <p>Model sám vyhodnotí, kdy potřebuje data, a proaktivně je vyhledá (Grounding). Nabízí syntézu z více zdrojů najednou a odkazy přímo v textu.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>ChatGPT: Doplňkové hledání</h3>
+                        <p>Vyhledávání (přes Bing) funguje jako nástroj, který si model volá, když narazí na hranice svých znalostí. Někdy může být pomalejší při ověřování mnoha faktů najednou.</p>
+                    </div>
+                </div>
+                
+                <div class="verification-box">
+                    <h4>Klíčová výhoda Gemini: Dvojitá kontrola faktů (Double-check)</h4>
+                    <p>Gemini nabízí unikátní tlačítko "G" pod odpovědí, které provede zpětnou kontrolu textu vůči vyhledávání Google:</p>
+                    <ul class="verification-list" style="list-style: none; padding: 0;">
+                        <li><span class="icon-check">✓</span> <strong>Zelené podbarvení:</strong> Tvrzení bylo ověřeno a nalezeno ve vyhledávání Google (obsahuje odkaz).</li>
+                        <li><span style="color: var(--warning-color); font-weight: bold;">!</span> <strong>Oranžové podbarvení:</strong> Google nenašel shodu nebo našel rozporuplné informace. Pozor na halucinace!</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -150,6 +194,25 @@
                 
                 <div class="table-wrapper">
                     <div id="security-table-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZÁVĚR -->
+        <section id="zaver" style="background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Jak si vybrat?</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="feature-card" style="border-top-color: var(--primary-color);">
+                        <h3>Zvolte Google Gemini, pokud...</h3>
+                        <p>...jste hluboce integrováni v ekosystému Google (Workspace), prioritou je efektivita pracovních postupů, bezpečnost dat na podnikové úrovni a práce s velkým množstvím dokumentů (dlouhé kontextové okno).</p>
+                    </div>
+                    <div class="feature-card" style="border-top-color: var(--accent-color);">
+                        <h3>Zvolte ChatGPT, pokud...</h3>
+                        <p>...potřebujete maximální kreativitu, plánujete složité napojení přes API, vyžadujete nejlepší logické uvažování (modely o1) nebo hledáte nejlepšího "univerzálního" chatbota pro brainstorming.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -202,7 +265,7 @@
                             borderWidth: 2,
                         },
                         {
-                            label: 'ChatGPT 5',
+                            label: 'ChatGPT 5 (o1)',
                             data: [10, 7, 7, 10, 7, 8],
                             backgroundColor: 'rgba(14, 165, 233, 0.2)',
                             borderColor: '#0ea5e9',
@@ -220,19 +283,29 @@
                             <tr>
                                 <th>Aspekt</th>
                                 <th>Google Gemini (zdarma)</th>
-                                <th>ChatGPT (zdarma)</th>
+                                <th>ChatGPT (zdarma/Plus)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>Trénink na datech</strong></td>
-                                <td>Ano, data mohou být použita.</td>
-                                <td>Ano, pokud nevypnuto.</td>
+                                <td>Ano, data mohou být použita (pokud není vypnuto).</td>
+                                <td>Ano, data mohou být použita (pokud není vypnuto).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Uchovávání historie</strong></td>
+                                <td>Standardně 18 měsíců (lze změnit).</td>
+                                <td>Dle nastavení, trvale.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Indemnifikace (Copyright)</strong></td>
+                                <td class="text-danger">Ne</td>
+                                <td class="text-danger">Ne</td>
                             </tr>
                             <tr>
                                 <td><strong>Riziko</strong></td>
-                                <td class="text-danger">Vysoké pro firemní data</td>
-                                <td class="text-danger">Vysoké pro firemní data</td>
+                                <td class="text-danger">Vysoké pro citlivá firemní data</td>
+                                <td class="text-danger">Vysoké pro citlivá firemní data</td>
                             </tr>
                         </tbody>
                     </table>
@@ -243,19 +316,24 @@
                             <tr>
                                 <th>Aspekt</th>
                                 <th>Gemini for Workspace</th>
-                                <th>ChatGPT Enterprise</th>
+                                <th>ChatGPT Team / Enterprise</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>Trénink na datech</strong></td>
-                                <td class="text-ok">Ne, smluvně garantováno.</td>
+                                <td class="text-ok">Ne, smluvně garantováno (T&Cs Workspace).</td>
                                 <td class="text-ok">Ne, smluvně garantováno.</td>
                             </tr>
                             <tr>
-                                <td><strong>GDPR</strong></td>
-                                <td class="text-ok">Vysoký soulad (Google Cloud).</td>
-                                <td class="text-ok">Vysoký soulad (DPA).</td>
+                                <td><strong>Indemnifikace (Copyright)</strong></td>
+                                <td class="text-ok">Ano (pro vybrané služby).</td>
+                                <td class="text-ok">Ano (Copyright Shield).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GDPR & Data Residency</strong></td>
+                                <td class="text-ok">Vysoký soulad, data lze držet v EU.</td>
+                                <td class="text-ok">Vysoký soulad (DPA), Enterprise má více možností.</td>
                             </tr>
                         </tbody>
                     </table>

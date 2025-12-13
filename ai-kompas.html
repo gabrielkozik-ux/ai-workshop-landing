@@ -62,6 +62,15 @@
         .logo-icon img { width: 40px; height: 40px; object-fit: contain; }
         
         .hidden { display: none !important; }
+        
+        /* Share buttons */
+        .share-buttons { margin-top: 20px; display: flex; gap: 10px; justify-content: center; }
+        .share-btn { 
+            padding: 8px 16px; border-radius: 6px; color: white; font-size: 0.9em; font-weight: 600; 
+            display: inline-flex; align-items: center; gap: 5px;
+        }
+        .share-btn.linkedin { background: #0077b5; }
+        .share-btn.facebook { background: #1877f2; }
     </style>
 </head>
 <body>
@@ -114,6 +123,16 @@
                 <div id="results" class="hidden">
                     <h2 id="results-title" class="section-title">Váš výsledek</h2>
                     <div id="primary-result"></div>
+                    
+                    <!-- VRÁCENÉ SDÍLECÍ TLAČÍTKA -->
+                    <div style="text-align: center; margin-top: 20px;">
+                        <p>Líbil se vám test? Sdílejte ho:</p>
+                        <div class="share-buttons">
+                            <a href="#" id="share-linkedin" class="share-btn linkedin" target="_blank">LinkedIn</a>
+                            <a href="#" id="share-facebook" class="share-btn facebook" target="_blank">Facebook</a>
+                        </div>
+                    </div>
+
                     <div id="secondary-results-container" style="margin-top: 40px;">
                         <h3>Další možnosti</h3>
                         <div id="secondary-results" class="card-grid"></div>
@@ -124,6 +143,22 @@
                     <div id="catalog" class="hidden card-grid" style="margin-top: 30px;">
                         <div id="catalog-list"></div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter sekce odstraněna -->
+
+        <!-- VRÁCENÁ SEKCE: PROPOJIT -->
+        <section id="propojit" style="background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Kontaktujte mě</h2>
+                    <p class="section-subtitle">Jsem tu pro vás.</p>
+                </div>
+                <div class="cta-grid">
+                    <a href="mailto:kozik@iustoria.cz" class="cta-button">Napsat e-mail</a>
+                    <a href="tel:+420720265713" class="cta-button secondary">Zavolat</a>
                 </div>
             </div>
         </section>
@@ -141,16 +176,27 @@
                 <h4>Mgr. Gabriel Kožík</h4>
                 <p>AI Stratég & Advokát</p>
             </div>
+            
+            <div class="footer-links">
+                <a href="licence.html">Průvodce Compliance</a>
+                <a href="srovnani.html">Srovnání Nástrojů</a>
+                <a href="https://www.gabrielkozik.com" target="_blank">O lektorovi</a>
+            </div>
+            
+            <div class="social-icons-container">
+                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"><img src="linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"><img src="youtube.png" alt="YouTube"></a>
+            </div>
+            
             <div class="copyright">
                 <p>&copy; 2026 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal (Zjednodušený pro demo) -->
-    <div id="tool-modal" style="display:none;"></div>
-
-    <!-- Script logika (zachována z původního souboru, jen upraveny selektory) -->
+    <!-- Script logika -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const JSON_PATH = "ai-tools.json";
@@ -176,6 +222,7 @@
                 state.tools = (await res.json()).tools || [];
             } catch (err) { console.error(err); }
             setupEventListeners();
+            setupShareLinks();
         }
 
         function setupEventListeners() {
@@ -184,6 +231,13 @@
             $backBtn.addEventListener('click', onBack);
             $finishBtn.addEventListener('click', onFinish);
             $('#show-all-btn').addEventListener('click', () => $('#catalog').classList.toggle('hidden'));
+        }
+
+        function setupShareLinks() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent("Zjistil(a) jsem svůj AI archetyp v AI Kompasu. Zkuste to taky!");
+            $('#share-linkedin').href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+            $('#share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
         }
 
         function startQuiz() {

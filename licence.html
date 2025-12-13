@@ -35,7 +35,7 @@
     <header class="hero hero-small">
         <div class="container">
             <h1>Nastavení Google AI</h1>
-            <p>Pochopte rozdíly mezi licencemi a nastavte si ty správné nástroje.</p>
+            <p>Pochopte rozdíly mezi licencemi a nastavte si ty správné nástroje pro bezpečné podnikání.</p>
         </div>
     </header>
 
@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Osobní vs. Firemní licence</h2>
-                    <p class="section-subtitle">Základní volba stojí mezi řešením pro jednotlivce a řešením pro firmy.</p>
+                    <p class="section-subtitle">Základní volba stojí mezi řešením pro jednotlivce (Google One) a řešením pro firmy (Workspace).</p>
                 </div>
                 
                 <div class="table-wrapper">
@@ -52,25 +52,35 @@
                         <thead>
                             <tr>
                                 <th>Funkce</th>
-                                <th>Google One AI (Osobní)</th>
-                                <th>Workspace + Gemini (Firemní)</th>
+                                <th>Google One AI Premium (Osobní)</th>
+                                <th>Google Workspace + Gemini (Firemní)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>Cílový uživatel</strong></td>
-                                <td>Jednotlivci, studenti</td>
+                                <td>Jednotlivci, studenti, rodiny</td>
                                 <td>Firmy, týmy, freelanceři</td>
                             </tr>
                             <tr>
                                 <td><strong>Zabezpečení dat</strong></td>
-                                <td>Možnost vypnout trénování</td>
-                                <td class="text-ok">Data se nikdy nepoužívají pro trénink</td>
+                                <td>Možnost vypnout trénování (opt-out)</td>
+                                <td class="text-ok">Smluvně garantováno netrénování (Enterprise-grade)</td>
                             </tr>
                             <tr>
                                 <td><strong>Správa uživatelů</strong></td>
                                 <td class="text-danger">Není</td>
                                 <td class="text-ok">Plná kontrola (Admin Console)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Smíšené licencování</strong></td>
+                                <td>Nelze (platí se za celý účet)</td>
+                                <td class="text-ok">Lze koupit jen vybraným zaměstnancům</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Garantovaná dostupnost (SLA)</strong></td>
+                                <td>Není garantována</td>
+                                <td class="text-ok">99.9% uptime SLA</td>
                             </tr>
                             <tr>
                                 <td><strong>Doporučeno pro</strong></td>
@@ -90,12 +100,12 @@
                  </div>
                 <div class="card-grid">
                     <div class="feature-card">
-                        <h3>Bezpečnost</h3>
-                        <p>Vaše konverzace s AI a data v Google Docs se nikdy nepoužívají k trénování modelů Google.</p>
+                        <h3>Bezpečnost a Compliance</h3>
+                        <p>Vaše konverzace s AI a data, která vkládáte do Google Docs, Sheets nebo Slides, se <strong>nikdy nepoužívají</strong> k trénování obecných modelů Google. Zůstávají vaším vlastnictvím.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Kontrola</h3>
-                        <p>Jako administrátor máte plnou kontrolu nad tím, kdo má k AI přístup.</p>
+                        <h3>Kontrola a Správa</h3>
+                        <p>Jako administrátor máte plnou kontrolu nad tím, kdo má k AI funkcím přístup. Můžete licenci přidělit jen těm zaměstnancům, kteří ji skutečně využijí (např. marketing, analytika).</p>
                     </div>
                 </div>
             </div>
@@ -117,8 +127,9 @@
                         <div class="accordion-content">
                             <div class="accordion-content-inner">
                                 <ul>
-                                    <li>Vlastní doménu (mojefirma.cz)</li>
-                                    <li>Platební kartu</li>
+                                    <li><strong>Vlastní doménu</strong> (např. <code>mojefirma.cz</code>). Bez ní nelze založit Workspace.</li>
+                                    <li><strong>Platební kartu</strong> pro firemní platby.</li>
+                                    <li>Přístup k DNS záznamům domény (pro ověření vlastnictví).</li>
                                 </ul>
                             </div>
                         </div>
@@ -131,20 +142,73 @@
                         </button>
                         <div class="accordion-content">
                              <div class="accordion-content-inner">
-                                <p>Jděte na workspace.google.com a zvolte tarif Business Standard.</p>
+                                <p>Jděte na <a href="https://workspace.google.com" target="_blank" style="text-decoration: underline;">workspace.google.com</a> a zvolte tarif <strong>Business Standard</strong> (nebo vyšší). Tarif Starter nepodporuje všechny AI funkce.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="accordion-item">
                         <button class="accordion-button" aria-expanded="false">
-                           Krok 3: Aktivace Gemini
+                           Krok 3: Aktivace Gemini (Add-on)
                            <span class="arrow">▼</span>
                         </button>
                         <div class="accordion-content">
                            <div class="accordion-content-inner">
-                               <p>V Admin Console přejděte do Fakturace > Získat další služby a přidejte Gemini.</p>
+                               <p>V Admin Console přejděte do <strong>Fakturace > Získat další služby</strong>. Vyhledejte "Gemini for Google Workspace" (Business nebo Enterprise) a přidejte ji. Následně licenci přiřaďte konkrétním uživatelům v sekci Uživatelé.</p>
                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SEKCE -->
+        <section id="faq" style="background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Často kladené otázky (FAQ)</h2>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false">
+                        Musím koupit licenci Gemini pro všechny zaměstnance?
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p><strong>Ne.</strong> To je jedna z hlavních výhod. Pokud máte ve firmě 10 lidí, ale AI potřebují jen 2 markeťáci, koupíte doplněk Gemini jen pro ně. Ostatním zůstane standardní Workspace.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false">
+                        Proč nemůžu v pracovním Gemini plánovat trasy v Mapách?
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Firemní verze Gemini je z důvodu maximální ochrany soukromí ("data exfiltration protection") izolovaná od vašich osobních dat z aplikací jako Mapy, YouTube nebo Lety. AI nemá přístup k vaší osobní historii v těchto službách.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false">
+                        Je Workspace opravdu bezpečnější než můj osobní Gmail?
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p><strong>Ano, zásadně.</strong> S Google Workspace máte smluvní záruky (Data Processing Addendum), že vaše data nebudou použita pro reklamní účely ani pro trénování AI modelů. U osobního Gmailu jsou pravidla volnější.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false">
+                        Jaký je rozdíl mezi Gemini Business a Enterprise?
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Gemini Business má limit 1000 použití měsíčně pro některé generativní funkce a je levnější. Enterprise je bez limitu a přidává pokročilé funkce pro schůzky (automatický překlad titulků v reálném čase).</p>
                         </div>
                     </div>
                 </div>
@@ -186,23 +250,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const accordionContainer = document.getElementById('accordion-container');
-            if (accordionContainer) {
-                accordionContainer.addEventListener('click', (event) => {
-                    const button = event.target.closest('.accordion-button');
-                    if (!button) return;
-                    
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
                     const content = button.nextElementSibling;
                     const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-                    const allButtons = accordionContainer.querySelectorAll('.accordion-button');
-                    allButtons.forEach(btn => {
-                        if (btn !== button) {
-                            btn.setAttribute('aria-expanded', 'false');
-                            btn.nextElementSibling.style.maxHeight = '0px';
-                        }
-                    });
-
+                    
                     button.setAttribute('aria-expanded', !isExpanded);
                     if (!isExpanded) {
                         content.style.maxHeight = content.scrollHeight + 'px';
@@ -210,7 +264,7 @@
                         content.style.maxHeight = '0px';
                     }
                 });
-            }
+            });
         });
     </script>
 </body>
