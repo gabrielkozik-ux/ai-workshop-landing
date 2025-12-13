@@ -11,7 +11,7 @@
       gtag('config', 'AW-981380390');
     </script>
     
-    <!-- Původní snippet ponecháváme pro případné jiné použití, ale u registrace ho obejdeme -->
+    <!-- Konverzní skript pro nákup vstupenky -->
     <script>
     function gtag_report_conversion(url) {
       var callback = function () {
@@ -30,8 +30,8 @@
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Workshop: Business Excellence pro freelancery i firmy | BEA ČR</title>
-    <meta name="description" content="Praktický AI workshop v Brně (10.12.2025). Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.">
+    <title>AI Workshop: Gemini a NotebookLM pro praxi | Brno</title>
+    <meta name="description" content="Praktický AI workshop v Brně (16. 1. 2026). Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://ai-workshop.cz/" />
@@ -41,9 +41,9 @@
     [{
       "@context": "https://schema.org",
       "@type": "EducationEvent",
-      "name": "AI Workshop: Nástroje pro Business Excellence",
-      "startDate": "2025-12-10T09:00:00+01:00", 
-      "endDate": "2025-12-10T15:00:00+01:00",
+      "name": "AI Workshop: Nástroje Google pro freelancery a firmy",
+      "startDate": "2026-01-16T09:00:00+01:00", 
+      "endDate": "2026-01-16T15:00:00+01:00",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
@@ -63,8 +63,8 @@
       },
       "organizer": {
         "@type": "Organization",
-        "name": "BEA ČR",
-        "url": "https://beacr.cz"
+        "name": "Mgr. Gabriel Kožík",
+        "url": "https://ai-workshop.cz"
       }
     }]
     </script>
@@ -75,7 +75,6 @@
             --secondary-color: #2ca58d; /* Fresh Teal - Growth/Freelance friendly */
             --accent-color: #0077b6;
             --warning-color: #f59e0b;
-            --bea-red: #e30613; /* BEA Brand Accent */
             --text-color: #333;
             --light-gray: #f8f9fa;
             --white: #ffffff;
@@ -380,7 +379,7 @@
             color: rgba(255, 255, 255, 0.8);
             padding: 60px 20px;
             text-align: center;
-            border-top: 5px solid var(--bea-red); /* BEA accent */
+            border-top: 5px solid var(--secondary-color); /* Updated accent */
         }
         footer a { color: var(--secondary-color); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
@@ -407,7 +406,7 @@
     <nav class="landing-nav">
         <a href="#" class="landing-nav-title">
             <img src="favicon.ico" alt="AI Workshop">
-            <span>AI Workshop: Business Excellence</span>
+            <span>AI Workshop: Gemini & NotebookLM</span>
         </a>
         <a href="#kontakt" class="landing-nav-contact">Poptat školení</a>
     </nav>
@@ -423,7 +422,7 @@
             <div class="workshop-details-box">
                 <div class="detail-item">
                     <svg><use xlink:href="#icon-calendar"></use></svg>
-                    <span><strong>10. 12. 2025</strong></span>
+                    <span><strong>16. 1. 2026</strong></span>
                 </div>
                 <div class="detail-item">
                     <svg><use xlink:href="#icon-clock"></use></svg>
@@ -436,8 +435,8 @@
             </div>
 
             <div>
-                <!-- Odkaz otevíráme v nové kartě bez blokujícího přesměrování -->
-                <a href="https://beacr.cz/bea-cr/kalendar-akci/" target="_blank" class="cta-button" onclick="gtag('event', 'conversion', {'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD', 'value': 0, 'currency': 'CZK'});">Registrace přes BEA ČR</a>
+                <!-- Odkaz vede na Influon checkout -->
+                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMVRvYmVwdXEvK0EvamJlaTB1RFZHOTRTNS85RWV3VVlhSDMrQzMzVjdGTw==" target="_blank" class="cta-button" onclick="gtag('event', 'conversion', {'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD', 'value': 0, 'currency': 'CZK'});">Koupit vstupenku</a>
             </div>
         </div>
     </header>
@@ -566,15 +565,12 @@
         <div class="container">
             <p><strong>Mgr. Gabriel Kožík</strong> | AI Stratég & Advokát</p>
             <p>Slovákova 279/11, Brno | IČO: 05187559</p>
-            <p style="margin-top: 15px; opacity: 0.8; font-size: 0.9em;">
-                Ve spolupráci s <a href="https://beacr.cz" target="_blank" style="color: #fff; text-decoration: underline;">BEA ČR</a> (Business Excellence Association).
-            </p>
             <div style="margin-top: 30px;">
                 <a href="licence.html">Průvodce Compliance</a> | 
                 <a href="srovnani.html">Srovnání Nástrojů</a> | 
                 <a href="https://www.gabrielkozik.com" target="_blank">O lektorovi</a>
             </div>
-            <p style="margin-top: 30px; font-size: 0.8em; opacity: 0.6;">&copy; 2025 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
+            <p style="margin-top: 30px; font-size: 0.8em; opacity: 0.6;">&copy; 2026 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
         </div>
     </footer>
     
