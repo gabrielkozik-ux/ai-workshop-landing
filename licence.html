@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-981380390"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-981380390');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-981380390');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pochopte rozdíly mezi osobní a firemní licencí Google AI. Návod na nastavení.">
     <title>Průvodce nastavením Google AI | AI Workshop</title>
-    
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://ai-workshop.cz/licence.html" />
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav class="main-nav">
@@ -26,6 +28,8 @@
         </a>
         <div class="nav-links">
             <a href="index.html">Zpět na workshop</a>
+            <a href="index.html#vibecoding" style="color: var(--secondary-color); font-weight: bold;">Novinka:
+                Vibecoding</a>
             <a href="#comparison">Licence</a>
             <a href="#guide">Návod</a>
             <a href="index.html#kontakt" class="nav-cta-button">Poptat školení</a>
@@ -44,9 +48,10 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Osobní vs. Firemní licence</h2>
-                    <p class="section-subtitle">Základní volba stojí mezi řešením pro jednotlivce (Google One) a řešením pro firmy (Workspace).</p>
+                    <p class="section-subtitle">Základní volba stojí mezi řešením pro jednotlivce (Google One) a řešením
+                        pro firmy (Workspace).</p>
                 </div>
-                
+
                 <div class="table-wrapper">
                     <table class="comparison-table">
                         <thead>
@@ -95,24 +100,27 @@
 
         <section id="recommendation">
             <div class="container">
-                 <div class="section-header">
+                <div class="section-header">
                     <h2 class="section-title">Proč zvolit Workspace?</h2>
-                 </div>
+                </div>
                 <div class="card-grid">
                     <div class="feature-card">
                         <h3>Bezpečnost a Compliance</h3>
-                        <p>Vaše konverzace s AI a data, která vkládáte do Google Docs, Sheets nebo Slides, se <strong>nikdy nepoužívají</strong> k trénování obecných modelů Google. Zůstávají vaším vlastnictvím.</p>
+                        <p>Vaše konverzace s AI a data, která vkládáte do Google Docs, Sheets nebo Slides, se
+                            <strong>nikdy nepoužívají</strong> k trénování obecných modelů Google. Zůstávají vaším
+                            vlastnictvím.</p>
                     </div>
                     <div class="feature-card">
                         <h3>Kontrola a Správa</h3>
-                        <p>Jako administrátor máte plnou kontrolu nad tím, kdo má k AI funkcím přístup. Můžete licenci přidělit jen těm zaměstnancům, kteří ji skutečně využijí (např. marketing, analytika).</p>
+                        <p>Jako administrátor máte plnou kontrolu nad tím, kdo má k AI funkcím přístup. Můžete licenci
+                            přidělit jen těm zaměstnancům, kteří ji skutečně využijí (např. marketing, analytika).</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="guide">
-             <div class="container">
+            <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Návod: Jak na to</h2>
                     <p class="section-subtitle">Krok za krokem k bezpečnému firemnímu AI.</p>
@@ -127,35 +135,40 @@
                         <div class="accordion-content">
                             <div class="accordion-content-inner">
                                 <ul>
-                                    <li><strong>Vlastní doménu</strong> (např. <code>mojefirma.cz</code>). Bez ní nelze založit Workspace.</li>
+                                    <li><strong>Vlastní doménu</strong> (např. <code>mojefirma.cz</code>). Bez ní nelze
+                                        založit Workspace.</li>
                                     <li><strong>Platební kartu</strong> pro firemní platby.</li>
                                     <li>Přístup k DNS záznamům domény (pro ověření vlastnictví).</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="accordion-item">
                         <button class="accordion-button" aria-expanded="false">
                             Krok 2: Registrace Workspace
                             <span class="arrow">▼</span>
                         </button>
                         <div class="accordion-content">
-                             <div class="accordion-content-inner">
-                                <p>Jděte na <a href="https://workspace.google.com" target="_blank" style="text-decoration: underline;">workspace.google.com</a> a zvolte tarif <strong>Business Standard</strong> (nebo vyšší). Tarif Starter nepodporuje všechny AI funkce.</p>
+                            <div class="accordion-content-inner">
+                                <p>Jděte na <a href="https://workspace.google.com" target="_blank"
+                                        style="text-decoration: underline;">workspace.google.com</a> a zvolte tarif
+                                    <strong>Business Standard</strong> (nebo vyšší). Tarif Starter nepodporuje všechny
+                                    AI funkce.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="accordion-item">
                         <button class="accordion-button" aria-expanded="false">
-                           Krok 3: Aktivace Gemini (Add-on)
-                           <span class="arrow">▼</span>
+                            Krok 3: Aktivace Gemini (Add-on)
+                            <span class="arrow">▼</span>
                         </button>
                         <div class="accordion-content">
-                           <div class="accordion-content-inner">
-                               <p>V Admin Console přejděte do <strong>Generativní AI > Gemini / Gemini pro Workspace / NotebookLM</strong>. Klikněte na "Zapnuto" (pro všechny / pro uživatele).</p>
-                           </div>
+                            <div class="accordion-content-inner">
+                                <p>V Admin Console přejděte do <strong>Generativní AI > Gemini / Gemini pro Workspace /
+                                        NotebookLM</strong>. Klikněte na "Zapnuto" (pro všechny / pro uživatele).</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -175,7 +188,9 @@
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p><strong>Ne.</strong> To je jedna z hlavních výhod. Pokud máte ve firmě 10 lidí, ale AI potřebují jen 2 markeťáci, koupíte doplněk licenci s plnohodnotnou AI jen pro ně. Ostatním zůstane standardní Workspace.</p>
+                            <p><strong>Ne.</strong> To je jedna z hlavních výhod. Pokud máte ve firmě 10 lidí, ale AI
+                                potřebují jen 2 markeťáci, koupíte doplněk licenci s plnohodnotnou AI jen pro ně.
+                                Ostatním zůstane standardní Workspace.</p>
                         </div>
                     </div>
                 </div>
@@ -186,7 +201,9 @@
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>Firemní verze Gemini je z důvodu maximální ochrany soukromí ("data exfiltration protection") izolovaná od vašich osobních dat z aplikací jako Mapy, YouTube nebo Lety. AI nemá přístup k vaší osobní historii v těchto službách.</p>
+                            <p>Firemní verze Gemini je z důvodu maximální ochrany soukromí ("data exfiltration
+                                protection") izolovaná od vašich osobních dat z aplikací jako Mapy, YouTube nebo Lety.
+                                AI nemá přístup k vaší osobní historii v těchto službách.</p>
                         </div>
                     </div>
                 </div>
@@ -197,27 +214,41 @@
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p><strong>Ano, zásadně.</strong> S Google Workspace máte smluvní záruky (Data Processing Addendum), že vaše data nebudou použita pro reklamní účely ani pro trénování AI modelů. U osobního Gmailu jsou pravidla volnější.</p>
+                            <p><strong>Ano, zásadně.</strong> S Google Workspace máte smluvní záruky (Data Processing
+                                Addendum), že vaše data nebudou použita pro reklamní účely ani pro trénování AI modelů.
+                                U osobního Gmailu jsou pravidla volnější.</p>
                         </div>
                     </div>
                 </div>
-                 <div class="accordion-item">
+                <div class="accordion-item">
                     <button class="accordion-button" aria-expanded="false">
                         Jaký je rozdíl mezi Gemini Business a Enterprise?
                         <span class="arrow">▼</span>
                     </button>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>Gemini Business má limit 1000 použití měsíčně pro některé generativní funkce a je levnější. Enterprise je bez limitu a přidává pokročilé funkce pro schůzky (automatický překlad titulků v reálném čase).</p>
+                            <p>Gemini Business má limit 1000 použití měsíčně pro některé generativní funkce a je
+                                levnější. Enterprise je bez limitu a přidává pokročilé funkce pro schůzky (automatický
+                                překlad titulků v reálném čase).</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section class="back-link-section">
-            <div class="container">
-                 <a href="index.html" class="cta-button">Zpět na hlavní stránku workshopu</a>
+
+        <section id="vibecoding-cta-block"
+            style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%); padding: 60px 0; border-top: 1px solid rgba(14, 165, 233, 0.2);">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title">Nyní máte bezpečný Foundation Model. Co dál?</h2>
+                <p style="max-width: 600px; margin: 0 auto 30px; color: #64748b; font-size: 1.1em; line-height: 1.6;">
+                    Naučte se pracovat s firemní licencí na workshopu nebo ovládněte stavbu interních firemních nástrojů
+                    a automatizací na navazujícím kurzu <strong>Vibecoding</strong>.</p>
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <a href="index.html#vibecoding" class="cta-button"
+                        style="background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));">Prozkoumat
+                        kurz Vibecoding</a>
+                    <a href="index.html" class="cta-button secondary">Zpět na základní kurz</a>
+                </div>
             </div>
         </section>
     </main>
@@ -228,20 +259,25 @@
                 <h4>Mgr. Gabriel Kožík</h4>
                 <p>AI Stratég & Advokát</p>
             </div>
-            
+
             <div class="footer-links">
                 <a href="licence.html">Průvodce Compliance</a>
                 <a href="srovnani.html">Srovnání Nástrojů</a>
+                <a href="index.html#vibecoding">Kurz Vibecoding</a>
                 <a href="https://www.gabrielkozik.com" target="_blank">O lektorovi</a>
             </div>
-            
+
             <div class="social-icons-container">
-                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"><img src="linkedin.png" alt="LinkedIn"></a>
-                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
-                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"><img src="youtube.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"><img
+                        src="linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.png"
+                        alt="Facebook"></a>
+                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"><img
+                        src="instagram.png" alt="Instagram"></a>
+                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"><img
+                        src="youtube.png" alt="YouTube"></a>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2026 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
             </div>
@@ -251,12 +287,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const accordionButtons = document.querySelectorAll('.accordion-button');
-            
+
             accordionButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const content = button.nextElementSibling;
                     const isExpanded = button.getAttribute('aria-expanded') === 'true';
-                    
+
                     button.setAttribute('aria-expanded', !isExpanded);
                     if (!isExpanded) {
                         content.style.maxHeight = content.scrollHeight + 'px';
@@ -268,4 +304,5 @@
         });
     </script>
 </body>
+
 </html>
