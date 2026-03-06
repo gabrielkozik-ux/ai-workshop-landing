@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-981380390"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-981380390');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-981380390');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Strategické a technické srovnání Google Gemini vs. OpenAI ChatGPT.">
     <title>Komparace AI nástrojů | Gemini vs. ChatGPT</title>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://ai-workshop.cz/srovnani.html" />
-    
+
     <!-- NOVÝ CSS -->
     <link rel="stylesheet" href="style.css">
-    
+
     <style>
         .chart-wrapper {
-             background: var(--white);
-             padding: 30px;
-             border-radius: 16px;
-             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-             border: 1px solid rgba(226, 232, 240, 0.8);
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
+
         .chart-container {
             position: relative;
             width: 100%;
@@ -35,6 +37,7 @@
             margin: 0 auto;
             height: 350px;
         }
+
         .interactive-controls {
             display: flex;
             justify-content: center;
@@ -42,6 +45,7 @@
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
+
         .interactive-button {
             background-color: var(--light-gray);
             color: var(--primary-color);
@@ -53,24 +57,41 @@
             font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
         }
-        .interactive-button:hover { background-color: #e2e8f0; border-color: #e2e8f0; }
+
+        .interactive-button:hover {
+            background-color: #e2e8f0;
+            border-color: #e2e8f0;
+        }
+
         .interactive-button.active {
             background-color: var(--primary-color);
             color: var(--white);
             border-color: var(--primary-color);
         }
+
         /* Styl pro verification box */
         .verification-box {
-            background: #f0fdf4; /* Světle zelená */
+            background: #f0fdf4;
+            /* Světle zelená */
             border: 1px solid #bbf7d0;
             border-radius: 16px;
             padding: 30px;
             margin-top: 40px;
         }
-        .verification-box h4 { margin-top: 0; color: var(--success-color); }
-        .verification-list li { margin-bottom: 10px; display: flex; gap: 10px; }
+
+        .verification-box h4 {
+            margin-top: 0;
+            color: var(--success-color);
+        }
+
+        .verification-list li {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
     </style>
 </head>
+
 <body>
 
     <nav class="main-nav">
@@ -80,6 +101,8 @@
         </a>
         <div class="nav-links">
             <a href="index.html">Zpět na workshop</a>
+            <a href="index.html#vibecoding" style="color: var(--secondary-color); font-weight: bold;">Novinka:
+                Vibecoding</a>
             <a href="#strategie">Strategie</a>
             <a href="#technologie">Technologie</a>
             <a href="index.html#kontakt" class="nav-cta-button">Poptat školení</a>
@@ -98,32 +121,40 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Strategické srovnání</h2>
-                    <p class="section-subtitle">Volba mezi Google Gemini a OpenAI ChatGPT není pouze technickým rozhodnutím, ale strategickým rozhodnutím o směrování vaší firmy.</p>
+                    <p class="section-subtitle">Volba mezi Google Gemini a OpenAI ChatGPT není pouze technickým
+                        rozhodnutím, ale strategickým rozhodnutím o směrování vaší firmy.</p>
                 </div>
-                
+
                 <div class="card-grid">
                     <div class="feature-card">
                         <h3>Google Gemini: Ekosystém</h3>
-                        <p>Gemini je navržen jako hluboce integrovaný "obchodní partner". Jeho síla je v nativním propojení s Google Workspace (Docs, Drive, Gmail, Kalendář).</p>
+                        <p>Gemini je navržen jako hluboce integrovaný "obchodní partner". Jeho síla je v nativním
+                            propojení s Google Workspace (Docs, Drive, Gmail, Kalendář).</p>
                         <div style="margin-top: 20px;">
                             <span class="feature-tag">Klíčové výhody</span>
                             <ul style="list-style: none; padding: 0;">
-                                <li>✓ <strong>Vertikální optimalizace:</strong> Vše pod jednou střechou (cloud, AI, office).</li>
+                                <li>✓ <strong>Vertikální optimalizace:</strong> Vše pod jednou střechou (cloud, AI,
+                                    office).</li>
                                 <li>✓ <strong>Data v reálném čase:</strong> Přímé napojení na Google Search.</li>
-                                <li>✓ <strong>Sjednocené zabezpečení:</strong> Stejná ochrana jako u vašeho firemního e-mailu.</li>
-                                <li>✓ <strong>Cenová efektivita:</strong> Často levnější pro stávající uživatele Workspace.</li>
+                                <li>✓ <strong>Sjednocené zabezpečení:</strong> Stejná ochrana jako u vašeho firemního
+                                    e-mailu.</li>
+                                <li>✓ <strong>Cenová efektivita:</strong> Často levnější pro stávající uživatele
+                                    Workspace.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="feature-card">
                         <h3>ChatGPT: Univerzál</h3>
-                        <p>ChatGPT a jeho modely jsou budovány jako univerzální inteligenční vrstva. Cílem je vytvořit nejlepší model ve své třídě pro kreativní a komplexní úlohy.</p>
-                         <div style="margin-top: 20px;">
+                        <p>ChatGPT a jeho modely jsou budovány jako univerzální inteligenční vrstva. Cílem je vytvořit
+                            nejlepší model ve své třídě pro kreativní a komplexní úlohy.</p>
+                        <div style="margin-top: 20px;">
                             <span class="feature-tag">Klíčové výhody</span>
                             <ul style="list-style: none; padding: 0;">
-                                <li>✓ <strong>Horizontální flexibilita:</strong> Snadná integrace přes API kamkoliv.</li>
+                                <li>✓ <strong>Horizontální flexibilita:</strong> Snadná integrace přes API kamkoliv.
+                                </li>
                                 <li>✓ <strong>Špičková kreativita:</strong> Často lepší stylistika v češtině.</li>
-                                <li>✓ <strong>Pokročilé plánování (Reasoning):</strong> Modely řady "o1" excelují v logice.</li>
+                                <li>✓ <strong>Pokročilé plánování (Reasoning):</strong> Modely řady "o1" excelují v
+                                    logice.</li>
                                 <li>✓ <strong>Nezávislost:</strong> Není vázán na ekosystém Google nebo Microsoftu.</li>
                             </ul>
                         </div>
@@ -138,17 +169,26 @@
                     <h2 class="section-title">Technologie a výkon</h2>
                     <p class="section-subtitle">Srovnání klíčových vlastností aktuálních modelů.</p>
                 </div>
-                
+
                 <div class="chart-wrapper">
                     <div class="chart-container">
                         <canvas id="techRadarChart"></canvas>
                     </div>
                     <div style="text-align: center; margin-top: 20px;">
                         <h4>Současná generace: Gemini 2.5 Pro vs. ChatGPT 5</h4>
-                        <p>Zatímco OpenAI s modely "o1" sází na hluboké a pomalé uvažování (reasoning), Google s Gemini sází na masivní kontextové okno (až 2 miliony tokenů) a multimodální vstup (video/audio). <br><br><strong>V praxi to znamená:</strong> Pokud chcete analyzovat hodinovou poradu nebo 500stránkovou smlouvu, Gemini je bezkonkurenční. Pokud chcete vyřešit složitý logický problém nebo naprogramovat aplikaci, ChatGPT může mít navrch.</p>
+                        <div
+                            style="text-align: center; margin-top: 40px; background: rgba(14, 165, 233, 0.05); padding: 25px; border-radius: 12px; border: 1px dashed var(--secondary-color);">
+                            <h4 style="color: var(--primary-color); margin-bottom: 10px;">Budoucnost: Agentní systémy a
+                                Vibecoding</h4>
+                            <p style="font-size: 0.95em; color: #475569; margin: 0 auto; max-width: 650px;">
+                                Samotné chatování brzy nebude stačit. Na obzoru jsou <strong>Agentní systémy (např.
+                                    Google Antigravity, rozvninutější Claude a Devin)</strong>, které dokáží nejen
+                                generovat text, ale autonomně prohledávat internet, vytvářet soubory a navrhovat funkční
+                                aplikace. Tyto systémy tvoří jádro tzv. <strong>Vibecodingu</strong>.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- DATA SOURCING -->
@@ -161,20 +201,26 @@
                 <div class="card-grid">
                     <div class="feature-card">
                         <h3>Gemini: Integrované ověřování</h3>
-                        <p>Model sám vyhodnotí, kdy potřebuje data, a proaktivně je vyhledá (Grounding). Nabízí syntézu z více zdrojů najednou a odkazy přímo v textu.</p>
+                        <p>Model sám vyhodnotí, kdy potřebuje data, a proaktivně je vyhledá (Grounding). Nabízí syntézu
+                            z více zdrojů najednou a odkazy přímo v textu.</p>
                     </div>
                     <div class="feature-card">
                         <h3>ChatGPT: Doplňkové hledání</h3>
-                        <p>Vyhledávání (přes Bing) funguje jako nástroj, který si model volá, když narazí na hranice svých znalostí. Někdy může být pomalejší při ověřování mnoha faktů najednou.</p>
+                        <p>Vyhledávání (přes Bing) funguje jako nástroj, který si model volá, když narazí na hranice
+                            svých znalostí. Někdy může být pomalejší při ověřování mnoha faktů najednou.</p>
                     </div>
                 </div>
-                
+
                 <div class="verification-box">
                     <h4>Klíčová výhoda Gemini: Dvojitá kontrola faktů (Double-check)</h4>
-                    <p>Gemini nabízítlačítko pod odpovědí, které provede zpětnou kontrolu textu vůči vyhledávání Google:</p>
+                    <p>Gemini nabízítlačítko pod odpovědí, které provede zpětnou kontrolu textu vůči vyhledávání Google:
+                    </p>
                     <ul class="verification-list" style="list-style: none; padding: 0;">
-                        <li><span class="icon-check">✓</span> <strong>Zelené podbarvení:</strong> Tvrzení bylo ověřeno a nalezeno ve vyhledávání Google (obsahuje odkaz).</li>
-                        <li><span style="color: var(--warning-color); font-weight: bold;">!</span> <strong>Oranžové podbarvení:</strong> Google nenašel shodu nebo našel rozporuplné informace. Pozor na halucinace!</li>
+                        <li><span class="icon-check">✓</span> <strong>Zelené podbarvení:</strong> Tvrzení bylo ověřeno a
+                            nalezeno ve vyhledávání Google (obsahuje odkaz).</li>
+                        <li><span style="color: var(--warning-color); font-weight: bold;">!</span> <strong>Oranžové
+                                podbarvení:</strong> Google nenašel shodu nebo našel rozporuplné informace. Pozor na
+                            halucinace!</li>
                     </ul>
                 </div>
             </div>
@@ -191,7 +237,7 @@
                     <button id="btnConsumer" class="interactive-button active">Pro běžné uživatele</button>
                     <button id="btnEnterprise" class="interactive-button">Pro firmy</button>
                 </div>
-                
+
                 <div class="table-wrapper">
                     <div id="security-table-container"></div>
                 </div>
@@ -207,19 +253,34 @@
                 <div class="card-grid">
                     <div class="feature-card" style="border-top-color: var(--primary-color);">
                         <h3>Zvolte Google Gemini, pokud...</h3>
-                        <p>...jste hluboce integrováni v ekosystému Google (Workspace), prioritou je efektivita pracovních postupů, bezpečnost dat na podnikové úrovni a práce s velkým množstvím dokumentů (dlouhé kontextové okno).</p>
+                        <p>...jste hluboce integrováni v ekosystému Google (Workspace), prioritou je efektivita
+                            pracovních postupů, bezpečnost dat na podnikové úrovni a práce s velkým množstvím dokumentů
+                            (dlouhé kontextové okno).</p>
                     </div>
                     <div class="feature-card" style="border-top-color: var(--accent-color);">
                         <h3>Zvolte ChatGPT, pokud...</h3>
-                        <p>...potřebujete maximální kreativitu, plánujete složité napojení přes API, vyžadujete nejlepší logické uvažování (modely o1) nebo hledáte nejlepšího "univerzálního" chatbota pro brainstorming.</p>
+                        <p>...potřebujete maximální kreativitu, plánujete složité napojení přes API, vyžadujete nejlepší
+                            logické uvažování (modely o1) nebo hledáte nejlepšího "univerzálního" chatbota pro
+                            brainstorming.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="back-link-section">
-            <div class="container">
-                 <a href="index.html" class="cta-button">Zpět na hlavní stránku workshopu</a>
+        <section id="vibecoding-cta-block"
+            style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%); padding: 60px 0; border-top: 1px solid rgba(14, 165, 233, 0.2);">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title">Už víte, který nástroj je pro vás ten pravý?</h2>
+                <p style="max-width: 600px; margin: 0 auto 30px; color: #64748b; font-size: 1.1em; line-height: 1.6;">
+                    Nezůstaňte jen u teorie. Ovládněte nástroje v praxi na základním workshopu, nebo je zapojte do
+                    tvorby vlastních firemních aplikací a kalkulaček na navazujícím kurzu <strong>Vibecoding</strong>.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <a href="index.html#vibecoding" class="cta-button"
+                        style="background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));">Prozkoumat
+                        kurz Vibecoding</a>
+                    <a href="index.html" class="cta-button secondary">Zpět na základní kurz</a>
+                </div>
             </div>
         </section>
     </main>
@@ -230,20 +291,25 @@
                 <h4>Mgr. Gabriel Kožík</h4>
                 <p>AI Stratég & Advokát</p>
             </div>
-            
+
             <div class="footer-links">
                 <a href="licence.html">Průvodce Compliance</a>
                 <a href="srovnani.html">Srovnání Nástrojů</a>
+                <a href="index.html#vibecoding">Kurz Vibecoding</a>
                 <a href="https://www.gabrielkozik.com" target="_blank">O lektorovi</a>
             </div>
-            
+
             <div class="social-icons-container">
-                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"><img src="linkedin.png" alt="LinkedIn"></a>
-                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
-                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"><img src="youtube.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"><img
+                        src="linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.png"
+                        alt="Facebook"></a>
+                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"><img
+                        src="instagram.png" alt="Instagram"></a>
+                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"><img
+                        src="youtube.png" alt="YouTube"></a>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2026 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
             </div>
@@ -275,7 +341,7 @@
                     ]
                 }
             };
-            
+
             const securityContent = {
                 consumer: `
                     <table class="comparison-table">
@@ -351,14 +417,14 @@
                     scales: { r: { suggestedMin: 0, suggestedMax: 10 } }
                 }
             });
-            
+
             const tableContainer = document.getElementById('security-table-container');
             const btnConsumer = document.getElementById('btnConsumer');
             const btnEnterprise = document.getElementById('btnEnterprise');
-            
+
             function updateSecurity(type) {
                 tableContainer.innerHTML = securityContent[type];
-                if(type === 'consumer') {
+                if (type === 'consumer') {
                     btnConsumer.classList.add('active');
                     btnEnterprise.classList.remove('active');
                 } else {
@@ -366,11 +432,12 @@
                     btnConsumer.classList.remove('active');
                 }
             }
-            
+
             btnConsumer.addEventListener('click', () => updateSecurity('consumer'));
             btnEnterprise.addEventListener('click', () => updateSecurity('enterprise'));
             updateSecurity('consumer');
         });
     </script>
 </body>
+
 </html>

@@ -149,6 +149,34 @@
         ],
         "comparison": "Je to specializovaný nástroj pro experty na složité problémy. Vyniká v analýze sociálních médií a v úlohách vyžadujících hluboké logické uvažování. Pro běžnou firemní a marketingovou komunikaci je rizikový a méně vhodný."
       }
+    },
+    {
+      "id": "antigravity",
+      "name": "Google Antigravity",
+      "fit_weight": 2,
+      "archetype": "Tvůrce aplikací",
+      "summary": "Agentní systém, který nejen chatuje, ale proaktivně píše kód, testuje a nasazuje funkční aplikace (ideální pro Vibecoding).",
+      "idealFor": "Lidé s techničtějším zaměřením nebo absolventi kurzů, kteří chtějí stavět vlastní interní nástroje.",
+      "watchOutFor": "Není vhodný pro běžné dotazy; je to autonomní agent pro reálnou práci se soubory.",
+      "availability": "Soukromý nástroj / experimentální beta pro vývojáře.",
+      "strengths": { "marketing": 1, "analysis": 3, "automation": 5 },
+      "details": {
+        "key_abilities": [
+          "Plná agentní autonomie (přístup k souborům, prohlížeči a terminálu).",
+          "Znalost moderních webových frameworků a schopnost nasazení aplikací.",
+          "Provádí iterativní vývoj: otestuje, najde chybu a sám ji opraví."
+        ],
+        "use_cases": [
+          "Vývoj firemních interních systémů (kalkulačky, kvízy) od nuly za pár hodin.",
+          "Automatizace repetitivní práce s obrovským množstvím souborů.",
+          "Ústřední nástroj pro proces 'Vibecodingu'."
+        ],
+        "risks": [
+          "Nutná schopnost přesně promptovat složitá zadání a kontrolovat kód.",
+          "Může způsobit změny v souborech bez bezprostředního dotazu."
+        ],
+        "comparison": "Není to běžný chatbot. Je to váš digitální vývojář, který pracuje napříč systémem."
+      }
     }
   ]
 }
