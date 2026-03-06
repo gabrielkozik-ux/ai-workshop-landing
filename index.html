@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-981380390"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-981380390');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-981380390');
     </script>
-    
+
     <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof (url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD',
+                'value': 0,
+                'currency': 'CZK',
+                'event_callback': callback
+            });
+            return false;
         }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD',
-          'value': 0, 
-          'currency': 'CZK',
-          'event_callback': callback
-      });
-      return false;
-    }
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Workshop: Gemini a NotebookLM pro praxi | Brno</title>
-    <meta name="description" content="Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.">
-    
+    <meta name="description"
+        content="Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.">
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://ai-workshop.cz/" />
 
@@ -38,12 +40,24 @@
 
     <script type="application/ld+json" id="event-schema"></script>
 </head>
+
 <body>
     <svg width="0" height="0" style="position:absolute; display:none;">
-        <symbol id="icon-calendar" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z"/></symbol>
-        <symbol id="icon-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></symbol>
-        <symbol id="icon-location" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7m0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5"/></symbol>
-        <symbol id="icon-check" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1m-1 11h-5v5h5v-5Z" />
+        </symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z" />
+        </symbol>
+        <symbol id="icon-location" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7m0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+        </symbol>
     </svg>
 
     <nav class="main-nav">
@@ -65,25 +79,40 @@
                 <span>Profesionalita</span> • <span>Bezpečnost</span> • <span>Efektivita</span>
             </div>
             <h1>Profesionální AI pro vaše podnikání</h1>
-            <p>Nezáleží na tom, zda jste freelancer nebo vedete firmu. Na workshopu v Brně zjistíte, jak s nástroji Google Gemini a NotebookLM pracovat chytřeji, bezpečněji a s náskokem před konkurencí.</p>
-            
+            <p>Nezáleží na tom, zda jste freelancer nebo vedete firmu. Na workshopu v Brně zjistíte, jak s nástroji
+                Google Gemini a NotebookLM pracovat chytřeji, bezpečněji a s náskokem před konkurencí.</p>
+
             <div class="workshop-details-box">
                 <div class="detail-item">
-                    <svg><use xlink:href="#icon-calendar"></use></svg>
+                    <svg>
+                        <use xlink:href="#icon-calendar"></use>
+                    </svg>
                     <span class="event-date-display">20. 2. 2026</span>
                 </div>
                 <div class="detail-item">
-                    <svg><use xlink:href="#icon-clock"></use></svg>
+                    <svg>
+                        <use xlink:href="#icon-clock"></use>
+                    </svg>
                     <span class="event-time-display">9:00 - 15:00 hod.</span>
                 </div>
                 <div class="detail-item">
-                    <svg><use xlink:href="#icon-location"></use></svg>
-                    <a href="https://maps.app.goo.gl/E9rce8edDTr7yd2v7" target="_blank" class="event-location-display" style="color: var(--white); text-decoration: underline; text-decoration-color: var(--secondary-color); text-underline-offset: 4px;">Slovákova 279, Brno</a>
+                    <svg>
+                        <use xlink:href="#icon-location"></use>
+                    </svg>
+                    <a href="https://maps.app.goo.gl/E9rce8edDTr7yd2v7" target="_blank" class="event-location-display"
+                        style="color: var(--white); text-decoration: underline; text-decoration-color: var(--secondary-color); text-underline-offset: 4px;">Slovákova
+                        279, Brno</a>
                 </div>
             </div>
 
-            <div>
-                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTd2dpeGtxdG9Db1N5dDIvdUhSYlJTaUhrZ0dhZDc4cEl3RS9LM0s1Q3luaw==" target="_blank" class="cta-button" onclick="gtag('event', 'conversion', {'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD', 'value': 0, 'currency': 'CZK'});">Koupit vstupenku</a>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTd2dpeGtxdG9Db1N5dDIvdUhSYlJTaUhrZ0dhZDc4cEl3RS9LM0s1Q3luaw=="
+                    target="_blank" class="cta-button"
+                    onclick="gtag('event', 'conversion', {'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD', 'value': 0, 'currency': 'CZK'});">Koupit
+                    vstupenku</a>
+                <a href="#vibecoding" class="cta-button secondary"
+                    style="border-color: var(--secondary-color); color: var(--secondary-color);">Speciální nabídka:
+                    Vibecoding</a>
             </div>
         </div>
     </header>
@@ -93,24 +122,31 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Co vám workshop přinese?</h2>
-                    <p class="section-subtitle">Stejné nástroje, různé využití. Ukážeme si, jak z "korporátní" technologie vytěžit maximum i v malém podnikání.</p>
+                    <p class="section-subtitle">Stejné nástroje, různé využití. Ukážeme si, jak z "korporátní"
+                        technologie vytěžit maximum i v malém podnikání.</p>
                 </div>
-                
+
                 <div class="card-grid">
                     <div class="feature-card">
                         <span class="feature-tag">Pro freelancery & živnostníky</span>
                         <h3>Váš digitální parťák</h3>
-                        <p>Nemáte tým? Teď už ano. Ukážu vám, jak nahradit drahé externí služby. Naučíte se s AI brainstormovat, tvořit marketingové texty, analyzovat smlouvy nebo připravovat podklady pro klienty.</p>
+                        <p>Nemáte tým? Teď už ano. Ukážu vám, jak nahradit drahé externí služby. Naučíte se s AI
+                            brainstormovat, tvořit marketingové texty, analyzovat smlouvy nebo připravovat podklady pro
+                            klienty.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-tag">Pro majitele firem & SME</span>
                         <h3>Konkurenční výhoda</h3>
-                        <p>Získejte strategický nadhled. Místo operativy se věnujte rozvoji. Naučíte se vytvořit "firemní mozek" (NotebookLM) ze svých směrnic a dat, který zrychlí zaškolování lidí a eliminuje chyby.</p>
+                        <p>Získejte strategický nadhled. Místo operativy se věnujte rozvoji. Naučíte se vytvořit
+                            "firemní mozek" (NotebookLM) ze svých směrnic a dat, který zrychlí zaškolování lidí a
+                            eliminuje chyby.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-tag">Bezpečnost & Právo</span>
                         <h3>Compliance pro všechny</h3>
-                        <p>Ať jste jedinec nebo firma, vaše know-how je to nejcennější. Jako advokát vás naučím, jak používat AI nástroje tak, abyste nekrmili veřejné modely svými citlivými daty a neporušovali mlčenlivost.</p>
+                        <p>Ať jste jedinec nebo firma, vaše know-how je to nejcennější. Jako advokát vás naučím, jak
+                            používat AI nástroje tak, abyste nekrmili veřejné modely svými citlivými daty a neporušovali
+                            mlčenlivost.</p>
                     </div>
                 </div>
             </div>
@@ -120,24 +156,28 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Praktický program</h2>
-                    <p class="section-subtitle">Žádná suchá teorie. Přineste si notebooky, budeme pracovat na reálných scénářích.</p>
+                    <p class="section-subtitle">Žádná suchá teorie. Přineste si notebooky, budeme pracovat na reálných
+                        scénářích.</p>
                 </div>
-                
+
                 <div class="card-grid">
                     <div class="program-card">
                         <span class="module-number">MODUL 1</span>
                         <h3>Gemini: Od e-mailu ke strategii</h3>
-                        <p>Jak správně "úkolovat" AI (prompting). Pro freelancery: Tvorba obsahu a rešerše. Pro firmy: Analýza trhu a strategické rozhodování. Ukázky reálných use-cases.</p>
+                        <p>Jak správně "úkolovat" AI (prompting). Pro freelancery: Tvorba obsahu a rešerše. Pro firmy:
+                            Analýza trhu a strategické rozhodování. Ukázky reálných use-cases.</p>
                     </div>
                     <div class="program-card">
-                         <span class="module-number">MODUL 2</span>
-                         <h3>NotebookLM: Práce s dokumenty</h3>
-                        <p>Absolutní game-changer. Nahrajte své PDF, smlouvy nebo poznámky a ptejte se jich. Ideální pro rychlé nastudování podkladů od klienta nebo prohledávání firemního archivu.</p>
+                        <span class="module-number">MODUL 2</span>
+                        <h3>NotebookLM: Práce s dokumenty</h3>
+                        <p>Absolutní game-changer. Nahrajte své PDF, smlouvy nebo poznámky a ptejte se jich. Ideální pro
+                            rychlé nastudování podkladů od klienta nebo prohledávání firemního archivu.</p>
                     </div>
-                     <div class="program-card">
+                    <div class="program-card">
                         <span class="module-number">MODUL 3</span>
                         <h3>Bezpečnost a Ekosystém</h3>
-                        <p>Jak to všechno propojit s Google Workspace (Docs, Drive, Gmail). Praktické nastavení soukromí, abyste mohli spát klidně. Co se smí a co ne.</p>
+                        <p>Jak to všechno propojit s Google Workspace (Docs, Drive, Gmail). Praktické nastavení
+                            soukromí, abyste mohli spát klidně. Co se smí a co ne.</p>
                     </div>
                 </div>
             </div>
@@ -147,11 +187,215 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Budoucnost je v automatizaci</h2>
-                    <p class="section-subtitle">Podívejte se, kam směřuje vývoj. AI, která za vás nejen "píše", ale reálně "pracuje" v kalendáři a e-mailu.</p>
+                    <p class="section-subtitle">Podívejte se, kam směřuje vývoj. AI, která za vás nejen "píše", ale
+                        reálně "pracuje" v kalendáři a e-mailu.</p>
                 </div>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/fBmHNeDXYu8?si=9FtLtQSmFtaXToMa" title="Google AI Integration" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/fBmHNeDXYu8?si=9FtLtQSmFtaXToMa"
+                        title="Google AI Integration" allowfullscreen></iframe>
                 </div>
+            </div>
+        </section>
+
+        <!-- Vibecoding Special Section -->
+        <section id="vibecoding" class="vibecoding-section">
+            <div class="container">
+                <div style="text-align: center;">
+                    <span class="vibecoding-badge">Speciální dubnová nabídka (2026)</span>
+                    <span class="vibecoding-badge"
+                        style="background: var(--accent-color); margin-left: 10px;">Navazující kurz PRO POKROČILÉ</span>
+                    <h2 class="vibecoding-hero-title">Vibecoding: Od nápadu k živé aplikaci za 5 hodin <span
+                            style="font-weight: 300; opacity: 0.8;">(Bez programování)</span></h2>
+                    <p style="color: var(--warning-color); font-weight: bold; margin-bottom: 15px;">Termín: pátek 17. 4.
+                        2026 (9:00 - 15:00)</p>
+                    <p style="color: #94a3b8; font-size: 0.9em; margin-bottom: 25px; font-style: italic;">
+                        Ideální pro absolventy našeho základního AI workshopu nebo zkušené uživatele, kteří chtějí AI
+                        reálně ovládat.
+                    </p>
+                    <p class="vibecoding-perex">
+                        Zapomeňte na drahý vývoj a složité kódování. Zjistěte, jak si pomocí umělé inteligence vytvořit
+                        vlastní interní mikronástroj, interaktivní kalkulačku pro klienty nebo diagnostický kvíz.
+                        Naučíme se pracovat s nejmodernějšími agenty, kteří kód nejen napíšou, ale rovnou i nasadí.
+                    </p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="vibecoding-card">
+                        <h3>Vlastní digitální nástroj</h3>
+                        <p>Neodejdete jen s teorií. Odejdete s funkční aplikací, kterou si sami vymyslíte a pomocí AI
+                            postavíte.</p>
+                    </div>
+                    <div class="vibecoding-card">
+                        <h3>Rychlost a nezávislost</h3>
+                        <p>Zkrátíte cestu od "mám nápad" k "mám hotovo" z několika týdnů na pár hodin. Bez závislosti na
+                            externích dodavatelích.</p>
+                    </div>
+                    <div class="vibecoding-card">
+                        <h3>Moderní workflow</h3>
+                        <p>Zvládnete celý proces – od precizního zadání, přes generování kódu, až po jeho veřejné
+                            nasazení na internet.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px; text-align: center;">
+                    <h3 style="color: var(--secondary-color); font-size: 1.8em;">Co přesně budeme stavět?</h3>
+                    <p style="font-size: 1.1em; color: #cbd5e1;">Zaměříme se na vysoce praktické, jednoúčelové
+                        mikronástroje (single-purpose apps). Během dopoledne si můžete postavit například:</p>
+                </div>
+
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="vibecoding-card" style="padding: 25px;">
+                        <h4 style="margin:0 0 10px 0; color: #fff;">Chytrou cenovou kalkulačku</h4>
+                        <p style="font-size: 0.9em; line-height: 1.4;">Interaktivní nástroj, kde si klient navolí
+                            parametry a okamžitě získá odhad ceny vašich služeb.</p>
+                    </div>
+                    <div class="vibecoding-card" style="padding: 25px;">
+                        <h4 style="margin:0 0 10px 0; color: #fff;">Diagnostický kvíz / Rozcestník</h4>
+                        <p style="font-size: 0.9em; line-height: 1.4;">Sada otázek, která návštěvníka webu automaticky
+                            nasměruje k nejvhodnějšímu produktu pro jeho potřeby.</p>
+                    </div>
+                    <div class="vibecoding-card" style="padding: 25px;">
+                        <h4 style="margin:0 0 10px 0; color: #fff;">Interní generátor dokumentů</h4>
+                        <p style="font-size: 0.9em; line-height: 1.4;">Nástroj, který na základě pár vstupů okamžitě
+                            vyplivne naformátované zadání, e-mail nebo checklist.</p>
+                    </div>
+                </div>
+
+                <div class="future-box">
+                    <h4><svg width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z" />
+                        </svg> Výhled do budoucna</h4>
+                    <p>
+                        Dnes začneme u těchto elegantních mikronástrojů, aby byl proces plynulý a pochopitelný. Vývoj
+                        agentních systémů (jako je Google Antigravity) ale letí kupředu raketovým tempem. Je jen otázkou
+                        času – pravděpodobně měsíců – kdy si naprosto totožným postupem "vyvibecódujete" i robustní
+                        firemní CRM systém nebo komplexní e-shop. Zvládnutí těchto základů vám dá obrovský náskok.
+                    </p>
+                </div>
+
+                <div class="section-header" style="margin-top: 80px;">
+                    <h2 class="section-title">Praktický program</h2>
+                    <p style="color: #cbd5e1;">Pět hodin intenzivní tvorby rozdělené do logických bloků.</p>
+                </div>
+
+                <div class="module-steps">
+                    <div class="module-step">
+                        <div class="module-step-number">1</div>
+                        <div class="module-step-content">
+                            <h4>MODUL 1: Architekt (Gemini)</h4>
+                            <p>Naučíte se techniku "Meta-promptingu". Pomocí Google Gemini zanalyzujeme váš nápad a
+                                vytvoříme neprůstřelné zadání (Master Prompt), kterému bude vývojová AI dokonale
+                                rozumět.</p>
+                        </div>
+                    </div>
+                    <div class="module-step">
+                        <div class="module-step-number">2</div>
+                        <div class="module-step-content">
+                            <h4>MODUL 2: Továrna (Google Antigravity)</h4>
+                            <p>Hlavní wow efekt. Své zadání předáme agentnímu systému Google Antigravity. Ukážeme si,
+                                jak agenty úkolovat, jak probíhá samotný vývoj v přirozeném jazyce a jak hotový výsledek
+                                vizuálně i funkčně ladit.</p>
+                        </div>
+                    </div>
+                    <div class="module-step">
+                        <div class="module-step-number">3</div>
+                        <div class="module-step-content">
+                            <h4>MODUL 3: Výloha (GitHub)</h4>
+                            <p>Naučíme se základy práce s GitHubem jako s "odkladištěm" našeho kódu a ukážeme si, jak z
+                                něj na tři kliknutí udělat veřejně dostupnou webovou stránku.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prepare-box">
+                    <h3>Připravte se předem</h3>
+                    <p>Abychom neztráceli čas technikáliemi, je nutné si před workshopem připravit:</p>
+                    <div class="prepare-list">
+                        <div class="prepare-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <span>Notebook s admin právy</span>
+                        </div>
+                        <div class="prepare-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <a href="https://antigravity.google/download" target="_blank">Google Antigravity</a>
+                        </div>
+                        <div class="prepare-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <a href="https://github.com/" target="_blank">Účet na GitHub</a>
+                        </div>
+                        <div class="prepare-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <a href="https://desktop.github.com/download/" target="_blank">GitHub Desktop</a>
+                        </div>
+                        <div class="prepare-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                            <span>Představu o aplikaci</span>
+                        </div>
+                    </div>
+                    <div class="google-note">
+                        TIP: Nejideálnější co se účtu týče je <strong>propojit si je se stávajícím Google
+                            účtem</strong>, ať už Workspace nebo soukromým.
+                    </div>
+                </div>
+
+                <div class="pricing-display">
+                    <h3 style="color: var(--secondary-color); font-size: 1.8em; margin-bottom: 25px;">Vyberte si svůj
+                        typ vstupenky</h3>
+
+                    <div class="pricing-selector" id="vibecoding-prices">
+                        <div class="pricing-option active" data-type="standard"
+                            data-link="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMVdUQjlsbjFPbGtWZUdzM1duNXpiWXUwd2M2d1pUelg0cEh1NUY2Nkczag==">
+                            Standardní vstup
+                        </div>
+                        <div class="pricing-option" data-type="alumni"
+                            data-link="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTN2FSQ3AyS2hhTGcvNVVMSzZUaFB2dmtHb2RRR1hPQ2VBUGc5ZDZRNUNObQ==">
+                            Absolvent AI workshopu
+                        </div>
+                        <div class="pricing-option" data-type="club"
+                            data-link="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTNUh6UVJsUVk4QWFwb3pvSHVsVXk3YVRUMmpmM2RDbzdyQktyT0h1aEJBTw==">
+                            Člen Pod Pálavou
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 40px;">
+                        <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMVdUQjlsbjFPbGtWZUdzM1duNXpiWXUwd2M2d1pUelg0cEh1NUY2Nkczag=="
+                            id="vibecoding-cta" target="_blank" class="cta-button">Chci se naučit Vibecoding</a>
+                        <p
+                            style="margin-top: 15px; color: #64748b; font-size: 0.85em; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4;">
+                            Zvolená sleva bude uplatněna v dalším kroku na Influonu. Uplatněná sleva bude ověřena po
+                            nákupu. V případě, že nárok na slevu (absolvent základního AI kurzu / člen klubu Pod
+                            Pálavou) nebude potvrzen, bude vstupenka stornována.
+                        </p>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const options = document.querySelectorAll('#vibecoding-prices .pricing-option');
+                        const cta = document.getElementById('vibecoding-cta');
+
+                        options.forEach(opt => {
+                            opt.addEventListener('click', function () {
+                                // Remove active class from all
+                                options.forEach(o => o.classList.remove('active'));
+                                // Add to clicked
+                                this.classList.add('active');
+                                // Update CTA link
+                                cta.href = this.getAttribute('data-link');
+                            });
+                        });
+                    });
+                </script>
             </div>
         </section>
 
@@ -162,11 +406,16 @@
                     <div class="instructor-bio">
                         <h2>Mgr. Gabriel Kožík</h2>
                         <div class="instructor-badge">
-                            <svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
                             Advokát & AI Stratég
                         </div>
-                        <p style="margin-top: 20px; font-size: 1.1em;">Jsem praktikující advokát a podnikatel. Rozumím potřebám malých firem i freelancerů, protože v tomto světě denně žiji. Vím, že nepotřebujete složité korporátní poučky, ale nástroje, které fungují hned.</p>
-                        <p>Mé workshopy jsou mostem mezi světem technologií a práva. Ukážu vám, jak využít AI naplno, efektivně a hlavně bezpečně.</p>
+                        <p style="margin-top: 20px; font-size: 1.1em;">Jsem praktikující advokát a podnikatel. Rozumím
+                            potřebám malých firem i freelancerů, protože v tomto světě denně žiji. Vím, že nepotřebujete
+                            složité korporátní poučky, ale nástroje, které fungují hned.</p>
+                        <p>Mé workshopy jsou mostem mezi světem technologií a práva. Ukážu vám, jak využít AI naplno,
+                            efektivně a hlavně bezpečně.</p>
                     </div>
                 </div>
             </div>
@@ -180,17 +429,20 @@
                 </div>
                 <div class="card-grid">
                     <div class="bonus-card">
-                        <h3><img src="workspace-icon.png" alt="Workspace" width="24" style="vertical-align: middle; margin-right: 10px;"> Nastavení Workspace</h3>
+                        <h3><img src="workspace-icon.png" alt="Workspace" width="24"
+                                style="vertical-align: middle; margin-right: 10px;"> Nastavení Workspace</h3>
                         <p>Návod, jak si nastavit Google účet pro profesionální a bezpečnou práci s AI.</p>
                         <a href="licence.html" class="cta-button-small">Zobrazit průvodce</a>
                     </div>
                     <div class="bonus-card">
-                        <h3><img src="gemini-icon.png" alt="Gemini" width="24" style="vertical-align: middle; margin-right: 10px;"> Gemini vs. ChatGPT</h3>
+                        <h3><img src="gemini-icon.png" alt="Gemini" width="24"
+                                style="vertical-align: middle; margin-right: 10px;"> Gemini vs. ChatGPT</h3>
                         <p>Srovnání, které vám pomůže vybrat ten správný nástroj pro vaše potřeby.</p>
                         <a href="srovnani.html" class="cta-button-small">Srovnání platforem</a>
                     </div>
                     <div class="bonus-card">
-                        <h3><img src="compas-icon.png" alt="Kompas" width="24" style="vertical-align: middle; margin-right: 10px;"> AI Kompas</h3>
+                        <h3><img src="compas-icon.png" alt="Kompas" width="24"
+                                style="vertical-align: middle; margin-right: 10px;"> AI Kompas</h3>
                         <p>Rychlý test osobnosti. Jste spíše kreativec nebo analytik? Zjistěte to.</p>
                         <a href="ai-kompas.html" class="cta-button-small">Spustit test</a>
                     </div>
@@ -202,8 +454,9 @@
             <div class="container">
                 <div class="cta-section-content">
                     <h2 class="section-title">Máte specifické požadavky?</h2>
-                    <p class="section-subtitle">Nabízím i individuální konzultace a školení přímo ve vaší firmě nebo kanceláři.</p>
-                    
+                    <p class="section-subtitle">Nabízím i individuální konzultace a školení přímo ve vaší firmě nebo
+                        kanceláři.</p>
+
                     <div class="cta-grid">
                         <a href="mailto:kozik@iustoria.cz" class="cta-button">Napsat e-mail</a>
                         <a href="tel:+420720265713" class="cta-button secondary">Zavolat (+420 720 265 713)</a>
@@ -223,20 +476,24 @@
                 <p>AI Stratég & Advokát</p>
                 <p style="font-size: 0.9em; color: #94a3b8;">Slovákova 279/11, Brno | IČO: 05187559</p>
             </div>
-            
+
             <div class="footer-links">
                 <a href="licence.html">Průvodce Compliance</a>
                 <a href="srovnani.html">Srovnání Nástrojů</a>
                 <a href="https://www.gabrielkozik.com" target="_blank">O lektorovi</a>
             </div>
-            
+
             <div class="social-icons-container">
-                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon" aria-label="LinkedIn profil"><img src="linkedin.png" alt="LinkedIn"></a>
-                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon" aria-label="Facebook profil"><img src="facebook.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon" aria-label="Instagram profil"><img src="instagram.png" alt="Instagram"></a>
-                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon" aria-label="YouTube kanál"><img src="youtube.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"
+                    aria-label="LinkedIn profil"><img src="linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"
+                    aria-label="Facebook profil"><img src="facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"
+                    aria-label="Instagram profil"><img src="instagram.png" alt="Instagram"></a>
+                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"
+                    aria-label="YouTube kanál"><img src="youtube.png" alt="YouTube"></a>
             </div>
-            
+
             <div class="copyright">
                 <p>© 2026 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
             </div>
@@ -244,72 +501,73 @@
     </footer>
 
     <script>
-    async function updateWorkshopData() {
-        try {
-            // Přidán timestamp pro zamezení cachování starého souboru
-            const response = await fetch('./workshop-config.json?v=' + new Date().getTime());
-            
-            if (!response.ok) {
-                throw new Error(`HTTP chyba! Status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            const event = data.nextEvent;
+        async function updateWorkshopData() {
+            try {
+                // Přidán timestamp pro zamezení cachování starého souboru
+                const response = await fetch('./workshop-config.json?v=' + new Date().getTime());
 
-            // Formátování data z "YYYY-MM-DD" na české "D. M. YYYY"
-            const dateObj = new Date(event.date);
-            const formattedDate = dateObj.toLocaleDateString('cs-CZ');
-
-            // 1. Aktualizace textů na webu
-            document.querySelectorAll('.event-date-display').forEach(el => el.textContent = formattedDate);
-            document.querySelectorAll('.event-time-display').forEach(el => el.textContent = `${event.startTime} - ${event.endTime} hod.`);
-            document.querySelectorAll('.event-location-display').forEach(el => el.textContent = event.locationName);
-
-            // 2. Aktualizace strukturovaných dat pro Google
-            const schema = {
-                "@context": "https://schema.org",
-                "@type": "EducationEvent",
-                "name": "AI Workshop: Nástroje Google pro freelancery a firmy",
-                "startDate": `${event.date}T${event.startTime}:00+01:00`,
-                "endDate": `${event.date}T${event.endTime}:00+01:00`,
-                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-                "eventStatus": "https://schema.org/EventScheduled",
-                "location": {
-                    "@type": "Place",
-                    "name": event.locationName,
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": event.addressLocality,
-                        "addressCountry": "CZ"
-                    }
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "price": event.price.replace(/\D/g, ""),
-                    "priceCurrency": "CZK",
-                    "availability": "https://schema.org/InStock",
-                    "url": event.url
-                },
-                "performer": {
-                    "@type": "Person",
-                    "name": "Mgr. Gabriel Kožík",
-                    "jobTitle": "Advokát & AI Stratég"
-                },
-                "organizer": {
-                    "@type": "Organization",
-                    "name": "Mgr. Gabriel Kožík",
-                    "url": "https://ai-workshop.cz"
+                if (!response.ok) {
+                    throw new Error(`HTTP chyba! Status: ${response.status}`);
                 }
-            };
-            document.getElementById('event-schema').textContent = JSON.stringify(schema);
 
-        } catch (error) {
-            console.error('Chyba při stahování/aktualizaci dat workshopu z JSONu:', error);
-            // V případě selhání zůstanou na webu původní hodnoty v HTML
+                const data = await response.json();
+                const event = data.nextEvent;
+
+                // Formátování data z "YYYY-MM-DD" na české "D. M. YYYY"
+                const dateObj = new Date(event.date);
+                const formattedDate = dateObj.toLocaleDateString('cs-CZ');
+
+                // 1. Aktualizace textů na webu
+                document.querySelectorAll('.event-date-display').forEach(el => el.textContent = formattedDate);
+                document.querySelectorAll('.event-time-display').forEach(el => el.textContent = `${event.startTime} - ${event.endTime} hod.`);
+                document.querySelectorAll('.event-location-display').forEach(el => el.textContent = event.locationName);
+
+                // 2. Aktualizace strukturovaných dat pro Google
+                const schema = {
+                    "@context": "https://schema.org",
+                    "@type": "EducationEvent",
+                    "name": "AI Workshop: Nástroje Google pro freelancery a firmy",
+                    "startDate": `${event.date}T${event.startTime}:00+01:00`,
+                    "endDate": `${event.date}T${event.endTime}:00+01:00`,
+                    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                    "eventStatus": "https://schema.org/EventScheduled",
+                    "location": {
+                        "@type": "Place",
+                        "name": event.locationName,
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": event.addressLocality,
+                            "addressCountry": "CZ"
+                        }
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "price": event.price.replace(/\D/g, ""),
+                        "priceCurrency": "CZK",
+                        "availability": "https://schema.org/InStock",
+                        "url": event.url
+                    },
+                    "performer": {
+                        "@type": "Person",
+                        "name": "Mgr. Gabriel Kožík",
+                        "jobTitle": "Advokát & AI Stratég"
+                    },
+                    "organizer": {
+                        "@type": "Organization",
+                        "name": "Mgr. Gabriel Kožík",
+                        "url": "https://ai-workshop.cz"
+                    }
+                };
+                document.getElementById('event-schema').textContent = JSON.stringify(schema);
+
+            } catch (error) {
+                console.error('Chyba při stahování/aktualizaci dat workshopu z JSONu:', error);
+                // V případě selhání zůstanou na webu původní hodnoty v HTML
+            }
         }
-    }
 
-    updateWorkshopData();
+        updateWorkshopData();
     </script>
 </body>
+
 </html>
