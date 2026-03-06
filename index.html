@@ -394,6 +394,162 @@
             .slider-btn.next-btn { right: calc(50% - 45px); }
             #testimonials-section .container { padding-bottom: 80px; }
         }
+
+        /* Vibecoding Special Styles */
+        .vibecoding-special-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            padding: 80px 20px;
+            border-bottom: 8px solid var(--secondary-color);
+        }
+        .vibecoding-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 6px 15px;
+            border-radius: 99px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .vibecoding-hero-title {
+            font-size: 3em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #f8fafc;
+        }
+        .vibecoding-perex {
+            font-size: 1.3em;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+        .vibecoding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .vibecoding-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .vibecoding-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+            background: rgba(44, 165, 141, 0.05);
+        }
+        .vibecoding-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .vibecoding-card p {
+            color: #94a3b8;
+            font-size: 1.05em;
+            margin: 0;
+        }
+        .future-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px dashed #f59e0b;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 50px 0;
+            position: relative;
+        }
+        .future-box h4 {
+            color: #f59e0b;
+            margin-top: 0;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .vibecoding-modules {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .module-step {
+            display: flex;
+            gap: 25px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            align-items: flex-start;
+        }
+        .module-step-number {
+            background: var(--secondary-color);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 1.2em;
+        }
+        .module-step-content h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.25em;
+            color: var(--white);
+        }
+        .module-step-content p {
+            margin: 0;
+            color: #94a3b8;
+        }
+        .prepare-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 60px;
+        }
+        .prepare-box h3 { margin-top: 0; color: var(--secondary-color); }
+        .prepare-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .prepare-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #cbd5e1;
+        }
+        .prepare-list a {
+            color: var(--secondary-color);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .prepare-list a:hover {
+            color: var(--white);
+        }
+        .google-note {
+             margin-top: 25px;
+             padding: 15px;
+             border-top: 1px solid rgba(255,255,255,0.1);
+             font-size: 0.95em;
+             color: #94a3b8;
+        }
+        .google-note strong { color: var(--white); }
+
+        @media (max-width: 768px) {
+            .vibecoding-hero-title { font-size: 2.2em; }
+            .vibecoding-perex { font-size: 1.1em; }
+            .module-step { flex-direction: column; gap: 15px; }
+        }
     </style>
     
 </head>
@@ -459,6 +615,96 @@
 
         </div>
     </header>
+
+    <section id="vibecoding" class="vibecoding-special-section">
+        <div class="container">
+            <span class="vibecoding-badge">Speciální dubnová nabídka (2026)</span>
+            <h2 class="vibecoding-hero-title">Vibecoding: Od nápadu k živé aplikaci za 5 hodin <span style="font-weight: 300; opacity: 0.8;">(Bez programování)</span></h2>
+            <p class="vibecoding-perex">
+                Zapomeňte na drahý vývoj a složité kódování. Zjistěte, jak si pomocí umělé inteligence vytvořit vlastní interní mikronástroj, interaktivní kalkulačku pro klienty nebo diagnostický kvíz. Naučíme se pracovat s nejmodernějšími agenty, kteří kód nejen napíšou, ale rovnou i nasadí.
+            </p>
+
+            <h3 style="color: var(--secondary-color); font-size: 1.8em; margin-top: 50px;">Co vám workshop přinese?</h3>
+            <div class="vibecoding-grid">
+                <div class="vibecoding-card">
+                    <h3>Vlastní digitální nástroj</h3>
+                    <p>Neodejdete jen s teorií. Odejdete s funkční aplikací, kterou si sami vymyslíte a pomocí AI postavíte.</p>
+                </div>
+                <div class="vibecoding-card">
+                    <h3>Rychlost a nezávislost</h3>
+                    <p>Zkrátíte cestu od "mám nápad" k "mám hotovo" z několika týdnů na pár hodin. Bez závislosti na externích dodavatelích.</p>
+                </div>
+                <div class="vibecoding-card">
+                    <h3>Moderní workflow</h3>
+                    <p>Zvládnete celý proces – od precizního zadání, přes generování kódu, až po jeho veřejné nasazení na internet.</p>
+                </div>
+            </div>
+
+            <h3 style="color: var(--secondary-color); font-size: 1.8em; margin-top: 60px;">Co přesně budeme stavět?</h3>
+            <p style="font-size: 1.1em; color: #cbd5e1;">Zaměříme se na vysoce praktické, jednoúčelové mikronástroje (single-purpose apps). Během dopoledne si můžete postavit například:</p>
+            <div class="vibecoding-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="vibecoding-card">
+                    <h4 style="margin:0; color: #fff;">Chytrou cenovou kalkulačku</h4>
+                </div>
+                <div class="vibecoding-card">
+                    <h4 style="margin:0; color: #fff;">Diagnostický kvíz / Rozcestník</h4>
+                </div>
+                <div class="vibecoding-card">
+                    <h4 style="margin:0; color: #fff;">Interní generátor dokumentů</h4>
+                </div>
+            </div>
+
+            <div class="future-box">
+                <h4>💡 Výhled do budoucna</h4>
+                <p>
+                    Dnes začneme u těchto elegantních mikronástrojů, aby byl proces plynulý a pochopitelný. Vývoj agentních systémů (jako je Google Antigravity) ale letí kupředu raketovým tempem. Je jen otázkou času – pravděpodobně měsíců – kdy si naprosto totožným postupem "vyvibecódujete" i robustní firemní CRM systém nebo komplexní e-shop. Zvládnutí těchto základů vám dá obrovský náskok.
+                </p>
+            </div>
+
+            <h3 style="color: var(--secondary-color); font-size: 1.8em; margin-top: 60px;">Praktický program (9:00 - 15:00)</h3>
+            <div class="vibecoding-modules">
+                <div class="module-step">
+                    <div class="module-step-number">1</div>
+                    <div class="module-step-content">
+                        <h4>MODUL 1: Architekt (Gemini)</h4>
+                        <p>Naučíte se techniku "Meta-promptingu". Pomocí Google Gemini zanalyzujeme váš nápad a vytvoříme neprůstřelné zadání (Master Prompt), kterému bude vývojová AI dokonale rozumět.</p>
+                    </div>
+                </div>
+                <div class="module-step">
+                    <div class="module-step-number">2</div>
+                    <div class="module-step-content">
+                        <h4>MODUL 2: Továrna (Google Antigravity)</h4>
+                        <p>Hlavní wow efekt. Své zadání předáme agentnímu systému Google Antigravity. Ukážeme si, jak agenty úkolovat, jak probíhá samotný vývoj v přirozeném jazyce a jak hotový výsledek vizuálně i funkčně ladit.</p>
+                    </div>
+                </div>
+                <div class="module-step">
+                    <div class="module-step-number">3</div>
+                    <div class="module-step-content">
+                        <h4>MODUL 3: Výloha (GitHub)</h4>
+                        <p>Naučíme se základy práce s GitHubem jako s "odkladištěm" našeho kódu a ukážeme si, jak z něj na tři kliknutí udělat veřejně dostupnou webovou stránku.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prepare-box">
+                <h3>Připravte se předem</h3>
+                <p>Abychom neztráceli čas technikáliemi, je nutné si před workshopem připravit:</p>
+                <ul class="prepare-list">
+                    <li>✓ Notebook s admin právy</li>
+                    <li>✓ <a href="https://antigravity.google/download" target="_blank">Google Antigravity</a></li>
+                    <li>✓ <a href="https://github.com/" target="_blank">Účet na GitHub</a></li>
+                    <li>✓ Představu o aplikaci</li>
+                </ul>
+                <div class="google-note">
+                    TIP: Nejideálnější co se účtu týče je <strong>propojit si je se stávajícím Google účtem</strong>, ať už Workspace nebo soukromým.
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                 <a href="https://app.influon.cz/o/podpalavou" target="_blank" class="cta-button">Předregistrace na duben</a>
+            </div>
+        </div>
+    </section>
     <main>
         <section id="why-google-ai">
             <div class="container">
