@@ -711,3 +711,52 @@ footer {
     .module-step { flex-direction: column; gap: 15px; }
     .prepare-box { padding: 30px; }
 }
+
+/* =========================================
+   12. PRICING SELECTOR (VIBECODING)
+   ========================================= */
+.pricing-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.pricing-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #94a3b8;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+.pricing-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pricing-option.active {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+}
+
+.pricing-display {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.pricing-card-summary {
+    background: rgba(14, 165, 233, 0.05);
+    border: 1px solid var(--secondary-color);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
