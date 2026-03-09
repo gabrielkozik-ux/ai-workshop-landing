@@ -38,6 +38,9 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <script type="application/ld+json" id="event-schema"></script>
 </head>
 
@@ -196,6 +199,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- Vibecoding Special Section -->
         <section id="vibecoding" class="vibecoding-section">
@@ -372,8 +376,10 @@
                             id="vibecoding-cta" target="_blank" class="cta-button">Chci se naučit Vibecoding</a>
                         <p
                             style="margin-top: 15px; color: #64748b; font-size: 0.85em; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4;">
-                            Zvolená sleva bude uplatněna v dalším kroku na Influonu. Nárok na slevu (absolvent základního AI kurzu / člen klubu Pod
-                            Pálavou) bude ověřen po nákupu. V případě, že nárok na slevu nebude potvrzen, bude vstupenka stornována.
+                            Zvolená sleva bude uplatněna v dalším kroku na Influonu. Nárok na slevu (absolvent
+                            základního AI kurzu / člen klubu Pod
+                            Pálavou) bude ověřen po nákupu. V případě, že nárok na slevu nebude potvrzen, bude vstupenka
+                            stornována.
                         </p>
                     </div>
                 </div>
@@ -422,6 +428,91 @@
 
         <section id="bonus-material">
             <div class="container">
+                <div class="section-header">
+                    <i data-lucide="rocket" class="section-icon"></i>
+                    <h2 class="section-title">Přeneste teorii do <span class="gradient-text">reálné praxe</span></h2>
+                    <p class="section-subtitle">AI není jen o sledování videí. Zkuste si tyto připravené šablony přímo
+                        ve svých projektech.</p>
+                </div>
+
+                <div class="glass-panel">
+                    <div class="glass-panel-bg-icon"><i data-lucide="sparkles"></i></div>
+
+                    <div class="glass-panel-header">
+                        <h3 class="glass-panel-title">
+                            <i data-lucide="gift" class="title-icon"></i>
+                            Ochutnávka z workshopu: 5 promptů pro okamžité výsledky
+                        </h3>
+                        <p class="glass-panel-subtitle">Klikněte na kartu a vyzkoušejte sílu správného zadání. Na
+                            workshopu se naučíme, jak si tyto šablony ohnout přesně podle vašich potřeb.</p>
+                    </div>
+
+                    <div class="prompt-grid" id="prompt-cards">
+                        <!-- Prompt 1: Email -->
+                        <div class="prompt-card" onclick="copyPrompt(this)" data-color="blue">
+                            <div class="prompt-card-header">
+                                <i data-lucide="mail"></i>
+                                <span>Vylepšení e-mailu</span>
+                            </div>
+                            <p class="prompt-text">Jsi expert na byznys komunikaci. Přepiš můj e-mail tak, aby byl
+                                profesionální, stručný a jasně formuloval co potřebuji. Zachovej fakta, odstraň emoce.
+                                Navrhni 2 varianty — formální a přátelskou. Můj e-mail: [VLOŽ TEXT]</p>
+                            <span class="copy-hint">📋 Klikni pro zkopírování</span>
+                        </div>
+
+                        <!-- Prompt 2: Interní směrnice -->
+                        <div class="prompt-card" onclick="copyPrompt(this)" data-color="emerald">
+                            <div class="prompt-card-header">
+                                <i data-lucide="file-text"></i>
+                                <span>Interní směrnice</span>
+                            </div>
+                            <p class="prompt-text">Jsi zkušený compliance manažer. Vytvoř interní směrnici pro [TÉMA,
+                                např. používání AI nástrojů ve firmě]. Struktura: účel, rozsah platnosti, pravidla,
+                                sankce, datum účinnosti. Jazyk má být srozumitelný i pro ne-právníky. Max 1 strana A4.
+                            </p>
+                            <span class="copy-hint">📋 Klikni pro zkopírování</span>
+                        </div>
+
+                        <!-- Prompt 3: Brainstorming -->
+                        <div class="prompt-card" onclick="copyPrompt(this)" data-color="purple">
+                            <div class="prompt-card-header">
+                                <i data-lucide="lightbulb"></i>
+                                <span>Brainstorming</span>
+                            </div>
+                            <p class="prompt-text">Jsi kreativní stratég s 20 lety zkušeností. Potřebuji 10 neotřelých
+                                nápadů na [PROBLÉM/VÝZVA]. U každého nápadu uveď: název (max 5 slov), popis implementace
+                                (3 věty), odhadovaný dopad (nízký/střední/vysoký) ušetřené náklady na realizaci.</p>
+                            <span class="copy-hint">📋 Klikni pro zkopírování</span>
+                        </div>
+
+                        <!-- Prompt 4: Trénink pohovoru -->
+                        <div class="prompt-card" onclick="copyPrompt(this)" data-color="yellow">
+                            <div class="prompt-card-header">
+                                <i data-lucide="mic"></i>
+                                <span>Trénink pohovoru</span>
+                            </div>
+                            <p class="prompt-text">Jsi přísný HR ředitel s praxí v korporátu. Vedu pohovor na pozici
+                                [POZICE]. Polož mi 7 záludných otázek, počkej na mou odpověď, a poté ji ohodnoť na škále
+                                1-10. Na konci shrň mé silné a slabé stránky a dej 3 konkrétní tipy na zlepšení.</p>
+                            <span class="copy-hint">📋 Klikni pro zkopírování</span>
+                        </div>
+
+                        <!-- Prompt 5: Reflexe myšlenek -->
+                        <div class="prompt-card" onclick="copyPrompt(this)" data-color="red">
+                            <div class="prompt-card-header">
+                                <i data-lucide="brain"></i>
+                                <span>Reflexe myšlenek</span>
+                            </div>
+                            <p class="prompt-text">Jsi zkušený byznysový kouč. Právě jsem zažil [SITUACI]. Pomoz mi
+                                reflektovat: Co se stalo objektivně? Jaké emoce to ve mně vyvolalo? Co jsem mohl udělat
+                                jinak? Jaké poučení si z toho vezmu? Navrhni 3 konkrétní kroky, co udělat příště.</p>
+                            <span class="copy-hint">📋 Klikni pro zkopírování</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 80px;"></div>
+
                 <div class="section-header">
                     <h2 class="section-title">Připravte se předem</h2>
                     <p class="section-subtitle">Materiály, které vám pomohou se rozhodnout a připravit.</p>
@@ -499,6 +590,11 @@
         </div>
     </footer>
 
+    <!-- Copy success notification -->
+    <div id="copy-toast" class="copy-toast">
+        <i data-lucide="check"></i> Prompt zkopírován!
+    </div>
+
     <script>
         async function updateWorkshopData() {
             try {
@@ -566,6 +662,29 @@
         }
 
         updateWorkshopData();
+
+        // Lucide Icons Initialization
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // Copy Prompt Functionality
+        function copyPrompt(card) {
+            const text = card.querySelector('.prompt-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('copy-toast');
+                toast.classList.add('show');
+
+                // Animace Lucide ikony v toastu
+                if (window.lucide) lucide.createIcons();
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                console.error('Chyba při kopírování:', err);
+            });
+        }
     </script>
 </body>
 
