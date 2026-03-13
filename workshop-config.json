@@ -7,5 +7,10 @@
     "addressLocality": "Brno",
     "price": "2 790 Kč",
     "url": "https://ai-workshop.cz"
+  },
+  "vibecodingEvent": {
+    "date": "2026-04-17",
+    "startTime": "09:00",
+    "endTime": "15:00"
   }
 }
