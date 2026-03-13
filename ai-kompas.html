@@ -241,17 +241,11 @@
                         <div id="secondary-results" class="card-grid"></div>
                     </div>
 
-                    <!-- Lead magnet -->
+                    <!-- Direct Download instead of Lead magnet -->
                     <div id="lead-magnet" style="margin-top: 40px; background: #fff; border: 2px dashed var(--secondary-color); border-radius: 16px; padding: 30px; text-align: center;">
-                        <h3 style="color: var(--primary-color);">Získejte exkluzivní PDF návod krok za krokem</h3>
-                        <p style="margin-bottom: 20px; color: #475569;">Stáhněte si náš přehlednou příručku, jak s AI ve firmě začít ještě dnes a zrychlit svou práci bez halucinací.</p>
-                        <form id="lead-form" style="display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto;">
-                            <input type="email" id="lead-email" placeholder="Váš pracovní e-mail" required style="padding: 12px 20px; border: 1px solid var(--light-gray); border-radius: 8px; font-size: 1rem; width: 100%;">
-                            <button type="submit" id="lead-submit-btn" class="btn">Stáhnout PDF zdarma</button>
-                        </form>
-                        <div id="lead-success" style="display: none; color: var(--success-color); font-weight: bold; padding: 20px;">
-                            <i data-lucide="check-circle" style="vertical-align: middle;"></i> Návod jsme vám právě odeslali na e-mail!
-                        </div>
+                        <h3 style="color: var(--primary-color);">Stáhněte si exkluzivní PDF návod</h3>
+                        <p style="margin-bottom: 20px; color: #475569;">Získejte naši přehlednou příručku, jak s AI ve firmě začít ještě dnes a zrychlit svou práci bez halucinací.</p>
+                        <a href="Jak_mluvit_s_AI_KPZ_prirucka.pdf" class="btn" download>Stáhnout PDF zdarma</a>
                     </div>
 
                     <div id="vibecoding-kompas-cta"
@@ -468,40 +462,6 @@
             }
 
             init();
-
-            // Lead Form Handling for Relay.app automation
-            document.getElementById('lead-form').addEventListener('submit', function (event) {
-                event.preventDefault(); // Zabrání přesměrování stránky
-
-                const emailInput = document.getElementById('lead-email').value;
-                const submitBtn = document.getElementById('lead-submit-btn');
-
-                // Změna textu tlačítka během odesílání
-                submitBtn.innerText = 'Odesílám...';
-                submitBtn.disabled = true;
-
-                // URL z Relay.app playbooku (zjištěno z vizuálního klíče uživatele)
-                const webhookUrl = 'https://hook.eu2.make.com/esf8dwbjop8y75cakr41dp99y5pvbi76';
-
-                // Odeslání e-mailu na Webhook pomocí funkce fetch
-                fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: emailInput })
-                })
-                    .then(response => {
-                        // Skrytí formuláře a zobrazení zprávy o úspěchu
-                        document.getElementById('lead-form').style.display = 'none';
-                        document.getElementById('lead-success').style.display = 'block';
-                    })
-                    .catch((error) => {
-                        console.error('Došlo k chybě:', error);
-                        submitBtn.innerText = 'Chyba při odesílání (zkuste znovu)';
-                        submitBtn.disabled = false;
-                    });
-            });
         });
     </script>
 </body>
