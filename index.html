@@ -141,12 +141,6 @@
                         <h3>Konkurenční výhoda</h3>
                         <p>Vytvořte "firemní mozek" z vašich dat. Zrychlete onboarding a eliminujte chyby.</p>
                     </div>
-                    <div class="feature-card scroll-reveal">
-                        <i data-lucide="shield-check" class="card-icon"></i>
-                        <span class="feature-tag">Bezpečnost & Právo</span>
-                        <h3>Compliance pro všechny</h3>
-                        <p>Jako advokát vás naučím, jak AI využívat bez rizika úniku citlivých dat.</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -398,20 +392,39 @@
         <section id="instructor">
             <div class="container">
                 <div class="instructor-wrapper">
-                    <img src="profilova-fotka.jpg" alt="Mgr. Gabriel Kožík" class="instructor-img">
+                    <div class="instructor-img-wrap">
+                        <img src="profilova-fotka.jpg" alt="Mgr. Gabriel Kožík" class="instructor-img">
+                        <span class="instructor-float-badge">✦ Advokát & AI stratég</span>
+                    </div>
                     <div class="instructor-bio">
                         <h2>Mgr. Gabriel Kožík</h2>
                         <div class="instructor-badge">
                             <svg width="16" height="16" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                             </svg>
-                            Advokát & AI Stratég
+                            Advokát &amp; AI Stratég
                         </div>
                         <p style="margin-top: 20px; font-size: 1.1em;">Jsem praktikující advokát a podnikatel. Rozumím
                             potřebám malých firem i freelancerů, protože v tomto světě denně žiji. Vím, že nepotřebujete
                             složité korporátní poučky, ale nástroje, které fungují hned.</p>
                         <p>Mé workshopy jsou mostem mezi světem technologií a práva. Ukážu vám, jak využít AI naplno,
                             efektivně a hlavně bezpečně.</p>
+                    </div>
+                </div>
+
+                <!-- Animated stat counters -->
+                <div class="stats-row">
+                    <div class="stat-item scroll-reveal">
+                        <span class="stat-number" data-target="200" data-suffix="+">0</span>
+                        <span class="stat-label">Absolventů</span>
+                    </div>
+                    <div class="stat-item scroll-reveal">
+                        <span class="stat-number" data-target="96" data-suffix="%">0</span>
+                        <span class="stat-label">Spokojených účastníků</span>
+                    </div>
+                    <div class="stat-item scroll-reveal">
+                        <span class="stat-number" data-target="5" data-suffix=" hodin">0</span>
+                        <span class="stat-label">Intenzivní výuky</span>
                     </div>
                 </div>
             </div>
@@ -687,6 +700,87 @@
                 console.error('Chyba při kopírování:', err);
             });
         }
+    </script>
+    <!-- === INTERACTIVE JS ENHANCEMENTS === -->
+    <script>
+        // ─── Nav: scroll shrink + active section highlight ───────────────────
+        const nav = document.querySelector('.main-nav');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', () => {
+            // Shrink nav on scroll
+            if (window.scrollY > 40) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            // Active nav link based on scroll position
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 120) {
+                    current = sec.getAttribute('id');
+                }
+            });
+            navLinks.forEach(a => {
+                a.classList.remove('active-nav');
+                if (a.getAttribute('href') === `#${current}`) {
+                    a.classList.add('active-nav');
+                }
+            });
+        }, { passive: true });
+
+        // ─── Animated stat counters ───────────────────────────────────────────
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target, 10);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1200;
+            const step = 16;
+            const steps = duration / step;
+            let current = 0;
+            el.textContent = '0' + suffix;
+            const increment = target / steps;
+            const timer = setInterval(() => {
+                current = Math.min(current + increment, target);
+                el.textContent = Math.round(current) + suffix;
+                if (current >= target) {
+                    el.classList.add('popped');
+                    setTimeout(() => el.classList.remove('popped'), 400);
+                    clearInterval(timer);
+                }
+            }, step);
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.stat-number[data-target]');
+                    numbers.forEach(animateCounter);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsRow = document.querySelector('.stats-row');
+        if (statsRow) counterObserver.observe(statsRow);
+
+        // ─── 3D Magnetic card tilt ────────────────────────────────────────────
+        document.querySelectorAll('.feature-card, .program-card, .vibecoding-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width / 2;
+                const cy = rect.height / 2;
+                const rotY = ((x - cx) / cx) * 6;
+                const rotX = -((y - cy) / cy) * 6;
+                card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px) scale(1.01)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
     </script>
 </body>
 
