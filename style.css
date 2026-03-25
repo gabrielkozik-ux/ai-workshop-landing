@@ -1190,3 +1190,53 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================
+   UTILITY: Card Icons (Lucide)
+   ========================================= */
+.card-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    color: var(--secondary-color);
+    margin-bottom: 18px;
+    stroke-width: 1.5;
+}
+
+/* =========================================
+   UTILITY: Scroll Reveal
+   ========================================= */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.scroll-reveal:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.scroll-reveal:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* prefers-reduced-motion safe */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* =========================================
+   UTILITY: Copy Toast (XP style)
+   ========================================= */
+.copy-toast svg {
+    color: #fbbf24;
+}

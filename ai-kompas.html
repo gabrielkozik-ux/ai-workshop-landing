@@ -8,159 +8,560 @@
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Specifické styly pro quiz */
+        /* =========================================
+           AI KOMPAS — Gamifikovaný quiz
+           ========================================= */
+
         #ai-kompas-app {
             text-align: center;
+            padding-top: 20px;
         }
 
-        .btn {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-            color: var(--white);
-            padding: 15px 35px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1em;
+        /* --- Stepper --- */
+        .quiz-stepper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin: 0 auto 40px;
+            max-width: 340px;
+        }
+
+        .step-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            border: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-            transition: all 0.3s ease;
+            font-size: 0.85em;
+            color: #94a3b8;
+            transition: all 0.35s ease;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+        .step-dot.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--white);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+            transform: scale(1.15);
         }
 
-        .btn.secondary {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            box-shadow: none;
-        }
-
-        .btn.secondary:hover {
-            background: var(--primary-color);
+        .step-dot.done {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
             color: var(--white);
         }
 
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        #progress-bar {
-            height: 8px;
-            background-color: var(--light-gray);
-            border-radius: 99px;
+        .step-connector {
+            flex: 1;
+            height: 2px;
+            background: #e2e8f0;
+            position: relative;
             overflow: hidden;
-            margin: 0 auto 20px;
-            max-width: 500px;
         }
 
-        #progress-bar-inner {
+        .step-connector-fill {
             height: 100%;
             width: 0%;
-            background-color: var(--secondary-color);
-            transition: width 0.3s ease;
+            background: var(--accent-color);
+            transition: width 0.35s ease;
         }
 
+        /* --- Question area --- */
+        .quiz-question-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .quiz-question-slide {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .quiz-question-slide.exit-left {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .quiz-question-slide.exit-right {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .quiz-question-slide.enter {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .question-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+            line-height: 1;
+            filter: drop-shadow(0 4px 12px rgba(14,165,233,0.3));
+        }
+
+        #question-text {
+            font-size: clamp(1.5em, 3vw, 2em);
+            margin-bottom: 6px;
+            color: var(--primary-color);
+        }
+
+        #question-subtitle {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+
+        /* --- Answer tiles --- */
         #answers-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-            max-width: 600px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+            margin-top: 28px;
+            max-width: 620px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .answer-btn {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-            background-color: var(--white);
-            color: var(--primary-color);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            text-align: left;
-            padding: 20px;
-            font-size: 1rem;
-            border-radius: 12px;
+        .answer-tile {
+            background: var(--white);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 22px 16px;
             cursor: pointer;
             transition: all 0.2s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
         }
 
-        .answer-btn:hover {
+        .answer-tile::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(14,165,233,0.06), rgba(99,102,241,0.06));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .answer-tile:hover {
             border-color: var(--secondary-color);
-            background-color: #f0f9ff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(14,165,233,0.15);
         }
 
-        .answer-btn.selected {
+        .answer-tile:hover::before {
+            opacity: 1;
+        }
+
+        .answer-tile.selected {
             border-color: var(--secondary-color);
-            background-color: #f0f9ff;
-            border-width: 2px;
+            background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(99,102,241,0.08));
+            box-shadow: 0 0 0 3px rgba(14,165,233,0.2);
         }
 
-        .result-card {
-            background: var(--white);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: left;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        .answer-tile.selected::before {
+            opacity: 1;
         }
 
-        .result-card.primary {
+        .answer-tile.pulse {
+            animation: tilePulse 0.3s ease;
+        }
+
+        @keyframes tilePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+            100% { transform: scale(1); }
+        }
+
+        .answer-tile-icon {
+            font-size: 1.75rem;
+            display: block;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .answer-tile-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.95em;
+            color: var(--primary-color);
+            line-height: 1.3;
+        }
+
+        .answer-tile .check-mark {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            color: white;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            font-weight: 900;
+        }
+
+        .answer-tile.selected .check-mark {
+            display: flex;
+            animation: checkPop 0.25s ease;
+        }
+
+        @keyframes checkPop {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Navigation buttons --- */
+        .quiz-nav {
+            margin-top: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            color: var(--white);
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.45);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 2px solid #cbd5e1;
+            color: #64748b;
+            box-shadow: none;
+        }
+
+        .btn.secondary:hover:not(:disabled) {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* --- Results --- */
+        #results {
+            animation: fadeUp 0.5s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-winner-card {
+            background: linear-gradient(135deg, #f0f9ff, #eef2ff);
             border: 2px solid var(--secondary-color);
-            background-color: #f0f9ff;
+            border-radius: 24px;
+            padding: 40px 35px;
+            max-width: 640px;
+            margin: 0 auto 30px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .result-card .header {
+        .result-winner-card::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(14,165,233,0.15), transparent 70%);
+        }
+
+        .result-winner-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
-        .logo-icon img {
+        .result-winner-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .result-winner-info h3 {
+            margin: 0 0 4px 0;
+            font-size: 1.6em;
+            color: var(--primary-color);
+        }
+
+        .archetype-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.82em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .result-summary {
+            color: #475569;
+            font-size: 1.05em;
+            line-height: 1.65;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Score bars */
+        .score-bars {
+            max-width: 640px;
+            margin: 0 auto 30px;
+            text-align: left;
+        }
+
+        .score-bars h3 {
+            font-size: 1.1em;
+            color: #64748b;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85em;
+        }
+
+        .score-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .score-bar-logo {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            flex-shrink: 0;
+            border-radius: 6px;
+        }
+
+        .score-bar-label {
+            width: 80px;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .score-bar-track {
+            flex: 1;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            border-radius: 99px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .score-bar-fill.winner {
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+        }
+
+        .score-bar-fill.other {
+            background: #cbd5e1;
+        }
+
+        .score-bar-num {
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #64748b;
+            width: 30px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* Secondary result cards */
+        .result-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .result-card img {
             width: 40px;
             height: 40px;
             object-fit: contain;
+            border-radius: 10px;
+            background: var(--light-gray);
+            padding: 4px;
+            flex-shrink: 0;
         }
 
-        .hidden {
-            display: none !important;
+        .result-card h4 {
+            margin: 0 0 4px 0;
+            font-size: 1.1em;
+        }
+
+        .result-card .archetype-label {
+            font-size: 0.8em;
+            color: var(--secondary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .result-card p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #64748b;
+            line-height: 1.5;
         }
 
         /* Share buttons */
         .share-buttons {
-            margin-top: 20px;
+            margin-top: 16px;
             display: flex;
             gap: 10px;
             justify-content: center;
         }
 
         .share-btn {
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 8px 18px;
+            border-radius: 8px;
             color: white;
-            font-size: 0.9em;
-            font-weight: 600;
+            font-size: 0.85em;
+            font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            transition: all 0.2s;
         }
 
-        .share-btn.linkedin {
-            background: #0077b5;
+        .share-btn:hover {
+            transform: translateY(-2px);
+            color: white;
         }
 
-        .share-btn.facebook {
-            background: #1877f2;
+        .share-btn.linkedin { background: #0077b5; }
+        .share-btn.facebook { background: #1877f2; }
+
+        /* Vibecoding CTA */
+        .vibecoding-cta-box {
+            background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(99,102,241,0.08));
+            border: 1px solid rgba(14,165,233,0.25);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 640px;
+            margin: 40px auto 0;
+        }
+
+        .vibecoding-cta-box h3 {
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .vibecoding-cta-box p {
+            color: #475569;
+            margin-bottom: 24px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Confetti canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .hidden { display: none !important; }
+
+        /* Intro */
+        #intro {
+            padding: 20px 0 40px;
+        }
+
+        .intro-visual {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 20px;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 520px) {
+            #answers-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .answer-tile {
+                padding: 18px 12px;
+            }
         }
     </style>
 </head>
@@ -174,8 +575,7 @@
         </a>
         <div class="nav-links">
             <a href="index.html">Zpět na workshop</a>
-            <a href="index.html#vibecoding" style="color: var(--secondary-color); font-weight: bold;">Novinka:
-                Vibecoding</a>
+            <a href="index.html#vibecoding" style="color: var(--secondary-color); font-weight: bold;">Novinka: Vibecoding</a>
             <a href="index.html#kontakt" class="nav-cta-button">Poptat školení</a>
         </div>
     </nav>
@@ -183,85 +583,102 @@
     <header class="hero hero-small">
         <div class="container">
             <h1>AI Kompas</h1>
-            <p>Zjistěte, který AI nástroj nejlépe odpovídá vašemu stylu.</p>
+            <p>5 otázek. Váš ideální AI nástroj.</p>
         </div>
     </header>
+
+    <canvas id="confetti-canvas"></canvas>
 
     <main>
         <section id="ai-kompas-app">
             <div class="container">
+
                 <!-- Intro -->
                 <div id="intro">
+                    <span class="intro-visual">🧭</span>
                     <h2 class="section-title">Odhalte svůj AI Archetyp</h2>
-                    <p class="section-subtitle">5krokový test pro výběr ideálního nástroje.</p>
-                    <button id="start-btn" class="btn">Spustit test</button>
+                    <p class="section-subtitle" style="margin-bottom: 36px;">5 kliknutí. Personalizovaný výsledek. Žádné e-maily.</p>
+                    <button id="start-btn" class="btn">
+                        Spustit test →
+                    </button>
                 </div>
 
                 <!-- Quiz -->
                 <div id="quiz" class="hidden">
-                    <div id="progress-bar">
-                        <div id="progress-bar-inner"></div>
-                    </div>
-                    <p id="step-pill" style="color: #64748b; font-weight: 600;"></p>
-                    <h2 id="question-text" style="font-size: 2em; margin-bottom: 10px;"></h2>
-                    <p id="question-subtitle" style="color: #64748b;"></p>
-                    <div id="answers-container"></div>
-                    <div id="quiz-nav"
-                        style="margin-top: 30px; display: flex; justify-content: space-between; max-width: 600px; margin-left: auto; margin-right: auto;">
-                        <button id="back-btn" class="btn secondary">← Zpět</button>
-                        <div>
-                            <button id="next-btn" class="btn">Další →</button>
-                            <button id="finish-btn" class="btn">Dokončit ✓</button>
+                    <!-- Stepper -->
+                    <div class="quiz-stepper" id="quiz-stepper"></div>
+
+                    <!-- Question slide -->
+                    <div class="quiz-question-wrap">
+                        <div class="quiz-question-slide" id="question-slide">
+                            <span class="question-icon" id="question-icon"></span>
+                            <h2 id="question-text"></h2>
+                            <p id="question-subtitle"></p>
+                            <div id="answers-container"></div>
                         </div>
+                    </div>
+
+                    <!-- Nav -->
+                    <div class="quiz-nav">
+                        <button id="back-btn" class="btn secondary">← Zpět</button>
+                        <button id="next-btn" class="btn">Další →</button>
+                        <button id="finish-btn" class="btn hidden">Zobrazit výsledek ✓</button>
                     </div>
                 </div>
 
                 <!-- Results -->
                 <div id="results" class="hidden">
-                    <h2 id="results-title" class="section-title">Váš výsledek</h2>
+                    <h2 id="results-title" class="section-title" style="margin-bottom: 8px;">Váš výsledek</h2>
+                    <p style="color:#64748b; margin-bottom: 32px;">Doporučení na základě vašich odpovědí.</p>
+
+                    <!-- Winner card -->
                     <div id="primary-result"></div>
 
-                    <!-- VRÁCENÉ SDÍLECÍ TLAČÍTKA -->
-                    <div style="text-align: center; margin-top: 20px;">
-                        <p>Líbil se vám test? Sdílejte ho:</p>
+                    <!-- Score bars -->
+                    <div class="score-bars" style="margin-top: 32px;">
+                        <h3>Skóre všech nástrojů</h3>
+                        <div id="score-bars-list"></div>
+                    </div>
+
+                    <!-- Share -->
+                    <div style="text-align: center; margin-top: 32px;">
+                        <p style="color: #64748b; font-size: 0.9em;">Líbil se vám test? Sdílejte ho:</p>
                         <div class="share-buttons">
                             <a href="#" id="share-linkedin" class="share-btn linkedin" target="_blank">LinkedIn</a>
                             <a href="#" id="share-facebook" class="share-btn facebook" target="_blank">Facebook</a>
                         </div>
                     </div>
 
-                    <div id="secondary-results-container" style="margin-top: 40px;">
-                        <h3>Další možnosti</h3>
-                        <div id="secondary-results" class="card-grid"></div>
+                    <!-- Secondary results -->
+                    <div id="secondary-results-container" style="margin-top: 48px; max-width: 640px; margin-left: auto; margin-right: auto;">
+                        <h3 style="text-align:left; font-size: 1em; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 16px;">Další alternativy</h3>
+                        <div id="secondary-results" class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));"></div>
                     </div>
 
-                    <div id="vibecoding-kompas-cta"
-                        style="margin-top: 50px; text-align: center; background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%); padding: 40px 20px; border-radius: 16px; border: 1px solid rgba(14, 165, 233, 0.2);">
-                        <h3 style="color: var(--secondary-color); margin-bottom: 15px;">Chcete s AI nejen konverzovat,
-                            ale rovnou tvořit?</h3>
-                        <p
-                            style="margin-bottom: 25px; color: #475569; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-                            Nyní už víte, který chatovací parťák vám vyhovuje. Připojte se na navazující kurz
-                            <strong>Vibecoding</strong> a buďte mezi prvními, kdo s pomocí agentů staví skutečné firemní
-                            aplikace ze vzduchu – zcela bez znalosti programování.</p>
-                        <a href="index.html#vibecoding" class="cta-button"
-                            style="background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));">Prozkoukat
-                            kurz Vibecoding</a>
+                    <!-- Vibecoding CTA -->
+                    <div class="vibecoding-cta-box">
+                        <h3>Chcete s AI nejen konverzovat, ale rovnou tvořit?</h3>
+                        <p>Nyní víte, který chatovací parťák vám vyhovuje. Na navazujícím kurzu <strong>Vibecoding</strong> si s pomocí agentů postavíte vlastní firemní aplikaci — zcela bez programování.</p>
+                        <a href="index.html#vibecoding" class="cta-button">Prozkoumat kurz Vibecoding</a>
                     </div>
 
-                    <div style="margin-top: 40px;">
+                    <!-- Show all / catalog -->
+                    <div style="margin-top: 40px; text-align: center;">
                         <button id="show-all-btn" class="btn secondary">Zobrazit všechny nástroje</button>
                     </div>
-                    <div id="catalog" class="hidden card-grid" style="margin-top: 30px;">
-                        <div id="catalog-list"></div>
+                    <div id="catalog" class="hidden card-grid" style="margin-top: 24px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                        <div id="catalog-list" class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));"></div>
+                    </div>
+
+                    <!-- Restart -->
+                    <div style="margin-top: 32px; text-align:center;">
+                        <button id="restart-btn" class="btn secondary">↺ Spustit znovu</button>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Newsletter sekce odstraněna -->
-
-        <!-- VRÁCENÁ SEKCE: PROPOJIT -->
         <section id="propojit" style="background-color: var(--light-gray);">
             <div class="container">
                 <div class="section-header">
@@ -286,170 +703,469 @@
         <div class="container">
             <div class="footer-content">
                 <h4>Mgr. Gabriel Kožík</h4>
-                <p>AI Stratég & Advokát</p>
+                <p>AI Stratég &amp; Advokát</p>
             </div>
-
             <div class="footer-links">
                 <a href="licence.html">Průvodce Compliance</a>
                 <a href="srovnani.html">Srovnání Nástrojů</a>
                 <a href="https://www.gabrielkozik.com" target="_blank">O lektorovi</a>
             </div>
-
             <div class="social-icons-container">
-                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"><img
-                        src="linkedin.png" alt="LinkedIn"></a>
-                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.png"
-                        alt="Facebook"></a>
-                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"><img
-                        src="instagram.png" alt="Instagram"></a>
-                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"><img
-                        src="youtube.png" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"><img src="linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+                <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"><img src="youtube.png" alt="YouTube"></a>
             </div>
-
             <div class="copyright">
                 <p>&copy; 2026 Mgr. Gabriel Kožík. Všechna práva vyhrazena.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Script logika -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const JSON_PATH = "ai-tools.json";
-            const quizQuestions = [
-                { key: "Q1", title: "Hlavní cíl?", type: "multiple", answers: { A: "Marketing", B: "Analýza", C: "Automatizace" } },
-                { key: "Q2", title: "Zdroje dat?", type: "single", answers: { A: "Internet", B: "Vlastní data", C: "Mix" } },
-                { key: "Q3", title: "Přesnost vs. Kreativita?", type: "single", answers: { A: "Rychlost", B: "Solidní střed", C: "Maximální přesnost" } },
-                { key: "Q4", title: "Styl výstupu?", type: "single", answers: { A: "Kreativní", B: "Věcný", C: "Formální" } },
-                { key: "Q5", title: "Tech skill?", type: "single", answers: { A: "Klikací", B: "Učenlivý", C: "Geek" } }
-            ];
-            const WEIGHTS = { Q1: { A: { chatgpt: 3, gemini: 2, claude: 1 }, B: { perplexity: 3, gemini: 2, grok: 2, claude: 1, antigravity: 2 }, C: { claude: 3, chatgpt: 2, gemini: 1, antigravity: 4 } }, Q2: { A: { perplexity: 3, grok: 3, gemini: 1 }, B: { claude: 3, gemini: 2, chatgpt: 2, antigravity: 3 }, C: { gemini: 3, chatgpt: 2, perplexity: 1, antigravity: 2 } }, Q3: { A: { chatgpt: 3, grok: 2 }, B: { gemini: 3, claude: 2, chatgpt: 1 }, C: { perplexity: 3, claude: 2, gemini: 1, antigravity: 3 } }, Q4: { A: { chatgpt: 3, grok: 1 }, B: { gemini: 3, perplexity: 2, claude: 1, antigravity: 1 }, C: { claude: 3, chatgpt: 1, gemini: 1, antigravity: 3 } }, Q5: { A: { perplexity: 3, gemini: 2 }, B: { chatgpt: 3, gemini: 2, claude: 1, antigravity: 1 }, C: { claude: 3, chatgpt: 2, grok: 1, antigravity: 4 } } };
-            const state = { tools: [], answers: {}, qIndex: 0 };
-            const toolIcons = { chatgpt: 'chatgpt-icon.png', gemini: 'gemini-icon.png', claude: 'claude-icon.png', perplexity: 'perplexity-icon.webp', grok: 'grok-icon.png', antigravity: 'favicon.ico', default: '' };
+    document.addEventListener('DOMContentLoaded', () => {
+        const JSON_PATH = "ai-tools.json";
 
-            const $ = (s) => document.querySelector(s);
-            const $intro = $('#intro'), $quiz = $('#quiz'), $results = $('#results');
-            const $startBtn = $('#start-btn'), $nextBtn = $('#next-btn'), $finishBtn = $('#finish-btn'), $backBtn = $('#back-btn');
-            const $questionText = $('#question-text'), $answersContainer = $('#answers-container');
-
-            async function init() {
-                try {
-                    const res = await fetch(JSON_PATH);
-                    state.tools = (await res.json()).tools || [];
-                } catch (err) { console.error(err); }
-                setupEventListeners();
-                setupShareLinks();
-            }
-
-            function setupEventListeners() {
-                $startBtn.addEventListener('click', startQuiz);
-                $nextBtn.addEventListener('click', onNext);
-                $backBtn.addEventListener('click', onBack);
-                $finishBtn.addEventListener('click', onFinish);
-                $('#show-all-btn').addEventListener('click', () => $('#catalog').classList.toggle('hidden'));
-            }
-
-            function setupShareLinks() {
-                const url = encodeURIComponent(window.location.href);
-                const title = encodeURIComponent("Zjistil(a) jsem svůj AI archetyp v AI Kompasu. Zkuste to taky!");
-                $('#share-linkedin').href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
-                $('#share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-            }
-
-            function startQuiz() {
-                $intro.classList.add('hidden');
-                $quiz.classList.remove('hidden');
-                state.qIndex = 0;
-                state.answers = {};
-                quizQuestions.forEach(q => state.answers[q.key] = q.type === 'multiple' ? [] : null);
-                renderQuestion();
-            }
-
-            function onNext() { if (state.qIndex < quizQuestions.length - 1) { state.qIndex++; renderQuestion(); } }
-            function onBack() { if (state.qIndex > 0) { state.qIndex--; renderQuestion(); } }
-
-            function renderQuestion() {
-                const q = quizQuestions[state.qIndex];
-                $questionText.textContent = q.title;
-                $('#question-subtitle').textContent = q.type === 'multiple' ? 'Vyberte více možností' : 'Vyberte jednu možnost';
-                $('#step-pill').textContent = `Krok ${state.qIndex + 1} / ${quizQuestions.length}`;
-                $('#progress-bar-inner').style.width = `${((state.qIndex + 1) / quizQuestions.length) * 100}%`;
-
-                $answersContainer.innerHTML = "";
-                const currentAnswers = state.answers[q.key];
-
-                Object.entries(q.answers).forEach(([key, label]) => {
-                    const btn = document.createElement("div");
-                    btn.className = "answer-btn";
-                    if ((q.type === 'multiple' && currentAnswers.includes(key)) || currentAnswers === key) btn.classList.add("selected");
-                    btn.innerHTML = `<span>${label}</span>`;
-                    btn.onclick = () => {
-                        if (q.type === 'multiple') {
-                            const idx = state.answers[q.key].indexOf(key);
-                            idx > -1 ? state.answers[q.key].splice(idx, 1) : state.answers[q.key].push(key);
-                        } else { state.answers[q.key] = key; }
-                        renderQuestion();
-                    };
-                    $answersContainer.appendChild(btn);
-                });
-                updateNav();
-            }
-
-            function updateNav() {
-                const ans = state.answers[quizQuestions[state.qIndex].key];
-                const hasAns = Array.isArray(ans) ? ans.length > 0 : ans !== null;
-                $nextBtn.classList.toggle('hidden', state.qIndex === quizQuestions.length - 1);
-                $nextBtn.disabled = !hasAns;
-                $finishBtn.classList.toggle('hidden', state.qIndex !== quizQuestions.length - 1);
-                $finishBtn.disabled = !hasAns;
-                $backBtn.disabled = state.qIndex === 0;
-            }
-
-            function onFinish() {
-                const scores = {};
-                state.tools.forEach(t => scores[t.id] = 0);
-                for (const [qKey, ans] of Object.entries(state.answers)) {
-                    const keys = Array.isArray(ans) ? ans : [ans];
-                    keys.forEach(k => {
-                        const map = WEIGHTS[qKey]?.[k] || {};
-                        Object.entries(map).forEach(([tid, pts]) => { if (scores[tid] !== undefined) scores[tid] += pts; });
-                    });
+        // --- Quiz data ---
+        const quizQuestions = [
+            {
+                key: "Q1",
+                icon: "🎯",
+                title: "Co je váš hlavní cíl?",
+                type: "multiple",
+                answers: {
+                    A: { icon: "📣", label: "Marketing & obsah" },
+                    B: { icon: "🔍", label: "Analýza & research" },
+                    C: { icon: "⚙️", label: "Automatizace" }
                 }
-                const sorted = Object.entries(scores).map(([id, s]) => ({ id, score: s, tool: state.tools.find(t => t.id === id) })).sort((a, b) => b.score - a.score);
+            },
+            {
+                key: "Q2",
+                icon: "🗂️",
+                title: "Kde berete data?",
+                type: "single",
+                answers: {
+                    A: { icon: "🌐", label: "Z internetu" },
+                    B: { icon: "🔒", label: "Vlastní dokumenty" },
+                    C: { icon: "🔀", label: "Mix obojího" }
+                }
+            },
+            {
+                key: "Q3",
+                icon: "⚖️",
+                title: "Co vám víc sedí?",
+                type: "single",
+                answers: {
+                    A: { icon: "⚡", label: "Rychlost nad vše" },
+                    B: { icon: "🎯", label: "Solidní střed" },
+                    C: { icon: "🔬", label: "Maximální přesnost" }
+                }
+            },
+            {
+                key: "Q4",
+                icon: "✍️",
+                title: "Styl výstupu?",
+                type: "single",
+                answers: {
+                    A: { icon: "🎨", label: "Kreativní" },
+                    B: { icon: "📋", label: "Věcný & faktický" },
+                    C: { icon: "🏛️", label: "Formální" }
+                }
+            },
+            {
+                key: "Q5",
+                icon: "💻",
+                title: "Jak tech-savvy jste?",
+                type: "single",
+                answers: {
+                    A: { icon: "🖱️", label: "Klikací uživatel" },
+                    B: { icon: "📚", label: "Ochotný se učit" },
+                    C: { icon: "🤓", label: "Technický geek" }
+                }
+            }
+        ];
 
-                renderResults(sorted);
-                $quiz.classList.add('hidden');
-                $results.classList.remove('hidden');
+        const WEIGHTS = {
+            Q1: { A: { chatgpt: 3, gemini: 2, claude: 1 }, B: { perplexity: 3, gemini: 2, grok: 2, claude: 1, antigravity: 2 }, C: { claude: 3, chatgpt: 2, gemini: 1, antigravity: 4 } },
+            Q2: { A: { perplexity: 3, grok: 3, gemini: 1 }, B: { claude: 3, gemini: 2, chatgpt: 2, antigravity: 3 }, C: { gemini: 3, chatgpt: 2, perplexity: 1, antigravity: 2 } },
+            Q3: { A: { chatgpt: 3, grok: 2 }, B: { gemini: 3, claude: 2, chatgpt: 1 }, C: { perplexity: 3, claude: 2, gemini: 1, antigravity: 3 } },
+            Q4: { A: { chatgpt: 3, grok: 1 }, B: { gemini: 3, perplexity: 2, claude: 1, antigravity: 1 }, C: { claude: 3, chatgpt: 1, gemini: 1, antigravity: 3 } },
+            Q5: { A: { perplexity: 3, gemini: 2 }, B: { chatgpt: 3, gemini: 2, claude: 1, antigravity: 1 }, C: { claude: 3, chatgpt: 2, grok: 1, antigravity: 4 } }
+        };
+
+        const toolIcons = {
+            chatgpt: 'chatgpt-icon.png',
+            gemini: 'gemini-icon.png',
+            claude: 'claude-icon.png',
+            perplexity: 'perplexity-icon.webp',
+            grok: 'grok-icon.png',
+            antigravity: 'favicon.ico',
+            default: 'favicon.ico'
+        };
+
+        const state = { tools: [], answers: {}, qIndex: 0 };
+
+        const $ = (s) => document.querySelector(s);
+        const $intro = $('#intro'), $quiz = $('#quiz'), $results = $('#results');
+        const $startBtn = $('#start-btn');
+        const $nextBtn = $('#next-btn'), $finishBtn = $('#finish-btn'), $backBtn = $('#back-btn');
+        const $questionSlide = $('#question-slide');
+
+        // --- Init ---
+        async function init() {
+            try {
+                const res = await fetch(JSON_PATH);
+                state.tools = (await res.json()).tools || [];
+            } catch (err) { console.error(err); }
+            buildStepper();
+            setupEventListeners();
+            setupShareLinks();
+        }
+
+        // --- Stepper ---
+        function buildStepper() {
+            const stepper = $('#quiz-stepper');
+            stepper.innerHTML = '';
+            quizQuestions.forEach((q, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'step-dot';
+                dot.textContent = i + 1;
+                dot.id = `step-dot-${i}`;
+                stepper.appendChild(dot);
+
+                if (i < quizQuestions.length - 1) {
+                    const conn = document.createElement('div');
+                    conn.className = 'step-connector';
+                    const fill = document.createElement('div');
+                    fill.className = 'step-connector-fill';
+                    fill.id = `step-conn-${i}`;
+                    conn.appendChild(fill);
+                    stepper.appendChild(conn);
+                }
+            });
+        }
+
+        function updateStepper(index) {
+            quizQuestions.forEach((q, i) => {
+                const dot = $(`#step-dot-${i}`);
+                dot.classList.remove('active', 'done');
+                if (i < index) { dot.classList.add('done'); dot.textContent = '✓'; }
+                else if (i === index) { dot.classList.add('active'); dot.textContent = i + 1; }
+                else { dot.textContent = i + 1; }
+
+                if (i < quizQuestions.length - 1) {
+                    const fill = $(`#step-conn-${i}`);
+                    if (fill) fill.style.width = i < index ? '100%' : '0%';
+                }
+            });
+        }
+
+        // --- Event listeners ---
+        function setupEventListeners() {
+            $startBtn.addEventListener('click', startQuiz);
+            $nextBtn.addEventListener('click', onNext);
+            $backBtn.addEventListener('click', onBack);
+            $finishBtn.addEventListener('click', onFinish);
+            $('#show-all-btn').addEventListener('click', () => {
+                const cat = $('#catalog');
+                cat.classList.toggle('hidden');
+                $('#show-all-btn').textContent = cat.classList.contains('hidden') ? 'Zobrazit všechny nástroje' : 'Skrýt';
+            });
+            $('#restart-btn').addEventListener('click', restartQuiz);
+        }
+
+        function setupShareLinks() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent("Zjistil(a) jsem svůj AI archetyp v AI Kompasu. Zkuste to taky!");
+            $('#share-linkedin').href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+            $('#share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        }
+
+        // --- Quiz flow ---
+        function startQuiz() {
+            $intro.classList.add('hidden');
+            $quiz.classList.remove('hidden');
+            state.qIndex = 0;
+            state.answers = {};
+            quizQuestions.forEach(q => state.answers[q.key] = q.type === 'multiple' ? [] : null);
+            renderQuestion(true);
+        }
+
+        function restartQuiz() {
+            $results.classList.add('hidden');
+            $intro.classList.remove('hidden');
+        }
+
+        function onNext() {
+            if (state.qIndex < quizQuestions.length - 1) {
+                animateSlide('left', () => {
+                    state.qIndex++;
+                    renderQuestion(false);
+                });
+            }
+        }
+
+        function onBack() {
+            if (state.qIndex > 0) {
+                animateSlide('right', () => {
+                    state.qIndex--;
+                    renderQuestion(false);
+                });
+            }
+        }
+
+        function animateSlide(direction, callback) {
+            const exitClass = direction === 'left' ? 'exit-left' : 'exit-right';
+            $questionSlide.classList.add(exitClass);
+            setTimeout(() => {
+                $questionSlide.classList.remove(exitClass);
+                $questionSlide.classList.add('enter');
+                callback();
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        $questionSlide.classList.remove('enter');
+                    });
+                });
+            }, 280);
+        }
+
+        function renderQuestion(initial) {
+            const q = quizQuestions[state.qIndex];
+            $('#question-icon').textContent = q.icon;
+            $('#question-text').textContent = q.title;
+            $('#question-subtitle').textContent = q.type === 'multiple' ? 'Vyberte jednu nebo více možností' : 'Vyberte jednu možnost';
+
+            updateStepper(state.qIndex);
+
+            const container = $('#answers-container');
+            container.innerHTML = '';
+            const currentAnswers = state.answers[q.key];
+
+            Object.entries(q.answers).forEach(([key, answer]) => {
+                const tile = document.createElement('div');
+                tile.className = 'answer-tile';
+
+                const isSelected = q.type === 'multiple'
+                    ? currentAnswers.includes(key)
+                    : currentAnswers === key;
+
+                if (isSelected) tile.classList.add('selected');
+
+                tile.innerHTML = `
+                    <span class="answer-tile-icon">${answer.icon}</span>
+                    <span class="answer-tile-label">${answer.label}</span>
+                    <span class="check-mark">✓</span>
+                `;
+
+                tile.addEventListener('click', () => {
+                    if (q.type === 'multiple') {
+                        const idx = state.answers[q.key].indexOf(key);
+                        idx > -1 ? state.answers[q.key].splice(idx, 1) : state.answers[q.key].push(key);
+                    } else {
+                        state.answers[q.key] = key;
+                    }
+                    tile.classList.add('pulse');
+                    tile.addEventListener('animationend', () => tile.classList.remove('pulse'), { once: true });
+                    renderAnswerStates(q);
+                    updateNav(q);
+                });
+
+                container.appendChild(tile);
+            });
+
+            updateNav(q);
+        }
+
+        function renderAnswerStates(q) {
+            const tiles = document.querySelectorAll('.answer-tile');
+            const keys = Object.keys(q.answers);
+            const currentAnswers = state.answers[q.key];
+
+            tiles.forEach((tile, i) => {
+                const key = keys[i];
+                const isSelected = q.type === 'multiple'
+                    ? currentAnswers.includes(key)
+                    : currentAnswers === key;
+                tile.classList.toggle('selected', isSelected);
+            });
+        }
+
+        function updateNav(q) {
+            const ans = state.answers[q.key];
+            const hasAns = Array.isArray(ans) ? ans.length > 0 : ans !== null;
+            const isLast = state.qIndex === quizQuestions.length - 1;
+
+            $nextBtn.classList.toggle('hidden', isLast);
+            $nextBtn.disabled = !hasAns;
+            $finishBtn.classList.toggle('hidden', !isLast);
+            $finishBtn.disabled = !hasAns;
+            $backBtn.disabled = state.qIndex === 0;
+        }
+
+        // --- Results ---
+        function onFinish() {
+            const scores = {};
+            state.tools.forEach(t => scores[t.id] = 0);
+
+            for (const [qKey, ans] of Object.entries(state.answers)) {
+                const keys = Array.isArray(ans) ? ans : [ans];
+                keys.forEach(k => {
+                    const map = WEIGHTS[qKey]?.[k] || {};
+                    Object.entries(map).forEach(([tid, pts]) => {
+                        if (scores[tid] !== undefined) scores[tid] += pts;
+                    });
+                });
             }
 
-            function renderResults(sorted) {
-                if (!sorted.length) return;
-                const primary = sorted[0];
-                $('#primary-result').innerHTML = createCard(primary, true);
-                $('#secondary-results').innerHTML = sorted.slice(1, 3).map(i => createCard(i)).join('');
-                $('#catalog-list').innerHTML = sorted.map(i => createCard(i)).join('');
-            }
+            const sorted = Object.entries(scores)
+                .map(([id, s]) => ({ id, score: s, tool: state.tools.find(t => t.id === id) }))
+                .sort((a, b) => b.score - a.score);
 
-            function createCard(item, isPrimary = false) {
-                const t = item.tool || {};
-                return `
-            <div class="result-card ${isPrimary ? 'primary' : ''}">
-                <div class="header">
-                    <div style="display:flex; align-items:center; gap:15px;">
-                        <div class="logo-icon"><img src="${toolIcons[t.id]}" alt="${t.name}"></div>
-                        <div>
-                            <h4 style="margin:0;">${t.name}</h4>
-                            <span style="font-size:0.8em; color:var(--secondary-color); font-weight:700;">${t.archetype}</span>
+            $quiz.classList.add('hidden');
+            $results.classList.remove('hidden');
+            renderResults(sorted);
+
+            // scroll to top of results
+            $results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // confetti!
+            setTimeout(() => launchConfetti(), 400);
+        }
+
+        function renderResults(sorted) {
+            if (!sorted.length) return;
+            const primary = sorted[0];
+            const maxScore = primary.score || 1;
+
+            // Winner card
+            const t = primary.tool || {};
+            const iconSrc = toolIcons[t.id] || toolIcons.default;
+            $('#primary-result').innerHTML = `
+                <div class="result-winner-card">
+                    <div class="result-winner-header">
+                        <img src="${iconSrc}" alt="${t.name}" class="result-winner-logo">
+                        <div class="result-winner-info">
+                            <h3>${t.name || primary.id}</h3>
+                            <span class="archetype-badge">⭐ ${t.archetype || 'Váš nástroj'}</span>
                         </div>
                     </div>
-                    <span style="font-weight:700; color:var(--primary-color);">${item.score} b.</span>
+                    <p class="result-summary">${t.summary || ''}</p>
                 </div>
-                <p>${t.summary}</p>
-            </div>`;
-            }
+            `;
 
-            init();
-        });
+            // Score bars
+            const barsList = $('#score-bars-list');
+            barsList.innerHTML = '';
+            sorted.forEach((item, idx) => {
+                const tl = item.tool || {};
+                const pct = Math.round((item.score / maxScore) * 100);
+                const bar = document.createElement('div');
+                bar.className = 'score-bar-item';
+                bar.innerHTML = `
+                    <img src="${toolIcons[tl.id] || toolIcons.default}" alt="${tl.name || item.id}" class="score-bar-logo">
+                    <span class="score-bar-label">${tl.name || item.id}</span>
+                    <div class="score-bar-track">
+                        <div class="score-bar-fill ${idx === 0 ? 'winner' : 'other'}" data-pct="${pct}"></div>
+                    </div>
+                    <span class="score-bar-num">${item.score}b</span>
+                `;
+                barsList.appendChild(bar);
+            });
+
+            // Animate bars after paint
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    document.querySelectorAll('.score-bar-fill').forEach(el => {
+                        el.style.width = el.dataset.pct + '%';
+                    });
+                });
+            });
+
+            // Secondary cards
+            $('#secondary-results').innerHTML = sorted.slice(1, 3).map(item => {
+                const tl = item.tool || {};
+                return `
+                    <div class="result-card">
+                        <img src="${toolIcons[tl.id] || toolIcons.default}" alt="${tl.name || item.id}">
+                        <div>
+                            <h4>${tl.name || item.id}</h4>
+                            <span class="archetype-label">${tl.archetype || ''}</span>
+                            <p>${tl.summary || ''}</p>
+                        </div>
+                    </div>`;
+            }).join('');
+
+            // Catalog
+            $('#catalog-list').innerHTML = sorted.map(item => {
+                const tl = item.tool || {};
+                return `
+                    <div class="result-card">
+                        <img src="${toolIcons[tl.id] || toolIcons.default}" alt="${tl.name || item.id}">
+                        <div>
+                            <h4>${tl.name || item.id}</h4>
+                            <span class="archetype-label">${tl.archetype || ''}</span>
+                            <p>${tl.summary || ''}</p>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        // --- Confetti ---
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const colors = ['#0ea5e9', '#6366f1', '#10b981', '#f59e0b', '#ec4899'];
+            const particles = Array.from({ length: 80 }, () => ({
+                x: Math.random() * canvas.width,
+                y: -20,
+                r: Math.random() * 6 + 3,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                vx: (Math.random() - 0.5) * 4,
+                vy: Math.random() * 4 + 2,
+                angle: Math.random() * Math.PI * 2,
+                spin: (Math.random() - 0.5) * 0.2
+            }));
+
+            let frame = 0;
+            const maxFrames = 120;
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.angle);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = Math.max(0, 1 - frame / maxFrames);
+                    ctx.fillRect(-p.r, -p.r / 2, p.r * 2, p.r);
+                    ctx.restore();
+
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.angle += p.spin;
+                    p.vy += 0.08; // gravity
+                });
+
+                frame++;
+                if (frame < maxFrames) {
+                    requestAnimationFrame(draw);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+            draw();
+        }
+
+        // Respects prefers-reduced-motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            window.launchConfetti = () => {};
+        }
+
+        init();
+    });
     </script>
 </body>
 
