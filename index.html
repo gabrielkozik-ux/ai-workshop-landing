@@ -45,6 +45,181 @@
 </head>
 
 <body>
+    <!-- ═══════════════════════════════════════
+         AI CURSOR AVATAR
+    ════════════════════════════════════════ -->
+    <div id="ai-cursor" aria-hidden="true">
+        <div class="ai-cursor-orb"></div>
+        <svg class="ai-cursor-ring" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-dasharray="4 3" />
+        </svg>
+    </div>
+    <div id="ai-cursor-trail" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <style>
+        /* Hide system cursor site-wide (only on non-touch) */
+        @media (hover: hover) and (pointer: fine) {
+            * { cursor: none !important; }
+
+            #ai-cursor {
+                position: fixed;
+                top: 0; left: 0;
+                width: 36px; height: 36px;
+                pointer-events: none;
+                z-index: 99999;
+                transform: translate(-50%, -50%);
+                transition: transform 0.08s linear;
+                will-change: transform;
+            }
+
+            .ai-cursor-orb {
+                position: absolute;
+                inset: 8px;
+                border-radius: 50%;
+                background: radial-gradient(circle at 35% 35%,
+                    rgba(255,255,255,0.9) 0%,
+                    rgba(14, 165, 233, 0.85) 40%,
+                    rgba(99, 102, 241, 0.7) 100%);
+                box-shadow:
+                    0 0 8px rgba(14, 165, 233, 0.7),
+                    0 0 20px rgba(14, 165, 233, 0.35),
+                    0 0 40px rgba(99, 102, 241, 0.2);
+                transition: transform 0.2s cubic-bezier(0.4,0,0.2,1),
+                            box-shadow 0.2s ease,
+                            background 0.2s ease;
+            }
+
+            .ai-cursor-ring {
+                position: absolute;
+                inset: 0;
+                color: rgba(14, 165, 233, 0.5);
+                animation: cursor-ring-spin 4s linear infinite;
+                transition: color 0.2s ease, transform 0.2s ease;
+            }
+
+            @keyframes cursor-ring-spin {
+                to { transform: rotate(360deg); }
+            }
+
+            /* Interactive state: hover over links/buttons */
+            #ai-cursor.is-hover .ai-cursor-orb {
+                transform: scale(1.7);
+                background: radial-gradient(circle at 35% 35%,
+                    rgba(255,255,255,1) 0%,
+                    rgba(99, 102, 241, 0.9) 50%,
+                    rgba(14, 165, 233, 0.8) 100%);
+                box-shadow:
+                    0 0 12px rgba(99, 102, 241, 0.9),
+                    0 0 30px rgba(99, 102, 241, 0.5),
+                    0 0 60px rgba(14, 165, 233, 0.3);
+            }
+
+            #ai-cursor.is-hover .ai-cursor-ring {
+                color: rgba(99, 102, 241, 0.7);
+                transform: scale(1.4);
+                animation-duration: 1.5s;
+            }
+
+            /* Clicked state */
+            #ai-cursor.is-click .ai-cursor-orb {
+                transform: scale(0.7);
+                box-shadow:
+                    0 0 4px rgba(14, 165, 233, 0.9),
+                    0 0 12px rgba(14, 165, 233, 0.6);
+            }
+
+            /* Trailing ghost dots */
+            #ai-cursor-trail {
+                position: fixed;
+                top: 0; left: 0;
+                pointer-events: none;
+                z-index: 99998;
+            }
+
+            #ai-cursor-trail span {
+                position: fixed;
+                width: 6px; height: 6px;
+                border-radius: 50%;
+                background: var(--secondary-color);
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+                transition: opacity 0.4s ease, transform 0.4s ease;
+                will-change: transform, opacity;
+            }
+        }
+    </style>
+
+    <script>
+    (function() {
+        // Only run on non-touch devices
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+        const cursor = document.getElementById('ai-cursor');
+        const trail  = document.getElementById('ai-cursor-trail');
+        const dots   = Array.from(trail.querySelectorAll('span'));
+        const N      = dots.length;
+
+        // Trail history positions
+        const history = Array.from({ length: N }, () => ({ x: -100, y: -100 }));
+        const delays  = [0, 45, 90, 135, 180, 225]; // ms lag per dot
+        const sizes   = [6, 5, 4.5, 4, 3.5, 3];
+        const opacities = [0.55, 0.42, 0.32, 0.22, 0.14, 0.08];
+
+        let mx = -200, my = -200;
+
+        // Move cursor orb immediately
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            cursor.style.left = mx + 'px';
+            cursor.style.top  = my + 'px';
+
+            // Schedule each dot with its own delay
+            dots.forEach((dot, i) => {
+                setTimeout(() => {
+                    dot.style.left    = mx + 'px';
+                    dot.style.top     = my + 'px';
+                    dot.style.width   = sizes[i] + 'px';
+                    dot.style.height  = sizes[i] + 'px';
+                    dot.style.opacity = opacities[i];
+                    dot.style.transform = `translate(-50%, -50%) scale(1)`;
+                }, delays[i]);
+
+                // Fade out after a moment
+                setTimeout(() => {
+                    dot.style.opacity  = 0;
+                    dot.style.transform = `translate(-50%, -50%) scale(0)`;
+                }, delays[i] + 180);
+            });
+        });
+
+        // Hover detection
+        document.addEventListener('mouseover', e => {
+            const el = e.target.closest('a, button, [onclick], .prompt-card, .pricing-option, .cta-button, .cta-button-small, .nav-cta-button');
+            cursor.classList.toggle('is-hover', !!el);
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('is-click');
+            cursor.classList.remove('is-hover');
+        });
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('is-click');
+        });
+
+        // Hide when leaving window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+    })();
+    </script>
+
+
     <svg width="0" height="0" style="position:absolute; display:none;">
         <symbol id="icon-calendar" viewBox="0 0 24 24">
             <path fill="currentColor"
