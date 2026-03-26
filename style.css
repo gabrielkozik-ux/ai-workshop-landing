@@ -316,6 +316,14 @@ section:nth-child(even) {
 
 .hero.hero-small {
     min-height: 50vh;
+    /* Na podstránkách používáme scroll místo fixed — fixed attachment
+       pozicuje obrázek relativně k viewportu, takže na nízkém hero
+       a širokém monitoru se miška vah ořezává a není vidět.
+       background-position: center center zajistí, že miška (uprostřed obrázku)
+       bude vždy ve středu hero sekce. */
+    background-attachment: scroll;
+    background-position: 0% 50%, center center;
+    background-size: 300% 300%, cover;
 }
 
 .hero-badges {
