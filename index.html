@@ -251,8 +251,195 @@
         </div>
     </nav>
 
+    <!-- ① Scroll progress bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ④ Back-to-top button -->
+    <button id="back-to-top" aria-label="Zpět nahoru" title="Zpět nahoru">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15" />
+        </svg>
+    </button>
+
+    <style>
+        /* ① Scroll progress bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color), #a855f7);
+            z-index: 100000;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.7);
+        }
+
+        /* ② Hero canvas particles */
+        #hero-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.45;
+        }
+
+        /* ③ Wave divider */
+        .wave-divider {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            margin-top: -2px;
+            background: var(--light-gray);
+        }
+
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+        }
+
+        /* ④ Back-to-top */
+        #back-to-top {
+            position: fixed;
+            bottom: 32px;
+            left: 32px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+            z-index: 9990;
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+            pointer-events: none;
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-3px) scale(1.08) !important;
+            box-shadow: 0 10px 28px rgba(14, 165, 233, 0.65);
+        }
+
+        #back-to-top svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ⑤ Hero urgency pill */
+        .hero-countdown {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 50px;
+            padding: 6px 18px;
+            font-size: 0.82em;
+            font-weight: 600;
+            color: var(--warning-color);
+            margin-bottom: 18px;
+            letter-spacing: 0.3px;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .cd-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--warning-color);
+            animation: pulse-dot 1.2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: 0.45; transform: scale(0.65); }
+        }
+
+        /* Section thin glow separator */
+        .section-glow-sep {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(14, 165, 233, 0.25) 30%,
+                rgba(99, 102, 241, 0.25) 70%,
+                transparent 100%);
+            border: none;
+            margin: 0;
+            display: block;
+        }
+
+        /* Program card h3 gradient on hover */
+        .program-card:hover h3 {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Bonus card icon spin + glow */
+        .bonus-card img {
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .bonus-card:hover img {
+            filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.55));
+            transform: scale(1.12) rotate(-6deg);
+        }
+
+        /* Feature card icon bounce on hover */
+        .feature-card:hover .card-icon,
+        .program-card:hover .card-icon {
+            animation: icon-bounce 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes icon-bounce {
+            0%   { transform: translateY(0) scale(1); }
+            40%  { transform: translateY(-8px) scale(1.1); }
+            70%  { transform: translateY(-3px) scale(1.05); }
+            100% { transform: translateY(0) scale(1); }
+        }
+    </style>
+
+    <script>
+        // ① Scroll progress + ④ Back-to-top
+        (function () {
+            const bar = document.getElementById('scroll-progress');
+            const btn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+                if (scrolled > 400) btn.classList.add('visible');
+                else btn.classList.remove('visible');
+            }, { passive: true });
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        })();
+    </script>
+
     <header class="hero">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
         <div class="container">
+            <div class="hero-countdown" id="hero-countdown">
+                <span class="cd-dot"></span>
+                <span id="cd-text">Zbývá načítání…</span>
+            </div>
             <div class="hero-badges">
                 <span>Profesionalita</span> • <span>Bezpečnost</span> • <span>Efektivita</span>
             </div>
@@ -293,6 +480,14 @@
             </div>
         </div>
     </header>
+
+    <!-- ③ Wave divider hero → main -->
+    <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,28 C240,56 480,0 720,28 C960,56 1200,0 1440,28 L1440,56 L0,56 Z"
+                fill="var(--light-gray)" />
+        </svg>
+    </div>
 
     <main>
         <section id="value-proposition">
@@ -956,6 +1151,113 @@
                 card.style.transform = '';
             });
         });
+
+        // ─── Hero canvas floating particles ──────────────────────────────────
+        (function () {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let W, H, particles = [];
+
+            function resize() {
+                W = canvas.width  = canvas.offsetWidth;
+                H = canvas.height = canvas.offsetHeight;
+            }
+
+            function mkParticle() {
+                return {
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    r: Math.random() * 1.8 + 0.4,
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    a: Math.random() * 0.6 + 0.15
+                };
+            }
+
+            resize();
+            window.addEventListener('resize', () => { resize(); particles = []; init(); });
+
+            function init() {
+                const count = Math.floor((W * H) / 8000);
+                particles = Array.from({ length: count }, mkParticle);
+            }
+            init();
+
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                particles.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+                    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(14,165,233,${p.a})`;
+                    ctx.fill();
+                });
+
+                // Draw connecting lines between nearby particles
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 90) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(14,165,233,${0.12 * (1 - dist / 90)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        // ─── Hero countdown to workshop date ─────────────────────────────────
+        (function () {
+            const cdText = document.getElementById('cd-text');
+            if (!cdText) return;
+
+            function updateCD() {
+                // Read from the config-loaded date if available, fallback to 2026-05-15
+                const dateEl = document.querySelector('.event-date-display');
+                let target;
+                if (dateEl && dateEl.textContent.match(/\d/)) {
+                    // Try to parse Czech date "D. M. YYYY"
+                    const parts = dateEl.textContent.split('. ').map(Number);
+                    if (parts.length >= 3) {
+                        target = new Date(parts[2], parts[1] - 1, parts[0], 9, 0, 0);
+                    }
+                }
+                if (!target || isNaN(target)) {
+                    target = new Date(2026, 4, 15, 9, 0, 0); // May 15 2026
+                }
+
+                const now  = new Date();
+                const diff = target - now;
+                if (diff <= 0) {
+                    cdText.textContent = 'Workshop právě probíhá! 🚀';
+                    return;
+                }
+                const days    = Math.floor(diff / 86400000);
+                const hours   = Math.floor((diff % 86400000) / 3600000);
+                const minutes = Math.floor((diff % 3600000) / 60000);
+
+                if (days > 0) {
+                    cdText.textContent = `Do workshopu zbývá: ${days} dní ${hours} h ${minutes} min`;
+                } else {
+                    cdText.textContent = `Do workshopu zbývá: ${hours} h ${minutes} min`;
+                }
+            }
+
+            // Wait for config data to load
+            setTimeout(updateCD, 800);
+            setInterval(updateCD, 60000);
+        })();
     </script>
 </body>
 
