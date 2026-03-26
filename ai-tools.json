@@ -2,7 +2,7 @@
   "tools": [
     {
       "id": "chatgpt",
-      "name": "ChatGPT (GPT-5)",
+      "name": "ChatGPT (GPT-5.4)",
       "fit_weight": 5,
       "archetype": "Kreativní Univerzál",
       "summary": "Univerzální a kreativní model, skvělý pro tvorbu obsahu, brainstorming a rychlé generování nápadů.",
@@ -27,7 +27,7 @@
           "I přes vylepšení je stále nutná lidská kontrola u fakticky citlivých úkolů.",
           "Pro plné využití agentních schopností je nutná integrace přes API a další technické znalosti."
         ],
-        "comparison": "Je vnímán jako nejvyváženější a nejuniverzálnější model na trhu. Vyniká v hloubkovém výzkumu a má nejvyspělejší ekosystém nástrojů. Konkurence může být lepší v dílčích specializacích."
+        "comparison": "Je vnímán jako nejvyváženější a nejuniverzálnější model na trhu. GPT-5.4 přináší výrazně vyspělejší agentní schopnosti a hlubší reasoning. Konkurenční modely mohou být lepší v dílčích specializacích."
       }
     },
     {
@@ -43,7 +43,7 @@
       "details": {
         "key_abilities": [
           "Nativní multimodalita: Zpracovává text, obraz, audio a video v jednom kroku.",
-          "Masivní kontextové okno (přes 1 milion tokenů), největší na trhu.",
+          "Masivní kontextové okno (přes 2 miliony tokenů), největší na trhu.",
           "Pokročilé uvažování ('Thinking') pro vyšší přesnost a spolehlivost.",
           "Bezpečná znalostní báze NotebookLM, která omezuje vymýšlení si (halucinace)."
         ],
@@ -62,7 +62,7 @@
     },
     {
       "id": "claude",
-      "name": "Claude 3 Opus",
+      "name": "Claude 4.6 (Sonnet & Opus)",
       "fit_weight": 4,
       "archetype": "Pečlivý Systematik",
       "summary": "Spolehlivý a bezpečný model, vynikající v práci s dlouhými texty, dokumenty, kódem a automatizací.",
@@ -72,10 +72,11 @@
       "strengths": { "marketing": 4, "analysis": 4, "automation": 5 },
       "details": {
         "key_abilities": [
-          "Špičkové schopnosti v oblasti programování a 'používání počítače'.",
+          "Špičkové schopnosti v oblasti programování a 'používání počítače' (Computer Use).",
           "Pokročilá sada nástrojů pro vývojáře (Agent SDK) pro tvorbu vlastních agentů.",
           "Funkce pro správu dlouhodobých úkolů (Context Editing, Memory Tool).",
-          "Silný důraz na bezpečnost a sladění s legislativou."
+          "Silný důraz na bezpečnost a sladění s legislativou.",
+          "Plná multimodalita včetně audio a video vstupů (od verze 4.x)."
         ],
         "use_cases": [
           "Automatizuje složité, vícekrokové pracovní postupy (např. zpracování objednávek).",
@@ -84,10 +85,10 @@
           "Tvoří pokročilé agenty pro zákaznickou podporu, kteří řeší problémy samostatně."
         ],
         "risks": [
-          "Chybí nativní podpora pro audio a video vstupy.",
-          "Vyšší cena API oproti některým konkurentům."
+          "Vyšší cena API oproti některým konkurentům.",
+          "Bezpečnostní mechanismy mohou být někdy až příliš opatrné a odmítat některé dotazy."
         ],
-        "comparison": "Jeho hlavní silou je rychlost a schopnost provádět dlouhotrvající autonomní úkoly. Je to 'rychlý juniorní vývojář'. Oproti Gemini postrádá plnou multimodalitu, oproti ChatGPT může být dražší."
+        "comparison": "Jeho hlavní silou je rychlost a schopnost provádět dlouhotrvající autonomní úkoly. Claude 4.6 přidal plnou multimodalitu a je to 'všestranný vývojářský partner'. Oproti ChatGPT může být dražší."
       }
     },
     {
