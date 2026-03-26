@@ -60,8 +60,13 @@
     </div>
 
     <style>
-        /* Hide system cursor site-wide (only on non-touch) */
+        /* Default: hide AI cursor elements on all devices */
+        #ai-cursor, #ai-cursor-trail { display: none; }
+
+        /* Show only on true pointer devices (desktop) */
         @media (hover: hover) and (pointer: fine) {
+            #ai-cursor { display: block; }
+            #ai-cursor-trail { display: block; }
             * { cursor: none !important; }
 
             #ai-cursor {
