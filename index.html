@@ -45,6 +45,181 @@
 </head>
 
 <body>
+    <!-- ═══════════════════════════════════════
+         AI CURSOR AVATAR
+    ════════════════════════════════════════ -->
+    <div id="ai-cursor" aria-hidden="true">
+        <div class="ai-cursor-orb"></div>
+        <svg class="ai-cursor-ring" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-dasharray="4 3" />
+        </svg>
+    </div>
+    <div id="ai-cursor-trail" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <style>
+        /* Hide system cursor site-wide (only on non-touch) */
+        @media (hover: hover) and (pointer: fine) {
+            * { cursor: none !important; }
+
+            #ai-cursor {
+                position: fixed;
+                top: 0; left: 0;
+                width: 36px; height: 36px;
+                pointer-events: none;
+                z-index: 99999;
+                transform: translate(-50%, -50%);
+                transition: transform 0.08s linear;
+                will-change: transform;
+            }
+
+            .ai-cursor-orb {
+                position: absolute;
+                inset: 8px;
+                border-radius: 50%;
+                background: radial-gradient(circle at 35% 35%,
+                    rgba(255,255,255,0.9) 0%,
+                    rgba(14, 165, 233, 0.85) 40%,
+                    rgba(99, 102, 241, 0.7) 100%);
+                box-shadow:
+                    0 0 8px rgba(14, 165, 233, 0.7),
+                    0 0 20px rgba(14, 165, 233, 0.35),
+                    0 0 40px rgba(99, 102, 241, 0.2);
+                transition: transform 0.2s cubic-bezier(0.4,0,0.2,1),
+                            box-shadow 0.2s ease,
+                            background 0.2s ease;
+            }
+
+            .ai-cursor-ring {
+                position: absolute;
+                inset: 0;
+                color: rgba(14, 165, 233, 0.5);
+                animation: cursor-ring-spin 4s linear infinite;
+                transition: color 0.2s ease, transform 0.2s ease;
+            }
+
+            @keyframes cursor-ring-spin {
+                to { transform: rotate(360deg); }
+            }
+
+            /* Interactive state: hover over links/buttons */
+            #ai-cursor.is-hover .ai-cursor-orb {
+                transform: scale(1.7);
+                background: radial-gradient(circle at 35% 35%,
+                    rgba(255,255,255,1) 0%,
+                    rgba(99, 102, 241, 0.9) 50%,
+                    rgba(14, 165, 233, 0.8) 100%);
+                box-shadow:
+                    0 0 12px rgba(99, 102, 241, 0.9),
+                    0 0 30px rgba(99, 102, 241, 0.5),
+                    0 0 60px rgba(14, 165, 233, 0.3);
+            }
+
+            #ai-cursor.is-hover .ai-cursor-ring {
+                color: rgba(99, 102, 241, 0.7);
+                transform: scale(1.4);
+                animation-duration: 1.5s;
+            }
+
+            /* Clicked state */
+            #ai-cursor.is-click .ai-cursor-orb {
+                transform: scale(0.7);
+                box-shadow:
+                    0 0 4px rgba(14, 165, 233, 0.9),
+                    0 0 12px rgba(14, 165, 233, 0.6);
+            }
+
+            /* Trailing ghost dots */
+            #ai-cursor-trail {
+                position: fixed;
+                top: 0; left: 0;
+                pointer-events: none;
+                z-index: 99998;
+            }
+
+            #ai-cursor-trail span {
+                position: fixed;
+                width: 6px; height: 6px;
+                border-radius: 50%;
+                background: var(--secondary-color);
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+                transition: opacity 0.4s ease, transform 0.4s ease;
+                will-change: transform, opacity;
+            }
+        }
+    </style>
+
+    <script>
+    (function() {
+        // Only run on non-touch devices
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+        const cursor = document.getElementById('ai-cursor');
+        const trail  = document.getElementById('ai-cursor-trail');
+        const dots   = Array.from(trail.querySelectorAll('span'));
+        const N      = dots.length;
+
+        // Trail history positions
+        const history = Array.from({ length: N }, () => ({ x: -100, y: -100 }));
+        const delays  = [0, 45, 90, 135, 180, 225]; // ms lag per dot
+        const sizes   = [6, 5, 4.5, 4, 3.5, 3];
+        const opacities = [0.55, 0.42, 0.32, 0.22, 0.14, 0.08];
+
+        let mx = -200, my = -200;
+
+        // Move cursor orb immediately
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            cursor.style.left = mx + 'px';
+            cursor.style.top  = my + 'px';
+
+            // Schedule each dot with its own delay
+            dots.forEach((dot, i) => {
+                setTimeout(() => {
+                    dot.style.left    = mx + 'px';
+                    dot.style.top     = my + 'px';
+                    dot.style.width   = sizes[i] + 'px';
+                    dot.style.height  = sizes[i] + 'px';
+                    dot.style.opacity = opacities[i];
+                    dot.style.transform = `translate(-50%, -50%) scale(1)`;
+                }, delays[i]);
+
+                // Fade out after a moment
+                setTimeout(() => {
+                    dot.style.opacity  = 0;
+                    dot.style.transform = `translate(-50%, -50%) scale(0)`;
+                }, delays[i] + 180);
+            });
+        });
+
+        // Hover detection
+        document.addEventListener('mouseover', e => {
+            const el = e.target.closest('a, button, [onclick], .prompt-card, .pricing-option, .cta-button, .cta-button-small, .nav-cta-button');
+            cursor.classList.toggle('is-hover', !!el);
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('is-click');
+            cursor.classList.remove('is-hover');
+        });
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('is-click');
+        });
+
+        // Hide when leaving window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+    })();
+    </script>
+
+
     <svg width="0" height="0" style="position:absolute; display:none;">
         <symbol id="icon-calendar" viewBox="0 0 24 24">
             <path fill="currentColor"
@@ -76,14 +251,200 @@
         </div>
     </nav>
 
+    <!-- ① Scroll progress bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ④ Back-to-top button -->
+    <button id="back-to-top" aria-label="Zpět nahoru" title="Zpět nahoru">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15" />
+        </svg>
+    </button>
+
+    <style>
+        /* ① Scroll progress bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color), #a855f7);
+            z-index: 100000;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.7);
+        }
+
+        /* ② Hero canvas particles */
+        #hero-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.45;
+        }
+
+        /* ③ Wave divider */
+        .wave-divider {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            margin-top: -2px;
+            background: var(--light-gray);
+        }
+
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+        }
+
+        /* ④ Back-to-top */
+        #back-to-top {
+            position: fixed;
+            bottom: 32px;
+            left: 32px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+            z-index: 9990;
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+            pointer-events: none;
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-3px) scale(1.08) !important;
+            box-shadow: 0 10px 28px rgba(14, 165, 233, 0.65);
+        }
+
+        #back-to-top svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ⑤ Hero urgency pill */
+        .hero-countdown {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 50px;
+            padding: 6px 18px;
+            font-size: 0.82em;
+            font-weight: 600;
+            color: var(--warning-color);
+            margin-bottom: 18px;
+            letter-spacing: 0.3px;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .cd-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--warning-color);
+            animation: pulse-dot 1.2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: 0.45; transform: scale(0.65); }
+        }
+
+        /* Section thin glow separator */
+        .section-glow-sep {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(14, 165, 233, 0.25) 30%,
+                rgba(99, 102, 241, 0.25) 70%,
+                transparent 100%);
+            border: none;
+            margin: 0;
+            display: block;
+        }
+
+        /* Program card h3 gradient on hover */
+        .program-card:hover h3 {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Bonus card icon spin + glow */
+        .bonus-card img {
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .bonus-card:hover img {
+            filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.55));
+            transform: scale(1.12) rotate(-6deg);
+        }
+
+        /* Feature card icon bounce on hover */
+        .feature-card:hover .card-icon,
+        .program-card:hover .card-icon {
+            animation: icon-bounce 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes icon-bounce {
+            0%   { transform: translateY(0) scale(1); }
+            40%  { transform: translateY(-8px) scale(1.1); }
+            70%  { transform: translateY(-3px) scale(1.05); }
+            100% { transform: translateY(0) scale(1); }
+        }
+    </style>
+
+    <script>
+        // ① Scroll progress + ④ Back-to-top
+        (function () {
+            const bar = document.getElementById('scroll-progress');
+            const btn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+                if (scrolled > 400) btn.classList.add('visible');
+                else btn.classList.remove('visible');
+            }, { passive: true });
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        })();
+    </script>
+
     <header class="hero">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
         <div class="container">
+            <div class="hero-countdown" id="hero-countdown">
+                <span class="cd-dot"></span>
+                <span id="cd-text">Zbývá načítání…</span>
+            </div>
             <div class="hero-badges">
                 <span>Profesionalita</span> • <span>Bezpečnost</span> • <span>Efektivita</span>
             </div>
             <h1>Profesionální AI pro vaše podnikání</h1>
-            <p>Nezáleží na tom, zda jste freelancer nebo vedete firmu. Na workshopu v Brně zjistíte, jak s nástroji
-                Google Gemini a NotebookLM pracovat chytřeji, bezpečněji a s náskokem před konkurencí.</p>
+            <p>Workshop v Brně — naučte se Gemini a NotebookLM tak, aby vám šetřily hodiny každý týden.</p>
 
             <div class="workshop-details-box">
                 <div class="detail-item">
@@ -120,6 +481,14 @@
         </div>
     </header>
 
+    <!-- ③ Wave divider hero → main -->
+    <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,28 C240,56 480,0 720,28 C960,56 1200,0 1440,28 L1440,56 L0,56 Z"
+                fill="var(--light-gray)" />
+        </svg>
+    </div>
+
     <main>
         <section id="value-proposition">
             <div class="container">
@@ -130,26 +499,17 @@
                 </div>
 
                 <div class="card-grid">
-                    <div class="feature-card">
+                    <div class="feature-card scroll-reveal">
+                        <i data-lucide="users" class="card-icon"></i>
                         <span class="feature-tag">Pro freelancery & živnostníky</span>
                         <h3>Váš digitální parťák</h3>
-                        <p>Nemáte tým? Teď už ano. Ukážu vám, jak nahradit drahé externí služby. Naučíte se s AI
-                            brainstormovat, tvořit marketingové texty, analyzovat smlouvy nebo připravovat podklady pro
-                            klienty.</p>
+                        <p>Nahraďte drahé externí služby. Brainstorming, texty, analýza smluv — vše zvládnete sami.</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card scroll-reveal">
+                        <i data-lucide="trending-up" class="card-icon"></i>
                         <span class="feature-tag">Pro majitele firem & SME</span>
                         <h3>Konkurenční výhoda</h3>
-                        <p>Získejte strategický nadhled. Místo operativy se věnujte rozvoji. Naučíte se vytvořit
-                            "firemní mozek" (NotebookLM) ze svých směrnic a dat, který zrychlí zaškolování lidí a
-                            eliminuje chyby.</p>
-                    </div>
-                    <div class="feature-card">
-                        <span class="feature-tag">Bezpečnost & Právo</span>
-                        <h3>Compliance pro všechny</h3>
-                        <p>Ať jste jedinec nebo firma, vaše know-how je to nejcennější. Jako advokát vás naučím, jak
-                            používat AI nástroje tak, abyste nekrmili veřejné modely svými citlivými daty a neporušovali
-                            mlčenlivost.</p>
+                        <p>Vytvořte "firemní mozek" z vašich dat. Zrychlete onboarding a eliminujte chyby.</p>
                     </div>
                 </div>
             </div>
@@ -164,23 +524,23 @@
                 </div>
 
                 <div class="card-grid">
-                    <div class="program-card">
+                    <div class="program-card scroll-reveal">
+                        <i data-lucide="message-square" class="card-icon"></i>
                         <span class="module-number">MODUL 1</span>
                         <h3>Gemini: Od e-mailu ke strategii</h3>
-                        <p>Jak správně "úkolovat" AI (prompting). Pro freelancery: Tvorba obsahu a rešerše. Pro firmy:
-                            Analýza trhu a strategické rozhodování. Ukázky reálných use-cases.</p>
+                        <p>Prompting pro praxi — tvorba obsahu, rešerše, analýza trhu. Reálné use-cases.</p>
                     </div>
-                    <div class="program-card">
+                    <div class="program-card scroll-reveal">
+                        <i data-lucide="book-open" class="card-icon"></i>
                         <span class="module-number">MODUL 2</span>
                         <h3>NotebookLM: Práce s dokumenty</h3>
-                        <p>Absolutní game-changer. Nahrajte své PDF, smlouvy nebo poznámky a ptejte se jich. Ideální pro
-                            rychlé nastudování podkladů od klienta nebo prohledávání firemního archivu.</p>
+                        <p>Nahrajte PDF a smlouvy — ptejte se jich. Neuvěřitelně rychlé nastudování materiálů.</p>
                     </div>
-                    <div class="program-card">
+                    <div class="program-card scroll-reveal">
+                        <i data-lucide="lock" class="card-icon"></i>
                         <span class="module-number">MODUL 3</span>
                         <h3>Bezpečnost a Ekosystém</h3>
-                        <p>Jak to všechno propojit s Google Workspace (Docs, Drive, Gmail). Praktické nastavení
-                            soukromí, abyste mohli spát klidně. Co se smí a co ne.</p>
+                        <p>Propojení s Google Workspace, nastavení soukromí. Co smíte a co ne.</p>
                     </div>
                 </div>
             </div>
@@ -217,9 +577,7 @@
                         reálně ovládat.
                     </p>
                     <p class="vibecoding-perex">
-                        Zapomeňte na drahý vývoj a složité kódování. Zjistěte, jak si pomocí umělé inteligence vytvořit
-                        vlastní interní mikronástroj, interaktivní kalkulačku pro klienty nebo diagnostický kvíz.
-                        Naučíme se pracovat s nejmodernějšími agenty, kteří kód nejen napíšou, ale rovnou i nasadí.
+                        Od nápadu k živé aplikaci za jeden den — bez jediného řádku kódu. Agenti napíšou, nasadí a doladí.
                     </p>
                 </div>
 
@@ -270,10 +628,7 @@
                             <path fill="currentColor" d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z" />
                         </svg> Výhled do budoucna</h4>
                     <p>
-                        Dnes začneme u těchto elegantních mikronástrojů, aby byl proces plynulý a pochopitelný. Vývoj
-                        agentních systémů (jako je Google Antigravity) ale letí kupředu raketovým tempem. Je jen otázkou
-                        času – pravděpodobně měsíců – kdy si naprosto totožným postupem "vyvibecódujete" i robustní
-                        firemní CRM systém nebo komplexní e-shop. Zvládnutí těchto základů vám dá obrovský náskok.
+                        Agentní systémy letí kupředu raketovým tempem. Dnešní mikronástroje — zítra firemní CRM. Kdo ovládne základy teď, bude mít náskok.
                     </p>
                 </div>
 
@@ -407,15 +762,13 @@
         <section id="instructor">
             <div class="container">
                 <div class="instructor-wrapper">
-                    <img src="profilova-fotka.jpg" alt="Mgr. Gabriel Kožík" class="instructor-img">
+                    <div class="instructor-img-wrap">
+                        <img src="profilova-fotka.jpg" alt="Mgr. Gabriel Kožík" class="instructor-img">
+                        <span class="instructor-float-badge">✦ Advokát & AI stratég</span>
+                    </div>
                     <div class="instructor-bio">
                         <h2>Mgr. Gabriel Kožík</h2>
-                        <div class="instructor-badge">
-                            <svg width="16" height="16" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                            </svg>
-                            Advokát & AI Stratég
-                        </div>
+
                         <p style="margin-top: 20px; font-size: 1.1em;">Jsem praktikující advokát a podnikatel. Rozumím
                             potřebám malých firem i freelancerů, protože v tomto světě denně žiji. Vím, že nepotřebujete
                             složité korporátní poučky, ale nástroje, které fungují hned.</p>
@@ -423,6 +776,7 @@
                             efektivně a hlavně bezpečně.</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -592,7 +946,7 @@
 
     <!-- Copy success notification -->
     <div id="copy-toast" class="copy-toast">
-        <i data-lucide="check"></i> Prompt zkopírován!
+        <i data-lucide="zap"></i> +10 XP · Prompt zkopírován!
     </div>
 
     <script>
@@ -668,6 +1022,17 @@
             lucide.createIcons();
         }
 
+        // Scroll reveal animation
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
         // Copy Prompt Functionality
         function copyPrompt(card) {
             const text = card.querySelector('.prompt-text').innerText;
@@ -685,6 +1050,194 @@
                 console.error('Chyba při kopírování:', err);
             });
         }
+    </script>
+    <!-- === INTERACTIVE JS ENHANCEMENTS === -->
+    <script>
+        // ─── Nav: scroll shrink + active section highlight ───────────────────
+        const nav = document.querySelector('.main-nav');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', () => {
+            // Shrink nav on scroll
+            if (window.scrollY > 40) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            // Active nav link based on scroll position
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 120) {
+                    current = sec.getAttribute('id');
+                }
+            });
+            navLinks.forEach(a => {
+                a.classList.remove('active-nav');
+                if (a.getAttribute('href') === `#${current}`) {
+                    a.classList.add('active-nav');
+                }
+            });
+        }, { passive: true });
+
+        // ─── Animated stat counters ───────────────────────────────────────────
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target, 10);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1200;
+            const step = 16;
+            const steps = duration / step;
+            let current = 0;
+            el.textContent = '0' + suffix;
+            const increment = target / steps;
+            const timer = setInterval(() => {
+                current = Math.min(current + increment, target);
+                el.textContent = Math.round(current) + suffix;
+                if (current >= target) {
+                    el.classList.add('popped');
+                    setTimeout(() => el.classList.remove('popped'), 400);
+                    clearInterval(timer);
+                }
+            }, step);
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.stat-number[data-target]');
+                    numbers.forEach(animateCounter);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsRow = document.querySelector('.stats-row');
+        if (statsRow) counterObserver.observe(statsRow);
+
+        // ─── 3D Magnetic card tilt ────────────────────────────────────────────
+        document.querySelectorAll('.feature-card, .program-card, .vibecoding-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width / 2;
+                const cy = rect.height / 2;
+                const rotY = ((x - cx) / cx) * 6;
+                const rotX = -((y - cy) / cy) * 6;
+                card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px) scale(1.01)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // ─── Hero canvas floating particles ──────────────────────────────────
+        (function () {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let W, H, particles = [];
+
+            function resize() {
+                W = canvas.width  = canvas.offsetWidth;
+                H = canvas.height = canvas.offsetHeight;
+            }
+
+            function mkParticle() {
+                return {
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    r: Math.random() * 1.8 + 0.4,
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    a: Math.random() * 0.6 + 0.15
+                };
+            }
+
+            resize();
+            window.addEventListener('resize', () => { resize(); particles = []; init(); });
+
+            function init() {
+                const count = Math.floor((W * H) / 8000);
+                particles = Array.from({ length: count }, mkParticle);
+            }
+            init();
+
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                particles.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+                    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(14,165,233,${p.a})`;
+                    ctx.fill();
+                });
+
+                // Draw connecting lines between nearby particles
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 90) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(14,165,233,${0.12 * (1 - dist / 90)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        // ─── Hero countdown to workshop date ─────────────────────────────────
+        (function () {
+            const cdText = document.getElementById('cd-text');
+            if (!cdText) return;
+
+            function updateCD() {
+                // Read from the config-loaded date if available, fallback to 2026-05-15
+                const dateEl = document.querySelector('.event-date-display');
+                let target;
+                if (dateEl && dateEl.textContent.match(/\d/)) {
+                    // Try to parse Czech date "D. M. YYYY"
+                    const parts = dateEl.textContent.split('. ').map(Number);
+                    if (parts.length >= 3) {
+                        target = new Date(parts[2], parts[1] - 1, parts[0], 9, 0, 0);
+                    }
+                }
+                if (!target || isNaN(target)) {
+                    target = new Date(2026, 4, 15, 9, 0, 0); // May 15 2026
+                }
+
+                const now  = new Date();
+                const diff = target - now;
+                if (diff <= 0) {
+                    cdText.textContent = 'Workshop právě probíhá! 🚀';
+                    return;
+                }
+                const days    = Math.floor(diff / 86400000);
+                const hours   = Math.floor((diff % 86400000) / 3600000);
+                const minutes = Math.floor((diff % 3600000) / 60000);
+
+                if (days > 0) {
+                    cdText.textContent = `Do workshopu zbývá: ${days} dní ${hours} h ${minutes} min`;
+                } else {
+                    cdText.textContent = `Do workshopu zbývá: ${hours} h ${minutes} min`;
+                }
+            }
+
+            // Wait for config data to load
+            setTimeout(updateCD, 800);
+            setInterval(updateCD, 60000);
+        })();
     </script>
 </body>
 
