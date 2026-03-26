@@ -548,6 +548,195 @@
                         <p>Propojení s Google Workspace, nastavení soukromí. Co smíte a co ne.</p>
                     </div>
                 </div>
+
+                <!-- Showcase jako Accordion -->
+                <div class="program-showcase-wrapper" style="margin-top: 60px;">
+                    <details class="showcase-accordion" id="showcase-accordion">
+                        <summary class="showcase-summary">
+                            <span class="summary-content">
+                                <i data-lucide="eye"></i>
+                                Zobrazit reálné ukázky z praxe (Dokumenty, videa a weby)
+                            </span>
+                            <i data-lucide="chevron-down" class="summary-chevron"></i>
+                        </summary>
+                        <div class="showcase-accordion-body">
+                            <div class="showcase-subheader">
+                                <h3>1. Lokální soubory (Obrázky, PDF a Videa)</h3>
+                                <p>Klikněte na obrázek nebo video pro zvětšení, na PDF pro otevření.</p>
+                            </div>
+
+                            <div class="showcase-carousel-wrapper">
+                                <div class="showcase-carousel">
+                                    <!-- Obrazek 1 -->
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/infografika_1.jpg')">
+                                        <div class="showcase-img-wrap">
+                                            <img src="ukazky/infografika_1.jpg" alt="Infografika" loading="lazy">
+                                        </div>
+                                        <div class="showcase-info">
+                                            <span class="showcase-label">🗂️ Infografika</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Obrazek 2 -->
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/mind_map_1.jpg')">
+                                        <div class="showcase-img-wrap">
+                                            <img src="ukazky/mind_map_1.jpg" alt="Mind mapa" loading="lazy">
+                                        </div>
+                                        <div class="showcase-info">
+                                            <span class="showcase-label">🧠 Mind mapa</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Obrazek 3 -->
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_1.jpg')">
+                                        <div class="showcase-img-wrap">
+                                            <img src="ukazky/obrazek_1.jpg" alt="AI Vizualizace 1" loading="lazy">
+                                        </div>
+                                        <div class="showcase-info">
+                                            <span class="showcase-label">🎨 AI Vizualizace</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Obrazek 4 -->
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_2.jpg')">
+                                        <div class="showcase-img-wrap">
+                                            <img src="ukazky/obrazek_2.jpg" alt="AI Vizualizace 2" loading="lazy">
+                                        </div>
+                                        <div class="showcase-info">
+                                            <span class="showcase-label">🎨 AI Vizualizace</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Obrazek 5 -->
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_3.jpg')">
+                                        <div class="showcase-img-wrap">
+                                            <img src="ukazky/obrazek_3.jpg" alt="AI Vizualizace 3" loading="lazy">
+                                        </div>
+                                        <div class="showcase-info">
+                                            <span class="showcase-label">🎨 AI Vizualizace</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Video 1 -->
+                                    <div class="showcase-card video-card" onmouseenter="playVideo(this)" onmouseleave="pauseVideo(this)" onclick="openLightbox('ukazky/video_1.mp4')">
+                                        <div class="showcase-img-wrap video-bg">
+                                            <video preload="none" muted playsinline loop class="showcase-preview-video">
+                                                <source src="ukazky/video_1.mp4" type="video/mp4">
+                                            </video>
+                                            <div class="play-indicator"><i data-lucide="play-circle"></i></div>
+                                        </div>
+                                        <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span class="showcase-label">🎥 Video ukázka 1</span>
+                                            <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">18.7 MB</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Video 2 -->
+                                    <div class="showcase-card video-card" onmouseenter="playVideo(this)" onmouseleave="pauseVideo(this)" onclick="openLightbox('ukazky/video_2.mp4')">
+                                        <div class="showcase-img-wrap video-bg">
+                                            <video preload="none" muted playsinline loop class="showcase-preview-video">
+                                                <source src="ukazky/video_2.mp4" type="video/mp4">
+                                            </video>
+                                            <div class="play-indicator"><i data-lucide="play-circle"></i></div>
+                                        </div>
+                                        <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span class="showcase-label">🎥 Video ukázka 2</span>
+                                            <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">23.4 MB</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Video 3 -->
+                                    <div class="showcase-card video-card" onmouseenter="playVideo(this)" onmouseleave="pauseVideo(this)" onclick="openLightbox('ukazky/video_3.mp4')">
+                                        <div class="showcase-img-wrap video-bg">
+                                            <video preload="none" muted playsinline loop class="showcase-preview-video">
+                                                <source src="ukazky/video_3.mp4" type="video/mp4">
+                                            </video>
+                                            <div class="play-indicator"><i data-lucide="play-circle"></i></div>
+                                        </div>
+                                        <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span class="showcase-label">🎥 Video ukázka 3</span>
+                                            <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">4.2 MB</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- PDF 1 -->
+                                    <a href="ukazky/prezentace_1.pdf" target="_blank" class="showcase-card showcase-pdf-card">
+                                        <div class="showcase-img-wrap pdf-bg">
+                                            <i data-lucide="file-text"></i>
+                                            <span>Prezentace 1</span>
+                                        </div>
+                                        <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span class="showcase-label">📊 Prezentace</span>
+                                            <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">13.5 MB</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- PDF 2 -->
+                                    <a href="ukazky/prezentace_2.pdf" target="_blank" class="showcase-card showcase-pdf-card">
+                                        <div class="showcase-img-wrap pdf-bg">
+                                            <i data-lucide="file-text"></i>
+                                            <span>Prezentace 2</span>
+                                        </div>
+                                        <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span class="showcase-label">📊 Prezentace</span>
+                                            <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">15.5 MB</span>
+                                        </div>
+                                    </a>
+
+                                    <!-- PDF 3 -->
+                                    <a href="ukazky/zprava_1.pdf" target="_blank" class="showcase-card showcase-pdf-card">
+                                        <div class="showcase-img-wrap pdf-bg">
+                                            <i data-lucide="file-text"></i>
+                                            <span>Zpráva 1</span>
+                                        </div>
+                                        <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span class="showcase-label">📄 AI Zpráva</span>
+                                            <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">176 KB</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="showcase-subheader" style="margin-top: 60px;">
+                                <h3>2. Weby a projekty živé v praxi</h3>
+                                <p>Podívejte se na ukázkové i produkční aplikace tvořené s pomocí AI.</p>
+                            </div>
+
+                            <div class="projects-grid">
+                                <a href="https://ai-podnikani.cz" target="_blank" class="project-card">
+                                    <div class="project-icon">🚀</div>
+                                    <h4>Materiály k AI semináři</h4>
+                                    <p>Podklady pro účastníky semináře v rámci Týdne inovací.</p>
+                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                </a>
+                                <a href="https://ai-strateg.cz" target="_blank" class="project-card">
+                                    <div class="project-icon">🧭</div>
+                                    <h4>AI Strateg</h4>
+                                    <p>Konzultace a mapování cesty k umělé inteligenci.</p>
+                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                </a>
+                                <a href="https://gabrielkozik.cz" target="_blank" class="project-card">
+                                    <div class="project-icon">👤</div>
+                                    <h4>Prezentace Tišnov</h4>
+                                    <p>Interaktivní prezentace pro studenty gymnázia.</p>
+                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                </a>
+                                <a href="https://retro-arkady.cz" target="_blank" class="project-card">
+                                    <div class="project-icon">🕹️</div>
+                                    <h4>Retro Arkády</h4>
+                                    <p>Zábavný gamifikovaný AI projekt.</p>
+                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                </a>
+                                <a href="https://gabrielkozik-ux.github.io/palavakodex/" target="_blank" class="project-card">
+                                    <div class="project-icon">📚</div>
+                                    <h4>Pálava Kodex</h4>
+                                    <p>Etický kodex klubu Pod Pálavou.</p>
+                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </details>
+                </div>
             </div>
         </section>
 
@@ -899,6 +1088,8 @@
             </div>
         </section>
 
+
+
         <section id="kontakt">
             <div class="container">
                 <div class="cta-section-content">
@@ -1233,9 +1424,9 @@
                 const minutes = Math.floor((diff % 3600000) / 60000);
 
                 if (days > 0) {
-                    cdText.textContent = `Do workshopu zbývá: ${days} dní ${hours} h ${minutes} min`;
+                    cdText.textContent = `Do dalšího workshopu zbývá: ${days} dní ${hours} h ${minutes} min`;
                 } else {
-                    cdText.textContent = `Do workshopu zbývá: ${hours} h ${minutes} min`;
+                    cdText.textContent = `Do dalšího workshopu zbývá: ${hours} h ${minutes} min`;
                 }
             }
 
@@ -1243,7 +1434,105 @@
             setTimeout(updateCD, 800);
             setInterval(updateCD, 60000);
         })();
+
+        // ─── Lightbox pro sekci Ukázky (obrázky a videa) ─────────────────────────
+        const lightboxMedia = [
+            { src: 'ukazky/infografika_1.jpg', type: 'image' },
+            { src: 'ukazky/mind_map_1.jpg', type: 'image' },
+            { src: 'ukazky/obrazek_1.jpg', type: 'image' },
+            { src: 'ukazky/obrazek_2.jpg', type: 'image' },
+            { src: 'ukazky/obrazek_3.jpg', type: 'image' },
+            { src: 'ukazky/video_1.mp4', type: 'video' },
+            { src: 'ukazky/video_2.mp4', type: 'video' },
+            { src: 'ukazky/video_3.mp4', type: 'video' }
+        ];
+        let currentMediaIndex = 0;
+
+        function openLightbox(src) {
+            currentMediaIndex = lightboxMedia.findIndex(m => m.src === src);
+            if (currentMediaIndex === -1) currentMediaIndex = 0;
+            renderLightboxMedia();
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('visible');
+            document.body.style.overflow = 'hidden'; // Zamezí scrollování pozadí
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('visible');
+            document.body.style.overflow = '';
+            const videoEl = document.getElementById('lightbox-video');
+            if (videoEl) videoEl.pause();
+        }
+
+        function renderLightboxMedia() {
+            const media = lightboxMedia[currentMediaIndex];
+            const imgEl = document.getElementById('lightbox-img');
+            const videoEl = document.getElementById('lightbox-video');
+            
+            if (media.type === 'video') {
+                imgEl.style.display = 'none';
+                videoEl.style.display = 'block';
+                videoEl.src = media.src;
+                videoEl.play();
+            } else {
+                videoEl.style.display = 'none';
+                videoEl.pause();
+                imgEl.style.display = 'block';
+                imgEl.src = media.src;
+            }
+        }
+
+        function nextMedia(e) {
+            if(e) e.stopPropagation();
+            currentMediaIndex = (currentMediaIndex + 1) % lightboxMedia.length;
+            renderLightboxMedia();
+        }
+
+        function prevMedia(e) {
+            if(e) e.stopPropagation();
+            currentMediaIndex = (currentMediaIndex - 1 + lightboxMedia.length) % lightboxMedia.length;
+            renderLightboxMedia();
+        }
+
+        // Zavřít ESC
+        document.addEventListener('keydown', function(event) {
+            if (!document.getElementById('lightbox').classList.contains('visible')) return;
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "ArrowRight") nextMedia();
+            if (event.key === "ArrowLeft") prevMedia();
+        });
+
+        function playVideo(card) {
+            const video = card.querySelector('video');
+            if (video) video.play();
+        }
+
+        function pauseVideo(card) {
+            const video = card.querySelector('video');
+            if (video) video.pause();
+        }
+
+        // Ikona rozbalení
+        const accordion = document.getElementById('showcase-accordion');
+        if (accordion && window.lucide) {
+            accordion.addEventListener('toggle', () => {
+                // Překreslení ikon v případě lazy loadu
+                lucide.createIcons();
+            });
+        }
     </script>
+    
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-nav lightbox-prev" onclick="prevMedia(event)">&#10094;</div>
+        
+        <img class="lightbox-content" id="lightbox-img" onclick="event.stopPropagation()">
+        <video class="lightbox-content" id="lightbox-video" controls playsinline onclick="event.stopPropagation()" style="display:none;"></video>
+        
+        <div class="lightbox-nav lightbox-next" onclick="nextMedia(event)">&#10095;</div>
+    </div>
 </body>
 
 </html>
