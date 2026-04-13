@@ -14,7 +14,7 @@
     <meta name="description" content="Strategické a technické srovnání Google Gemini vs. OpenAI ChatGPT.">
     <title>Komparace AI nástrojů | Gemini vs. ChatGPT</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://ai-workshop.cz/srovnani.html" />
 
@@ -31,10 +31,14 @@
     <meta property="twitter:title" content="Komparace AI nástrojů | Gemini vs. ChatGPT">
     <meta property="twitter:description" content="Strategické a technické srovnání Google Gemini vs. OpenAI ChatGPT. Jak si vybrat ten správný AI ekosystém pro vaši firmu?">
     <meta property="twitter:image" content="https://ai-workshop.cz/uvodni-obrazek.jpg">
-    <!-- NOVÝ CSS -->
+    <!-- Preconnect to critical third-party origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts (moved from CSS @import for performance) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="style.css">
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <style>
         .chart-wrapper { background: var(--white); padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); border: 1px solid rgba(226, 232, 240, 0.8); }
@@ -80,7 +84,6 @@
     })();
     const ro=new IntersectionObserver(e=>e.forEach(x=>{ if(x.isIntersecting){x.target.classList.add('revealed');ro.unobserve(x.target);} }),{threshold:.12});
     document.querySelectorAll('.feature-card').forEach(el=>{el.classList.add('scroll-reveal');ro.observe(el);});
-    if(window.lucide) lucide.createIcons();
     document.addEventListener('DOMContentLoaded',()=>{ if(window.lucide) lucide.createIcons(); });
     </script>
 
@@ -292,13 +295,13 @@
 
             <div class="social-icons-container">
                 <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"><img
-                        src="linkedin.png" alt="LinkedIn"></a>
-                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.png"
-                        alt="Facebook"></a>
+                        src="linkedin.webp" alt="LinkedIn" loading="lazy"></a>
+                <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"><img src="facebook.webp"
+                        alt="Facebook" loading="lazy"></a>
                 <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"><img
-                        src="instagram.png" alt="Instagram"></a>
+                        src="instagram.webp" alt="Instagram" loading="lazy"></a>
                 <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"><img
-                        src="youtube.png" alt="YouTube"></a>
+                        src="youtube.webp" alt="YouTube" loading="lazy"></a>
             </div>
 
             <div class="copyright">

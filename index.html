@@ -50,10 +50,15 @@
     <meta property="twitter:description" content="Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání.">
     <meta property="twitter:image" content="https://ai-workshop.cz/uvodni-obrazek.jpg">
 
+    <!-- Preconnect to critical third-party origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts (moved from CSS @import for performance) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="style.css">
 
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script type="application/ld+json" id="event-schema">
     {
@@ -442,9 +447,9 @@
                             <div class="showcase-carousel-wrapper">
                                 <div class="showcase-carousel">
                                     <!-- Obrazek 1 -->
-                                    <div class="showcase-card" onclick="openLightbox('ukazky/infografika_1.jpg')">
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/infografika_1.webp')">
                                         <div class="showcase-img-wrap">
-                                            <img src="ukazky/infografika_1.jpg" alt="Infografika" loading="lazy">
+                                            <img src="ukazky/infografika_1.webp" alt="Infografika" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
                                             <span class="showcase-label">🗂️ Infografika</span>
@@ -452,9 +457,9 @@
                                     </div>
 
                                     <!-- Obrazek 2 -->
-                                    <div class="showcase-card" onclick="openLightbox('ukazky/mind_map_1.jpg')">
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/mind_map_1.webp')">
                                         <div class="showcase-img-wrap">
-                                            <img src="ukazky/mind_map_1.jpg" alt="Mind mapa" loading="lazy">
+                                            <img src="ukazky/mind_map_1.webp" alt="Mind mapa" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
                                             <span class="showcase-label">🧠 Mind mapa</span>
@@ -462,9 +467,9 @@
                                     </div>
 
                                     <!-- Obrazek 3 -->
-                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_1.jpg')">
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_1.webp')">
                                         <div class="showcase-img-wrap">
-                                            <img src="ukazky/obrazek_1.jpg" alt="AI Vizualizace 1" loading="lazy">
+                                            <img src="ukazky/obrazek_1.webp" alt="AI Vizualizace 1" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
                                             <span class="showcase-label">🎨 AI Vizualizace</span>
@@ -472,9 +477,9 @@
                                     </div>
 
                                     <!-- Obrazek 4 -->
-                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_2.jpg')">
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_2.webp')">
                                         <div class="showcase-img-wrap">
-                                            <img src="ukazky/obrazek_2.jpg" alt="AI Vizualizace 2" loading="lazy">
+                                            <img src="ukazky/obrazek_2.webp" alt="AI Vizualizace 2" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
                                             <span class="showcase-label">🎨 AI Vizualizace</span>
@@ -482,9 +487,9 @@
                                     </div>
 
                                     <!-- Obrazek 5 -->
-                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_3.jpg')">
+                                    <div class="showcase-card" onclick="openLightbox('ukazky/obrazek_3.webp')">
                                         <div class="showcase-img-wrap">
-                                            <img src="ukazky/obrazek_3.jpg" alt="AI Vizualizace 3" loading="lazy">
+                                            <img src="ukazky/obrazek_3.webp" alt="AI Vizualizace 3" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
                                             <span class="showcase-label">🎨 AI Vizualizace</span>
@@ -623,7 +628,7 @@
                 </div>
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/fBmHNeDXYu8?si=9FtLtQSmFtaXToMa"
-                        title="Google AI Integration" allowfullscreen></iframe>
+                        title="Google AI Integration" loading="lazy" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -831,7 +836,7 @@
             <div class="container">
                 <div class="instructor-wrapper">
                     <div class="instructor-img-wrap">
-                        <img src="profilova-fotka.jpg" alt="Mgr. Gabriel Kožík" class="instructor-img">
+                        <img src="profilova-fotka.webp" alt="Mgr. Gabriel Kožík" class="instructor-img" loading="lazy">
                         <span class="instructor-float-badge">✦ Advokát & AI stratég</span>
                     </div>
                     <div class="instructor-bio">
@@ -941,19 +946,19 @@
                 </div>
                 <div class="card-grid">
                     <div class="bonus-card">
-                        <h3><img src="workspace-icon.png" alt="Workspace" width="24"
+                        <h3><img src="workspace-icon.webp" alt="Workspace" width="24"
                                 style="vertical-align: middle; margin-right: 10px;"> Nastavení Workspace</h3>
                         <p>Návod, jak si nastavit Google účet pro profesionální a bezpečnou práci s AI.</p>
                         <a href="licence.html" class="cta-button-small">Zobrazit průvodce</a>
                     </div>
                     <div class="bonus-card">
-                        <h3><img src="gemini-icon.png" alt="Gemini" width="24"
+                        <h3><img src="gemini-icon.webp" alt="Gemini" width="24"
                                 style="vertical-align: middle; margin-right: 10px;"> Gemini vs. ChatGPT</h3>
                         <p>Srovnání, které vám pomůže vybrat ten správný nástroj pro vaše potřeby.</p>
                         <a href="srovnani.html" class="cta-button-small">Srovnání platforem</a>
                     </div>
                     <div class="bonus-card">
-                        <h3><img src="compas-icon.png" alt="Kompas" width="24"
+                        <h3><img src="compas-icon.webp" alt="Kompas" width="24"
                                 style="vertical-align: middle; margin-right: 10px;"> AI Kompas</h3>
                         <p>Rychlý test osobnosti. Jste spíše kreativec nebo analytik? Zjistěte to.</p>
                         <a href="ai-kompas.html" class="cta-button-small">Spustit test</a>
@@ -999,13 +1004,13 @@
 
             <div class="social-icons-container">
                 <a href="https://www.linkedin.com/in/gabriel-kozik/" target="_blank" class="social-icon"
-                    aria-label="LinkedIn profil"><img src="linkedin.png" alt="LinkedIn"></a>
+                    aria-label="LinkedIn profil"><img src="linkedin.webp" alt="LinkedIn" loading="lazy"></a>
                 <a href="https://www.facebook.com/somslovak" target="_blank" class="social-icon"
-                    aria-label="Facebook profil"><img src="facebook.png" alt="Facebook"></a>
+                    aria-label="Facebook profil"><img src="facebook.webp" alt="Facebook" loading="lazy"></a>
                 <a href="https://www.instagram.com/kozik_gabriel/" target="_blank" class="social-icon"
-                    aria-label="Instagram profil"><img src="instagram.png" alt="Instagram"></a>
+                    aria-label="Instagram profil"><img src="instagram.webp" alt="Instagram" loading="lazy"></a>
                 <a href="https://www.youtube.com/@gabriel-kozik" target="_blank" class="social-icon"
-                    aria-label="YouTube kanál"><img src="youtube.png" alt="YouTube"></a>
+                    aria-label="YouTube kanál"><img src="youtube.webp" alt="YouTube" loading="lazy"></a>
             </div>
 
             <div class="copyright">
@@ -1087,10 +1092,10 @@
 
         updateWorkshopData();
 
-        // Lucide Icons Initialization
-        if (window.lucide) {
-            lucide.createIcons();
-        }
+        // Lucide Icons Initialization (deferred — runs after DOMContentLoaded)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+        });
 
         // Scroll reveal animation
         const revealObserver = new IntersectionObserver((entries) => {
@@ -1204,6 +1209,8 @@
 
         // ─── Hero canvas floating particles ──────────────────────────────────
         (function () {
+            // Skip on mobile/tablets for performance + respect reduced motion
+            if (window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             const canvas = document.getElementById('hero-canvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
@@ -1311,11 +1318,11 @@
 
         // ─── Lightbox pro sekci Ukázky (obrázky a videa) ─────────────────────────
         const lightboxMedia = [
-            { src: 'ukazky/infografika_1.jpg', type: 'image' },
-            { src: 'ukazky/mind_map_1.jpg', type: 'image' },
-            { src: 'ukazky/obrazek_1.jpg', type: 'image' },
-            { src: 'ukazky/obrazek_2.jpg', type: 'image' },
-            { src: 'ukazky/obrazek_3.jpg', type: 'image' },
+            { src: 'ukazky/infografika_1.webp', type: 'image' },
+            { src: 'ukazky/mind_map_1.webp', type: 'image' },
+            { src: 'ukazky/obrazek_1.webp', type: 'image' },
+            { src: 'ukazky/obrazek_2.webp', type: 'image' },
+            { src: 'ukazky/obrazek_3.webp', type: 'image' },
             { src: 'ukazky/video_1.mp4', type: 'video' },
             { src: 'ukazky/video_2.mp4', type: 'video' },
             { src: 'ukazky/video_3.mp4', type: 'video' }
