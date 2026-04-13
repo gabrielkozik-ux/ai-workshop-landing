@@ -872,6 +872,7 @@ footer {
     color: #f8fafc;
     padding: 100px 20px;
     border-bottom: 8px solid var(--secondary-color);
+    scroll-margin-top: 70px;
 }
 
 .vibecoding-section .section-title {
@@ -898,6 +899,35 @@ footer {
     color: var(--white);
     line-height: 1.1;
     margin-bottom: 20px;
+}
+
+.section-anchor-link {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.section-anchor-link:hover {
+    color: var(--secondary-color);
+}
+
+.anchor-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--secondary-color);
+}
+
+.section-anchor-link:hover .anchor-icon {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .vibecoding-perex {
