@@ -22,7 +22,8 @@
                 'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD',
                 'value': 0,
                 'currency': 'CZK',
-                'event_callback': callback
+                'event_callback': callback,
+                'transport_type': 'beacon' // Zajišťuje odeslání i po opuštění stránky
             });
             return false;
         }
@@ -57,22 +58,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="style.css">
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest" defer></script>
-
     <script type="application/ld+json" id="event-schema">
     {
       "@context": "https://schema.org",
       "@type": "EducationEvent",
       "name": "AI Workshop: Gemini a NotebookLM pro praxi",
       "description": "Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.",
-      "startDate": "2026-05-15T09:00",
-      "endDate": "2026-05-15T15:00",
+      "startDate": "2026-05-29T09:00",
+      "endDate": "2026-05-29T15:00",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
-        "name": "Slovákova 279, Brno",
+        "name": "Slovákova 279, 602 00 Brno",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Slovákova 279",
@@ -85,7 +83,7 @@
       "offers": {
         "@type": "Offer",
         "url": "https://ai-workshop.cz/#kontakt",
-        "price": "2990",
+        "price": "2790",
         "priceCurrency": "CZK",
         "availability": "https://schema.org/InStock",
         "validFrom": "2026-01-01"
@@ -119,6 +117,94 @@
         </symbol>
         <symbol id="icon-check" viewBox="0 0 24 24">
             <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+        </symbol>
+        <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </symbol>
+        <symbol id="icon-trending-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+            <polyline points="16 7 22 7 22 13" />
+        </symbol>
+        <symbol id="icon-message-square" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </symbol>
+        <symbol id="icon-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </symbol>
+        <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </symbol>
+        <symbol id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+        </symbol>
+        <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+        </symbol>
+        <symbol id="icon-play-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polygon points="10 8 16 12 10 16 10 8" />
+        </symbol>
+        <symbol id="icon-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+            <polyline points="10 9 9 9 8 9" />
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+        </symbol>
+        <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </symbol>
+        <symbol id="icon-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5" />
+            <path d="M12 12l9-9" />
+            <path d="M16 15c1.5 1.25 2.5 3.5 2.5 3.5s-2.25-1-3.5-2.5" />
+            <path d="M9 18.75S10 20 12 20s3-1.25 3-1.25" />
+            <path d="M18.75 9S20 10 20 12s-1.25 3-1.25 3" />
+            <path d="M12 2C6 2 2 6 2 12c0 2 .5 3.5 1.5 4.5L16 4.5C15 3.5 13.5 2 12 2z" />
+        </symbol>
+        <symbol id="icon-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+            <path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5z" />
+            <path d="m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" />
+        </symbol>
+        <symbol id="icon-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="18" height="4" />
+            <path d="M12 8V22" />
+            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+            <path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s-1-5-4.5-5a2.5 2.5 0 0 0 0 5z" />
+            <path d="M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5z" />
+        </symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+        </symbol>
+        <symbol id="icon-lightbulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .3 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+            <path d="M9 18h6" />
+            <path d="M10 22h4" />
+        </symbol>
+        <symbol id="icon-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+            <path d="M19 10v1a7 7 0 0 1-14 0v-1" />
+            <line x1="12" y1="18" x2="12" y2="22" />
+        </symbol>
+        <symbol id="icon-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
+            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
+        </symbol>
+        <symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
         </symbol>
     </svg>
 
@@ -161,16 +247,7 @@
             box-shadow: 0 0 10px rgba(14, 165, 233, 0.7);
         }
 
-        /* ② Hero canvas particles */
-        #hero-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.45;
-        }
+
 
         /* ③ Wave divider */
         .wave-divider {
@@ -319,7 +396,6 @@
     </script>
 
     <header class="hero">
-        <canvas id="hero-canvas" aria-hidden="true"></canvas>
         <div class="container">
             <div class="hero-countdown" id="hero-countdown">
                 <span class="cd-dot"></span>
@@ -336,7 +412,7 @@
                     <svg>
                         <use xlink:href="#icon-calendar"></use>
                     </svg>
-                    <span class="event-date-display">15. 5. 2026</span>
+                    <span class="event-date-display">29. 5. 2026</span>
                 </div>
                 <div class="detail-item">
                     <svg>
@@ -349,15 +425,14 @@
                         <use xlink:href="#icon-location"></use>
                     </svg>
                     <a href="https://maps.app.goo.gl/E9rce8edDTr7yd2v7" target="_blank" class="event-location-display"
-                        style="color: var(--white); text-decoration: underline; text-decoration-color: var(--secondary-color); text-underline-offset: 4px;">Slovákova
-                        279, Brno</a>
+                        style="color: var(--white); text-decoration: underline; text-decoration-color: var(--secondary-color); text-underline-offset: 4px;">Slovákova 279, 602 00 Brno</a>
                 </div>
             </div>
 
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
                 <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTd0xtRGY0bERnYUxGUXp2blhaQmtjbFV5UWoxUHpQTTNJUEVhcEZidUZkNQ=="
                     target="_blank" class="cta-button"
-                    onclick="gtag('event', 'conversion', {'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD', 'value': 0, 'currency': 'CZK'});">Koupit
+                    onclick="return gtag_report_conversion(this.href);">Koupit
                     vstupenku</a>
                 <a href="#vibecoding" class="cta-button secondary"
                     style="border-color: var(--secondary-color); color: var(--secondary-color);">Speciální nabídka:
@@ -385,13 +460,13 @@
 
                 <div class="card-grid">
                     <div class="feature-card scroll-reveal">
-                        <i data-lucide="users" class="card-icon"></i>
+                        <svg class="card-icon"><use href="#icon-users"></use></svg>
                         <span class="feature-tag">Pro freelancery & živnostníky</span>
                         <h3>Váš digitální parťák</h3>
                         <p>Nahraďte drahé externí služby. Brainstorming, texty, analýza smluv — vše zvládnete sami.</p>
                     </div>
                     <div class="feature-card scroll-reveal">
-                        <i data-lucide="trending-up" class="card-icon"></i>
+                        <svg class="card-icon"><use href="#icon-trending-up"></use></svg>
                         <span class="feature-tag">Pro majitele firem & SME</span>
                         <h3>Konkurenční výhoda</h3>
                         <p>Vytvořte "firemní mozek" z vašich dat. Zrychlete onboarding a eliminujte chyby.</p>
@@ -410,19 +485,19 @@
 
                 <div class="card-grid">
                     <div class="program-card scroll-reveal">
-                        <i data-lucide="message-square" class="card-icon"></i>
+                        <svg class="card-icon"><use href="#icon-message-square"></use></svg>
                         <span class="module-number">MODUL 1</span>
                         <h3>Gemini: Od e-mailu ke strategii</h3>
                         <p>Prompting pro praxi — tvorba obsahu, rešerše, analýza trhu. Reálné use-cases.</p>
                     </div>
                     <div class="program-card scroll-reveal">
-                        <i data-lucide="book-open" class="card-icon"></i>
+                        <svg class="card-icon"><use href="#icon-book-open"></use></svg>
                         <span class="module-number">MODUL 2</span>
                         <h3>NotebookLM: Práce s dokumenty</h3>
                         <p>Nahrajte PDF a smlouvy — ptejte se jich. Neuvěřitelně rychlé nastudování materiálů.</p>
                     </div>
                     <div class="program-card scroll-reveal">
-                        <i data-lucide="lock" class="card-icon"></i>
+                        <svg class="card-icon"><use href="#icon-lock"></use></svg>
                         <span class="module-number">MODUL 3</span>
                         <h3>Bezpečnost a Ekosystém</h3>
                         <p>Propojení s Google Workspace, nastavení soukromí. Co smíte a co ne.</p>
@@ -434,10 +509,10 @@
                     <details class="showcase-accordion" id="showcase-accordion">
                         <summary class="showcase-summary">
                             <span class="summary-content">
-                                <i data-lucide="eye"></i>
+                                <svg><use href="#icon-eye"></use></svg>
                                 Zobrazit reálné ukázky z praxe (Dokumenty, videa a weby)
                             </span>
-                            <i data-lucide="chevron-down" class="summary-chevron"></i>
+                            <svg class="summary-chevron"><use href="#icon-chevron-down"></use></svg>
                         </summary>
                         <div class="showcase-accordion-body">
                             <div class="showcase-subheader">
@@ -503,7 +578,7 @@
                                             <video preload="none" muted playsinline loop class="showcase-preview-video">
                                                 <source src="ukazky/video_1.mp4" type="video/mp4">
                                             </video>
-                                            <div class="play-indicator"><i data-lucide="play-circle"></i></div>
+                                            <div class="play-indicator"><svg><use href="#icon-play-circle"></use></svg></div>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
                                             <span class="showcase-label">🎥 Video ukázka 1</span>
@@ -517,7 +592,7 @@
                                             <video preload="none" muted playsinline loop class="showcase-preview-video">
                                                 <source src="ukazky/video_2.mp4" type="video/mp4">
                                             </video>
-                                            <div class="play-indicator"><i data-lucide="play-circle"></i></div>
+                                            <div class="play-indicator"><svg><use href="#icon-play-circle"></use></svg></div>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
                                             <span class="showcase-label">🎥 Video ukázka 2</span>
@@ -531,7 +606,7 @@
                                             <video preload="none" muted playsinline loop class="showcase-preview-video">
                                                 <source src="ukazky/video_3.mp4" type="video/mp4">
                                             </video>
-                                            <div class="play-indicator"><i data-lucide="play-circle"></i></div>
+                                            <div class="play-indicator"><svg><use href="#icon-play-circle"></use></svg></div>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
                                             <span class="showcase-label">🎥 Video ukázka 3</span>
@@ -542,7 +617,7 @@
                                     <!-- PDF 1 -->
                                     <a href="ukazky/prezentace_1.pdf" target="_blank" class="showcase-card showcase-pdf-card">
                                         <div class="showcase-img-wrap pdf-bg">
-                                            <i data-lucide="file-text"></i>
+                                            <svg><use href="#icon-file-text"></use></svg>
                                             <span>Prezentace 1</span>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
@@ -554,7 +629,7 @@
                                     <!-- PDF 2 -->
                                     <a href="ukazky/prezentace_2.pdf" target="_blank" class="showcase-card showcase-pdf-card">
                                         <div class="showcase-img-wrap pdf-bg">
-                                            <i data-lucide="file-text"></i>
+                                            <svg><use href="#icon-file-text"></use></svg>
                                             <span>Prezentace 2</span>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
@@ -566,7 +641,7 @@
                                     <!-- PDF 3 -->
                                     <a href="ukazky/zprava_1.pdf" target="_blank" class="showcase-card showcase-pdf-card">
                                         <div class="showcase-img-wrap pdf-bg">
-                                            <i data-lucide="file-text"></i>
+                                            <svg><use href="#icon-file-text"></use></svg>
                                             <span>Zpráva 1</span>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
@@ -587,31 +662,31 @@
                                     <div class="project-icon">🚀</div>
                                     <h4>Materiály k AI semináři</h4>
                                     <p>Podklady pro účastníky semináře v rámci Týdne inovací.</p>
-                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                    <span class="project-link">Navštívit <svg><use href="#icon-arrow-right"></use></svg></span>
                                 </a>
                                 <a href="https://ai-strateg.cz" target="_blank" class="project-card">
                                     <div class="project-icon">🧭</div>
                                     <h4>AI Strateg</h4>
                                     <p>Konzultace a mapování cesty k umělé inteligenci.</p>
-                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                    <span class="project-link">Navštívit <svg><use href="#icon-arrow-right"></use></svg></span>
                                 </a>
                                 <a href="https://gabrielkozik.cz" target="_blank" class="project-card">
                                     <div class="project-icon">👤</div>
                                     <h4>Prezentace Tišnov</h4>
                                     <p>Interaktivní prezentace pro studenty gymnázia.</p>
-                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                    <span class="project-link">Navštívit <svg><use href="#icon-arrow-right"></use></svg></span>
                                 </a>
                                 <a href="https://retro-arkady.cz" target="_blank" class="project-card">
                                     <div class="project-icon">🕹️</div>
                                     <h4>Retro Arkády</h4>
                                     <p>Zábavný gamifikovaný AI projekt.</p>
-                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                    <span class="project-link">Navštívit <svg><use href="#icon-arrow-right"></use></svg></span>
                                 </a>
                                 <a href="https://gabrielkozik-ux.github.io/palavakodex/" target="_blank" class="project-card">
                                     <div class="project-icon">📚</div>
                                     <h4>Pálava Kodex</h4>
                                     <p>Etický kodex klubu Pod Pálavou.</p>
-                                    <span class="project-link">Navštívit <i data-lucide="arrow-right"></i></span>
+                                    <span class="project-link">Navštívit <svg><use href="#icon-arrow-right"></use></svg></span>
                                 </a>
                             </div>
                         </div>
@@ -645,7 +720,7 @@
                     <h2 class="vibecoding-hero-title">
                         <a href="#vibecoding" class="section-anchor-link">
                             Vibecoding: Od nápadu k živé aplikaci za 5 hodin
-                            <i data-lucide="link" class="anchor-icon"></i>
+                            <svg class="anchor-icon"><use href="#icon-link"></use></svg>
                         </a>
                         <span style="font-weight: 300; opacity: 0.8;">(Bez programování)</span>
                     </h2>
@@ -807,7 +882,8 @@
 
                     <div style="margin-top: 40px;">
                         <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMVdUQjlsbjFPbGtWZUdzM1duNXpiWXUwd2M2d1pUelg0cEh1NUY2Nkczag=="
-                            id="vibecoding-cta" target="_blank" class="cta-button">Chci se naučit Vibecoding</a>
+                            id="vibecoding-cta" target="_blank" class="cta-button"
+                            onclick="return gtag_report_conversion(this.href);">Chci se naučit Vibecoding</a>
                         <p
                             style="margin-top: 15px; color: #64748b; font-size: 0.85em; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4;">
                             Zvolená sleva bude uplatněna v dalším kroku na Influonu. Nárok na slevu (absolvent
@@ -862,18 +938,18 @@
         <section id="bonus-material">
             <div class="container">
                 <div class="section-header">
-                    <i data-lucide="rocket" class="section-icon"></i>
+                    <svg class="section-icon"><use href="#icon-rocket"></use></svg>
                     <h2 class="section-title">Přeneste teorii do <span class="gradient-text">reálné praxe</span></h2>
                     <p class="section-subtitle">AI není jen o sledování videí. Zkuste si tyto připravené šablony přímo
                         ve svých projektech.</p>
                 </div>
 
                 <div class="glass-panel">
-                    <div class="glass-panel-bg-icon"><i data-lucide="sparkles"></i></div>
+                    <div class="glass-panel-bg-icon"><svg><use href="#icon-sparkles"></use></svg></div>
 
                     <div class="glass-panel-header">
                         <h3 class="glass-panel-title">
-                            <i data-lucide="gift" class="title-icon"></i>
+                            <svg class="title-icon"><use href="#icon-gift"></use></svg>
                             Ochutnávka z workshopu: 5 promptů pro okamžité výsledky
                         </h3>
                         <p class="glass-panel-subtitle">Klikněte na kartu a vyzkoušejte sílu správného zadání. Na
@@ -884,7 +960,7 @@
                         <!-- Prompt 1: Email -->
                         <div class="prompt-card" onclick="copyPrompt(this)" data-color="blue">
                             <div class="prompt-card-header">
-                                <i data-lucide="mail"></i>
+                                <svg><use href="#icon-mail"></use></svg>
                                 <span>Vylepšení e-mailu</span>
                             </div>
                             <p class="prompt-text">Jsi expert na byznys komunikaci. Přepiš můj e-mail tak, aby byl
@@ -896,7 +972,7 @@
                         <!-- Prompt 2: Interní směrnice -->
                         <div class="prompt-card" onclick="copyPrompt(this)" data-color="emerald">
                             <div class="prompt-card-header">
-                                <i data-lucide="file-text"></i>
+                                <svg><use href="#icon-file-text"></use></svg>
                                 <span>Interní směrnice</span>
                             </div>
                             <p class="prompt-text">Jsi zkušený compliance manažer. Vytvoř interní směrnici pro [TÉMA,
@@ -909,7 +985,7 @@
                         <!-- Prompt 3: Brainstorming -->
                         <div class="prompt-card" onclick="copyPrompt(this)" data-color="purple">
                             <div class="prompt-card-header">
-                                <i data-lucide="lightbulb"></i>
+                                <svg><use href="#icon-lightbulb"></use></svg>
                                 <span>Brainstorming</span>
                             </div>
                             <p class="prompt-text">Jsi kreativní stratég s 20 lety zkušeností. Potřebuji 10 neotřelých
@@ -921,7 +997,7 @@
                         <!-- Prompt 4: Trénink pohovoru -->
                         <div class="prompt-card" onclick="copyPrompt(this)" data-color="yellow">
                             <div class="prompt-card-header">
-                                <i data-lucide="mic"></i>
+                                <svg><use href="#icon-mic"></use></svg>
                                 <span>Trénink pohovoru</span>
                             </div>
                             <p class="prompt-text">Jsi přísný HR ředitel s praxí v korporátu. Vedu pohovor na pozici
@@ -933,7 +1009,7 @@
                         <!-- Prompt 5: Reflexe myšlenek -->
                         <div class="prompt-card" onclick="copyPrompt(this)" data-color="red">
                             <div class="prompt-card-header">
-                                <i data-lucide="brain"></i>
+                                <svg><use href="#icon-brain"></use></svg>
                                 <span>Reflexe myšlenek</span>
                             </div>
                             <p class="prompt-text">Jsi zkušený byznysový kouč. Právě jsem zažil [SITUACI]. Pomoz mi
@@ -1027,82 +1103,10 @@
 
     <!-- Copy success notification -->
     <div id="copy-toast" class="copy-toast">
-        <i data-lucide="zap"></i> +10 XP · Prompt zkopírován!
+        <svg><use href="#icon-zap"></use></svg> +10 XP · Prompt zkopírován!
     </div>
 
     <script>
-        async function updateWorkshopData() {
-            try {
-                // Přidán timestamp pro zamezení cachování starého souboru
-                const response = await fetch('./workshop-config.json?v=' + new Date().getTime());
-
-                if (!response.ok) {
-                    throw new Error(`HTTP chyba! Status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                const event = data.nextEvent;
-
-                // Formátování data z "YYYY-MM-DD" na české "D. M. YYYY"
-                const dateObj = new Date(event.date);
-                const formattedDate = dateObj.toLocaleDateString('cs-CZ');
-
-                // 1. Aktualizace textů na webu
-                document.querySelectorAll('.event-date-display').forEach(el => el.textContent = formattedDate);
-                document.querySelectorAll('.event-time-display').forEach(el => el.textContent = `${event.startTime} - ${event.endTime} hod.`);
-                document.querySelectorAll('.event-location-display').forEach(el => el.textContent = event.locationName);
-
-                // 2. Aktualizace strukturovaných dat pro Google
-                const schema = {
-                    "@context": "https://schema.org",
-                    "@type": "EducationEvent",
-                    "name": "AI Workshop: Nástroje Google pro freelancery a firmy",
-                    "startDate": `${event.date}T${event.startTime}:00+01:00`,
-                    "endDate": `${event.date}T${event.endTime}:00+01:00`,
-                    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-                    "eventStatus": "https://schema.org/EventScheduled",
-                    "location": {
-                        "@type": "Place",
-                        "name": event.locationName,
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressLocality": event.addressLocality,
-                            "addressCountry": "CZ"
-                        }
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "price": event.price.replace(/\D/g, ""),
-                        "priceCurrency": "CZK",
-                        "availability": "https://schema.org/InStock",
-                        "url": event.url
-                    },
-                    "performer": {
-                        "@type": "Person",
-                        "name": "Mgr. Gabriel Kožík",
-                        "jobTitle": "Advokát & AI Stratég"
-                    },
-                    "organizer": {
-                        "@type": "Organization",
-                        "name": "Mgr. Gabriel Kožík",
-                        "url": "https://ai-workshop.cz"
-                    }
-                };
-                document.getElementById('event-schema').textContent = JSON.stringify(schema);
-
-            } catch (error) {
-                console.error('Chyba při stahování/aktualizaci dat workshopu z JSONu:', error);
-                // V případě selhání zůstanou na webu původní hodnoty v HTML
-            }
-        }
-
-        updateWorkshopData();
-
-        // Lucide Icons Initialization (deferred — runs after DOMContentLoaded)
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) lucide.createIcons();
-        });
-
         // Scroll reveal animation
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1120,9 +1124,6 @@
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('copy-toast');
                 toast.classList.add('show');
-
-                // Animace Lucide ikony v toastu
-                if (window.lucide) lucide.createIcons();
 
                 setTimeout(() => {
                     toast.classList.remove('show');
@@ -1196,97 +1197,13 @@
         const statsRow = document.querySelector('.stats-row');
         if (statsRow) counterObserver.observe(statsRow);
 
-        // ─── 3D Magnetic card tilt ────────────────────────────────────────────
-        document.querySelectorAll('.feature-card, .program-card, .vibecoding-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const cx = rect.width / 2;
-                const cy = rect.height / 2;
-                const rotY = ((x - cx) / cx) * 6;
-                const rotX = -((y - cy) / cy) * 6;
-                card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px) scale(1.01)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-        });
-
-        // ─── Hero canvas floating particles ──────────────────────────────────
-        (function () {
-            // Skip on mobile/tablets for performance + respect reduced motion
-            if (window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            const canvas = document.getElementById('hero-canvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let W, H, particles = [];
-
-            function resize() {
-                W = canvas.width  = canvas.offsetWidth;
-                H = canvas.height = canvas.offsetHeight;
-            }
-
-            function mkParticle() {
-                return {
-                    x: Math.random() * W,
-                    y: Math.random() * H,
-                    r: Math.random() * 1.8 + 0.4,
-                    vx: (Math.random() - 0.5) * 0.35,
-                    vy: (Math.random() - 0.5) * 0.35,
-                    a: Math.random() * 0.6 + 0.15
-                };
-            }
-
-            resize();
-            window.addEventListener('resize', () => { resize(); particles = []; init(); });
-
-            function init() {
-                const count = Math.floor((W * H) / 8000);
-                particles = Array.from({ length: count }, mkParticle);
-            }
-            init();
-
-            function draw() {
-                ctx.clearRect(0, 0, W, H);
-                particles.forEach(p => {
-                    p.x += p.vx; p.y += p.vy;
-                    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-                    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(14,165,233,${p.a})`;
-                    ctx.fill();
-                });
-
-                // Draw connecting lines between nearby particles
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 90) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(14,165,233,${0.12 * (1 - dist / 90)})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                requestAnimationFrame(draw);
-            }
-            draw();
-        })();
-
         // ─── Hero countdown to workshop date ─────────────────────────────────
         (function () {
             const cdText = document.getElementById('cd-text');
             if (!cdText) return;
 
             function updateCD() {
-                // Read from the config-loaded date if available, fallback to 2026-05-15
+                // Read from the config-loaded date if available, fallback to 2026-05-29
                 const dateEl = document.querySelector('.event-date-display');
                 let target;
                 if (dateEl && dateEl.textContent.match(/\d/)) {
@@ -1297,7 +1214,7 @@
                     }
                 }
                 if (!target || isNaN(target)) {
-                    target = new Date(2026, 4, 15, 9, 0, 0); // May 15 2026
+                    target = new Date(2026, 4, 29, 9, 0, 0); // May 29 2026
                 }
 
                 const now  = new Date();
@@ -1317,8 +1234,8 @@
                 }
             }
 
-            // Wait for config data to load
-            setTimeout(updateCD, 800);
+            // Run immediately since the page config values are pre-rendered
+            updateCD();
             setInterval(updateCD, 60000);
         })();
 
@@ -1400,14 +1317,7 @@
             if (video) video.pause();
         }
 
-        // Ikona rozbalení
-        const accordion = document.getElementById('showcase-accordion');
-        if (accordion && window.lucide) {
-            accordion.addEventListener('toggle', () => {
-                // Překreslení ikon v případě lazy loadu
-                lucide.createIcons();
-            });
-        }
+
     </script>
     
     <!-- Lightbox Overlay -->

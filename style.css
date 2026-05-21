@@ -1185,7 +1185,8 @@ footer {
     z-index: 0;
 }
 
-.glass-panel-bg-icon i {
+.glass-panel-bg-icon i,
+.glass-panel-bg-icon svg {
     width: 160px;
     height: 160px;
 }
@@ -1250,7 +1251,8 @@ footer {
     margin-bottom: 15px;
 }
 
-.prompt-card-header i {
+.prompt-card-header i,
+.prompt-card-header svg {
     width: 20px;
     height: 20px;
 }
@@ -1374,6 +1376,11 @@ footer {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.copy-toast svg {
+    width: 20px;
+    height: 20px;
+}
+
 .copy-toast.show {
     opacity: 1;
     transform: translateY(0);
@@ -1404,6 +1411,10 @@ footer {
     color: var(--secondary-color);
     margin-bottom: 18px;
     stroke-width: 1.5;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* =========================================
@@ -1678,13 +1689,18 @@ footer {
     gap: 10px;
 }
 
-.summary-content i {
+.summary-content i,
+.summary-content svg {
     color: var(--secondary-color);
+    width: 20px;
+    height: 20px;
 }
 
 .summary-chevron {
     transition: transform 0.3s ease;
     color: var(--secondary-color);
+    width: 20px;
+    height: 20px;
 }
 
 .showcase-accordion[open] .summary-chevron {
@@ -1798,7 +1814,8 @@ footer {
     gap: 15px;
 }
 
-.pdf-bg i {
+.pdf-bg i,
+.pdf-bg svg {
     width: 48px;
     height: 48px;
 }
@@ -1880,7 +1897,8 @@ footer {
     transition: gap 0.2s ease;
 }
 
-.project-link i {
+.project-link i,
+.project-link svg {
     width: 16px;
     height: 16px;
 }
@@ -1992,7 +2010,8 @@ footer {
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
 }
 
-.play-indicator i {
+.play-indicator i,
+.play-indicator svg {
     width: 48px;
     height: 48px;
 }
