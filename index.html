@@ -13,26 +13,20 @@
 
     <script>
         function gtag_report_conversion(url) {
-            var callback = function () {
-                if (typeof (url) != 'undefined') {
-                    window.location = url;
-                }
-            };
             gtag('event', 'conversion', {
                 'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD',
                 'value': 0,
                 'currency': 'CZK',
-                'event_callback': callback,
-                'transport_type': 'beacon' // Zajišťuje odeslání i po opuštění stránky
+                'transport_type': 'beacon' // Zajišťuje odeslání na pozadí
             });
-            return false;
+            return true; // Umožní prohlížeči otevřít odkaz v nové záložce díky target="_blank"
         }
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Workshop: Gemini a NotebookLM pro praxi | Brno</title>
+    <title>AI Workshop: Gemini a NotebookLM pro praxi | Tišnov</title>
     <meta name="description"
-        content="Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.">
+        content="Praktický AI workshop v Tišnově. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://ai-workshop.cz/" />
@@ -40,15 +34,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ai-workshop.cz/">
-    <meta property="og:title" content="AI Workshop: Gemini a NotebookLM pro praxi | Brno">
-    <meta property="og:description" content="Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání.">
+    <meta property="og:title" content="AI Workshop: Gemini a NotebookLM pro praxi | Tišnov">
+    <meta property="og:description" content="Praktický AI workshop v Tišnově. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání.">
     <meta property="og:image" content="https://ai-workshop.cz/uvodni-obrazek.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ai-workshop.cz/">
-    <meta property="twitter:title" content="AI Workshop: Gemini a NotebookLM pro praxi | Brno">
-    <meta property="twitter:description" content="Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání.">
+    <meta property="twitter:title" content="AI Workshop: Gemini a NotebookLM pro praxi | Tišnov">
+    <meta property="twitter:description" content="Praktický AI workshop v Tišnově. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání.">
     <meta property="twitter:image" content="https://ai-workshop.cz/uvodni-obrazek.jpg">
 
     <!-- Preconnect to critical third-party origins -->
@@ -63,19 +57,19 @@
       "@context": "https://schema.org",
       "@type": "EducationEvent",
       "name": "AI Workshop: Gemini a NotebookLM pro praxi",
-      "description": "Praktický AI workshop v Brně. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.",
-      "startDate": "2026-05-29T09:00",
-      "endDate": "2026-05-29T15:00",
+      "description": "Praktický AI workshop v Tišnově. Naučte se využívat Google Gemini a NotebookLM pro zrychlení práce, tvorbu obsahu a bezpečné podnikání. Lektor: Mgr. Gabriel Kožík.",
+      "startDate": "2026-06-19T09:00",
+      "endDate": "2026-06-19T15:00",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
-        "name": "Slovákova 279, 602 00 Brno",
+        "name": "Mlynská 152, 666 01 Tišnov (kavárna u kina)",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Slovákova 279",
-          "addressLocality": "Brno",
-          "postalCode": "602 00",
+          "streetAddress": "Mlynská 152",
+          "addressLocality": "Tišnov",
+          "postalCode": "666 01",
           "addressCountry": "CZ"
         }
       },
@@ -83,7 +77,7 @@
       "offers": {
         "@type": "Offer",
         "url": "https://ai-workshop.cz/#kontakt",
-        "price": "2790",
+        "price": "1590",
         "priceCurrency": "CZK",
         "availability": "https://schema.org/InStock",
         "validFrom": "2026-01-01"
@@ -313,7 +307,7 @@
             font-size: 0.82em;
             font-weight: 600;
             color: var(--warning-color);
-            margin-bottom: 18px;
+            margin-bottom: 12px;
             letter-spacing: 0.3px;
             animation: fadeInUp 0.6s ease both;
         }
@@ -401,7 +395,7 @@
                 <span id="cd-text">Zbývá načítání…</span>
             </div>
             <div class="hero-badges">
-                <span>Právní jistota & Bezpečnost</span> • <span>Praktická efektivita</span> • <span>Brno</span>
+                <span>Právní jistota & Bezpečnost</span> • <span>Praktická efektivita</span> • <span>Tišnov</span>
             </div>
             <h1>Profesionální AI pro vaše podnikání</h1>
             <p>Praktický workshop pod vedením advokáta. Naučte se Gemini a NotebookLM bezpečně, s ohledem na GDPR a ochranu dat, a ušetřete hodiny práce týdně.</p>
@@ -411,7 +405,7 @@
                     <svg>
                         <use xlink:href="#icon-calendar"></use>
                     </svg>
-                    <span class="event-date-display">29. 5. 2026</span>
+                    <span class="event-date-display">19. 6. 2026</span>
                 </div>
                 <div class="detail-item">
                     <svg>
@@ -423,16 +417,22 @@
                     <svg>
                         <use xlink:href="#icon-location"></use>
                     </svg>
-                    <a href="https://maps.app.goo.gl/E9rce8edDTr7yd2v7" target="_blank" class="event-location-display"
-                        style="color: var(--white); text-decoration: underline; text-decoration-color: var(--secondary-color); text-underline-offset: 4px;">Slovákova 279, 602 00 Brno</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ml%C3%BDnsk%C3%A1+152%2C+666+01+Ti%C5%A1nov" target="_blank" class="event-location-display"
+                        style="color: var(--white); text-decoration: underline; text-decoration-color: var(--secondary-color); text-underline-offset: 4px;">Mlynská 152, Tišnov (kavárna u kina)</a>
+                </div>
+                <div class="detail-item">
+                    <span>Cena: <span style="text-decoration: line-through; opacity: 0.6; font-size: 0.9em; margin-right: 4px;">2 790 Kč</span> <strong style="color: var(--warning-color); font-size: 1.15em;">1 590 Kč</strong> (Tišnovský speciál)</span>
                 </div>
             </div>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTd0xtRGY0bERnYUxGUXp2blhaQmtjbFV5UWoxUHpQTTNJUEVhcEZidUZkNQ=="
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; justify-content: center;">
+                <a href="https://app.influon.cz/o/podpalavou/aUVXNjBJbzg3Z2JJVFpYamlKUWpTMENJWVVabHZSdnBmV3RHZDZQb0dFR0Q2alJTMVg3WFNNMWtRNVBYTTlIcQ=="
                     target="_blank" class="cta-button"
                     onclick="return gtag_report_conversion(this.href);">Koupit
                     vstupenku</a>
+                <p style="margin: 0; font-size: 0.88em; opacity: 0.85; max-width: 620px; line-height: 1.5; color: var(--white);">
+                    Zvýhodněná cena u příležitosti otevření nové kavárny u kina a vznikajícího cowork business centra v Tišnově.
+                </p>
             </div>
         </div>
     </header>
@@ -459,13 +459,13 @@
                         <svg class="card-icon"><use href="#icon-users"></use></svg>
                         <span class="feature-tag">Pro freelancery & živnostníky</span>
                         <h3>Váš digitální parťák</h3>
-                        <p>Nahraďte drahé externí služby. Brainstorming, texty, analýza smluv — vše zvládnete sami.</p>
+                        <p>Rozšiřte svou expertízu. Získejte relevantní zpětnou vazbu. Brainstorming, komunikace, odborné konzultace, analýza textů — vše zvládnete sami.</p>
                     </div>
                     <div class="feature-card scroll-reveal">
                         <svg class="card-icon"><use href="#icon-trending-up"></use></svg>
-                        <span class="feature-tag">Pro majitele firem & SME</span>
+                        <span class="feature-tag">Pro majitele firem a menší týmy</span>
                         <h3>Konkurenční výhoda</h3>
-                        <p>Vytvořte "firemní mozek" z vašich dat. Zrychlete onboarding a eliminujte chyby.</p>
+                        <p>Vytvořte "firemní mozek" z vašich dat. Zrychlete onboarding, administrativu a zkvalitněte dohled.</p>
                     </div>
                 </div>
             </div>
@@ -476,97 +476,148 @@
                 <div class="section-header">
                     <svg class="section-icon"><use href="#icon-users"></use></svg>
                     <h2 class="section-title">Co na workshopu <span class="gradient-text">nejvíce oceňují</span> účastníci</h2>
-                    <p class="section-subtitle">Ověřené přínosy a konkrétní zpětná vazba z reálného zapojení AI do podnikání a každodenní praxe.</p>
+                    <p class="section-subtitle">Výběr ze zpětných vazeb a konkrétních přínosů z reálného zapojení AI do podnikání od absolventů našich školení.</p>
                 </div>
                 
-                <div class="testimonials-grid">
-                    <!-- Card 1: Manažer / ROI -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-header">
-                            <span class="testimonial-badge tag-manager">Manažerská praxe & ROI</span>
-                        </div>
-                        <h3 class="testimonial-title">Zrychlení, zlepšení a úspora času</h3>
-                        <p class="testimonial-quote">
-                            "Z pohledu manažera zcela zásadní pro pochopení této tématiky. Po skončení workshopu jsem aplikoval některé z bodů v praxi, např. integraci generování promptů za účelem generování popisků a textů včetně překladů do 5 jazyků."
-                        </p>
-                        <div class="testimonial-highlight-box">
-                            <svg class="highlight-icon"><use href="#icon-zap"></use></svg>
-                            <span><strong>Výsledek v praxi:</strong> To, co mi dříve trvalo 2,5 hodiny, nyní s AI zvládnu za 1 minutu.</span>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar font-manager">M</div>
-                            <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Účastník workshopu</span>
-                                <span class="testimonial-author-role">Manažer & podnikatel</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="testimonials-accordion-wrapper" style="margin-top: 40px;">
+                    <details class="showcase-accordion" id="testimonials-accordion">
+                        <summary class="showcase-summary">
+                            <span class="summary-content">
+                                <svg><use href="#icon-message-square"></use></svg>
+                                Zobrazit hodnocení účastníků workshopů
+                            </span>
+                            <svg class="summary-chevron"><use href="#icon-chevron-down"></use></svg>
+                        </summary>
+                        <div class="showcase-accordion-body" style="padding: 40px 20px;">
+                            <div class="testimonials-grid" style="margin-top: 0;">
+                                <!-- Card 1: Manažer / ROI -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-card-header">
+                                        <span class="testimonial-badge tag-manager">Manažerská praxe a ROI</span>
+                                    </div>
+                                    <h3 class="testimonial-title">Zrychlení, zlepšení a úspora času</h3>
+                                    <p class="testimonial-quote">
+                                        "Z pohledu manažera zcela zásadní pro pochopení této tématiky. Po skončení workshopu jsem aplikoval některé z bodů v praxi, např. integraci generování promptů za účelem generování popisků a textů včetně překladů do 5 jazyků."
+                                    </p>
+                                    <div class="testimonial-highlight-box">
+                                        <span><strong>Výsledek v praxi:</strong> To, co mi dříve trvalo 2,5 hodiny, nyní s AI zvládnu za nižší desítky minut.</span>
+                                    </div>
+                                    <div class="testimonial-footer">
+                                        <div class="testimonial-avatar font-manager">M</div>
+                                        <div class="testimonial-author-info">
+                                            <span class="testimonial-author-name">Účastník workshopu</span>
+                                            <span class="testimonial-author-role">Manažer a podnikatel - logistika</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <!-- Card 2: Začátečník -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-header">
-                            <span class="testimonial-badge tag-beginner">Překonání obav & Brána do AI</span>
-                        </div>
-                        <h3 class="testimonial-title">Praktická pomoc i pro začátečníky</h3>
-                        <p class="testimonial-quote">
-                            "Vynikající způsob přiblížení problematiky AI s praktickou ukázkou využitelnosti v reálné praxi a v životě. Z pohledu běžného uživatele velmi zajímavé a hravé. Dnes je to pro mě každodenní pomocník."
-                        </p>
-                        <div class="testimonial-highlight-box">
-                            <svg class="highlight-icon"><use href="#icon-sparkles"></use></svg>
-                            <span><strong>Změna přístupu:</strong> Než jsem lektora potkal, o AI jsem nic nevěděl a bál se toho. Dnes spolupracuji s Gemini.</span>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar font-beginner">B</div>
-                            <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Účastník workshopu</span>
-                                <span class="testimonial-author-role">Běžný uživatel</span>
-                            </div>
-                        </div>
-                    </div>
+                                <!-- Card 2: Začátečník -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-card-header">
+                                        <span class="testimonial-badge tag-beginner">Překonání obav a brána do AI</span>
+                                    </div>
+                                    <h3 class="testimonial-title">Praktická pomoc i pro začátečníky</h3>
+                                    <p class="testimonial-quote">
+                                        "Vynikající způsob přiblížení problematiky AI s praktickou ukázkou využitelnosti v reálné praxi a v životě. Z pohledu běžného uživatele velmi zajímavé a praktické. Dnes je to pro mě každodenní pomocník."
+                                    </p>
+                                    <div class="testimonial-highlight-box">
+                                        <span><strong>Změna přístupu:</strong> Než jsem lektora potkala, o AI jsem nic nevěděla a bála se toho. Dnes spolupracuji s Gemini.</span>
+                                    </div>
+                                    <div class="testimonial-footer">
+                                        <div class="testimonial-avatar font-beginner">B</div>
+                                        <div class="testimonial-author-info">
+                                            <span class="testimonial-author-name">Účastník workshopu</span>
+                                            <span class="testimonial-author-role">Podnikatel - kouč</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <!-- Card 3: Zkušený uživatel -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-header">
-                            <span class="testimonial-badge tag-advanced">Individuální přístup & Lidské vysvětlení</span>
-                        </div>
-                        <h3 class="testimonial-title">Ověřené tipy a srozumitelný výklad</h3>
-                        <p class="testimonial-quote">
-                            "Velmi oceňuji individuální přístup k lidem na různé úrovni znalostí. Gabriel dokáže vše vysvětlit lidskou řečí, netlačí na pilu a sdílí spoustu praktických, ověřených tipů přímo ze své vlastní praxe."
-                        </p>
-                        <div class="testimonial-highlight-box">
-                            <svg class="highlight-icon"><use href="#icon-gift"></use></svg>
-                            <span><strong>Hlavní přínos:</strong> Člověk se cítí podporován bez ohledu na to, zda s AI začíná, nebo už ji nějakou dobu aktivně používá.</span>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar font-advanced">P</div>
-                            <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Účastník workshopu</span>
-                                <span class="testimonial-author-role">Pokročilejší uživatel</span>
-                            </div>
-                        </div>
-                    </div>
+                                <!-- Card 3: Zkušený uživatel -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-card-header">
+                                        <span class="testimonial-badge tag-advanced">Individuální přístup a lidské vysvětlení</span>
+                                    </div>
+                                    <h3 class="testimonial-title">Ověřené tipy a srozumitelný výklad</h3>
+                                    <p class="testimonial-quote">
+                                        "Velmi oceňuji individuální přístup k lidem na různé úrovni znalostí. Gabriel dokáže vše vysvětlit lidskou řečí, netlačí na pilu a sdílí spoustu praktických, ověřených tipů přímo ze své vlastní praxe."
+                                    </p>
+                                    <div class="testimonial-highlight-box">
+                                        <span><strong>Hlavní přínos:</strong> Člověk se cítí podporován bez ohledu na to, zda s AI začíná, nebo už ji nějakou dobu aktivně používá.</span>
+                                    </div>
+                                    <div class="testimonial-footer">
+                                        <div class="testimonial-avatar font-advanced">P</div>
+                                        <div class="testimonial-author-info">
+                                            <span class="testimonial-author-name">Účastník workshopu</span>
+                                            <span class="testimonial-author-role">Podnikatel - cestovní ruch</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <!-- Card 4: IT specialista -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-header">
-                            <span class="testimonial-badge tag-it">Urychlení studia & Integrace</span>
-                        </div>
-                        <h3 class="testimonial-title">Okamžitá aplikace do vlastních projektů</h3>
-                        <p class="testimonial-quote">
-                            "Klobouk dolů, skvělý workshop. Ušetřilo mi to neskutečné množství hodin vlastního studia a hledání souvislostí mezi nástroji, což je pro mě jako IT specialistu obrovská přidaná hodnota."
-                        </p>
-                        <div class="testimonial-highlight-box">
-                            <svg class="highlight-icon"><use href="#icon-rocket"></use></svg>
-                            <span><strong>Reálný projekt:</strong> Hned po workshopu jsem byl schopen postavit a zprovoznit web na vlastní doméně a začít s šablonami.</span>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar font-it">I</div>
-                            <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Účastník workshopu</span>
-                                <span class="testimonial-author-role">IT & Vývoj</span>
+                                <!-- Card 4: IT specialista -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-card-header">
+                                        <span class="testimonial-badge tag-it">Urychlení studia a integrace</span>
+                                    </div>
+                                    <h3 class="testimonial-title">Okamžitá aplikace do vlastních projektů</h3>
+                                    <p class="testimonial-quote">
+                                        "Klobouk dolů, skvělý workshop. Ušetřilo mi to neskutečné množství hodin vlastního studia a hledání souvislostí mezi nástroji, což je pro mě jako IT specialistu obrovská přidaná hodnota."
+                                    </p>
+                                    <div class="testimonial-highlight-box">
+                                        <span><strong>Reálný projekt:</strong> Hned po workshopu jsem byl schopen téměř instantně postavit a zprovoznit web na vlastní doméně a začít s šablonami.</span>
+                                    </div>
+                                    <div class="testimonial-footer">
+                                        <div class="testimonial-avatar font-it">I</div>
+                                        <div class="testimonial-author-info">
+                                            <span class="testimonial-author-name">Účastník workshopu</span>
+                                            <span class="testimonial-author-role">IT vývojář</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 5: Optimalizace & Ekosystém -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-card-header">
+                                        <span class="testimonial-badge tag-manager">Optimalizace a ekosystém</span>
+                                    </div>
+                                    <h3 class="testimonial-title">Zkrácení práce ze dnů na hodiny</h3>
+                                    <p class="testimonial-quote">
+                                        "V době, kdy se jednotlivé nástroje AI předbíhají v tom, co dokáží, je důležité se na ně dívat komplexně v rámci vlastního ekosystému. Pokud člověk používá Google nástroje, je Gabrielův workshop „must have“, protože vás provede zákulisím toho, jak můžete tyto nástroje maximalizovat nejen pro vyšší výkon, ale i větší transparentnost a optimalizaci času. Gabriel navíc nejde jen po povrchu, nýbrž se snaží poukázat na důležitost správného nastavení a propojení jednotlivých systémů. Díky tomuto workshopu jsem časovou náročnost části své práce zoptimalizoval ze dnů na hodiny."
+                                    </p>
+                                    <div class="testimonial-highlight-box">
+                                        <span><strong>Výsledek v praxi:</strong> Zkrácení času na vybraných činnostech z celých dnů na pouhé hodiny.</span>
+                                    </div>
+                                    <div class="testimonial-footer">
+                                        <div class="testimonial-avatar font-manager">P</div>
+                                        <div class="testimonial-author-info">
+                                            <span class="testimonial-author-name">Účastník workshopu</span>
+                                            <span class="testimonial-author-role">Podnikatel - byznys mentor</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card 6: Širší kontext & Motivace -->
+                                <div class="testimonial-card">
+                                    <div class="testimonial-card-header">
+                                        <span class="testimonial-badge tag-beginner">Širší kontext a motivace</span>
+                                    </div>
+                                    <h3 class="testimonial-title">Nadšení a okamžité použití v praxi</h3>
+                                    <p class="testimonial-quote">
+                                        "Děkuji moc Gabrielovi za širší kontext práce s AI. Nadchnul mne pro další objevování možností práce s AI i okamžitě použití dle mých potřeb. Vřele doporučuji tento způsob předávání znalostí o AI."
+                                    </p>
+                                    <div class="testimonial-highlight-box">
+                                        <span><strong>Hlavní přínos:</strong> Okamžité zapojení AI na míru osobním a pracovním potřebám.</span>
+                                    </div>
+                                    <div class="testimonial-footer">
+                                        <div class="testimonial-avatar font-beginner">M</div>
+                                        <div class="testimonial-author-info">
+                                            <span class="testimonial-author-name">Účastník workshopu</span>
+                                            <span class="testimonial-author-role">CEO - finanční poradenství</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </details>
                 </div>
             </div>
         </section>
@@ -590,12 +641,12 @@
                         <svg class="card-icon"><use href="#icon-book-open"></use></svg>
                         <span class="module-number">MODUL 2</span>
                         <h3>NotebookLM: Práce s dokumenty</h3>
-                        <p>Nahrajte PDF a smlouvy — ptejte se jich. Neuvěřitelně rychlé nastudování materiálů.</p>
+                        <p>Nahrajte dokument, obrázek, zvuk či video  — ptejte se AI. Téměř instantní nastudování materiálů.</p>
                     </div>
                     <div class="program-card scroll-reveal">
                         <svg class="card-icon"><use href="#icon-lock"></use></svg>
                         <span class="module-number">MODUL 3</span>
-                        <h3>Bezpečnost a Ekosystém</h3>
+                        <h3>Bezpečnost a ekosystém</h3>
                         <p>Propojení s Google Workspace, nastavení soukromí. Co smíte a co ne.</p>
                     </div>
                 </div>
@@ -624,7 +675,7 @@
                                             <img src="ukazky/infografika_1.webp" alt="Infografika" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
-                                            <span class="showcase-label">🗂️ Infografika</span>
+                                            <span class="showcase-label">Infografika</span>
                                         </div>
                                     </div>
 
@@ -634,7 +685,7 @@
                                             <img src="ukazky/mind_map_1.webp" alt="Mind mapa" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
-                                            <span class="showcase-label">🧠 Mind mapa</span>
+                                            <span class="showcase-label">Mind mapa</span>
                                         </div>
                                     </div>
 
@@ -644,7 +695,7 @@
                                             <img src="ukazky/obrazek_1.webp" alt="AI Vizualizace 1" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
-                                            <span class="showcase-label">🎨 AI Vizualizace</span>
+                                            <span class="showcase-label">AI Vizualizace</span>
                                         </div>
                                     </div>
 
@@ -654,7 +705,7 @@
                                             <img src="ukazky/obrazek_2.webp" alt="AI Vizualizace 2" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
-                                            <span class="showcase-label">🎨 AI Vizualizace</span>
+                                            <span class="showcase-label">AI Vizualizace</span>
                                         </div>
                                     </div>
 
@@ -664,7 +715,7 @@
                                             <img src="ukazky/obrazek_3.webp" alt="AI Vizualizace 3" loading="lazy">
                                         </div>
                                         <div class="showcase-info">
-                                            <span class="showcase-label">🎨 AI Vizualizace</span>
+                                            <span class="showcase-label">AI Vizualizace</span>
                                         </div>
                                     </div>
 
@@ -677,7 +728,7 @@
                                             <div class="play-indicator"><svg><use href="#icon-play-circle"></use></svg></div>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
-                                            <span class="showcase-label">🎥 Video ukázka 1</span>
+                                            <span class="showcase-label">Video ukázka 1</span>
                                             <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">18.7 MB</span>
                                         </div>
                                     </div>
@@ -691,7 +742,7 @@
                                             <div class="play-indicator"><svg><use href="#icon-play-circle"></use></svg></div>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
-                                            <span class="showcase-label">🎥 Video ukázka 2</span>
+                                            <span class="showcase-label">Video ukázka 2</span>
                                             <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">23.4 MB</span>
                                         </div>
                                     </div>
@@ -705,7 +756,7 @@
                                             <div class="play-indicator"><svg><use href="#icon-play-circle"></use></svg></div>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
-                                            <span class="showcase-label">🎥 Video ukázka 3</span>
+                                            <span class="showcase-label">Video ukázka 3</span>
                                             <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">4.2 MB</span>
                                         </div>
                                     </div>
@@ -717,7 +768,7 @@
                                             <span>Prezentace 1</span>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
-                                            <span class="showcase-label">📊 Prezentace</span>
+                                            <span class="showcase-label">Prezentace</span>
                                             <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">13.5 MB</span>
                                         </div>
                                     </a>
@@ -729,7 +780,7 @@
                                             <span>Prezentace 2</span>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
-                                            <span class="showcase-label">📊 Prezentace</span>
+                                            <span class="showcase-label">Prezentace</span>
                                             <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">15.5 MB</span>
                                         </div>
                                     </a>
@@ -741,7 +792,7 @@
                                             <span>Zpráva 1</span>
                                         </div>
                                         <div class="showcase-info" style="display: flex; justify-content: space-between; align-items: center;">
-                                            <span class="showcase-label">📄 AI Zpráva</span>
+                                            <span class="showcase-label">AI Zpráva</span>
                                             <span class="file-size-info" style="font-size: 0.8em; color: #94a3b8; font-family: monospace;">176 KB</span>
                                         </div>
                                     </a>
@@ -1135,7 +1186,7 @@
                     }
                 }
                 if (!target || isNaN(target)) {
-                    target = new Date(2026, 4, 29, 9, 0, 0); // May 29 2026
+                    target = new Date(2026, 5, 19, 9, 0, 0); // June 19 2026
                 }
 
                 const now  = new Date();
