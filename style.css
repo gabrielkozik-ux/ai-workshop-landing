@@ -2205,6 +2205,14 @@ footer {
     border-left-color: var(--accent-color);
 }
 
+.testimonial-card:nth-child(5) .testimonial-highlight-box {
+    border-left-color: var(--secondary-color);
+}
+
+.testimonial-card:nth-child(6) .testimonial-highlight-box {
+    border-left-color: var(--success-color);
+}
+
 .highlight-icon {
     width: 24px;
     height: 24px;
@@ -2222,6 +2230,14 @@ footer {
 
 .testimonial-card:nth-child(4) .highlight-icon {
     color: var(--accent-color);
+}
+
+.testimonial-card:nth-child(5) .highlight-icon {
+    color: var(--secondary-color);
+}
+
+.testimonial-card:nth-child(6) .highlight-icon {
+    color: var(--success-color);
 }
 
 .testimonial-highlight-box span {
