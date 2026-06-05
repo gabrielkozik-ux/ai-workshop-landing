@@ -270,13 +270,13 @@ section:nth-child(even) {
     background-attachment: fixed;
     animation: gradientShift 12s ease infinite;
     color: var(--white);
-    min-height: 80vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 100px 20px;
+    padding: 60px 20px 50px 20px;
     position: relative;
     overflow: hidden;
 }
@@ -331,7 +331,7 @@ section:nth-child(even) {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 500;
     text-transform: uppercase;
@@ -342,7 +342,7 @@ section:nth-child(even) {
 
 .hero h1 {
     font-size: clamp(2.5em, 5vw, 4em);
-    margin: 0 0 25px 0;
+    margin: 0 0 15px 0;
     color: var(--white);
     line-height: 1.1;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
@@ -352,7 +352,7 @@ section:nth-child(even) {
     font-size: 1.3em;
     font-weight: 300;
     max-width: 800px;
-    margin: 0 auto 30px;
+    margin: 0 auto 20px;
     opacity: 0.9;
 }
 
@@ -361,14 +361,14 @@ section:nth-child(even) {
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    padding: 30px;
+    padding: 20px 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     /* Vertikální centrování */
     flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 50px;
+    gap: 25px;
+    margin-bottom: 30px;
     width: 100%;
     max-width: 900px;
     margin-left: auto;
