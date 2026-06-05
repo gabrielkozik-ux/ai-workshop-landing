@@ -13,19 +13,13 @@
 
     <script>
         function gtag_report_conversion(url) {
-            var callback = function () {
-                if (typeof (url) != 'undefined') {
-                    window.location = url;
-                }
-            };
             gtag('event', 'conversion', {
                 'send_to': 'AW-981380390/GkccCMq-3bEbEKba-tMD',
                 'value': 0,
                 'currency': 'CZK',
-                'event_callback': callback,
-                'transport_type': 'beacon' // Zajišťuje odeslání i po opuštění stránky
+                'transport_type': 'beacon' // Zajišťuje odeslání na pozadí
             });
-            return false;
+            return true; // Umožní prohlížeči otevřít odkaz v nové záložce díky target="_blank"
         }
     </script>
 
