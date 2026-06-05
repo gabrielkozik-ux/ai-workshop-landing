@@ -1659,6 +1659,10 @@ footer {
     border-color: rgba(14, 165, 233, 0.3);
 }
 
+.showcase-accordion:not([open]) .showcase-accordion-body {
+    display: none !important;
+}
+
 .showcase-summary {
     display: flex;
     justify-content: center;
